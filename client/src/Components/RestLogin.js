@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import axiosInstance from './BaseUrl';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "./BaseUrl";
 
 function RestLogin() {
-    const [login, setLogin] = useState({
-        email: "",
-        password: "",
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const changehandleSubmit = (a) => {
+    setLogin({ ...login, [a.target.name]: a.target.value });
+  };
+  useEffect(() => {
+    console.log(login);
+  });
+  const navigate = useNavigate();
+  const submitt = (b) => {
+    // alert('submitted')
+
+    b.preventDefault();
+    axiosInstance
+      .post("/loginRestaurant", login)
+      .then((result) => {
+        console.log("data entered", result);
+        if (result.status == 200) {
+          alert("login Successfully");
+          navigate("/RestHome");
+          localStorage.setItem("restlogid", result.data.user._id);
+        } else {
+          alert("Login Failed");
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+        alert("Failed");
       });
-      const changehandleSubmit = (a) => {
-        setLogin({ ...login, [a.target.name]: a.target.value });
-      };
-      useEffect(() => {
-        console.log(login);
-      });
-      const navigate = useNavigate();
-      const submitt = (b) => {
-        // alert('submitted')
-    
-        b.preventDefault();
-        axiosInstance
-          .post("/loginRestaurant", login)
-          .then((result) => {
-            console.log("data entered", result);
-            if (result.status == 200) {
-              alert("login Successfully");
-              navigate("/RestHome");
-              localStorage.setItem("restlogid", result.data.user._id);
-            } else {
-              alert("Login Failed");
-            }
-          })
-          .catch((error) => {
-            console.log("error", error);
-            alert('Failed')
-          });
-      };
+  };
   return (
     <div>
-        <body id="signup">
+      <body id="signup">
         <main class="container1">
           <div class="back"></div>
           <div class="brand" style={{ backgroundColor: "grey" }}>
@@ -64,19 +64,16 @@ function RestLogin() {
             <div class="form">
               <h2>RESTAURANT LOGIN</h2>
               <form onSubmit={submitt}>
-               
                 <div class="inputWrapper">
                   <input
                     type="email"
                     name="email"
                     value={login.email}
                     onChange={changehandleSubmit}
-                    placeholder='Email'
+                    placeholder="Email"
                     required
                   />
                 </div>
-               
-               
 
                 <div class="inputWrapper">
                   <input
@@ -84,7 +81,7 @@ function RestLogin() {
                     name="password"
                     value={login.password}
                     onChange={changehandleSubmit}
-                    placeholder='Password'
+                    placeholder="Password"
                     required
                   />
                 </div>
@@ -93,16 +90,18 @@ function RestLogin() {
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>
           </div> */}
-            <input
-               
-                type="submit"
-              
-                id='login'
-                style={{height:'60px',width:'213px',marginLeft:'15px',marginTop:'.5px'}}
-               
-              />
+                <input
+                  type="submit"
+                  id="login"
+                  style={{
+                    height: "60px",
+                    width: "213px",
+                    marginLeft: "15px",
+                    marginTop: ".5px",
+                  }}
+                />
               </form>
-            
+
               {/* <span style={{ color: "black" }}>
                 Already a member?{" "}
                 <Link
@@ -118,7 +117,7 @@ function RestLogin() {
         </main>
       </body>
     </div>
-  )
+  );
 }
 
-export default RestLogin
+export default RestLogin;

@@ -24,7 +24,6 @@ function ViewFoodCust({ baseurl }) {
     <div>
       <CustNav />
 
-     
       <div class="container-xxl py-5">
         <div class="container">
           <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -85,13 +84,15 @@ function ViewFoodCust({ baseurl }) {
           </div> */}
         </div>
       </div>
-      <div style={{ minHeight: "300px", margin: "15px 0px",padding:'0 50px' }}>
+      <div
+        style={{ minHeight: "300px", margin: "15px 0px", padding: "0 50px" }}
+      >
         <div class="container text-center">
           <div class="row">
             {custrest.length ? (
               custrest.map((a) => {
                 return (
-                  <div class="col-3 mb-5" >
+                  <div class="col-3 mb-5">
                     <div
                       class="card"
                       style={{ width: "300px", margin: "auto" }}
@@ -101,26 +102,28 @@ function ViewFoodCust({ baseurl }) {
                         class="card-img-top"
                         alt={a.image.filename}
                         height="240px"
-                        style={{objectFit:'cover'}}
+                        style={{ objectFit: "cover" }}
                       />
                       <div class="card-body">
                         <h2>{a.name}</h2>
                         <h6 class="card-title">{a.contact}</h6>
                         <p class="card-text" style={{ color: "black" }}>
-                      {a.type}
+                          {a.type}
                         </p>
                         <p class="card-text" style={{ color: "black" }}>
-                       {a.city}, {a.country}
+                          {a.city}, {a.country}
                         </p>
                       </div>
-                      <div><Link
-                            to={`/ViewSingleres/${a._id}`}
-                            href="#"
-                            class="btn btn-sm btn-success px-3 border-end mb-4"
-                            style={{ borderRadius: "30px" }}
-                          >
-                            View Dishes
-                          </Link></div>
+                      <div>
+                        <Link
+                          to={`/ViewSingleres/${a._id}`}
+                          href="#"
+                          class="btn btn-sm btn-success px-3 border-end mb-4"
+                          style={{ borderRadius: "30px" }}
+                        >
+                          View Dishes
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );

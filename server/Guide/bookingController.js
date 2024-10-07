@@ -11,7 +11,7 @@ const addBooking = (req, res) => {
     aid: req.body.aid,
     comments: req.body.comments,
     doj: req.body.doj,
-    isactive:true
+    isactive: true,
   });
   subscription
     .save()
@@ -34,7 +34,7 @@ const addBooking = (req, res) => {
 //View my booking by custid
 
 const viewBookingByCId = (req, res) => {
-  console.log("cidd",req.params.id);
+  console.log("cidd", req.params.id);
   booking
     .find({ custId: req.params.id, isactive: true })
     .populate("packageId")
@@ -85,10 +85,10 @@ const UpdateBookingByCId = (req, res) => {
 //View my booking by Agency
 
 const viewBookingByAId = (req, res) => {
-  let date=new Date()
-  date.setDate(date.getDate()-1)
+  let date = new Date();
+  date.setDate(date.getDate() - 1);
   booking
-    .find({ aid: req.params.id ,doj:{$gte:date}})
+    .find({ aid: req.params.id, doj: { $gte: date } })
     .populate("packageId")
     .populate("custId")
     .exec()
@@ -147,47 +147,49 @@ const addRating = (req, res) => {
     });
 };
 
-const cancelBookingByid=async(req,res)=>{
-  let date=new Date()
-  let flag=0
+const cancelBookingByid = async (req, res) => {
+  let date = new Date();
+  let flag = 0;
 
-  await booking.findById({_id:req.params.id}).exec().then(datas=>{
-    console.log(datas);
-    if(((((datas.doj).getMonth()))>date.getMonth()))
-    flag=1
-    else if((((((datas.doj).getMonth()))==date.getMonth()))&&(datas.doj).getDate()>date.getDate())
-     flag=1
-   // console.log("mont",(((datas.checkindate).getMonth())),"",date.getMonth(),"",(datas.checkindate));
-
-   })
-  console.log("flag",flag);
-if(flag==1){
- await booking.findByIdAndDelete({_id:req.params.id})
-  .exec().then(data=>{
+  await booking
+    .findById({ _id: req.params.id })
+    .exec()
+    .then((datas) => {
+      console.log(datas);
+      if (datas.doj.getMonth() > date.getMonth()) flag = 1;
+      else if (
+        datas.doj.getMonth() == date.getMonth() &&
+        datas.doj.getDate() > date.getDate()
+      )
+        flag = 1;
+      // console.log("mont",(((datas.checkindate).getMonth())),"",date.getMonth(),"",(datas.checkindate));
+    });
+  console.log("flag", flag);
+  if (flag == 1) {
+    await booking
+      .findByIdAndDelete({ _id: req.params.id })
+      .exec()
+      .then((data) => {
+        res.json({
+          status: 200,
+          msg: "obtained successfully",
+          data: data,
+        });
+      })
+      .catch((err) => {
+        res.json({
+          status: 500,
+          msg: "Data not obtained",
+          Error: err,
+        });
+      });
+  } else {
     res.json({
-        status:200,
-        msg:"obtained successfully",
-        data:data
-    })
-}).catch(err=>{
-    res.json({
-        status:500,
-        msg:"Data not obtained",
-        Error:err
-    })
-})
-}
-else{
-  res.json({
-    status:500,
-    msg:"Can't be updated as its too late !!"
-})
-}
-}
-
-
-
-
+      status: 500,
+      msg: "Can't be updated as its too late !!",
+    });
+  }
+};
 
 module.exports = {
   addBooking,
@@ -195,5 +197,5 @@ module.exports = {
   viewBookingByAId,
   addRating,
   UpdateBookingByCId,
-  cancelBookingByid
+  cancelBookingByid,
 };

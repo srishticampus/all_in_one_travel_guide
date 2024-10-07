@@ -110,9 +110,9 @@ function TaxiEditProf() {
                       onChange={changefn}
                     />
                   </div>
-                    <div class="col-md-6">
-                      <label class="labels">Ac /  Non-Ac</label>
-                      <select
+                  <div class="col-md-6">
+                    <label class="labels">Ac / Non-Ac</label>
+                    <select
                       id="dropdown"
                       class="col-sm-4 form-control"
                       name="ac"
@@ -124,7 +124,7 @@ function TaxiEditProf() {
                       <option value="Ac"> Ac </option>
                       <option value="Non-Ac">Non-Ac</option>
                     </select>
-                    </div>
+                  </div>
                 </div>
                 <div class="row mt-3">
                   <div class="col-md-12">

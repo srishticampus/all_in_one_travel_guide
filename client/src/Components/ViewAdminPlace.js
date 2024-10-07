@@ -4,13 +4,12 @@ import AdminNav from "./AdminNav";
 import { Link, useNavigate } from "react-router-dom";
 
 function ViewAdminPlace({ baseurl }) {
-
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
+    if (localStorage.getItem("adminlog") == null) {
+      navigate("/");
     }
-  })
+  });
 
   const [place, setplace] = useState([]);
   useEffect(() => {
@@ -66,10 +65,10 @@ function ViewAdminPlace({ baseurl }) {
                         class="card-img-top"
                         alt={a.image.filename}
                         height="240px"
-                        style={{objectFit:'cover'}}
+                        style={{ objectFit: "cover" }}
                       />
                       <div class="card-body">
-                      <h3>{a.loc}</h3>
+                        <h3>{a.loc}</h3>
                         <h6 class="card-title">
                           City:{a.city}
                           <br />
@@ -84,11 +83,35 @@ function ViewAdminPlace({ baseurl }) {
                         <p class="card-text" style={{ color: "black" }}>
                           Location Type:{a.locType}{" "}
                         </p>
-                        <div><Link to={`/admin_view_place_location/${a.lat}/${a.lon}`} ><button style={{marginRight:'2px'}} class='btn btn-success mb-1' >View Location</button></Link><br/>
-                        <Link to={`/admin_edit_place/${a._id}`} ><button class='btn btn-warning mb-3' style={{marginRight:'2px'}} >Edit</button></Link>
-                        <button class='btn btn-danger mb-3' onClick={()=>{reject(a._id)}} >Remove</button>
+                        <div>
+                          <Link
+                            to={`/admin_view_place_location/${a.lat}/${a.lon}`}
+                          >
+                            <button
+                              style={{ marginRight: "2px" }}
+                              class="btn btn-success mb-1"
+                            >
+                              View Location
+                            </button>
+                          </Link>
+                          <br />
+                          <Link to={`/admin_edit_place/${a._id}`}>
+                            <button
+                              class="btn btn-warning mb-3"
+                              style={{ marginRight: "2px" }}
+                            >
+                              Edit
+                            </button>
+                          </Link>
+                          <button
+                            class="btn btn-danger mb-3"
+                            onClick={() => {
+                              reject(a._id);
+                            }}
+                          >
+                            Remove
+                          </button>
                         </div>
-
                       </div>
                       <div>
                         {/* <button class='btn btn-danger mb-2' onClick={()=>{handleRemove(a._id)}} >Remove</button> */}

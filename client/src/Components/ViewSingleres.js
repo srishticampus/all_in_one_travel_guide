@@ -144,7 +144,7 @@ function ViewSinglerest({ baseurl }) {
                     );
                   })
                 ) : (
-                  <h1 style={{padding:'50px'}} >No Food Available</h1>
+                  <h1 style={{ padding: "50px" }}>No Food Available</h1>
                 )}
               </div>
             </div>

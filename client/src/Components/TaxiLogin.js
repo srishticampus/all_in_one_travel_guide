@@ -1,47 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
-import { useNavigate } from 'react-router-dom';
-import axiosInstance from './BaseUrl';
+import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "./BaseUrl";
 
 function TaxiLogin() {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const changehandleSubmit = (a) => {
+    setLogin({ ...login, [a.target.name]: a.target.value });
+  };
+  useEffect(() => {
+    console.log(login);
+  });
+  const navigate = useNavigate();
+  const submitt = (b) => {
+    // alert('submitted')
 
-    const [login, setLogin] = useState({
-        email: "",
-        password: "",
+    b.preventDefault();
+    axiosInstance
+      .post("/loginTaxi", login)
+      .then((result) => {
+        console.log("data entered", result);
+        if (result.status == 200) {
+          alert("login Successfully");
+          navigate("/taxi_home");
+          localStorage.setItem("taxiid", result.data.user._id);
+        } else {
+          alert("Login Failed");
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+        alert("Login Failed");
       });
-      const changehandleSubmit = (a) => {
-        setLogin({ ...login, [a.target.name]: a.target.value });
-      };
-      useEffect(() => {
-        console.log(login);
-      });
-      const navigate = useNavigate();
-      const submitt = (b) => {
-        // alert('submitted')
-    
-        b.preventDefault();
-        axiosInstance
-          .post("/loginTaxi", login)
-          .then((result) => {
-            console.log("data entered", result);
-            if (result.status == 200) {
-              alert("login Successfully");
-              navigate("/taxi_home");
-              localStorage.setItem("taxiid", result.data.user._id);
-            } else {
-              alert("Login Failed");
-            }
-          })
-          .catch((error) => {
-            console.log("error", error);
-            alert("Login Failed");
-
-          });
-      };
+  };
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <body id="signup">
         <main class="container1">
           <div class="back"></div>
@@ -69,19 +67,16 @@ function TaxiLogin() {
             <div class="form">
               <h2>Taxi LOGIN</h2>
               <form onSubmit={submitt}>
-               
                 <div class="inputWrapper">
                   <input
                     type="email"
                     name="email"
                     value={login.email}
                     onChange={changehandleSubmit}
-                    placeholder='Email'
+                    placeholder="Email"
                     required
                   />
                 </div>
-               
-               
 
                 <div class="inputWrapper">
                   <input
@@ -89,7 +84,7 @@ function TaxiLogin() {
                     name="password"
                     value={login.password}
                     onChange={changehandleSubmit}
-                    placeholder='Password'
+                    placeholder="Password"
                     required
                   />
                 </div>
@@ -98,16 +93,18 @@ function TaxiLogin() {
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>
           </div> */}
-            <input
-               
-                type="submit"
-              
-                id='login'
-                style={{height:'60px',width:'213px',marginLeft:'15px',marginTop:'.5px'}}
-               
-              />
+                <input
+                  type="submit"
+                  id="login"
+                  style={{
+                    height: "60px",
+                    width: "213px",
+                    marginLeft: "15px",
+                    marginTop: ".5px",
+                  }}
+                />
               </form>
-            
+
               {/* <span style={{ color: "black" }}>
                 Already a member?{" "}
                 <Link
@@ -123,7 +120,7 @@ function TaxiLogin() {
         </main>
       </body>
     </div>
-  )
+  );
 }
 
-export default TaxiLogin
+export default TaxiLogin;

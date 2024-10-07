@@ -3,10 +3,10 @@ import axiosInstance from "./BaseUrl";
 import CustNav from "../CustProf/CustNav";
 import { Link } from "react-router-dom";
 
-function ViewFoodCust({baseurl}) {
+function ViewFoodCust({ baseurl }) {
   const [custhotel, setcusthotel] = useState([{ image: {} }]);
   useEffect(() => {
-    console.log("base",baseurl);
+    console.log("base", baseurl);
     axiosInstance
       .post(`/viewAprvdHotels`)
       .then((res) => {
@@ -80,9 +80,9 @@ function ViewFoodCust({baseurl}) {
           </div>
         </div>
       </div> */}
-      <div style={{ minHeight: "300px", margin: "15px 0px",padding:'50px' }}>
+      <div style={{ minHeight: "300px", margin: "15px 0px", padding: "50px" }}>
         <div class="container text-center">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="section-title bg-white text-center text-primary px-3">
               Hotels
             </h6>
@@ -92,7 +92,7 @@ function ViewFoodCust({baseurl}) {
             {custhotel.length ? (
               custhotel.map((a) => {
                 return (
-                  <div class="col-3 mb-5" >
+                  <div class="col-3 mb-5">
                     <div
                       class="card"
                       style={{ width: "300px", margin: "auto" }}
@@ -102,7 +102,7 @@ function ViewFoodCust({baseurl}) {
                         class="card-img-top"
                         alt={a.image.filename}
                         height="240px"
-                        style={{objectFit:'cover'}}
+                        style={{ objectFit: "cover" }}
                       />
                       <div class="card-body">
                         <h2>{a.hotelName}</h2>
@@ -111,15 +111,18 @@ function ViewFoodCust({baseurl}) {
                         <b>₹ {a.cost}</b>
                         </p> */}
                         <p class="card-text" style={{ color: "black" }}>
-                        {a.city}, {a.country}
+                          {a.city}, {a.country}
                         </p>
                       </div>
-                      <div> <Link
+                      <div>
+                        {" "}
+                        <Link
                           to={`/ViewSingleHot/${a._id}`}
                           class="btn btn-success mb-4"
                         >
                           View
-                        </Link></div>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );

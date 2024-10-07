@@ -3,7 +3,7 @@ import axiosInstance from "./BaseUrl";
 import CustNav from "../CustProf/CustNav";
 import { Link, useParams } from "react-router-dom";
 
-function ViewSinglePack({baseurl}) {
+function ViewSinglePack({ baseurl }) {
   const { id } = useParams();
 
   const [pack, setpackage] = useState([]);
@@ -83,13 +83,13 @@ function ViewSinglePack({baseurl}) {
         </div>
       </div> */}
 
-<div style={{ minHeight: "300px", margin: "15px 0px",padding:'50px' }}>
+      <div style={{ minHeight: "300px", margin: "15px 0px", padding: "50px" }}>
         <div class="container text-center">
           <div class="row">
             {pack.length ? (
               pack.map((a) => {
                 return (
-                  <div class="col-3 mb-5" >
+                  <div class="col-3 mb-5">
                     <div
                       class="card"
                       style={{ width: "300px", margin: "auto" }}
@@ -99,29 +99,36 @@ function ViewSinglePack({baseurl}) {
                         class="card-img-top"
                         alt={a.image.filename}
                         height="240px"
-                        style={{objectFit:'cover'}}
+                        style={{ objectFit: "cover" }}
                       />
                       <div class="card-body">
                         <h2>{a.title}</h2>
                         <h6 class="card-title">{a.destination}</h6>
-                        <p class="card-text text-success" style={{ color: "black" }}>
-                        <b>₹ {a.cost}</b>
+                        <p
+                          class="card-text text-success"
+                          style={{ color: "black" }}
+                        >
+                          <b>₹ {a.cost}</b>
                         </p>
                         <p class="card-text" style={{ color: "black" }}>
-                        {a.days}days and {a.nights}nights
+                          {a.days}days and {a.nights}nights
                         </p>
                         <p class="card-text" style={{ color: "black" }}>
-                        Accomodation : {a.accomodation}<br/>
-                        Food : {a.food} <br/>
-                        Travel Mode : {a.travelmode}
+                          Accomodation : {a.accomodation}
+                          <br />
+                          Food : {a.food} <br />
+                          Travel Mode : {a.travelmode}
                         </p>
                       </div>
-                      <div> <Link
-                    to={`/AddBooking/${a.aid}/${a._id}`}
-                    class="btn btn-danger mb-4"
-                  >
-                    Book
-                  </Link></div>
+                      <div>
+                        {" "}
+                        <Link
+                          to={`/AddBooking/${a.aid}/${a._id}`}
+                          class="btn btn-danger mb-4"
+                        >
+                          Book
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );

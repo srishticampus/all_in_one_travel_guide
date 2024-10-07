@@ -43,12 +43,12 @@ function Payment() {
             // navigate('/customer_login')
           } else {
             // setEr(res.data.msg);
-           alert("Booking Failed");
+            alert("Booking Failed");
           }
         })
         .catch((err) => {
           console.log("error", err);
-        //   toast.error("Registration Failed");
+          //   toast.error("Registration Failed");
         });
     }
   };
@@ -64,11 +64,11 @@ function Payment() {
           width: "45rem",
           height: "30rem",
           marginTop: "2rem",
-          paddingLeft:'4rem',
-          backgroundColor:'wheat',
-          border:'none',paddingTop:'1.5rem',
-          boxShadow:'1px 2px 2px 1px grey'
-        
+          paddingLeft: "4rem",
+          backgroundColor: "wheat",
+          border: "none",
+          paddingTop: "1.5rem",
+          boxShadow: "1px 2px 2px 1px grey",
         }}
       >
         <div class="row g-3">
@@ -82,7 +82,7 @@ function Payment() {
                 onBlur={handleBlur}
                 id="cardHolderName"
                 placeholder="Your Name"
-                style={{width:'20rem'}}
+                style={{ width: "20rem" }}
               />
 
               <label for="name">Card Holder Name</label>
@@ -130,72 +130,69 @@ function Payment() {
           </div>
 
           <div class="col-md-6">
-           
-              <div class="form-group">
-                <div class="row">
-                  
-                  <div class="col-8">
-                    <label for="email">Month</label>
-                    <select
-                      class="form-control"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      name="month"
-                      id="month"
-                    >
-                      <option>Month</option>
-                      <option value="January">January</option>
-                      <option value="February">February</option>
-                      <option value="March">March</option>
-                      <option value="April">April</option>
-                      <option value="May">May</option>
-                      <option value="June">June</option>
-                      <option value="July">July</option>
-                      <option value="August">August</option>
-                      <option value="September">September</option>
-                      <option value="October">October</option>
-                      <option value="November">November</option>
-                      <option value="December">December</option>
-                    </select>
-                  </div>
-                  <div class="col-8">
-                    <label for="email">Year</label>
-                    <select
-                      class="form-control"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      name="year"
-                      id="year"
-                    >
-                      <option>Year</option>
-                      <option value="2023">2023</option>
-                      <option value="2024">2024</option>
-                      <option value="2025">2025</option>
-                      <option value="2026">2026</option>
-                      <option value="2027">2027</option>
-                      <option value="2028">2028</option>
-                      <option value="2029">2029</option>
-                      <option value="2030">2030</option>
-                      <option value="2031">2031</option>
-                      <option value="2032">2032</option>
-                      <option value="2033">2033</option>
-                      <option value="2034">2034</option>
-                      <option value="2035">2035</option>
-                      <option value="2036">2036</option>
-                      <option value="2037">2037</option>
-                      <option value="2038">2038</option>
-                      <option value="2039">2039</option>
-                      <option value="2040">2040</option>
-                      <option value="2041">2041</option>
-                      <option value="2042">2042</option>
-                      <option value="2043">2043</option>
-                      <option value="2044">2044</option>
-                      <option value="2045">2045</option>
-                    </select>
-                  </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-8">
+                  <label for="email">Month</label>
+                  <select
+                    class="form-control"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="month"
+                    id="month"
+                  >
+                    <option>Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                <div class="col-8">
+                  <label for="email">Year</label>
+                  <select
+                    class="form-control"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="year"
+                    id="year"
+                  >
+                    <option>Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="2031">2031</option>
+                    <option value="2032">2032</option>
+                    <option value="2033">2033</option>
+                    <option value="2034">2034</option>
+                    <option value="2035">2035</option>
+                    <option value="2036">2036</option>
+                    <option value="2037">2037</option>
+                    <option value="2038">2038</option>
+                    <option value="2039">2039</option>
+                    <option value="2040">2040</option>
+                    <option value="2041">2041</option>
+                    <option value="2042">2042</option>
+                    <option value="2043">2043</option>
+                    <option value="2044">2044</option>
+                    <option value="2045">2045</option>
+                  </select>
                 </div>
               </div>
-            
+            </div>
           </div>
           <div class="col-md-12">
             <div class="form-floating">

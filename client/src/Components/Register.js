@@ -45,8 +45,8 @@ function Register() {
   };
   return (
     <div>
-      <body class='container mt-5'>
-        <main class="container row" style={{boxShadow:' 0 10px 1rem #0004'}}>
+      <body class="container mt-5">
+        <main class="container row" style={{ boxShadow: " 0 10px 1rem #0004" }}>
           {/* <div class="back"></div> */}
           <div class="brand col-6">
             <h1>
@@ -56,9 +56,13 @@ function Register() {
               </span>
               IS OUT THERE
             </h1>
-            
-              <img src={gif} height={690} style={{ objectFit: "cover" }} alt="Panda Logo" />
-            
+
+            <img
+              src={gif}
+              height={690}
+              style={{ objectFit: "cover" }}
+              alt="Panda Logo"
+            />
           </div>
           <div class="formWrapper col-6" style={{ backgroundColor: "white" }}>
             <div class="form">

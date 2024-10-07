@@ -67,9 +67,9 @@ function ViewPackage({ baseurl }) {
           )}
         </div>
       </div> */}
-      <div style={{ minHeight: "300px", margin: "15px 0px",padding:'50px' }}>
+      <div style={{ minHeight: "300px", margin: "15px 0px", padding: "50px" }}>
         <div class="container text-center">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
             <h6 class="section-title bg-white text-center text-primary px-3">
               Packages
             </h6>
@@ -79,7 +79,7 @@ function ViewPackage({ baseurl }) {
             {pack.length ? (
               pack.map((a) => {
                 return (
-                  <div class="col-3 mb-5" >
+                  <div class="col-3 mb-5">
                     <div
                       class="card"
                       style={{ width: "300px", margin: "auto" }}
@@ -100,12 +100,14 @@ function ViewPackage({ baseurl }) {
                           {a.city}, {a.country}
                         </p>
                       </div>
-                      <div><Link
-                        to={`/ViewSinglePack/${a._id}`}
-                        class="btn btn-success mb-4"
-                      >
-                        choose
-                      </Link></div>
+                      <div>
+                        <Link
+                          to={`/ViewSinglePack/${a._id}`}
+                          class="btn btn-success mb-4"
+                        >
+                          choose
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );
@@ -116,7 +118,6 @@ function ViewPackage({ baseurl }) {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }

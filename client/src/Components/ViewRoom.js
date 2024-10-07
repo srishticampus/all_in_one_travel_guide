@@ -105,65 +105,72 @@ function ViewRoom() {
               </div>
             </div>
           </div> */}
-          <div style={{ minHeight: "300px", margin: "15px 0px",padding:'100px' }}>
-        <div class="container text-center">
-          <div class="row">
-            {room.length ? (
-              room.map((a) => {
-                return (
-                  <div class="col-3 mb-5" >
-                    <div
-                      class="card"
-                      style={{ width: "300px", margin: "auto" }}
-                    >
-                      {/* <img
+          <div
+            style={{ minHeight: "300px", margin: "15px 0px", padding: "100px" }}
+          >
+            <div class="container text-center">
+              <div class="row">
+                {room.length ? (
+                  room.map((a) => {
+                    return (
+                      <div class="col-3 mb-5">
+                        <div
+                          class="card"
+                          style={{ width: "300px", margin: "auto" }}
+                        >
+                          {/* <img
                         src={`${baseurl}/${a.image.originalname}`}
                         class="card-img-top"
                         alt={a.image.filename}
                         height="240px"
                         style={{objectFit:'cover'}}
                       /> */}
-                      <div class="card-body">
-                        <h2>Room No {a.roomNo}</h2>
-                        <h6 class="card-title">{a.ac}</h6>
-                        <p class="card-text" style={{ color: "black" }}>
-                      {a.type}
-                        </p>
-                        <p class="card-text text-success" style={{ color: "black" }}>
-                        <b>₹ {a.price}</b>
-                        </p>
+                          <div class="card-body">
+                            <h2>Room No {a.roomNo}</h2>
+                            <h6 class="card-title">{a.ac}</h6>
+                            <p class="card-text" style={{ color: "black" }}>
+                              {a.type}
+                            </p>
+                            <p
+                              class="card-text text-success"
+                              style={{ color: "black" }}
+                            >
+                              <b>₹ {a.price}</b>
+                            </p>
+                          </div>
+                          <div>
+                            <div>
+                              <button
+                                type="button"
+                                class="btn btn-danger"
+                                onClick={() => handleDelete(a._id)}
+                                style={{ width: "50%", borderRadius: "30px" }}
+                                href=""
+                              >
+                                Delete Room
+                              </button>
+                              <Link
+                                to={`/EditRoom/${a._id}`}
+                                class="btn btn-success"
+                                style={{
+                                  margin: "10px 10px",
+                                  borderRadius: "30px",
+                                }}
+                              >
+                                Edit Room
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                      <div>
-                                <button
-                                  type="button"
-                                  class="btn btn-danger"
-                                  onClick={() => handleDelete(a._id)}
-                                  style={{ width: "50%",borderRadius: "30px" }}
-                                  href=""
-                                  
-                                >
-                                  Delete Room
-                                </button>
-                                <Link
-                                  to={`/EditRoom/${a._id}`}
-                                  class="btn btn-success"
-                                  style={{ margin: "10px 10px",borderRadius: "30px" }}
-                                >
-                                  Edit Room
-                                </Link>
-                              </div>
-                       </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <h1>No Rooms Available</h1>
-            )}
+                    );
+                  })
+                ) : (
+                  <h1>No Rooms Available</h1>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
         </>
       </div>
     );

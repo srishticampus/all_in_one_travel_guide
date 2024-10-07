@@ -26,7 +26,7 @@ function ViewSinglerest() {
     checkindate: "",
     checkoutdate: "",
     type: "",
-    hotel_id:id
+    hotel_id: id,
   });
 
   const navigate = useNavigate();
@@ -94,7 +94,7 @@ function ViewSinglerest() {
                             placeholder="Check in"
                             data-target="#date1"
                             data-toggle="datetimepicker"
-                            min={new Date().toISOString().split('T')[0]}
+                            min={new Date().toISOString().split("T")[0]}
                             onChange={(e) => {
                               setRoom({ ...room, checkindate: e.target.value });
                             }}
@@ -115,7 +115,7 @@ function ViewSinglerest() {
                             placeholder="Check out"
                             data-target="#date2"
                             data-toggle="datetimepicker"
-                            min={new Date().toISOString().split('T')[0]}
+                            min={new Date().toISOString().split("T")[0]}
                             onChange={(e) => {
                               setRoom({
                                 ...room,
@@ -164,10 +164,9 @@ function ViewSinglerest() {
                     </div>
                   </div>
                   <div class="col-md-2" style={{ marginTop: "2rem" }}>
-                    
-                      <button type="submit" class="btn btn-primary w-100">
-                        Submit
-                      </button>
+                    <button type="submit" class="btn btn-primary w-100">
+                      Submit
+                    </button>
                   </div>
                 </div>
               </form>
@@ -195,7 +194,10 @@ function ViewSinglerest() {
                         <h4 class="card-title" style={{ color: "Green" }}>
                           Room Number: {a.roomNo}
                         </h4>
-                        <h3 class="card-text">Price: ₹{a.price}<small>/day</small></h3>
+                        <h3 class="card-text">
+                          Price: ₹{a.price}
+                          <small>/day</small>
+                        </h3>
                         <p class="card-text">
                           Type: {a.type} ({a.ac})
                         </p>

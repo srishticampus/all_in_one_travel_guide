@@ -1,19 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 import img9 from "../img/logo.jpg";
-
 
 function TaxiNav() {
   return (
     <div>
-      <div
-        class="container-fluid position-relative p-0"
- 
-      >
+      <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
           <a href="" class="navbar-brand p-0">
             <h1 class="text-primary m-0">
-              <i class="fa fa-map-marker-alt me-3"></i><img src={img9} />Tourist Guide
+              <i class="fa fa-map-marker-alt me-3"></i>
+              <img src={img9} />
+              Tourist Guide
             </h1>
             {/* <img src alt="Logo"/> */}
           </a>
@@ -86,7 +84,7 @@ function TaxiNav() {
         </nav>
       </div>
     </div>
-  )
+  );
 }
 
-export default TaxiNav
+export default TaxiNav;

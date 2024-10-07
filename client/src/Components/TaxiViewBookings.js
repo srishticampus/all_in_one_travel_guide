@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import TaxiNav from './TaxiNav'
-import axiosInstance from './BaseUrl'
+import React, { useEffect, useState } from "react";
+import TaxiNav from "./TaxiNav";
+import axiosInstance from "./BaseUrl";
 
 function TaxiViewBookings() {
+  const [data, setData] = useState([]);
+  const id = localStorage.getItem("taxiid");
 
-    const[data,setData]=useState([])
-    const id=localStorage.getItem("taxiid")
-
-    useEffect(()=>{
-        axiosInstance
-        .post(`/viewTaxiBookingByTaxiId/${id}`)
-        .then((res) => {
-          console.log(res, "view hotel");
-          if (res.data.data != undefined) {
-            setData(res.data.data);
-          } else {
-            setData([]);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },[])
+  useEffect(() => {
+    axiosInstance
+      .post(`/viewTaxiBookingByTaxiId/${id}`)
+      .then((res) => {
+        console.log(res, "view hotel");
+        if (res.data.data != undefined) {
+          setData(res.data.data);
+        } else {
+          setData([]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
-      <TaxiNav/>
+      <TaxiNav />
       <div style={{ padding: "80px 40px" }}>
         <table class="table">
           <thead>
@@ -42,8 +41,10 @@ function TaxiViewBookings() {
               data.map((a) => {
                 return (
                   <tr>
-                    <th scope="row">{a.custid.name}({a.custid.contact})</th>
-                    <td>{a.date.slice(0,10)}</td>
+                    <th scope="row">
+                      {a.custid.name}({a.custid.contact})
+                    </th>
+                    <td>{a.date.slice(0, 10)}</td>
                     <td>{a.from}</td>
                     <td>{a.to}</td>
                     {/* <td>{a.status}</td> */}
@@ -57,7 +58,7 @@ function TaxiViewBookings() {
         </table>
       </div>
     </div>
-  )
+  );
 }
 
-export default TaxiViewBookings
+export default TaxiViewBookings;
