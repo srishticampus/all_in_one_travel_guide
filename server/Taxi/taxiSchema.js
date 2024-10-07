@@ -5,10 +5,7 @@ const Schema = mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-
-    dropDups: true,
   },
-
   ac: {
     type: String,
     required: true,

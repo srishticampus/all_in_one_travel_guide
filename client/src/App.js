@@ -1,8 +1,7 @@
 import "./Asset/Style/Nav.css";
-import './'
+import "./";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
@@ -94,7 +93,7 @@ import AdminViewUsers from "./Components/AdminViewUsers";
 
 function App() {
   // const [baseurl,setbaseurl] = useState('http://hybrid.srishticampus.in:4017')
-  const [baseurl,setbaseurl] = useState('http://localhost:4004')
+  const [baseurl, setbaseurl] = useState("http://localhost:4004");
   return (
     <BrowserRouter basename="tourist_guide">
       <div className="App">
@@ -102,10 +101,20 @@ function App() {
           <Route
             exact
             path="/"
-            element={<><Navbar /> <Home /></>}/>
+            element={
+              <>
+                <Navbar /> <Home />
+              </>
+            }
+          />
           <Route
             path="/Home"
-            element={<><Navbar /> <Home /> </>}/>
+            element={
+              <>
+                <Navbar /> <Home />{" "}
+              </>
+            }
+          />
           <Route
             path="/About"
             element={
@@ -165,84 +174,203 @@ function App() {
               </>
             }
           />
-          <Route path="/CustHome" element={<CustHome/>} />
+          <Route path="/CustHome" element={<CustHome />} />
           <Route path="/CustViewProf" element={<CustViewProf />} />
           <Route path="/CustEditProf" element={<CustEditProf />} />
           <Route path="/RestHome" element={<RestHome />} />
-          <Route path="/RestViewProf" element={<RestViewProf baseurl={baseurl} />} />
-          <Route path="/RestEditProf" element={<RestEditProf baseurl={baseurl}/>} />
+          <Route
+            path="/RestViewProf"
+            element={<RestViewProf baseurl={baseurl} />}
+          />
+          <Route
+            path="/RestEditProf"
+            element={<RestEditProf baseurl={baseurl} />}
+          />
           <Route path="/HotelHome" element={<HotelHome />} />
-          <Route path="/HotelViewProf" element={<HotelViewProf baseurl={baseurl}/>} />
+          <Route
+            path="/HotelViewProf"
+            element={<HotelViewProf baseurl={baseurl} />}
+          />
           <Route path="/HotelEditProf" element={<HotelEditProf />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/adminnav" element={<AdminNav />} />
-          <Route path="/admin_view_rest" element={<AdminViewRest baseurl={baseurl} />} />
+          <Route
+            path="/admin_view_rest"
+            element={<AdminViewRest baseurl={baseurl} />}
+          />
           <Route path="/adminhome" element={<AdminHome />} />
           <Route path="/AdminAbout" element={<AdminAbout />} />
           <Route path="/AdminHome" element={<AdminHome />} />
-          <Route path="/admin/adminpage" element={<Adminpage baseurl={baseurl}/>} />
-          <Route path="/admin_view_hotels" element={<AdminViewHotels baseurl={baseurl}/>} />
+          <Route
+            path="/admin/adminpage"
+            element={<Adminpage baseurl={baseurl} />}
+          />
+          <Route
+            path="/admin_view_hotels"
+            element={<AdminViewHotels baseurl={baseurl} />}
+          />
           <Route path="/admin_view_rest_req" element={<AdminViewRestReq />} />
           <Route path="/AddRoom" element={<AddRoom />} />
-          <Route path="/AddFood" element={<AddFood baseurl={baseurl}/>} />
+          <Route path="/AddFood" element={<AddFood baseurl={baseurl} />} />
           <Route path="/ViewRoom" element={<ViewRoom />} />
-          <Route path="/ViewFood" element={<ViewFood baseurl={baseurl}/>} />
+          <Route path="/ViewFood" element={<ViewFood baseurl={baseurl} />} />
           <Route path="/EditFood/:id" element={<EditFood />} />
           <Route path="/EditRoom/:id" element={<EditRoom />} />
-          <Route path="/ViewRest" element={<ViewRest baseurl={baseurl}/>} />
-          <Route path="/ViewHotel" element={<ViewHotel baseurl={baseurl}/>} />
-          <Route path="/ViewSingleres/:id" element={<ViewSinglerest baseurl={baseurl} />} />
-          <Route path="/ViewSingleHot/:id" element={<ViewSingleHot baseurl={baseurl}/>} />
-          <Route path="/GuideNav" element={<GuideNav baseurl={baseurl}/>} />
-          <Route path="/GuideLogin" element={<GuideLogin baseurl={baseurl}/>} />
-          <Route path="/AddPackage" element={<AddPackage baseurl={baseurl}/>} />
-          <Route path="/EditPackage/:id" element={<EditPackage baseurl={baseurl}/>} />
-          <Route path="/GuideHome" element={<GuideHome baseurl={baseurl}/>} />
-          <Route path="/ViewPackage" element={<ViewPackage baseurl={baseurl}/>} />
-          <Route path="/ViewSinglePack/:id" element={<ViewSinglePack baseurl={baseurl} />} />
-          <Route path="/admin/AdminPack" element={<AdminPack baseurl={baseurl}/>} />
-          <Route path="/ViewGuidePack" element={<ViewGuidePack baseurl={baseurl}/>} />
-          <Route path="/GuideRegister" element={<GuideRegister baseurl={baseurl}/>} />
-          <Route path="/GuideProfHome" element={<GuideProfHome baseurl={baseurl}/>} />
-          <Route path="/GuideProfNav" element={<GuideProfNav baseurl={baseurl} />} />
-          <Route path="/GuideProfView" element={<GuideProfView baseurl={baseurl}/>} />
-          <Route path="/GuideProfEdit" element={<GuideProfEdit baseurl={baseurl}/>} />
+          <Route path="/ViewRest" element={<ViewRest baseurl={baseurl} />} />
+          <Route path="/ViewHotel" element={<ViewHotel baseurl={baseurl} />} />
+          <Route
+            path="/ViewSingleres/:id"
+            element={<ViewSinglerest baseurl={baseurl} />}
+          />
+          <Route
+            path="/ViewSingleHot/:id"
+            element={<ViewSingleHot baseurl={baseurl} />}
+          />
+          <Route path="/GuideNav" element={<GuideNav baseurl={baseurl} />} />
+          <Route
+            path="/GuideLogin"
+            element={<GuideLogin baseurl={baseurl} />}
+          />
+          <Route
+            path="/AddPackage"
+            element={<AddPackage baseurl={baseurl} />}
+          />
+          <Route
+            path="/EditPackage/:id"
+            element={<EditPackage baseurl={baseurl} />}
+          />
+          <Route path="/GuideHome" element={<GuideHome baseurl={baseurl} />} />
+          <Route
+            path="/ViewPackage"
+            element={<ViewPackage baseurl={baseurl} />}
+          />
+          <Route
+            path="/ViewSinglePack/:id"
+            element={<ViewSinglePack baseurl={baseurl} />}
+          />
+          <Route
+            path="/admin/AdminPack"
+            element={<AdminPack baseurl={baseurl} />}
+          />
+          <Route
+            path="/ViewGuidePack"
+            element={<ViewGuidePack baseurl={baseurl} />}
+          />
+          <Route
+            path="/GuideRegister"
+            element={<GuideRegister baseurl={baseurl} />}
+          />
+          <Route
+            path="/GuideProfHome"
+            element={<GuideProfHome baseurl={baseurl} />}
+          />
+          <Route
+            path="/GuideProfNav"
+            element={<GuideProfNav baseurl={baseurl} />}
+          />
+          <Route
+            path="/GuideProfView"
+            element={<GuideProfView baseurl={baseurl} />}
+          />
+          <Route
+            path="/GuideProfEdit"
+            element={<GuideProfEdit baseurl={baseurl} />}
+          />
           <Route path="/AddBooking/:aid/:pid" element={<AddBooking />} />
           <Route path="/Payment" element={<Payment />} />
-          <Route path="/AddPlace" element={<AddPlace baseurl={baseurl}/>} />
-          <Route path="/ViewPlaceCust" element={<ViewPlaceCust baseurl={baseurl}/>} />
-          <Route path="/AdminAddPlace" element={<AdminAddPlace baseurl={baseurl}/>} />
-          <Route path="/ViewAdminPlace" element={<ViewAdminPlace baseurl={baseurl} />} />
-          <Route path="/admin_view_place_req" element={<AdminViewPlaceReq baseurl={baseurl} />} />
-          <Route path="/ViewTouristPlace/:id" element={<ViewTouristPlace baseurl={baseurl}/>} />
+          <Route path="/AddPlace" element={<AddPlace baseurl={baseurl} />} />
+          <Route
+            path="/ViewPlaceCust"
+            element={<ViewPlaceCust baseurl={baseurl} />}
+          />
+          <Route
+            path="/AdminAddPlace"
+            element={<AdminAddPlace baseurl={baseurl} />}
+          />
+          <Route
+            path="/ViewAdminPlace"
+            element={<ViewAdminPlace baseurl={baseurl} />}
+          />
+          <Route
+            path="/admin_view_place_req"
+            element={<AdminViewPlaceReq baseurl={baseurl} />}
+          />
+          <Route
+            path="/ViewTouristPlace/:id"
+            element={<ViewTouristPlace baseurl={baseurl} />}
+          />
           <Route path="/taxi_login" element={<TaxiLogin baseurl={baseurl} />} />
-          <Route path="/taxi_register" element={<TaxiReg baseurl={baseurl}/>} />
-          <Route path="/cust_view_taxi" element={<CustomerViewTaxi baseurl={baseurl}/>} />
-          <Route path="/cust_book_taxi/:id" element={<CustomerBookTaxi baseurl={baseurl}/>} />
-          <Route path="/cust_view_booking" element={<CustomerViewTaxiBookings baseurl={baseurl}/>} />
-          <Route path="/taxi_home" element={<TaxiHome baseurl={baseurl}/>} />
+          <Route
+            path="/taxi_register"
+            element={<TaxiReg baseurl={baseurl} />}
+          />
+          <Route
+            path="/cust_view_taxi"
+            element={<CustomerViewTaxi baseurl={baseurl} />}
+          />
+          <Route
+            path="/cust_book_taxi/:id"
+            element={<CustomerBookTaxi baseurl={baseurl} />}
+          />
+          <Route
+            path="/cust_view_booking"
+            element={<CustomerViewTaxiBookings baseurl={baseurl} />}
+          />
+          <Route path="/taxi_home" element={<TaxiHome baseurl={baseurl} />} />
           <Route path="/taxi_view_req" element={<TaxiViewBookingReq />} />
           <Route path="/taxi_view_bookings" element={<TaxiViewBookings />} />
-          <Route path="/taxi_view_profile" element={<TaxiViewProfile baseurl={baseurl}/>} />
-          <Route path="/taxi_edit_prof" element={<TaxiEditProf baseurl={baseurl}/>} />
-          <Route path="/admin_view_agencies" element={<AdminViewAgencies baseurl={baseurl}/>} />
-          <Route path="/admin_view_taxi" element={<AdminViewTaxi baseurl={baseurl}/>} />
-          <Route path="/cust_view_package_booking" element={<CustomerViewPackageBookings baseurl={baseurl}/>} />
-          <Route path="/customer_view_available_rooms/:id" element={<CustViewAvailableRooms />} />
-          <Route path="/customer_book_rooms/:rid/:hid/:price/:room" element={<CustomerBookRoom />} />
-          <Route path="/cust_view_hotel_booking" element={<CustomerViewHotelBooking />} />
-          <Route path="/customer_view_searchedplaces/:details" element={<CustViewSearchedPlaces baseurl={baseurl}/>} />
-          <Route path="/customer_view_place_location/:lat/:lon" element={<CustomerViewPlaceMap baseurl={baseurl}/>} />
-          <Route path="/admin_view_place_location/:lat/:lon" element={<AdminViewMap baseurl={baseurl}/>} />
-          <Route path="/no_map" element={<NoMap/>} />
-          <Route path="/ViewBookings" element={<HotelViewBookings/>} />
-          <Route path="/guideViewBookings" element={<GuideViewBookings/>} />
-          <Route path="/admin_edit_place/:id" element={<AdminEditPlace/>} />
-          <Route path="/admin_home" element={<AdminFirst/>} />
-          <Route path="/admin_users" element={<AdminViewUsers/>} />
+          <Route
+            path="/taxi_view_profile"
+            element={<TaxiViewProfile baseurl={baseurl} />}
+          />
+          <Route
+            path="/taxi_edit_prof"
+            element={<TaxiEditProf baseurl={baseurl} />}
+          />
+          <Route
+            path="/admin_view_agencies"
+            element={<AdminViewAgencies baseurl={baseurl} />}
+          />
+          <Route
+            path="/admin_view_taxi"
+            element={<AdminViewTaxi baseurl={baseurl} />}
+          />
+          <Route
+            path="/cust_view_package_booking"
+            element={<CustomerViewPackageBookings baseurl={baseurl} />}
+          />
+          <Route
+            path="/customer_view_available_rooms/:id"
+            element={<CustViewAvailableRooms />}
+          />
+          <Route
+            path="/customer_book_rooms/:rid/:hid/:price/:room"
+            element={<CustomerBookRoom />}
+          />
+          <Route
+            path="/cust_view_hotel_booking"
+            element={<CustomerViewHotelBooking />}
+          />
+          <Route
+            path="/customer_view_searchedplaces/:details"
+            element={<CustViewSearchedPlaces baseurl={baseurl} />}
+          />
+          <Route
+            path="/customer_view_place_location/:lat/:lon"
+            element={<CustomerViewPlaceMap baseurl={baseurl} />}
+          />
+          <Route
+            path="/admin_view_place_location/:lat/:lon"
+            element={<AdminViewMap baseurl={baseurl} />}
+          />
+          <Route path="/no_map" element={<NoMap />} />
+          <Route path="/ViewBookings" element={<HotelViewBookings />} />
+          <Route path="/guideViewBookings" element={<GuideViewBookings />} />
+          <Route path="/admin_edit_place/:id" element={<AdminEditPlace />} />
+          <Route path="/admin_home" element={<AdminFirst />} />
+          <Route path="/admin_users" element={<AdminViewUsers />} />
         </Routes>
         <Footer />
-        
       </div>
     </BrowserRouter>
   );

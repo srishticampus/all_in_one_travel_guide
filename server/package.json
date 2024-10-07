@@ -1,13 +1,12 @@
 {
-  "name": "organdonorbackend",
+  "name": "allinonetravelguide",
   "version": "1.0.0",
-  "description": "Organ and Hair Donation",
+  "description": "all in one travel guide",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index"
+    "start": "nodemon index.js"
   },
-  "author": "Soumya",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
