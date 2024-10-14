@@ -98,23 +98,8 @@ function App() {
     <BrowserRouter basename="tourist_guide">
       <div className="App">
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <Navbar /> <Home />
-              </>
-            }
-          />
-          <Route
-            path="/Home"
-            element={
-              <>
-                <Navbar /> <Home />{" "}
-              </>
-            }
-          />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
           <Route
             path="/About"
             element={
