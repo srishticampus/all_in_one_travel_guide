@@ -90,6 +90,7 @@ import AdminViewMap from "./Components/AdminViewMap";
 import AdminEditPlace from "./Components/AdminEditPlace";
 import AdminFirst from "./Components/AdminFirst";
 import AdminViewUsers from "./Components/AdminViewUsers";
+import { TopPlaces } from "./Components/topPlaces/topPlaces";
 
 function App() {
   // const [baseurl,setbaseurl] = useState('http://hybrid.srishticampus.in:4017')
@@ -354,8 +355,11 @@ function App() {
           <Route path="/admin_edit_place/:id" element={<AdminEditPlace />} />
           <Route path="/admin_home" element={<AdminFirst />} />
           <Route path="/admin_users" element={<AdminViewUsers />} />
+            
+            {/* testing components  */}
+            <Route path="/topPlaces" element={<TopPlaces />} />
         </Routes>
-        <Footer />
+        
       </div>
     </BrowserRouter>
   );
