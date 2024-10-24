@@ -6,13 +6,14 @@ const taxiBooking = require("../Taxi/taxiBooking");
 const booking = require("../Guide/booking");
 const touristPlaces = require("../Admin/touristPlaces");
 const secret = "your-secret-key"; // Replace this with your own secret key
-const { hashPassowrd } = require("../utils/hashPassword");
+const { hashPassowrd, comparePassword } = require("../utils/hanldePasswordEnc");
 
 const createToken = (user) => {
   return jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });
 };
 
 const multer = require("multer");
+const { generateAccessToken } = require("../utils/handleToken");
 
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -65,40 +66,46 @@ const touristSignup = async (req, res, next) => {
       touristPhoto,
     });
     await tourist.save();
-    return res
-      .status(200)
-      .json({
-        message: "Tourist registration completed successfully",
-        data: tourist,
-      });
+    return res.status(201).json({
+      message: "Tourist registration completed successfully",
+      data: tourist,
+    });
   } catch (error) {
     next(error);
   }
 };
-const login = (req, res) => {
-  const { email, password } = req.body;
+const touristLogin = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
 
-  TouristModel.findOne({ email })
-    .exec()
-    .then((user) => {
-      if (!user) {
-        return res.status(404).json({ msg: "User not found" });
-      }
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password are required",
+      });
+    }
+    const tourist = await TouristModel.findOne({ email });
+    if (!tourist) {
+      return res.status(404).json({
+        message: "Email id or password is incorrecta",
+      });
+    }
+    const isPasswordCorrect = comparePassword(password, tourist.password);
 
-      if (user.password != password) {
-        return res.status(500).json({ msg: "incorrect pwd" });
-      }
+    if (!isPasswordCorrect) {
+      return res.status(404).json({
+        message: "Email id or password is incorrect",
+      });
+    }
 
-      const token = createToken(user);
+    const touristCopy = tourist.toObject();
+    delete touristCopy.password;
 
-      res.status(200).json({ user, token });
-    })
-    .catch((err) => {
-      console.log(err);
-      return res.status(500).json({ msg: "Something went wrong" });
-    });
+    const token = generateAccessToken(touristCopy);
+    return res.status(200).json({ message: "Login successfull", token });
+  } catch (error) {
+    next(error);
+  }
 };
-//validate
 
 const requireAuth = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
@@ -408,7 +415,7 @@ const addPlace = (req, res) => {
 module.exports = {
   touristSignup,
   touristSignupUploads,
-  login,
+  touristLogin,
   vieUserById,
   editUserById,
   viewUsers,

@@ -1,7 +1,7 @@
 const {
   touristSignup,
   touristSignupUploads,
-  login,
+  touristLogin,
   vieUserById,
   editUserById,
   viewUsers,
@@ -20,7 +20,7 @@ touristRoutes.post(
   isEmailUnique,
   touristSignup
 ); 
-touristRoutes.post("/loginUser", login);
+touristRoutes.post("/tourist/login", touristLogin);
 touristRoutes.post("/viewUsers", viewUsers);
 touristRoutes.post("/editUserById/:id", editUserById);
 touristRoutes.post("/viewUserById/:id", vieUserById);
