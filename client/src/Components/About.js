@@ -1,5 +1,7 @@
 import React from "react";
 import pic3 from "../img/pic3.webp";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 function About() {
   return (

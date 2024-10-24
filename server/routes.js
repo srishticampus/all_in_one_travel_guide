@@ -1,6 +1,5 @@
 const express=require('express')
 const router=express.Router()
-const users=require('./User/userController')
 const restrnt=require('./Restaurant/restController')
 const hotels=require('./Hotel/hotelController')
 const rooms=require('./Hotel/roomController')
@@ -12,16 +11,6 @@ const taxi=require('./Taxi/taxiController')
 
 
 //User  routes
-router.post('/registerUser',users.registerUser)//done
-router.post('/loginUser',users.login)//done
-router.post('/viewUsers',users.viewUsers)
-router.post('/editUserById/:id',users.editUserById)//done
-router.post('/viewUserById/:id',users.vieUserById)//done
-router.post('/viewUserById/:id',users.addPlace)
-router.post('/forgotPassword',users.forgotPassword)
-router.post('/delUserById/:id',users.delUserById)
-router.post('/addPlace/:id',users.upload,users.addPlace)//done
-router.post('/viewMyPlceasByCustId/:id',users.viewMyPlceasByCustId)//done
 
 //Restaurant  routes
 router.post('/registerRestaurant',restrnt.upload,restrnt.addRestaurant)//done

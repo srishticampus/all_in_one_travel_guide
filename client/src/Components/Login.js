@@ -3,6 +3,8 @@ import axiosInstance from "./BaseUrl";
 import { Link, useNavigate } from "react-router-dom";
 import gif2 from "../img/restaurant.gif";
 import gif1 from "../img/custlog.jpeg";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Login() {
   const [login, setLogin] = useState({
@@ -39,31 +41,27 @@ function Login() {
   };
   return (
     <div>
-      <body class="container mt-5">
-        <main class="container row" style={{boxShadow:' 0 10px 1rem #0004'}}  >
-          {/* <div class="back"></div> */}
-          <div class="brand col-6">
-           
-              <img
-                height={690}
-                src={gif1}
-                alt="Panda Logo"
-                style={{ objectFit: "cover" }}
-              />
-              <h1>
-                <span class="name">
-                  <span>ADVENTURE</span>
-                  <span> </span>
-                </span>
-                IS OUT THERE
-              </h1>
-            </div>
-          
-          <div class="formWrapper col-6">
-            <div class="form">
-              <h2>MEMBER LOGIN</h2>
+      <Navbar />
+      <div className="container mt-5">
+        <main
+          className="container row"
+          style={{ boxShadow: " 0 10px 1rem #0004" }}
+        >
+          {/* <div className="back"></div> */}
+          <div className="brand col-6">
+            <img
+              height={690}
+              src={gif1}
+              alt="Panda Logo"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+
+          <div className="formWrapper col-6">
+            <div className="form">
+              <h2>LOGIN</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
@@ -75,14 +73,13 @@ function Login() {
                   {/* <label for="">Email</label> */}
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     name="password"
                     value={login.password}
                     placeholder="Password"
                     onChange={changehandleSubmit}
-                    
                     required
                   />
                   {/* <label for="password">Password</label> */}
@@ -102,7 +99,8 @@ function Login() {
             </div>
           </div>
         </main>
-      </body>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -2,25 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import img9 from "../img/logo.jpg";
 
-function Navbar() { 
+function Navbar() {
   return (
     <div>
       <div className="container-fluid bg-dark px-9 d-none d-lg-block">
         <div className="row gx-0">
-          <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-            
-          </div>
+          <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0"></div>
           <div className="col-lg-4 text-center text-lg-end"></div>
         </div>
       </div>
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          <a href="" className="navbar-brand p-0">
-            <h5 className="text-primary m-0" >
-              <img src={img9} alt="logo" className="w-25"/>
+          <Link to="/" className="navbar-brand p-0">
+            <h5 className="text-primary m-0">
+              <img src={img9} alt="logo" className="w-25" />
               Tourist Guide
             </h5>
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -31,14 +29,12 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto py-0">
-              <Link to="/Home" className="fs-6 nav-item nav-link ">
+              <Link to="/" className="fs-6 nav-item nav-link ">
                 Home
               </Link>
-              <Link to="/About" className="fs-6 nav-item nav-link">
+              <Link to="/about" className="fs-6 nav-item nav-link">
                 About
               </Link>
-              {/* <Link to="/Register" className="nav-item nav-link">Register</Link> */}
-              {/* <a href="package.html" className="nav-item nav-link">Packages</a> */}
               <div className="nav-item dropdown">
                 <Link
                   href="#"
@@ -48,15 +44,15 @@ function Navbar() {
                   Regsiter
                 </Link>
                 <div className="dropdown-menu m-0 fs-6">
-                  <Link to="/Register" className="dropdown-item">
-                    Customer
+                  <Link to="/tourist/signup" className="dropdown-item">
+                    Tourist
                   </Link>
                   <Link to="/RestReg" className="dropdown-item">
                     Restaurant
                   </Link>
-                  <Link to="/HotelReg" className="dropdown-item">
+                  {/* <Link to="/HotelReg" className="dropdown-item">
                     Hotel
-                  </Link>
+                  </Link> */}
                   <Link to="/GuideRegister" className="dropdown-item">
                     Agency
                   </Link>
@@ -65,17 +61,17 @@ function Navbar() {
                   </Link>
                 </div>
               </div>
-              <div className="fs-6 nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  login
+              <div className="fs-6 align-self-center">
+                <Link  to="/login" className="fw-bold fs6 dropdown-item">
+                  Login
                 </Link>
-                <div className="dropdown-menu m-0">
-                  <Link to="/Login" className="dropdown-item">
+
+                {/* <h> Login</h 5> */}
+
+                {/* <div className="dropdown-menu m-0">
+                  <Link to="/login" className="dropdown-item">
                     {" "}
-                    Customer
+                    Tourist
                   </Link>
                   <Link to="/RestLogin" className="dropdown-item">
                     Restaurant
@@ -89,7 +85,7 @@ function Navbar() {
                   <Link to="/taxi_login" className="dropdown-item">
                     Taxi
                   </Link>
-                </div>
+                </div> */}
               </div>
 
               {/* <a href="contact.html" className="nav-item nav-link">

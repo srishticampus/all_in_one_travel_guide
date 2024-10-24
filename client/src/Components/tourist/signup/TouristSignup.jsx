@@ -1,12 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "./BaseUrl";
-import gif from "../img/custlog.jpeg";
-import Navbar from "./Navbar";
+import gif from "../../../img/custlog.jpeg";
 
-function Register() {
+export default function TouristSignup() {
   const [register, setRegister] = useState({
     name: "",
     contact: "",
@@ -204,5 +202,3 @@ function Register() {
     </div>
   );
 }
-
-export default Register;

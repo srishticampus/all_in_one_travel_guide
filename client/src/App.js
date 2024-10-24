@@ -91,7 +91,7 @@ import AdminEditPlace from "./Components/AdminEditPlace";
 import AdminFirst from "./Components/AdminFirst";
 import AdminViewUsers from "./Components/AdminViewUsers";
 import { TopPlaces } from "./Components/topPlaces/topPlaces";
-
+import LandingAboutPage from "./pages/About/About";
 function App() {
   // const [baseurl,setbaseurl] = useState('http://hybrid.srishticampus.in:4017')
   const [baseurl, setbaseurl] = useState("http://localhost:4004");
@@ -100,23 +100,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/Home" element={<Home />} />
-          <Route
-            path="/About"
-            element={
-              <>
-                <Navbar /> <About />
-              </>
-            }
-          />
-          <Route
-            path="/Login"
-            element={
-              <>
-                <Navbar /> <Login />
-              </>
-            }
-          />
+          <Route path="/user/home" element={<Home />} />
+          <Route path="/about" element={<LandingAboutPage />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/RestLogin"
             element={
@@ -134,14 +120,7 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/Register"
-            element={
-              <>
-                <Navbar /> <Register />
-              </>
-            }
-          />
+          <Route path="/tourist/signup" element={<Register />} />
           <Route
             path="/HotelLogin"
             element={
@@ -355,11 +334,10 @@ function App() {
           <Route path="/admin_edit_place/:id" element={<AdminEditPlace />} />
           <Route path="/admin_home" element={<AdminFirst />} />
           <Route path="/admin_users" element={<AdminViewUsers />} />
-            
-            {/* testing components  */}
-            <Route path="/topPlaces" element={<TopPlaces />} />
+
+          {/* testing components  */}
+          <Route path="/topPlaces" element={<TopPlaces />} />
         </Routes>
-        
       </div>
     </BrowserRouter>
   );

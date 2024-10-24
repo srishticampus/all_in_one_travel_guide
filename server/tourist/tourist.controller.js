@@ -1,4 +1,4 @@
-const users = require("./userSchema");
+const { TouristModel } = require("./tourist.model");
 const jwt = require("jsonwebtoken");
 const tourists = require("../Admin/touristPlaces");
 const bookingSchema = require("../Hotel/bookingSchema");
@@ -6,6 +6,7 @@ const taxiBooking = require("../Taxi/taxiBooking");
 const booking = require("../Guide/booking");
 const touristPlaces = require("../Admin/touristPlaces");
 const secret = "your-secret-key"; // Replace this with your own secret key
+const { hashPassowrd } = require("../utils/hashPassword");
 
 const createToken = (user) => {
   return jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });
@@ -18,50 +19,66 @@ const storage = multer.diskStorage({
     cb(null, "./upload");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
-const upload = multer({ storage: storage }).single("image");
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+  if (allowedTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only JPEG, JPG and PNG files are allowed."));
+  }
+};
+const touristSignupUploads = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+}).fields([
+  { name: "touristPhoto", maxCount: 1 },
+  { name: "idPhoto", maxCount: 1 },
+]);
 
 //User Registration
 
-const registerUser = (req, res) => {
-  const newUser = new users({
-    name: req.body.name,
-    gender: req.body.gender,
-    city: req.body.city,
-    country: req.body.country,
-    contact: req.body.contact,
-    email: req.body.email,
-    password: req.body.password,
-    idtype: req.body.idtype,
-    idnumb: req.body.idnumb,
-  });
-  newUser
-    .save()
-    .then((data) => {
-      res.json({
-        status: 200,
-        msg: "Inserted successfully",
-        data: data,
-      });
-    })
-    .catch((err) => {
-      res.json({
-        status: 500,
-        msg: "Data not Inserted",
-        Error: err,
-      });
+const touristSignup = async (req, res, next) => {
+  try {
+    const touristPhoto = req.files.touristPhoto
+      ? req.files.touristPhoto[0].path
+      : null;
+    const idPhoto = req.files.idPhoto ? req.files.idPhoto[0].path : null;
+    const { name, email, country, gender, password, phoneNumber, idType } =
+      req.body;
+    const hashedPassword = await hashPassowrd(password);
+    const tourist = new TouristModel({
+      name,
+      email,
+      country,
+      gender,
+      password: hashedPassword,
+      phoneNumber,
+      idType,
+      idPhoto,
+      touristPhoto,
     });
+    await tourist.save();
+    return res
+      .status(200)
+      .json({
+        message: "Tourist registration completed successfully",
+        data: tourist,
+      });
+  } catch (error) {
+    next(error);
+  }
 };
-//User Registration -- finished
-//Login User
 const login = (req, res) => {
   const { email, password } = req.body;
 
-  users
-    .findOne({ email })
+  TouristModel.findOne({ email })
     .exec()
     .then((user) => {
       if (!user) {
@@ -109,8 +126,7 @@ const requireAuth = (req, res, next) => {
 //View all Users
 
 const viewUsers = (req, res) => {
-  users
-    .find()
+  TouristModel.find()
     .exec()
     .then((data) => {
       if (data.length > 0) {
@@ -139,20 +155,19 @@ const viewUsers = (req, res) => {
 
 //update User by id
 const editUserById = (req, res) => {
-  users
-    .findByIdAndUpdate(
-      { _id: req.params.id },
-      {
-        name: req.body.name,
-        gender: req.body.gender,
-        city: req.body.city,
-        country: req.body.country,
-        contact: req.body.contact,
-        email: req.body.email,
-        idtype: req.body.idtype,
-        idnumb: req.body.idnumb,
-      }
-    )
+  TouristModel.findByIdAndUpdate(
+    { _id: req.params.id },
+    {
+      name: req.body.name,
+      gender: req.body.gender,
+      city: req.body.city,
+      country: req.body.country,
+      contact: req.body.contact,
+      email: req.body.email,
+      idtype: req.body.idtype,
+      idnumb: req.body.idnumb,
+    }
+  )
     .exec()
     .then((data) => {
       res.json({
@@ -173,8 +188,7 @@ const editUserById = (req, res) => {
 //View  customer by ID
 
 const vieUserById = (req, res) => {
-  users
-    .findOne({ _id: req.params.id })
+  TouristModel.findOne({ _id: req.params.id })
     .exec()
     .then((data) => {
       console.log(data);
@@ -197,7 +211,7 @@ const vieUserById = (req, res) => {
 //del  customer by ID
 
 // const delUserById=(req,res)=>{
-//   users.findByIdAndDelete({_id:req.params.id}).exec()
+//   TouristModel.findByIdAndDelete({_id:req.params.id}).exec()
 //   .then(data=>{
 
 //     console.log(data);
@@ -244,8 +258,7 @@ const delUserById = async (req, res) => {
     .then((data4) => {
       console.log("deleted");
     });
-  await users
-    .findByIdAndDelete({ _id: req.params.id })
+  await TouristModel.findByIdAndDelete({ _id: req.params.id })
     .exec()
     .then((data) => {
       console.log(data);
@@ -267,8 +280,7 @@ const delUserById = async (req, res) => {
 
 //rest forgot password
 const forgotPassword = (req, res) => {
-  users
-    .findOne({ email: req.body.email })
+  TouristModel.findOne({ email: req.body.email })
     .exec()
     .then((data) => {
       if (data == null) {
@@ -277,13 +289,12 @@ const forgotPassword = (req, res) => {
           msg: "User not Found",
         });
       } else {
-        users
-          .findOneAndUpdate(
-            { email: req.body.email },
-            {
-              password: req.body.password,
-            }
-          )
+        TouristModel.findOneAndUpdate(
+          { email: req.body.email },
+          {
+            password: req.body.password,
+          }
+        )
           .exec()
           .then((data) => {
             res.json({
@@ -304,7 +315,7 @@ const forgotPassword = (req, res) => {
 //finished -- forgot password
 
 const bookPackage = (req, res) => {
-  const newUser = new users({
+  const newUser = new TouristModel({
     packageId: req.body.packageId,
     custId: req.body.custId,
     doj: req.body.doj,
@@ -395,7 +406,8 @@ const addPlace = (req, res) => {
 };
 
 module.exports = {
-  registerUser,
+  touristSignup,
+  touristSignupUploads,
   login,
   vieUserById,
   editUserById,
@@ -406,5 +418,4 @@ module.exports = {
   addPlace,
   vieUserById,
   viewMyPlceasByCustId,
-  upload,
 };
