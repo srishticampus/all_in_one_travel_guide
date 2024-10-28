@@ -48,29 +48,29 @@ function TaxiReg() {
       <Navbar />
       <div>
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
-            <div class="brand">
+          <main className="container1">
+            <div className="back"></div>
+            <div className="brand">
               <h1>
-                <span class="name">
+                <span className="name">
                   <span>ADVENTURE</span>
                   <span> </span>
                 </span>
                 IS OUT THERE
               </h1>
-              <div class="">
+              <div className="">
                 <img height={480} src={gif2} alt="Panda Logo" />
               </div>
-              {/* <span class="copyright">Photo by
+              {/* <span className="copyright">Photo by
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
         on
         <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
             </div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Taxi Signup</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="driverName"
@@ -80,7 +80,7 @@ function TaxiReg() {
                       onChange={changehandleSubmit}
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="email"
                       name="email"
@@ -90,7 +90,7 @@ function TaxiReg() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="regNo"
@@ -100,7 +100,7 @@ function TaxiReg() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="brand"
@@ -110,7 +110,7 @@ function TaxiReg() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="model"
@@ -120,7 +120,7 @@ function TaxiReg() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="sc"
@@ -131,10 +131,10 @@ function TaxiReg() {
                     />
                   </div>
 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <select
                       id="dropdown"
-                      class=" col-sm-4"
+                      className=" col-sm-4"
                       name="ac"
                       value={register.ac}
                       onChange={changehandleSubmit}
@@ -146,7 +146,7 @@ function TaxiReg() {
                     </select>
                   </div>
 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="password"
                       name="password"
@@ -156,7 +156,7 @@ function TaxiReg() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="contact"
@@ -169,7 +169,7 @@ function TaxiReg() {
                       required
                     />
                   </div>
-                  {/* <div class="inputWrapper">
+                  {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>

@@ -45,109 +45,109 @@ function CustEditProf() {
   return (
     <div>
       <CustNav />
-      <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
-          <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-              <img class="rounded-circle mt-5" width="150px" src={pic5} />
-              <span class="font-weight-bold">{value.name}</span>
-              <span class="text-black-50">{value.email}</span>
+      <div className="container rounded bg-white mt-5 mb-5">
+        <div className="row">
+          <div className="col-md-3 border-right">
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img className="rounded-circle mt-5" width="150px" src={pic5} />
+              <span className="font-weight-bold">{value.name}</span>
+              <span className="text-black-50">{value.email}</span>
               <span> </span>
             </div>
           </div>
-          <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Customer Profile Edit</h4>
+          <div className="col-md-5 border-right">
+            <div className="p-3 py-5">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h4 className="text-right">Customer Profile Edit</h4>
               </div>
               <form onSubmit={updatefcn}>
-                <div class="row mt-2">
-                  <div class="col-md-6">
-                    <label class="labels">Name</label>
+                <div className="row mt-2">
+                  <div className="col-md-6">
+                    <label className="labels">Name</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       value={value.name}
                       name="name"
                       onChange={changefn}
                     />
                   </div>
-                  <div class="col-md-6">
-                    <label class="labels">Contact</label>
+                  <div className="col-md-6">
+                    <label className="labels">Contact</label>
                     <input
                       type="number"
                       name="contact"
-                      class="form-control"
+                      className="form-control"
                       value={value.contact}
                       onChange={changefn}
                     />
                   </div>
-                  <div class="col-md-6">
-                    <label class="labels">City</label>
+                  <div className="col-md-6">
+                    <label className="labels">City</label>
                     <input
                       type="text"
                       name="city"
-                      class="form-control"
+                      className="form-control"
                       value={value.city}
                       onChange={changefn}
                     />
                   </div>
-                  <div class="col-md-6">
-                    <label class="labels">Country</label>
+                  <div className="col-md-6">
+                    <label className="labels">Country</label>
                     <input
                       type="text"
                       name="country"
-                      class="form-control"
+                      className="form-control"
                       value={value.country}
                       onChange={changefn}
                     />
                   </div>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-md-12">
-                    <label class="labels">Email</label>
+                <div className="row mt-3">
+                  <div className="col-md-12">
+                    <label className="labels">Email</label>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       value={value.email}
                       name="email"
                       onChange={changefn}
                     />
                   </div>
-                  {/* <div class="col-md-12">
-                  <label class="labels">Password</label>
+                  {/* <div className="col-md-12">
+                  <label className="labels">Password</label>
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     name="password"
                     value={value.password}
                   />
                 </div> */}
-                  <div class="col-md-12">
-                    <label class="labels">Identity Card</label>
+                  <div className="col-md-12">
+                    <label className="labels">Identity Card</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       value={value.idtype}
                       name="idtype"
                       onChange={changefn}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">Identity Number</label>
+                  <div className="col-md-12">
+                    <label className="labels">Identity Number</label>
                     <input
                       type="number"
                       pattern="[0-9]*"
-                      class="form-control"
+                      className="form-control"
                       name="idnumb"
                       value={value.idnumb}
                     />
                   </div>
-                  <div class="col-md-12">
-                    <label class="labels">Gender</label>
+                  <div className="col-md-12">
+                    <label className="labels">Gender</label>
                     <select
                       id="dropdown"
-                      class="col-sm-4 form-control"
+                      className="col-sm-4 form-control"
                       name="gender"
                       value={value.gender}
                       onChange={changefn}
@@ -159,7 +159,7 @@ function CustEditProf() {
                     </select>
                     {/* <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                    
                     value={value.gender}
                     onChange={changefn}
@@ -167,7 +167,7 @@ function CustEditProf() {
                   /> */}
                   </div>
 
-                  <button type="submit" class="btn btn-primary h-23 w-100 py-2">
+                  <button type="submit" className="btn btn-primary h-23 w-100 py-2">
                     Update
                   </button>
                 </div>

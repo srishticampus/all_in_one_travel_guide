@@ -71,12 +71,12 @@ function Payment() {
           boxShadow: "1px 2px 2px 1px grey",
         }}
       >
-        <div class="row g-3">
-          <div class="col-md-9">
-            <div class="form-floating">
+        <div className="row g-3">
+          <div className="col-md-9">
+            <div className="form-floating">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 value={values.cardHolderName}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -92,11 +92,11 @@ function Payment() {
             <span className="err">{errors.cardHolderName}</span>
           )}
 
-          <div class="col-md-6">
-            <div class="form-floating">
+          <div className="col-md-6">
+            <div className="form-floating">
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 value={values.cardNo}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -110,11 +110,11 @@ function Payment() {
               <span className="err">{errors.cardNo}</span>
             )}
           </div>
-          <div class="col-md-6">
-            <div class="form-floating">
+          <div className="col-md-6">
+            <div className="form-floating">
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 value={values.cvv}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -129,13 +129,13 @@ function Payment() {
             )}
           </div>
 
-          <div class="col-md-6">
-            <div class="form-group">
-              <div class="row">
-                <div class="col-8">
+          <div className="col-md-6">
+            <div className="form-group">
+              <div className="row">
+                <div className="col-8">
                   <label for="email">Month</label>
                   <select
-                    class="form-control"
+                    className="form-control"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     name="month"
@@ -156,10 +156,10 @@ function Payment() {
                     <option value="December">December</option>
                   </select>
                 </div>
-                <div class="col-8">
+                <div className="col-8">
                   <label for="email">Year</label>
                   <select
-                    class="form-control"
+                    className="form-control"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     name="year"
@@ -194,11 +194,11 @@ function Payment() {
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="form-floating">
+          <div className="col-md-12">
+            <div className="form-floating">
               <input
                 type="number"
-                class="form-control"
+                className="form-control"
                 value={values.aadhar}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -212,11 +212,11 @@ function Payment() {
               <span className="err">{errors.aadhar}</span>
             )}
           </div>
-          {/* <div class="col-md-12">
-                      <div class="form-floating">
+          {/* <div className="col-md-12">
+                      <div className="form-floating">
                         <input
                           type="password"
-                          class="form-control"
+                          className="form-control"
                           id="password"
                           placeholder="Password"
                         />
@@ -224,33 +224,33 @@ function Payment() {
                       </div>
                     </div>
 
-                    <div class="col-md-6">
-                      <div class="form-floating">
+                    <div className="col-md-6">
+                      <div className="form-floating">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="city"
                           placeholder="Your City"
                         />
                         <label for="email">Your City</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
+                    <div className="col-md-6">
+                      <div className="form-floating">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="country"
                           placeholder="Your Country"
                         />
                         <label for="email">Your Country</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
+                    <div className="col-md-6">
+                      <div className="form-floating">
                         <input
                           type="number"
-                          class="form-control"
+                          className="form-control"
                           id="pincode"
                           placeholder="Your Pincode"
                         />
@@ -258,9 +258,9 @@ function Payment() {
                       </div>
                     </div> */}
 
-          <div class="col-12">
+          <div className="col-12">
             <button
-              class="btn btn-primary w-100 py-3"
+              className="btn btn-primary w-100 py-3"
               style={{ backgroundColor: "#FEA116", border: "none" }}
               type="submit"
             >

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "./BaseUrl";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import gif1 from "../img/hotelss.gif"
+import gif1 from "../img/hotelss.gif";
 
 function HotelReg() {
   const [register, setRegister] = useState({
@@ -32,7 +32,9 @@ function HotelReg() {
     b.preventDefault();
     console.log(register);
     axiosInstance
-      .post("/registerHotel", register,{headers:{"Content-Type":"multipart/form-data",},})
+      .post("/registerHotel", register, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then((result) => {
         console.log("data entered", result);
         if (result.status == 200) {
@@ -45,25 +47,18 @@ function HotelReg() {
       .catch((error) => {
         console.log("error", error);
         alert("Register Failed");
-
       });
   };
   return (
     <div>
       <body id="signup">
-        <main class="container1">
-          <div class="back"></div>
-          <div class="" style={{margin:'10px'}}>
-           
-            <div class="" >
-              <img
-                
-                height={390}
-                src={gif1}
-                alt="Panda Logo"
-              />
-               <h1>
-                <span class="name">
+        <main className="container1">
+          <div className="back"></div>
+          <div className="" style={{ margin: "10px" }}>
+            <div className="">
+              <img height={390} src={gif1} alt="Panda Logo" />
+              <h1>
+                <span className="name">
                   <span>ADVENTURE</span>
                   <span> </span>
                 </span>
@@ -71,16 +66,16 @@ function HotelReg() {
               </h1>
             </div>
 
-            {/* <span class="copyright">Photo by
+            {/* <span className="copyright">Photo by
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
         on
         <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
           </div>
-          <div class="formWrapper">
-            <div class="form">
+          <div className="formWrapper">
+            <div className="form">
               <h2>Hotel member Register card</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="hotelName"
@@ -90,7 +85,7 @@ function HotelReg() {
                     placeholder="Hotel Name"
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
@@ -100,7 +95,7 @@ function HotelReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="city"
@@ -110,7 +105,7 @@ function HotelReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="country"
@@ -120,21 +115,21 @@ function HotelReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="contact"
                     value={register.contact}
                     onChange={changehandleSubmit}
                     placeholder="Phone Number"
-                    min='0000000000'
-                    max='9999999999'
-                    style={{width:'210px'}}
+                    min="0000000000"
+                    max="9999999999"
+                    style={{ width: "210px" }}
                     required
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="regNo"
@@ -145,20 +140,20 @@ function HotelReg() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="pincode"
                     value={register.pincode}
                     onChange={changehandleSubmit}
                     placeholder="Pincode"
-                    min='000000'
-                    max='999999'
-                    style={{width:'210px'}}
+                    min="000000"
+                    max="999999"
+                    style={{ width: "210px" }}
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     name="password"
@@ -168,17 +163,17 @@ function HotelReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
-                    <input
-                      type="file"
-                      name="image"
-                      onChange={changehandleSubmit}
-                      style={{width:'210px'}}
-
-                      required
-                    />
-                  </div><br/>
-                {/* <div class="inputWrapper">
+                <div className="inputWrapper">
+                  <input
+                    type="file"
+                    name="image"
+                    onChange={changehandleSubmit}
+                    style={{ width: "210px" }}
+                    required
+                  />
+                </div>
+                <br />
+                {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>
@@ -188,7 +183,7 @@ function HotelReg() {
                   name="register"
                   id="register"
                   value="REGISTER"
-                  style={{height:'60px',marginLeft:'15px'}}
+                  style={{ height: "60px", marginLeft: "15px" }}
                 />
               </form>
 

@@ -54,7 +54,7 @@ function AdminViewAgencies() {
     <div>
       <AdminNav />
       <div style={{ padding: "80px 40px" }}>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -79,7 +79,7 @@ function AdminViewAgencies() {
                     <td>{a.country}</td>
                     <td>
                       <button
-                        class="btn btn-danger"
+                        className="btn btn-danger"
                         onClick={() => {
                           handleRemove(a._id);
                         }}

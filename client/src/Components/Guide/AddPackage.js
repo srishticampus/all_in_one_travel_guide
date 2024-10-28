@@ -58,24 +58,24 @@ function AddPackage() {
      
       <div>
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
                 backgroundSize:"cover",
               }}
             >
-              <div class="logo">
+              <div className="logo">
                 <img
                   height="64"
                   src="https://i.imgur.com/E3uTxXY.png"
                   alt="Panda Logo"
                 />
                 <h1>
-                  <span class="name">
+                  <span className="name">
                     <span>ADVENTURE</span>
                     <span> </span>
                   </span>
@@ -83,11 +83,11 @@ function AddPackage() {
                 </h1>
               </div>
             </div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Add Package</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper" s>
+                  <div className="inputWrapper" s>
                     <input
                       type="text"
                       name="title"
@@ -97,7 +97,7 @@ function AddPackage() {
                       onChange={changehandleSubmit}
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="destination"
@@ -108,7 +108,7 @@ function AddPackage() {
                     />
                   </div>
                 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="cost"
@@ -118,7 +118,7 @@ function AddPackage() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="days"
@@ -128,7 +128,7 @@ function AddPackage() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="nights"
@@ -138,7 +138,7 @@ function AddPackage() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="travelmode"
@@ -148,7 +148,7 @@ function AddPackage() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="accomodation"
@@ -158,7 +158,7 @@ function AddPackage() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="food"
@@ -168,7 +168,7 @@ function AddPackage() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="file"
                       name="image"

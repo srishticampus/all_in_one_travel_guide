@@ -25,14 +25,14 @@ function ViewSinglePack({ baseurl }) {
   return (
     <div>
       <CustNav />
-      {/* <div class="container text-center">
-        <div class="row">
+      {/* <div className="container text-center">
+        <div className="row">
           {pack.length ? (
             pack.map((a) => {
               return (
                 <div className="col" style={{ margin: "10px 0px" }}>
                   <div
-                    class="card"
+                    className="card"
                     style={{
                       width: "18rem",
                       backgroundColor: "white",
@@ -42,27 +42,27 @@ function ViewSinglePack({ baseurl }) {
                     {a.image ? (
                       <img
                         src={`${baseurl}/${a.image.filename}`}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt={a.image.filename}
                         height="240px"
                       />
                     ) : (
                       ""
                     )}
-                    <div class="card-body">
-                      <h4 class="card-title" style={{ color: "Green" }}>
+                    <div className="card-body">
+                      <h4 className="card-title" style={{ color: "Green" }}>
                         {a.title}
                       </h4>
 
-                      <h6 class="card-text">{a.destination}</h6>
-                      <h3 class="card-text">Price:₹ {a.cost}</h3>
+                      <h6 className="card-text">{a.destination}</h6>
+                      <h3 className="card-text">Price:₹ {a.cost}</h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         {a.days}days and {a.nights}nights Tour
                       </p>
                       <Link
                     to={`/AddBooking/${a.aid}/${a._id}`}
-                    class="btn btn-danger"
+                    className="btn btn-danger"
                   >
                     Book
                   </Link>
@@ -73,9 +73,9 @@ function ViewSinglePack({ baseurl }) {
             })
           ) : (
             <div className="col">
-              <div class="card" style={{ width: "18rem;" }}>
-                <div class="card-body">
-                  <h5 class="card-title">No Packages Available</h5>
+              <div className="card" style={{ width: "18rem;" }}>
+                <div className="card-body">
+                  <h5 className="card-title">No Packages Available</h5>
                 </div>
               </div>
             </div>
@@ -84,36 +84,36 @@ function ViewSinglePack({ baseurl }) {
       </div> */}
 
       <div style={{ minHeight: "300px", margin: "15px 0px", padding: "50px" }}>
-        <div class="container text-center">
-          <div class="row">
+        <div className="container text-center">
+          <div className="row">
             {pack.length ? (
               pack.map((a) => {
                 return (
-                  <div class="col-3 mb-5">
+                  <div className="col-3 mb-5">
                     <div
-                      class="card"
+                      className="card"
                       style={{ width: "300px", margin: "auto" }}
                     >
                       <img
                         src={`${baseurl}/${a.image.originalname}`}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt={a.image.filename}
                         height="240px"
                         style={{ objectFit: "cover" }}
                       />
-                      <div class="card-body">
+                      <div className="card-body">
                         <h2>{a.title}</h2>
-                        <h6 class="card-title">{a.destination}</h6>
+                        <h6 className="card-title">{a.destination}</h6>
                         <p
-                          class="card-text text-success"
+                          className="card-text text-success"
                           style={{ color: "black" }}
                         >
                           <b>₹ {a.cost}</b>
                         </p>
-                        <p class="card-text" style={{ color: "black" }}>
+                        <p className="card-text" style={{ color: "black" }}>
                           {a.days}days and {a.nights}nights
                         </p>
-                        <p class="card-text" style={{ color: "black" }}>
+                        <p className="card-text" style={{ color: "black" }}>
                           Accomodation : {a.accomodation}
                           <br />
                           Food : {a.food} <br />
@@ -124,7 +124,7 @@ function ViewSinglePack({ baseurl }) {
                         {" "}
                         <Link
                           to={`/AddBooking/${a.aid}/${a._id}`}
-                          class="btn btn-danger mb-4"
+                          className="btn btn-danger mb-4"
                         >
                           Book
                         </Link>

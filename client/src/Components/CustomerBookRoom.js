@@ -58,24 +58,24 @@ function CustomerBookRoom() {
       <CustNav />
       <div>
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
                 backgroundSize: "cover",
               }}
             >
-              <div class="logo">
+              <div className="logo">
                 <img
                   height="64"
                   src="https://i.imgur.com/E3uTxXY.png"
                   alt="Panda Logo"
                 />
                 <h1>
-                  <span class="name">
+                  <span className="name">
                     <span>ADVENTURE</span>
                     <span> </span>
                   </span>
@@ -83,15 +83,15 @@ function CustomerBookRoom() {
                 </h1>
               </div>
             </div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Booking</h2>
                 <form onSubmit={onSubmit}>
                  
                   
 
                   
-                <label for="exampleFormControlInput1" class="form-label">
+                <label for="exampleFormControlInput1" className="form-label">
                     payable Amount
                   </label>
                   <input
@@ -101,7 +101,7 @@ function CustomerBookRoom() {
                     disabled
                   />
 
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Card Number
                   </label>
                   <input
@@ -111,7 +111,7 @@ function CustomerBookRoom() {
                     max="9999999999999999"
                     required
                   />
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     CVV
                   </label>
                   <input
@@ -121,11 +121,11 @@ function CustomerBookRoom() {
                     max="999"
                     required
                   />
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Expiry
                   </label>
                   <div style={{display:'flex'}} >
-                     <select class="form-control" style={{marginRight:'5px'}} name="month" id="month" required>
+                     <select className="form-control" style={{marginRight:'5px'}} name="month" id="month" required>
                     <option  >Month</option>
                     <option value="January">January</option>
                     <option value="February">February</option>
@@ -140,7 +140,7 @@ function CustomerBookRoom() {
                     <option value="November">November</option>
                     <option value="December">December</option>
                   </select>
-                  <select class="form-control" name="year" id="year" required>
+                  <select className="form-control" name="year" id="year" required>
                     <option>Year</option>
                     <option value="2023">2023</option>
                     <option value="2024">2024</option>
@@ -168,7 +168,7 @@ function CustomerBookRoom() {
                   </select>
                   </div>
                  
-                  <button type="submit" class="btn btn-danger">
+                  <button type="submit" className="btn btn-danger">
                     Booking
                   </button>
                 </form>

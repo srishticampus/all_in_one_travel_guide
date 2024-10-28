@@ -47,7 +47,7 @@ function AdminViewRest() {
     <div>
       <AdminNav/>
       <div style={{ padding: "80px 40px" }}>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Restaurant Name</th>
@@ -66,7 +66,7 @@ function AdminViewRest() {
                     <td>{a.email}</td>
                     <td>{a.type}</td>
                     <td>{a.city}</td>
-                    <td><button class='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Delete</button></td>
+                    <td><button className='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Delete</button></td>
                   </tr>
                 );
               })

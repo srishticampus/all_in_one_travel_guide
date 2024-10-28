@@ -7,25 +7,19 @@ function EditFood() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [register,setRegister] = useState({});
-
-
-
+  const [register, setRegister] = useState({});
 
   useEffect(() => {
-
-    axiosInstance.post(`/viewRoomById/${id}`)
-    .then((res)=>{
+    axiosInstance.post(`/viewRoomById/${id}`).then((res) => {
       console.log(res);
 
-      setRegister(res.data.data)
-    
-  })
+      setRegister(res.data.data);
+    });
   }, []);
 
-  const changehandleSubmit = (e)=>{
-    setRegister({...register, [e.target.name]:e.target.value})
-  }
+  const changehandleSubmit = (e) => {
+    setRegister({ ...register, [e.target.name]: e.target.value });
+  };
 
   // const [register, setRegister] = useState({
   //   roomNo: "",
@@ -43,9 +37,9 @@ function EditFood() {
   //     setRegister(res.data.data);
   //   });
   // }, []);
-  useEffect(()=>{
+  useEffect(() => {
     console.log(register);
-  })
+  });
 
   const submitt = (e) => {
     e.preventDefault();
@@ -70,25 +64,23 @@ function EditFood() {
     <div>
       <div>
         <HotelNav />
-        {/* <main class="container1"> */}
+        {/* <main className="container1"> */}
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
-                backgroundSize:"cover",
+                backgroundSize: "cover",
               }}
-            >
-              
-            </div>
-            <div class="formWrapper">
-              <div class="form">
+            ></div>
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Add Hotel Rooms</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper" >
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="roomNo"
@@ -98,7 +90,7 @@ function EditFood() {
                       onChange={changehandleSubmit}
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="price"
@@ -108,43 +100,45 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
-                   
+                  <div className="inputWrapper">
                     <select
-                          class="form-select"
-                          value={register.type}
-                          onChange={changehandleSubmit}
-                          name="type"
-                          style={{border:'1px solid grey'}}
-                          >
-                          <option value="">Select</option>
-                          <option value="Single room">Single Room</option>
-                          <option value="Double room">Double Room</option>
-                          <option value="Suit room">Suit Room</option>
-                        </select>
+                      className="form-select"
+                      value={register.type}
+                      onChange={changehandleSubmit}
+                      name="type"
+                      style={{ border: "1px solid grey" }}
+                    >
+                      <option value="">Select</option>
+                      <option value="Single room">Single Room</option>
+                      <option value="Double room">Double Room</option>
+                      <option value="Suit room">Suit Room</option>
+                    </select>
                   </div>
-                  <div class="inputWrapper">
-                   
+                  <div className="inputWrapper">
                     <select
-                          class="form-select"
-                          value={register.ac}
-                          onChange={changehandleSubmit}
-                          name="ac"
-                          style={{border:'1px solid grey'}}
-                          >
-                          <option value="">Select</option>
-                          <option value="Ac">Ac</option>
-                          <option value="Non-Ac">Non-Ac</option>
-                        </select>
+                      className="form-select"
+                      value={register.ac}
+                      onChange={changehandleSubmit}
+                      name="ac"
+                      style={{ border: "1px solid grey" }}
+                    >
+                      <option value="">Select</option>
+                      <option value="Ac">Ac</option>
+                      <option value="Non-Ac">Non-Ac</option>
+                    </select>
                   </div>
-                
 
                   <input
                     type="submit"
                     name="register"
                     id="register"
                     value="Edit"
-                    style={{height:'60px',width:'213px',marginLeft:'15px',marginTop:'.5px'}}
+                    style={{
+                      height: "60px",
+                      width: "213px",
+                      marginLeft: "15px",
+                      marginTop: ".5px",
+                    }}
                   />
                 </form>
               </div>

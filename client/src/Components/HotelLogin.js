@@ -1,109 +1,107 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import axiosInstance from './BaseUrl';
-
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "./BaseUrl";
 
 function HotelLogin() {
-    const [login, setLogin] = useState({
-        email: "",
-        password: "",
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const changehandleSubmit = (a) => {
+    setLogin({ ...login, [a.target.name]: a.target.value });
+  };
+  useEffect(() => {
+    console.log(login);
+  });
+  const navigate = useNavigate();
+  const submitt = (b) => {
+    // alert('submitted')
+
+    b.preventDefault();
+    axiosInstance
+      .post("/loginHotel", login)
+      .then((result) => {
+        console.log("data entered", result);
+        if (result.data.status == 200) {
+          alert("login Successfully");
+          navigate("/HotelHome");
+          localStorage.setItem("hotellogid", result.data.data._id);
+        } else {
+          alert("Login Failed");
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+        alert("Login Failed");
       });
-      const changehandleSubmit = (a) => {
-        setLogin({ ...login, [a.target.name]: a.target.value });
-      };
-      useEffect(() => {
-        console.log(login);
-      });
-      const navigate = useNavigate();
-      const submitt = (b) => {
-        // alert('submitted')
-    
-        b.preventDefault();
-        axiosInstance
-          .post('/loginHotel', login)
-          .then((result) => {
-            console.log("data entered", result);
-            if (result.data.status == 200) {
-              alert("login Successfully");
-              navigate("/HotelHome");
-              localStorage.setItem("hotellogid", result.data.data._id);
-            } else {
-              alert("Login Failed");
-            }
-          })
-          .catch((error) => {
-            console.log("error", error);
-            alert("Login Failed");
-          });
-      };
+  };
   return (
     <div>
-        <body id="signup">
-        <main class="container1">
-          <div class="back"></div>
-          <div class="brand" style={{ backgroundColor: "grey" }}>
-            <div class="logo">
+      <body id="signup">
+        <main className="container1">
+          <div className="back"></div>
+          <div className="brand" style={{ backgroundColor: "grey" }}>
+            <div className="logo">
               <img
                 height="64"
                 src="https://i.imgur.com/E3uTxXY.png"
                 alt="Panda Logo"
               />
               <h1>
-                <span class="name">
+                <span className="name">
                   <span>ADVENTURE</span>
                   <span> </span>
                 </span>
                 IS OUT THERE
               </h1>
             </div>
-            {/* <span class="copyright">Photo by
+            {/* <span className="copyright">Photo by
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
         on
         <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
           </div>
-          <div class="formWrapper">
-            <div class="form">
+          <div className="formWrapper">
+            <div className="form">
               <h2>HOTEL LOGIN</h2>
               <form onSubmit={submitt}>
-               
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
                     value={login.email}
                     onChange={changehandleSubmit}
-                    placeholder='Email'
+                    placeholder="Email"
                     required
                   />
                 </div>
-               
-               
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     name="password"
                     value={login.password}
                     onChange={changehandleSubmit}
-                    placeholder='Password'
+                    placeholder="Password"
                     required
                   />
                 </div>
-                {/* <div class="inputWrapper">
+                {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>
           </div> */}
-            <input
-               
-                type="submit"
-              
-                id='login'
-                style={{height:'60px',width:'213px',marginLeft:'15px',marginTop:'.5px'}}
-               
-              />
+                <input
+                  type="submit"
+                  id="login"
+                  style={{
+                    height: "60px",
+                    width: "213px",
+                    marginLeft: "15px",
+                    marginTop: ".5px",
+                  }}
+                />
               </form>
-            
+
               {/* <span style={{ color: "black" }}>
                 Already a member?{" "}
                 <Link
@@ -119,7 +117,7 @@ function HotelLogin() {
         </main>
       </body>
     </div>
-  )
+  );
 }
 
-export default HotelLogin
+export default HotelLogin;

@@ -56,15 +56,15 @@ function ViewSinglerest() {
   return (
     <div>
       <CustNav />
-      {/* <div class="position-relative w-75 mx-auto animated slideInDown" style={{background:'red',padding:'10px',marginTop:'110x'}}>
+      {/* <div className="position-relative w-75 mx-auto animated slideInDown" style={{background:'red',padding:'10px',marginTop:'110x'}}>
         <input
-          class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5"
+          className="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5"
           type="text"
           placeholder="Eg: Thailand"
         />
         <button
           type="button"
-          class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
+          className="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2"
           style={{ marginTop: "7px" }}
         >
           Search
@@ -72,25 +72,25 @@ function ViewSinglerest() {
       </div> */}
       <div>
         <div
-          class="container-fluid booking pb-5 wow fadeIn"
+          className="container-fluid booking pb-5 wow fadeIn"
           data-wow-delay="0.1s"
         >
-          <div class="container mt-5">
-            <div class="bg-white shadow" style={{ padding: "35px" }}>
+          <div className="container mt-5">
+            <div className="bg-white shadow" style={{ padding: "35px" }}>
               <form onSubmit={onSubmit} style={{ display: "block" }}>
-                <div class="row g-2">
-                  <div class="col-md-10">
-                    <div class="row g-2">
-                      <div class="col-md-4">
+                <div className="row g-2">
+                  <div className="col-md-10">
+                    <div className="row g-2">
+                      <div className="col-md-4">
                         <div
-                          class="date"
+                          className="date"
                           id="date1"
                           data-target-input="nearest"
                         >
                           <label>Checkin</label>
                           <input
                             type="date"
-                            class="form-control datetimepicker-input"
+                            className="form-control datetimepicker-input"
                             placeholder="Check in"
                             data-target="#date1"
                             data-toggle="datetimepicker"
@@ -102,16 +102,16 @@ function ViewSinglerest() {
                           />
                         </div>
                       </div>
-                      <div class="col-md-4">
+                      <div className="col-md-4">
                         <div
-                          class="date"
+                          className="date"
                           id="date2"
                           data-target-input="nearest"
                         >
                           <label>Checkout</label>
                           <input
                             type="date"
-                            class="form-control datetimepicker-input"
+                            className="form-control datetimepicker-input"
                             placeholder="Check out"
                             data-target="#date2"
                             data-toggle="datetimepicker"
@@ -126,16 +126,16 @@ function ViewSinglerest() {
                           />
                         </div>
                       </div>
-                      {/* <div class="col-md-3">
+                      {/* <div className="col-md-3">
                         <div
-                          class="date"
+                          className="date"
                           id="date2"
                           data-target-input="nearest"
                         >
                           <label>City</label>
                           <input
                             type="text"
-                            class="form-control datetimepicker-input"
+                            className="form-control datetimepicker-input"
                             placeholder="City"
                             data-target="#date2"
                             data-toggle="datetimepicker"
@@ -146,10 +146,10 @@ function ViewSinglerest() {
                           />
                         </div>
                       </div> */}
-                      <div class="col-md-4">
+                      <div className="col-md-4">
                         <label>Type</label>
                         <select
-                          class="form-select"
+                          className="form-select"
                           onChange={(e) => {
                             setRoom({ ...room, type: e.target.value });
                           }}
@@ -163,8 +163,8 @@ function ViewSinglerest() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-2" style={{ marginTop: "2rem" }}>
-                    <button type="submit" class="btn btn-primary w-100">
+                  <div className="col-md-2" style={{ marginTop: "2rem" }}>
+                    <button type="submit" className="btn btn-primary w-100">
                       Submit
                     </button>
                   </div>
@@ -176,29 +176,29 @@ function ViewSinglerest() {
       </div>
 
       <div style={{ marginTop: "20px" }}>
-        <div class="container text-center">
-          <div class="row">
+        <div className="container text-center">
+          <div className="row">
             {hotl.length ? (
               hotl.map((a) => {
                 return (
                   <div className="col" style={{ margin: "10px 0px" }}>
                     <div
-                      class="card"
+                      className="card"
                       style={{
                         width: "18rem",
                         backgroundColor: "white",
                         boxShadow: "1px 2px 2px 2px grey",
                       }}
                     >
-                      <div class="card-body">
-                        <h4 class="card-title" style={{ color: "Green" }}>
+                      <div className="card-body">
+                        <h4 className="card-title" style={{ color: "Green" }}>
                           Room Number: {a.roomNo}
                         </h4>
-                        <h3 class="card-text">
+                        <h3 className="card-text">
                           Price: ₹{a.price}
                           <small>/day</small>
                         </h3>
-                        <p class="card-text">
+                        <p className="card-text">
                           Type: {a.type} ({a.ac})
                         </p>
                       </div>
@@ -208,9 +208,9 @@ function ViewSinglerest() {
               })
             ) : (
               <div className="col">
-                <div class="card" style={{ width: "18rem;" }}>
-                  <div class="card-body">
-                    <h5 class="card-title">No Rooms Available</h5>
+                <div className="card" style={{ width: "18rem;" }}>
+                  <div className="card-body">
+                    <h5 className="card-title">No Rooms Available</h5>
                   </div>
                 </div>
               </div>

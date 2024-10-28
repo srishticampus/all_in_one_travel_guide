@@ -26,7 +26,7 @@ function TaxiViewBookings() {
     <div>
       <TaxiNav />
       <div style={{ padding: "80px 40px" }}>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Name</th>

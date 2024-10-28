@@ -1,32 +1,20 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import gif from "../../../img/custlog.jpeg";
 import Navbar from "../../LandingNavbar/LandingNavbar";
-
+import Footer from "../../Footer";
+import { useForm } from "react-hook-form";
 export default function TouristSignup() {
-  const [touristData, setTouristData] = useState({
-    name: "",
-    email: "",
-    country: "",
-    gender: "",
-    password: "",
-    confirmPassword: "",
-    idType: "",
-    idPhoto: {},
-    touristPhoto: {},
-  });
-  const handleChanges = (e) => {
-    setTouristData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+  } = useForm();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    console.log("data => .", data);
   };
-  console.log(" => td ", touristData);
   return (
     <div>
       <Navbar />
@@ -58,27 +46,18 @@ export default function TouristSignup() {
           >
             <div className="form">
               <h2>New member card</h2>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="inputWrapper">
                   <input
                     type="text"
                     name="name"
+                    {...register("name", { required: true })}
                     placeholder="Full Name"
-                    required
-                    value={touristData.name}
-                    onChange={handleChanges}
                   />
                   {/* <label>Name</label> */}
                 </div>
                 <div className="inputWrapper">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    value={touristData.email}
-                    onChange={handleChanges}
-                    required
-                  />
+                  <input type="email" name="email" placeholder="E-mail" />
                   {/* <label>Email</label> */}
                 </div>
                 <div className="inputWrapper">
@@ -86,9 +65,6 @@ export default function TouristSignup() {
                     type="text"
                     name="country"
                     placeholder="Country of residence"
-                    value={touristData.country}
-                    onChange={handleChanges}
-                    required
                     minLength="10"
                   />
                 </div>
@@ -97,31 +73,17 @@ export default function TouristSignup() {
                     type="number"
                     name="contact"
                     placeholder="Contact"
-                    value={touristData.contact}
-                    onChange={handleChanges}
-                    min="0000000000"
-                    max="9999999999"
                     style={{ width: "210px" }}
-                    required
                   />
                 </div>
                 <div className="inputWrapper">
-                  <input
-                    type="text"
-                    name="idType"
-                    placeholder="ID Type"
-                    value={touristData.idType}
-                    onChange={handleChanges}
-                    required
-                  />
+                  <input type="text" name="idType" placeholder="ID Type" />
                 </div>
                 <div className="inputWrapper">
                   <select
                     id="dropdown"
                     className="col-sm-4"
                     name="gender"
-                    value={touristData.gender}
-                    onChange={handleChanges}
                     style={{ border: "1px solid grey" }}
                   >
                     <option>Select Gender</option>
@@ -132,14 +94,7 @@ export default function TouristSignup() {
                 </div>
 
                 <div className="inputWrapper">
-                  <input
-                    type="text"
-                    name="idnumb"
-                    placeholder="ID Number"
-                    value={touristData.idnumb}
-                    onChange={handleChanges}
-                    required
-                  />
+                  <input type="text" name="idnumb" placeholder="ID Number" />
                 </div>
 
                 <div className="inputWrapper">
@@ -147,41 +102,31 @@ export default function TouristSignup() {
                     type="password"
                     placeholder="Password"
                     name="password"
-                    value={touristData.password}
-                    onChange={handleChanges}
-                    required
                   />
                   {/* <label for="password">Password</label> */}
                 </div>
-                {/* <div className="inputWrapper">
-            <input type="password" name="c_password"  value={touristData.cpassword}
-                  onChange={handleChanges} required />
-            <label for="c_password">Confirm Password</label>
-          </div> */}
+
                 <input
                   type="submit"
                   name="touristData"
                   id="touristData"
                   value="REGISTER"
                   className="btn btn-dark"
-                  style={{ height: "60px" }}
+                  style={{ height: "60px", width: "13rem" }}
                 />
               </form>
 
-              {/* <span id="login1" style={{ color: "black" }}>
-                Already a member?{" "}
-                <Link
-                  to="/Login"
-                  title="Login"
-                  style={{ color: "darkblue", fontSize: "2rem" }}
-                >
+              <span id="login1" style={{ color: "black" }}>
+                Already have an account?{" "}
+                <Link to="/Login" title="Login" style={{ color: "darkblue" }}>
                   Log in!
                 </Link>
-              </span> */}
+              </span>
             </div>
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -55,24 +55,24 @@ function AddFood() {
       <RestNav />
       <div>
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80")',
                 backgroundSize: "cover",
               }}
             >
-              <div class="logo">
+              <div className="logo">
                 <img
                   height="64"
                   src="https://i.imgur.com/E3uTxXY.png"
                   alt="Panda Logo"
                 />
                 <h1>
-                  <span class="name">
+                  <span className="name">
                     <span>ADVENTURE</span>
                     <span> </span>
                   </span>
@@ -81,11 +81,11 @@ function AddFood() {
               </div>
 
             </div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Add Foods</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper" s>
+                  <div className="inputWrapper" s>
                     <input
                       type="text"
                       name="foodname"
@@ -95,10 +95,10 @@ function AddFood() {
                       placeholder="Food Name"
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                   <select
                     id="dropdown"
-                    class="form-control col-sm-4"
+                    className="form-control col-sm-4"
                     name="vegornon"
                     value={register.vegornon}
                     onChange={changehandleSubmit}
@@ -113,7 +113,7 @@ function AddFood() {
                     
                   </div>
 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="type"
@@ -123,7 +123,7 @@ function AddFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="price"
@@ -133,7 +133,7 @@ function AddFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper2">
+                  <div className="inputWrapper2">
                     <textarea
                       type="text"
                       name="description"
@@ -145,7 +145,7 @@ function AddFood() {
                     />
 
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="file"
                       name="image"
@@ -165,7 +165,7 @@ function AddFood() {
                   /> */}
                   <button
                     type="submit"
-                    class="btn btn-primary mb-5"
+                    className="btn btn-primary mb-5"
                     style={{height:'60px',width:'213px',marginLeft:'15px',marginTop:'.5px'}}
                                         id="register"
                   >

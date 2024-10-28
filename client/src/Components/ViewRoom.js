@@ -43,14 +43,14 @@ function ViewRoom() {
         <>
           <HotelNav />
           {/* <div style={{ minHeight: "300px" }}>
-            <div class="container text-center">
-              <div class="row">
+            <div className="container text-center">
+              <div className="row">
                 {room.length ? (
                   room.map((a) => {
                     return (
-                      <div class="col-4">
+                      <div className="col-4">
                         <div
-                          class="card"
+                          className="card"
                           style={{
                             width: "300px",
                             margin: "auto",
@@ -58,19 +58,19 @@ function ViewRoom() {
                           }}
                         >
                           <div
-                            class="card-body"
+                            className="card-body"
                             style={{ boxShadow: "1px 1px 2px 2px black" }}
                           >
-                            <h5 class="card-title" style={{ color: "blue" }}>
+                            <h5 className="card-title" style={{ color: "blue" }}>
                               Hotel No: {a.roomNo}
                             </h5>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <p className="card-text" style={{ color: "black" }}>
                               Ac /Non-Ac: {a.ac}
                             </p>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <p className="card-text" style={{ color: "black" }}>
                               Hotel Type: {a.type}
                             </p>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <p className="card-text" style={{ color: "black" }}>
                               Price: {a.price}
                             </p>
 
@@ -78,7 +78,7 @@ function ViewRoom() {
                               <div>
                                 <button
                                   type="button"
-                                  class="btn btn-danger"
+                                  className="btn btn-danger"
                                   onClick={() => handleDelete(a._id)}
                                   style={{ width: "50%" }}
                                   href=""
@@ -87,7 +87,7 @@ function ViewRoom() {
                                 </button>
                                 <Link
                                   to={`/EditRoom/${a._id}`}
-                                  class="btn btn-success"
+                                  className="btn btn-success"
                                   style={{ margin: "10px 10px" }}
                                 >
                                   Edit Room
@@ -108,31 +108,31 @@ function ViewRoom() {
           <div
             style={{ minHeight: "300px", margin: "15px 0px", padding: "100px" }}
           >
-            <div class="container text-center">
-              <div class="row">
+            <div className="container text-center">
+              <div className="row">
                 {room.length ? (
                   room.map((a) => {
                     return (
-                      <div class="col-3 mb-5">
+                      <div className="col-3 mb-5">
                         <div
-                          class="card"
+                          className="card"
                           style={{ width: "300px", margin: "auto" }}
                         >
                           {/* <img
                         src={`${baseurl}/${a.image.originalname}`}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt={a.image.filename}
                         height="240px"
                         style={{objectFit:'cover'}}
                       /> */}
-                          <div class="card-body">
+                          <div className="card-body">
                             <h2>Room No {a.roomNo}</h2>
-                            <h6 class="card-title">{a.ac}</h6>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <h6 className="card-title">{a.ac}</h6>
+                            <p className="card-text" style={{ color: "black" }}>
                               {a.type}
                             </p>
                             <p
-                              class="card-text text-success"
+                              className="card-text text-success"
                               style={{ color: "black" }}
                             >
                               <b>₹ {a.price}</b>
@@ -142,7 +142,7 @@ function ViewRoom() {
                             <div>
                               <button
                                 type="button"
-                                class="btn btn-danger"
+                                className="btn btn-danger"
                                 onClick={() => handleDelete(a._id)}
                                 style={{ width: "50%", borderRadius: "30px" }}
                                 href=""
@@ -151,7 +151,7 @@ function ViewRoom() {
                               </button>
                               <Link
                                 to={`/EditRoom/${a._id}`}
-                                class="btn btn-success"
+                                className="btn btn-success"
                                 style={{
                                   margin: "10px 10px",
                                   borderRadius: "30px",

@@ -38,33 +38,33 @@ function RestLogin() {
   return (
     <div>
       <body id="signup">
-        <main class="container1">
-          <div class="back"></div>
-          <div class="brand" style={{ backgroundColor: "grey" }}>
-            <div class="logo">
+        <main className="container1">
+          <div className="back"></div>
+          <div className="brand" style={{ backgroundColor: "grey" }}>
+            <div className="logo">
               <img
                 height="64"
                 src="https://i.imgur.com/E3uTxXY.png"
                 alt="Panda Logo"
               />
               <h1>
-                <span class="name">
+                <span className="name">
                   <span>ADVENTURE</span>
                   <span> </span>
                 </span>
                 IS OUT THERE
               </h1>
             </div>
-            {/* <span class="copyright">Photo by
+            {/* <span className="copyright">Photo by
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
         on
         <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
           </div>
-          <div class="formWrapper">
-            <div class="form">
+          <div className="formWrapper">
+            <div className="form">
               <h2>RESTAURANT LOGIN</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
@@ -75,7 +75,7 @@ function RestLogin() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     name="password"
@@ -85,7 +85,7 @@ function RestLogin() {
                     required
                   />
                 </div>
-                {/* <div class="inputWrapper">
+                {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>

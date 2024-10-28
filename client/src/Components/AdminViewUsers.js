@@ -47,7 +47,7 @@ function AdminViewUsers() {
     <div>
       <AdminNav/>
       <div style={{ padding: "80px 40px" }}>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -68,7 +68,7 @@ function AdminViewUsers() {
                     <td>{a.idtype}({a.idnumb})</td>
                     <td>{a.city}</td>
                     <td>{a.country}</td>
-                    <td><button class='btn btn-danger' onClick={()=>{handleHotelApp(a._id)}} >Remove </button></td>
+                    <td><button className='btn btn-danger' onClick={()=>{handleHotelApp(a._id)}} >Remove </button></td>
                   </tr>
                 );
               })

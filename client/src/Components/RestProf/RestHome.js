@@ -1,6 +1,6 @@
 import React from 'react'
 import RestNav from './RestNav'
-import Home from '../Home'
+import Home from '../home/Home'
 
 
 function RestHome() {

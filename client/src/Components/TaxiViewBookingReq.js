@@ -60,7 +60,7 @@ function TaxiViewBookingReq() {
     <div>
       <TaxiNav />
       <div style={{ padding: "80px 40px" }}>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -85,7 +85,7 @@ function TaxiViewBookingReq() {
                     <td>{a.status}</td>
                     <td>
                       <button
-                        class="btn btn-success"
+                        className="btn btn-success"
                         style={{ marginRight: "4px" }}
                         onClick={() => {
                           handleAccept(a._id);
@@ -94,7 +94,7 @@ function TaxiViewBookingReq() {
                         Approve
                       </button>
                       <button
-                        class="btn btn-danger"
+                        className="btn btn-danger"
                         onClick={() => {
                           handleRemove(a._id);
                         }}

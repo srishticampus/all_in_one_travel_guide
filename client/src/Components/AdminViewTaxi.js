@@ -52,7 +52,7 @@ function AdminViewTaxi() {
     <div>
       <AdminNav/>
       <div style={{ padding: "80px 40px" }}>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -75,7 +75,7 @@ function AdminViewTaxi() {
                     <td>{a.brand}</td>
                     <td>{a.model}({a.ac})</td>
                     <td>{a.sc}</td>
-                    <td><button class='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Remove</button></td>
+                    <td><button className='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Remove</button></td>
                   </tr>
                 );
               })

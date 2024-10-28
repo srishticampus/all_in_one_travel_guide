@@ -48,26 +48,26 @@ function EditFood() {
     <div>
       <div>
         <GuideProfNav />
-        {/* <main class="container1"> */}
+        {/* <main className="container1"> */}
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
                 backgroundSize:"cover",
               }}
             >
-              {/* <div class="logo">
+              {/* <div className="logo">
                 <img
                   height="64"
                   src="https://i.imgur.com/E3uTxXY.png"
                   alt="Panda Logo"
                 />
                 <h1>
-                  <span class="name">
+                  <span className="name">
                     <span>ADVENTURE</span>
                     <span> </span>
                   </span>
@@ -75,11 +75,11 @@ function EditFood() {
                 </h1>
               </div> */}
             </div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Edit Package Details</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper" >
+                  <div className="inputWrapper" >
                     <input
                       type="text"
                       name="title"
@@ -89,7 +89,7 @@ function EditFood() {
                       onChange={changehandleSubmit}
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="destination"
@@ -99,7 +99,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="cost"
@@ -109,7 +109,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="days"
@@ -119,7 +119,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="nights"
@@ -130,7 +130,7 @@ function EditFood() {
                     />
                   </div>
 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="travelmode"
@@ -140,7 +140,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="accomodation"
@@ -150,7 +150,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="food"
@@ -160,7 +160,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="file"
                       name="image"

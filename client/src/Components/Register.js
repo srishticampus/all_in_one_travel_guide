@@ -45,12 +45,15 @@ function Register() {
   return (
     <div>
       <Navbar />
-      <div class="container mt-5">
-        <main class="container row" style={{ boxShadow: " 0 10px 1rem #0004" }}>
-          {/* <div class="back"></div> */}
-          <div class="brand col-6">
+      <div className="container mt-5">
+        <main
+          className="container row"
+          style={{ boxShadow: " 0 10px 1rem #0004" }}
+        >
+          {/* <div className="back"></div> */}
+          <div className="brand col-6">
             <h1>
-              <span class="name">
+              <span className="name">
                 <span>ADVENTURE</span>
                 <span> </span>
               </span>
@@ -64,11 +67,14 @@ function Register() {
               alt="Panda Logo"
             />
           </div>
-          <div class="formWrapper col-6" style={{ backgroundColor: "white" }}>
-            <div class="form">
+          <div
+            className="formWrapper col-6"
+            style={{ backgroundColor: "white" }}
+          >
+            <div className="form">
               <h2>New member card</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="name"
@@ -79,7 +85,7 @@ function Register() {
                   />
                   {/* <label>Name</label> */}
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
@@ -90,7 +96,7 @@ function Register() {
                   />
                   {/* <label>Email</label> */}
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="city"
@@ -100,7 +106,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="country"
@@ -110,7 +116,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="contact"
@@ -123,7 +129,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="idtype"
@@ -133,10 +139,10 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <select
                     id="dropdown"
-                    class="col-sm-4"
+                    className="col-sm-4"
                     name="gender"
                     value={register.gender}
                     onChange={changehandleSubmit}
@@ -148,7 +154,7 @@ function Register() {
                   </select>
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="idnumb"
@@ -159,7 +165,7 @@ function Register() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     placeholder="Password"
@@ -170,7 +176,7 @@ function Register() {
                   />
                   {/* <label for="password">Password</label> */}
                 </div>
-                {/* <div class="inputWrapper">
+                {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>
@@ -180,7 +186,7 @@ function Register() {
                   name="register"
                   id="register"
                   value="REGISTER"
-                  class="btn btn-dark"
+                  className="btn btn-dark"
                   style={{ height: "60px" }}
                 />
               </form>

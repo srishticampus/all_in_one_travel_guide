@@ -73,31 +73,31 @@ function AdminViewPlaceReq() {
     <div>
       <AdminNav/>
       <div style={{ minHeight: "300px", margin: "15px 0px" }}>
-      <div class="container text-center">
-        <div class="row">
+      <div className="container text-center">
+        <div className="row">
           {place.length?place.map((a) => {
             return (
-              <div class="col-3" style={{ margin: "10px 30px" }}>
+              <div className="col-3" style={{ margin: "10px 30px" }}>
                 <div
-                  class="card"
+                  className="card"
                   style={{ width: "300px", margin: "auto" }}
                 >
                   {/* <img
                     src={`http://localhost:4004/${a.image.originalname}`}
-                    class="card-img-top"
+                    className="card-img-top"
                     alt={a.image.filename}
                     height="240px"
                   /> */}
-                  <div class="card-body">
-                    <h3 class="card-title">{a.loc}</h3>
-                    <h5 class="card-title">{a.city},{a.district}</h5>
-                    <p class="card-text" style={{ color: "black" }}>
+                  <div className="card-body">
+                    <h3 className="card-title">{a.loc}</h3>
+                    <h5 className="card-title">{a.city},{a.district}</h5>
+                    <p className="card-text" style={{ color: "black" }}>
                      Distance : {a.distance}km
                     </p>
-                    <p class="card-text" style={{ color: "black" }}>
+                    <p className="card-text" style={{ color: "black" }}>
                      TravelMode : {a.travelmode}
                     </p>
-                    <p class="card-text" style={{ color: "black" }}>
+                    <p className="card-text" style={{ color: "black" }}>
                       Location Type:{a.locType}{" "}
                     </p>
                     
@@ -106,14 +106,14 @@ function AdminViewPlaceReq() {
                     
                     <button
                       onClick={()=>{handleApprove(a._id)}}
-                      class="btn btn-success"
+                      className="btn btn-success"
                       style={{ margin: "10px 10px" }}
                     >
                       Approve
                     </button>
                     <button
                       onClick={()=>{handleRemove(a._id)}}
-                      class="btn btn-danger"
+                      className="btn btn-danger"
                       style={{ margin: "10px 10px" }}
                     >
                       Reject

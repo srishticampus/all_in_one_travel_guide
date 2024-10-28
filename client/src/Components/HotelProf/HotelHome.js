@@ -1,6 +1,6 @@
 import React from 'react'
 import HotelNav from './HotelNav'
-import Home from '../Home'
+import Home from '../home/Home'
 
 
 function RestHome() {

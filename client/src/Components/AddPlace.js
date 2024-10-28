@@ -56,24 +56,24 @@ function AddPlace() {
     <CustNav />
     <div>
       <body id="signup">
-        <main class="container1">
-          <div class="back"></div>
+        <main className="container1">
+          <div className="back"></div>
           <div
-            class="brand"
+            className="brand"
             style={{
               backgroundImage:
                 'url("https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80")',
               backgroundSize: "cover",
             }}
           >
-            <div class="logo">
+            <div className="logo">
               <img
                 height="64"
                 src="https://i.imgur.com/E3uTxXY.png"
                 alt="Panda Logo"
               />
               <h1>
-                <span class="name">
+                <span className="name">
                   <span>ADVENTURE</span>
                   <span> </span>
                 </span>
@@ -81,11 +81,11 @@ function AddPlace() {
               </h1>
             </div>
           </div>
-          <div class="formWrapper">
-            <div class="form">
+          <div className="formWrapper">
+            <div className="form">
               <h2>Add Place</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper" s>
+                <div className="inputWrapper" s>
                   <input
                     type="text"
                     name="district"
@@ -95,7 +95,7 @@ function AddPlace() {
                     placeholder='District'
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="city"
@@ -106,7 +106,7 @@ function AddPlace() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="loc"
@@ -116,7 +116,7 @@ function AddPlace() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="travelmode"
@@ -126,7 +126,7 @@ function AddPlace() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="distance"
@@ -136,7 +136,7 @@ function AddPlace() {
                     required
                   />
                 </div>
-                <div class="inputWrapper1">
+                <div className="inputWrapper1">
                   <input
                     type="file"
                     name="image"
@@ -145,7 +145,7 @@ function AddPlace() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="lat"
@@ -155,7 +155,7 @@ function AddPlace() {
                     step="0.000000001"
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="lon"
@@ -166,7 +166,7 @@ function AddPlace() {
 
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="locType"
@@ -187,7 +187,7 @@ function AddPlace() {
                 /> */}
                 <button
                   type="submit"
-                  class="btn btn-primary mb-5"
+                  className="btn btn-primary mb-5"
                   id="register"
                   style={{height:'60px',width:'213px',marginLeft:'15px',marginTop:'.5px'}}
                 >

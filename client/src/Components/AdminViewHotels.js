@@ -47,7 +47,7 @@ function AdminViewHotels() {
     <div>
       <AdminNav />
       <div style={{ padding: "80px 40px" }}>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Hotel Name</th>
@@ -66,7 +66,7 @@ function AdminViewHotels() {
                     <td>{a.email}</td>
                     <td>{a.regNo}</td>
                     <td>{a.city}</td>
-                    <td><button class='btn btn-danger' onClick={()=>{handleHotelApp(a._id)}} >Remove </button></td>
+                    <td><button className='btn btn-danger' onClick={()=>{handleHotelApp(a._id)}} >Remove </button></td>
                   </tr>
                 );
               })

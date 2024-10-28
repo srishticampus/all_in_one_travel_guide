@@ -46,24 +46,24 @@ function CustomerBookTaxi() {
       <CustNav/>
       <div>
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
                 backgroundSize: "cover",
               }}
             >
-              <div class="logo">
+              <div className="logo">
                 <img
                   height="64"
                   src="https://i.imgur.com/E3uTxXY.png"
                   alt="Panda Logo"
                 />
                 <h1>
-                  <span class="name">
+                  <span className="name">
                     <span>ADVENTURE</span>
                     <span> </span>
                   </span>
@@ -71,11 +71,11 @@ function CustomerBookTaxi() {
                 </h1>
               </div>
             </div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Booking</h2>
                 <form onSubmit={submitt}>
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Date
                   </label>
                   <input
@@ -83,12 +83,12 @@ function CustomerBookTaxi() {
                     name="date"
                     onChange={changehandleSubmit}
                     required
-                    class="form-control"
+                    className="form-control"
                     min={new Date().toISOString().split('T')[0]}
                     id="exampleFormControlInput1"
                   />
 
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     Time
                   </label>
                   <input
@@ -100,7 +100,7 @@ function CustomerBookTaxi() {
                     required
                   />
 
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     From
                   </label>
                   <input
@@ -111,7 +111,7 @@ function CustomerBookTaxi() {
 
                     required
                   />
-                  <label for="exampleFormControlInput1" class="form-label">
+                  <label for="exampleFormControlInput1" className="form-label">
                     To
                   </label>
                   <input
@@ -124,7 +124,7 @@ function CustomerBookTaxi() {
                   />
                   
                  
-                  <button type="submit" class="btn btn-danger">
+                  <button type="submit" className="btn btn-danger">
                     Booking
                   </button>
                 </form>

@@ -28,90 +28,90 @@ function ResttViewProf({ baseurl }) {
   return (
     <div>
       <RestNav />
-      <section class="vh-100" style={{ backgroundColor: "#f4f5f7;" }}>
-        <div class="container3 py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-6 mb-4 mb-lg-0">
+      <section className="vh-100" style={{ backgroundColor: "#f4f5f7;" }}>
+        <div className="container3 py-5 h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col col-lg-6 mb-4 mb-lg-0">
               <div
-                class="card mb-3"
+                className="card mb-3"
                 style={{ borderRadius: ".5rem;", padding: "20px" }}
               >
-                <div class="row g-0">
+                <div className="row g-0">
                   <div
-                    class="col-md-4 gradient-custom text-center text-white"
+                    className="col-md-4 gradient-custom text-center text-white"
                     style={{
                       borderTopLeftRadius: " .5rem;",
                       borderBottomLeftRadius: ".5rem;",
                     }}
                   >
                     
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <div className="d-flex flex-column align-items-center text-center p-3 py-5">
                       <img
-                        class="rounded-circle "
+                        className="rounded-circle "
                         width="200px"
                         height="200px"
                         style={{ objectFit: "cover" }}
                         src={`${baseurl}/${rset.image.originalname}`}
                       />
-                      <span class="font-weight-bold"></span>
-                      <span class="text-black-50 mt-3">{rset.name}</span>
+                      <span className="font-weight-bold"></span>
+                      <span className="text-black-50 mt-3">{rset.name}</span>
                       <span> </span>
                     </div>
                   </div>
-                  <div class="col-md-8">
-                    <div class="card-body p-4">
+                  <div className="col-md-8">
+                    <div className="card-body p-4">
                       <h2>{rset.name}</h2>
 
-                      <hr class="mt-0 mb-4" />
-                      <div class="row pt-1">
-                        <div class="col-6 mb-3">
+                      <hr className="mt-0 mb-4" />
+                      <div className="row pt-1">
+                        <div className="col-6 mb-3">
                           <h6>Email:</h6>
-                          <p class="text-muted">{rset.email}</p>
+                          <p className="text-muted">{rset.email}</p>
                         </div>
-                        <div class="col-6 mb-3">
+                        <div className="col-6 mb-3">
                           <h6>Contact:</h6>
-                          <p class="text-muted">{rset.contact}</p>
+                          <p className="text-muted">{rset.contact}</p>
                         </div>
                       </div>
                       {/* <h6>Projects</h6> */}
-                      <hr class="mt-0 mb-4" />
-                      <div class="row pt-1">
-                        {/* <div class="col-6 mb-3">
+                      <hr className="mt-0 mb-4" />
+                      <div className="row pt-1">
+                        {/* <div className="col-6 mb-3">
                           <h6>Password:</h6>
-                          <p class="text-muted">{rset.password}</p>
+                          <p className="text-muted">{rset.password}</p>
                         </div> */}
-                        {/* <hr class="mt-0 mb-4" /> */}
-                        <div class="col-6 mb-3">
+                        {/* <hr className="mt-0 mb-4" /> */}
+                        <div className="col-6 mb-3">
                           <h6>Food Type:</h6>
-                          <p class="text-muted">{rset.type}</p>
+                          <p className="text-muted">{rset.type}</p>
                         </div>
-                        <div class="col-6 mb-3">
+                        <div className="col-6 mb-3">
                           <h6>City:</h6>
-                          <p class="text-muted">{rset.city}</p>
+                          <p className="text-muted">{rset.city}</p>
                         </div>
-                        <hr class="mt-0 mb-4" />
-                        <div class="col-6 mb-3">
+                        <hr className="mt-0 mb-4" />
+                        <div className="col-6 mb-3">
                           <h6>Country:</h6>
-                          <p class="text-muted">{rset.country}</p>
+                          <p className="text-muted">{rset.country}</p>
                         </div>
-                        <div class="col-6 mb-3"></div>
-                        <hr class="mt-0 mb-4" />
+                        <div className="col-6 mb-3"></div>
+                        <hr className="mt-0 mb-4" />
                       </div>
-                      {/* <div class="d-flex justify-content-start">
+                      {/* <div className="d-flex justify-content-start">
                         <a href="#!">
-                          <i class="fab fa-facebook-f fa-lg me-3"></i>
+                          <i className="fab fa-facebook-f fa-lg me-3"></i>
                         </a>
                         <a href="#!">
-                          <i class="fab fa-twitter fa-lg me-3"></i>
+                          <i className="fab fa-twitter fa-lg me-3"></i>
                         </a>
                         <a href="#!">
-                          <i class="fab fa-instagram fa-lg"></i>
+                          <i className="fab fa-instagram fa-lg"></i>
                         </a>
                       </div> */}
                       <Link to="/RestEditProf">
                         <button
                           type="submit"
-                          class="btn btn-success h-23 w-50 py-2 "
+                          className="btn btn-success h-23 w-50 py-2 "
                         >
                           Edit
                         </button>
@@ -119,7 +119,7 @@ function ResttViewProf({ baseurl }) {
                       <Link to="/">
                         <button
                           type="submit"
-                          class="btn btn-danger h-23 w-50 py-2"
+                          className="btn btn-danger h-23 w-50 py-2"
                           onClick={()=>{localStorage.clear();window.location.reload(false)}}
                         >
                           Log out

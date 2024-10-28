@@ -27,7 +27,7 @@ function HotelViewBookings() {
     <div>
       <HotelNav/>
       <div style={{ padding: "80px 40px" }}>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -47,7 +47,7 @@ function HotelViewBookings() {
                     <td>{a.checkindate.slice(0,10)}</td>
                     <td>{a.checkoutdate.slice(0,10)}</td>
                     <td>{a.roomid.roomNo}</td>
-                    {/* <td><button class='btn btn-success' style={{marginRight:'4px'}} onClick={()=>{handleAccept(a._id)}} >Approve</button><button class='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Reject</button></td> */}
+                    {/* <td><button className='btn btn-success' style={{marginRight:'4px'}} onClick={()=>{handleAccept(a._id)}} >Approve</button><button className='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Reject</button></td> */}
                   </tr>
                 );
               })

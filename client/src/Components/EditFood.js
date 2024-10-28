@@ -50,23 +50,23 @@ function EditFood() {
     <div>
       <div>
         <RestNav />
-        {/* <main class="container1"> */}
+        {/* <main className="container1"> */}
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
+          <main className="container1">
+            <div className="back"></div>
             <div
-              class="brand"
+              className="brand"
               style={{
                 backgroundImage:
                   'url("https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80")',
                 backgroundSize: "cover",
               }}
             ></div>
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>Edit Foods</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="foodname"
@@ -76,10 +76,10 @@ function EditFood() {
                       onChange={changehandleSubmit}
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <select
                       id="dropdown"
-                      class="form-control col-sm-4"
+                      className="form-control col-sm-4"
                       name="vegornon"
                       value={register.vegornon}
                       onChange={changehandleSubmit}
@@ -90,7 +90,7 @@ function EditFood() {
                       <option value="non-veg">Non-Veg</option>
                     </select>
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="type"
@@ -100,7 +100,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="number"
                       name="price"
@@ -110,7 +110,7 @@ function EditFood() {
                       required
                     />
                   </div>
-                  <div class="inputWrapper2">
+                  <div className="inputWrapper2">
                     <textarea
                       type="text"
                       name="description"
@@ -128,7 +128,7 @@ function EditFood() {
                     </textarea>
                   </div>
 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="file"
                       name="image"
@@ -137,7 +137,7 @@ function EditFood() {
 
                     />
                   </div>
-                  {/* <div class="inputWrapper1">
+                  {/* <div className="inputWrapper1">
                     <input
                       type="file"
                       name="image"
@@ -156,7 +156,7 @@ function EditFood() {
                   /> */}
                   <button
                     type="submit"
-                    class="btn btn-primary mb-5"
+                    className="btn btn-primary mb-5"
                     id="register"
                     style={{
                       height: "60px",

@@ -25,20 +25,20 @@ function ViewSinglerest({ baseurl }) {
     <div>
       <CustNav />
 
-      <div class="container-xxl py-5">
-        <div class="container">
-          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">
+      <div className="container-xxl py-5">
+        <div className="container">
+          <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 className="section-title bg-white text-center text-primary px-3">
               Restaurants
             </h6>
-            <h1 class="mb-5">Awesome Foods</h1>
+            <h1 className="mb-5">Awesome Foods</h1>
           </div>
-          {/* <div class="row g-4 justify-content-center">
+          {/* <div className="row g-4 justify-content-center">
             {restfd.length ? (
               restfd.map((a) => {
                 return (
-                  <div class="col-4  wow fadeInUp">
-                    <div class="package-item">
+                  <div className="col-4  wow fadeInUp">
+                    <div className="package-item">
                       <div
                         style={{
                           objectFit: "cover",
@@ -47,7 +47,7 @@ function ViewSinglerest({ baseurl }) {
                         }}
                       >
                         <img
-                          class="img-fluid"
+                          className="img-fluid"
                           style={{
                             objectFit: "cover",
                             width: "100%",
@@ -57,24 +57,24 @@ function ViewSinglerest({ baseurl }) {
                         />
                       </div>
                       
-                      <div class="text-center p-4">
-                        <h3 class="mb-3">
+                      <div className="text-center p-4">
+                        <h3 className="mb-3">
                           {a.foodname}({a.vegornon})
                         </h3>
-                        <h6 class="mb-3"> PRICE: ₹ {a.price}</h6>
+                        <h6 className="mb-3"> PRICE: ₹ {a.price}</h6>
 
                         <p>
                           {a.type}
                           <br />
                           {a.description}
                         </p>
-                        <div class="d-flex justify-content-center mb-2">
+                        <div className="d-flex justify-content-center mb-2">
                           <button
                             onClick={() => {
                               alert("Ordered");
                             }}
                             href="#"
-                            class="btn btn-sm btn-primary px-3 border-end"
+                            className="btn btn-sm btn-primary px-3 border-end"
                             style={{ borderRadius: "30px" }}
                           >
                             Order Now
@@ -97,33 +97,33 @@ function ViewSinglerest({ baseurl }) {
               padding: "0 50px",
             }}
           >
-            <div class="container text-center">
-              <div class="row">
+            <div className="container text-center">
+              <div className="row">
                 {restfd.length ? (
                   restfd.map((a) => {
                     return (
-                      <div class="col-3 mb-5">
+                      <div className="col-3 mb-5">
                         <div
-                          class="card"
+                          className="card"
                           style={{ width: "300px", margin: "auto" }}
                         >
                           <img
                             src={`${baseurl}/${a.image.originalname}`}
-                            class="card-img-top"
+                            className="card-img-top"
                             alt={a.image.filename}
                             height="240px"
                             style={{ objectFit: "cover" }}
                           />
-                          <div class="card-body">
+                          <div className="card-body">
                             <h2>{a.foodname}</h2>
-                            <h6 class="card-title">({a.vegornon})</h6>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <h6 className="card-title">({a.vegornon})</h6>
+                            <p className="card-text" style={{ color: "black" }}>
                               {a.type}
                             </p>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <p className="card-text" style={{ color: "black" }}>
                               <b>₹ {a.price}</b>
                             </p>
-                            <p class="card-text" style={{ color: "black" }}>
+                            <p className="card-text" style={{ color: "black" }}>
                               {a.description}
                             </p>
                           </div>
@@ -133,7 +133,7 @@ function ViewSinglerest({ baseurl }) {
                                 alert("Ordered");
                               }}
                               href="#"
-                              class="btn btn-sm btn-success mb-4 px-3 border-end"
+                              className="btn btn-sm btn-success mb-4 px-3 border-end"
                               style={{ borderRadius: "30px" }}
                             >
                               Order Now

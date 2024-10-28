@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Components/Home";
+import Home from "./Components/home/Home";
 import Register from "./Components/Register";
 import Navbar from "./Components/LandingNavbar/LandingNavbar";
 import Login from "./Components/Login";

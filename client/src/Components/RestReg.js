@@ -50,18 +50,18 @@ function RestReg() {
   return (
     <div>
       <body id="signup">
-        <main class="container1">
-          <div class="back"></div>
-          <div class="brand" >
+        <main className="container1">
+          <div className="back"></div>
+          <div className="brand" >
           
               <h1>
-                <span class="name">
+                <span className="name">
                   <span>ADVENTURE</span>
                   <span> </span>
                 </span>
                 IS OUT THERE
               </h1>
-            <div class="">
+            <div className="">
              
                <img
                 height={480}
@@ -70,16 +70,16 @@ function RestReg() {
               />
               
             </div>
-            {/* <span class="copyright">Photo by
+            {/* <span className="copyright">Photo by
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
         on
         <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
           </div>
-          <div class="formWrapper">
-            <div class="form">
+          <div className="formWrapper">
+            <div className="form">
               <h2>Restaurant member card</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="name"
@@ -89,7 +89,7 @@ function RestReg() {
                     onChange={changehandleSubmit}
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
@@ -99,7 +99,7 @@ function RestReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="city"
@@ -109,7 +109,7 @@ function RestReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="country"
@@ -119,7 +119,7 @@ function RestReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="contact"
@@ -133,12 +133,12 @@ function RestReg() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
              
 
                   <select
                     id="dropdown"
-                    class="col-sm-4"
+                    className="col-sm-4"
                     name="type"
                     value={register.type}
                     onChange={changehandleSubmit}
@@ -152,7 +152,7 @@ function RestReg() {
                   </select>
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     name="password"
@@ -162,7 +162,7 @@ function RestReg() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                     <input
                       type="file"
                       name="image"
@@ -171,7 +171,7 @@ function RestReg() {
                       required
                     />
                   </div>
-                {/* <div class="inputWrapper">
+                {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>

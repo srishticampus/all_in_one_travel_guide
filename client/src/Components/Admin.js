@@ -32,33 +32,33 @@ function Admin() {
     <div>
       <div>
         <body id="signup">
-          <main class="container1">
-            <div class="back"></div>
-            <div class="brand" style={{ backgroundColor: "#93e18f" }}>
-              <div class="logo" style={{ marginTop: "7rem" }}>
+          <main className="container1">
+            <div className="back"></div>
+            <div className="brand" style={{ backgroundColor: "#93e18f" }}>
+              <div className="logo" style={{ marginTop: "7rem" }}>
                 <img
                   height="64"
                   src="https://i.imgur.com/E3uTxXY.png"
                   alt="Panda Logo"
                 />
                 <h1>
-                  <span class="name">
+                  <span className="name">
                     <h1>HI WELCOME TO...</h1>
                   </span>
                   ADMIN PANEL
                 </h1>
               </div>
-              {/* <span class="copyright">Photo by
+              {/* <span className="copyright">Photo by
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
         on
         <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
             </div>
 
-            <div class="formWrapper">
-              <div class="form">
+            <div className="formWrapper">
+              <div className="form">
                 <h2>ADMIN LOGIN</h2>
                 <form onSubmit={submitt}>
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="text"
                       name="name"
@@ -69,7 +69,7 @@ function Admin() {
                     />
                   </div>
 
-                  <div class="inputWrapper">
+                  <div className="inputWrapper">
                     <input
                       type="password"
                       name="password"
@@ -79,7 +79,7 @@ function Admin() {
                       placeholder="Password"
                     />
                   </div>
-                  {/* <div class="inputWrapper">
+                  {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>

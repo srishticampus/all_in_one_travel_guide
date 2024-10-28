@@ -85,7 +85,7 @@ function Adminpack() {
         </button> */}
 
 <div style={{ padding: "80px 80px" }}>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Agency Name</th>
@@ -104,7 +104,7 @@ function Adminpack() {
                     <td>{a.email}</td>
                     <td>{a.regNo}</td>
                     <td>{a.city}</td>
-                    <td><button class='btn btn-success' style={{marginRight:'2px'}} onClick={()=>{handleApprovAgency(a._id)}} >Approve </button><button class='btn btn-danger' onClick={()=>{handleRemoveAgency(a._id)}} >Remove </button></td>
+                    <td><button className='btn btn-success' style={{marginRight:'2px'}} onClick={()=>{handleApprovAgency(a._id)}} >Approve </button><button className='btn btn-danger' onClick={()=>{handleRemoveAgency(a._id)}} >Remove </button></td>
                   </tr>
                 );
               })

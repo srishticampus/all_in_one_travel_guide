@@ -28,72 +28,72 @@ function TaxiViewProfile() {
     <div>
       <TaxiNav />
       <div>
-        <section class="">
-          <div class="container3 py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col col-lg-6 mb-4 mb-lg-0">
-                <div class="card mb-3" style={{ borderRadius: ".5rem;" }}>
-                  <div class="row g-0">
-                    <div class="col-md-12">
-                      <div class="card-body p-4">
+        <section className="">
+          <div className="container3 py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col col-lg-6 mb-4 mb-lg-0">
+                <div className="card mb-3" style={{ borderRadius: ".5rem;" }}>
+                  <div className="row g-0">
+                    <div className="col-md-12">
+                      <div className="card-body p-4">
                         <h2>{gset.driverName}</h2>
 
-                        <hr class="mt-0 mb-4" />
-                        <div class="row pt-1">
-                          <div class="col-6 mb-3">
+                        <hr className="mt-0 mb-4" />
+                        <div className="row pt-1">
+                          <div className="col-6 mb-3">
                             <h6>Email:</h6>
-                            <p class="text-muted">{gset.email}</p>
+                            <p className="text-muted">{gset.email}</p>
                           </div>
-                          <div class="col-6 mb-3">
+                          <div className="col-6 mb-3">
                             <h6>Contact:</h6>
-                            <p class="text-muted">{gset.contact}</p>
+                            <p className="text-muted">{gset.contact}</p>
                           </div>
                         </div>
                         {/* <h6>Projects</h6> */}
-                        <hr class="mt-0 mb-4" />
-                        <div class="row pt-1">
-                          {/* <div class="col-6 mb-3">
+                        <hr className="mt-0 mb-4" />
+                        <div className="row pt-1">
+                          {/* <div className="col-6 mb-3">
                           <h6>Password:</h6>
-                          <p class="text-muted">{gset.password}</p>
+                          <p className="text-muted">{gset.password}</p>
                         </div> */}
 
-                          <div class="col-6 mb-3">
+                          <div className="col-6 mb-3">
                             <h6>RegNo:</h6>
-                            <p class="text-muted">{gset.regNo}</p>
+                            <p className="text-muted">{gset.regNo}</p>
                           </div>
-                          <div class="col-6 mb-3">
+                          <div className="col-6 mb-3">
                             <h6>Brand:</h6>
-                            <p class="text-muted">{gset.brand}</p>
+                            <p className="text-muted">{gset.brand}</p>
                           </div>
-                          <hr class="mt-0 mb-4" />
-                          <div class="col-6 mb-3">
+                          <hr className="mt-0 mb-4" />
+                          <div className="col-6 mb-3">
                             <h6>Model:</h6>
-                            <p class="text-muted">
+                            <p className="text-muted">
                               {gset.model}({gset.ac})
                             </p>
                           </div>
-                          <div class="col-6 mb-3">
+                          <div className="col-6 mb-3">
                             <h6>Seat Capacity:</h6>
-                            <p class="text-muted">{gset.sc}</p>
+                            <p className="text-muted">{gset.sc}</p>
                           </div>
-                          <div class="col-6 mb-3"></div>
-                          <hr class="mt-0 mb-4" />
+                          <div className="col-6 mb-3"></div>
+                          <hr className="mt-0 mb-4" />
                         </div>
-                        {/* <div class="d-flex justify-content-start">
+                        {/* <div className="d-flex justify-content-start">
                         <a href="#!">
-                          <i class="fab fa-facebook-f fa-lg me-3"></i>
+                          <i className="fab fa-facebook-f fa-lg me-3"></i>
                         </a>
                         <a href="#!">
-                          <i class="fab fa-twitter fa-lg me-3"></i>
+                          <i className="fab fa-twitter fa-lg me-3"></i>
                         </a>
                         <a href="#!">
-                          <i class="fab fa-instagram fa-lg"></i>
+                          <i className="fab fa-instagram fa-lg"></i>
                         </a>
                       </div> */}
                         <Link to="/taxi_edit_prof">
                           <button
                             type="submit"
-                            class="btn btn-success h-23 w-50 py-2 "
+                            className="btn btn-success h-23 w-50 py-2 "
                           >
                             Edit
                           </button>
@@ -101,7 +101,7 @@ function TaxiViewProfile() {
                         <Link to="/">
                           <button
                             type="submit"
-                            class="btn btn-danger h-23 w-50 py-2"
+                            className="btn btn-danger h-23 w-50 py-2"
                             onClick={() => {
                               localStorage.clear();
                               window.location.reload(false);

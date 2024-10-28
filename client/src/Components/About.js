@@ -6,31 +6,31 @@ import Navbar from "./LandingNavbar/LandingNavbar";
 function About() {
   return (
     <div>
-      <div class="container-xxl py-5">
-        <div class="container">
-          <div class="row g-5">
+      <div className="container-xxl py-5">
+        <div className="container">
+          <div className="row g-5">
             <div
-              class="col-lg-6 wow fadeInUp"
+              className="col-lg-6 wow fadeInUp"
               data-wow-delay="0.1s"
               style={{ minHeight: "400px;" }}
             >
-              <div class="position-relative h-100">
+              <div className="position-relative h-100">
                 <img
-                  class="img-fluid position-absolute w-100 h-100"
+                  className="img-fluid position-absolute w-100 h-100"
                   src={pic3}
                   alt=""
                   style={{ objectFit: "cover;" }}
                 />
               </div>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-              <h6 class="section-title bg-white text-start text-primary pe-3">
+            <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+              <h6 className="section-title bg-white text-start text-primary pe-3">
                 About Us
               </h6>
-              <h1 class="mb-4">
-                Welcome to <span class="text-primary">Tourist Guide</span>
+              <h1 className="mb-4">
+                Welcome to <span className="text-primary">Tourist Guide</span>
               </h1>
-              <p class="mb-4">
+              <p className="mb-4">
                 Welcome to our comprehensive tourism management system! Our
                 platform offers a seamless and user-centric experience, designed
                 to cater to all your travel needs. With dedicated modules for
@@ -51,50 +51,50 @@ function About() {
                 owner, or an enthusiastic traveler, our platform is here to
                 simplify and enhance every aspect of your journey.
               </p>
-              {/* <p class="mb-4">
+              {/* <p className="mb-4">
                 Joy Travels is a member of prestigious trade bodies like Kashmir
                 tour and travel association and Just Dial and approved by
                 Department of Tourism, Government of Jammu and Kashmir.
               </p> */}
-              {/* <div class="row gy-2 gx-4 mb-4">
-                <div class="col-sm-6">
-                  <p class="mb-0">
-                    <i class="fa fa-arrow-right text-primary me-2"></i>First
+              {/* <div className="row gy-2 gx-4 mb-4">
+                <div className="col-sm-6">
+                  <p className="mb-0">
+                    <i className="fa fa-arrow-right text-primary me-2"></i>First
                     Class Flights
                   </p>
                 </div>
-                <div class="col-sm-6">
-                  <p class="mb-0">
-                    <i class="fa fa-arrow-right text-primary me-2"></i>
+                <div className="col-sm-6">
+                  <p className="mb-0">
+                    <i className="fa fa-arrow-right text-primary me-2"></i>
                     Handpicked Hotels
                   </p>
                 </div>
-                <div class="col-sm-6">
-                  <p class="mb-0">
-                    <i class="fa fa-arrow-right text-primary me-2"></i>5 Star
+                <div className="col-sm-6">
+                  <p className="mb-0">
+                    <i className="fa fa-arrow-right text-primary me-2"></i>5 Star
                     Accommodations
                   </p>
                 </div>
-                <div class="col-sm-6">
-                  <p class="mb-0">
-                    <i class="fa fa-arrow-right text-primary me-2"></i>Latest
+                <div className="col-sm-6">
+                  <p className="mb-0">
+                    <i className="fa fa-arrow-right text-primary me-2"></i>Latest
                     Model Vehicles
                   </p>
                 </div>
-                <div class="col-sm-6">
-                  <p class="mb-0">
-                    <i class="fa fa-arrow-right text-primary me-2"></i>150
+                <div className="col-sm-6">
+                  <p className="mb-0">
+                    <i className="fa fa-arrow-right text-primary me-2"></i>150
                     Premium City Tours
                   </p>
                 </div>
-                <div class="col-sm-6">
-                  <p class="mb-0">
-                    <i class="fa fa-arrow-right text-primary me-2"></i>24/7
+                <div className="col-sm-6">
+                  <p className="mb-0">
+                    <i className="fa fa-arrow-right text-primary me-2"></i>24/7
                     Service
                   </p>
                 </div>
               </div> */}
-              {/* <a class="btn btn-primary py-3 px-5 mt-2" href="">
+              {/* <a className="btn btn-primary py-3 px-5 mt-2" href="">
                 Read More
               </a> */}
             </div>

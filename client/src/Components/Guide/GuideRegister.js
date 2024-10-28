@@ -49,29 +49,29 @@ function Register() {
     <div>
       <Navbar />
       <body id="signup">
-        <main class="container1">
-          <div class="back"></div>
-          <div class="brand">
+        <main className="container1">
+          <div className="back"></div>
+          <div className="brand">
             <h1>
-              <span class="name">
+              <span className="name">
                 <span>Jobs fill your pockets, adventures </span>
                 <span> </span>
               </span>
               fill your soul.
             </h1>
-            <div class="">
+            <div className="">
               <img height={380} src={gif3} alt="Panda Logo" />
             </div>
-            {/* <span class="copyright">Photo by
+            {/* <span className="copyright">Photo by
     <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
     on
     <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
           </div>
-          <div class="formWrapper">
-            <div class="form">
+          <div className="formWrapper">
+            <div className="form">
               <h2>New member card</h2>
               <form onSubmit={submitt}>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="Name"
@@ -81,7 +81,7 @@ function Register() {
                     placeholder="Name"
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
@@ -91,7 +91,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="city"
@@ -101,7 +101,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="country"
@@ -111,7 +111,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="contact"
@@ -124,7 +124,7 @@ function Register() {
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="pincode"
@@ -138,7 +138,7 @@ function Register() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="num"
                     name="regNo"
@@ -149,7 +149,7 @@ function Register() {
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     name="password"
@@ -159,7 +159,7 @@ function Register() {
                     required
                   />
                 </div>
-                {/* <div class="inputWrapper">
+                {/* <div className="inputWrapper">
             <input type="password" name="c_password"  value={register.cpassword}
                   onChange={changehandleSubmit} required />
             <label for="c_password">Confirm Password</label>

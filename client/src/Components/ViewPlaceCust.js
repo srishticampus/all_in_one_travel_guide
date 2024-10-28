@@ -74,25 +74,25 @@ function ViewPlaceCust({ baseurl }) {
       <CustNav />
       <div>
         <div
-          class="container-fluid booking pb-5 wow fadeIn"
+          className="container-fluid booking pb-5 wow fadeIn"
           data-wow-delay="0.1s"
         >
-          <div class="container mt-5">
-            <div class="bg-white shadow" style={{ padding: "35px" }}>
+          <div className="container mt-5">
+            <div className="bg-white shadow" style={{ padding: "35px" }}>
               <form style={{ display: "block" }}>
-                <div class="row g-2">
-                  <div class="col-md-12">
-                    <div class="row g-2">
-                      <div class="col-md-4">
+                <div className="row g-2">
+                  <div className="col-md-12">
+                    <div className="row g-2">
+                      <div className="col-md-4">
                         <div
-                          class="date"
+                          className="date"
                           id="date1"
                           data-target-input="nearest"
                         >
                           <label>District</label>
                           <input
                             type="text"
-                            class="form-control datetimepicker-input"
+                            className="form-control datetimepicker-input"
                             data-target="#date1"
                             data-toggle="datetimepicker"
                             onChange={(e) => {
@@ -104,16 +104,16 @@ function ViewPlaceCust({ baseurl }) {
                           />
                         </div>
                       </div>
-                      <div class="col-md-4">
+                      <div className="col-md-4">
                         <div
-                          class="date"
+                          className="date"
                           id="date2"
                           data-target-input="nearest"
                         >
                           <label>City</label>
                           <input
                             type="text"
-                            class="form-control datetimepicker-input"
+                            className="form-control datetimepicker-input"
                             data-target="#date2"
                             data-toggle="datetimepicker"
                             onChange={(e) => {
@@ -126,11 +126,11 @@ function ViewPlaceCust({ baseurl }) {
                         </div>
                       </div>
 
-                      <div class="col-md-4">
+                      <div className="col-md-4">
                         <label>Location</label>
                         <input
                           type="text"
-                          class="form-control datetimepicker-input"
+                          className="form-control datetimepicker-input"
                           data-target="#date1"
                           data-toggle="datetimepicker"
                           onChange={(e) => {
@@ -140,9 +140,9 @@ function ViewPlaceCust({ baseurl }) {
                       </div>
                     </div>
                   </div>
-                  {/* <div class="col-md-2" style={{ marginTop: "2rem" }}>
+                  {/* <div className="col-md-2" style={{ marginTop: "2rem" }}>
                     <Link to={`/customer_view_searchedplaces/${JSON.stringify({details})}`} >
-                    <button type="button" class="btn btn-primary w-100">
+                    <button type="button" className="btn btn-primary w-100">
                         Submit
                       </button>
                     </Link>
@@ -156,37 +156,37 @@ function ViewPlaceCust({ baseurl }) {
       </div>
 
       <div style={{ minHeight: "300px", margin: "15px 0px" }}>
-        <div class="container text-center">
-          <div class="row">
+        <div className="container text-center">
+          <div className="row">
             {place.length ? (
               place.map((a) => {
                 return (
-                  <div class="col-3" style={{ margin: "10px 0px" }}>
+                  <div className="col-3" style={{ margin: "10px 0px" }}>
                     <div
-                      class="card"
+                      className="card"
                       style={{ width: "300px", margin: "auto" }}
                     >
                       <img
                         src={`${baseurl}/${a.image.originalname}`}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt={a.image.filename}
                         height="240px"
                         style={{ objectFit: "cover" }}
                       />
-                      <div class="card-body">
+                      <div className="card-body">
                         <h3>{a.loc}</h3>
-                        <h6 class="card-title">
+                        <h6 className="card-title">
                           City:{a.city}
                           <br />
                           {a.district}
                         </h6>
-                        <p class="card-text" style={{ color: "black" }}>
+                        <p className="card-text" style={{ color: "black" }}>
                           Distance : {a.distance}km
                         </p>
-                        <p class="card-text" style={{ color: "black" }}>
+                        <p className="card-text" style={{ color: "black" }}>
                           TravelMode : {a.travelmode}
                         </p>
-                        <p class="card-text" style={{ color: "black" }}>
+                        <p className="card-text" style={{ color: "black" }}>
                           Location Type:{a.locType}{" "}
                         </p>
                       </div>
@@ -194,7 +194,7 @@ function ViewPlaceCust({ baseurl }) {
                         <Link
                           to={`/customer_view_place_location/${a.lat}/${a.lon}`}
                         >
-                          <button class="btn btn-success mb-3">
+                          <button className="btn btn-success mb-3">
                             View Location
                           </button>
                         </Link>

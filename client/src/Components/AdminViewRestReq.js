@@ -67,56 +67,56 @@ function AdminViewRestReq() {
     <div>
       <AdminNav />
       {/* <div className="productdiv1" style={{ minHeight: "400px" }}>
-        <div class="container-xxl py-5">
-          <div class="container">
-            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div className="container-xxl py-5">
+          <div className="container">
+            <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
               Welcome to Admin
             </h1>
             <div
-              class="tab-class text-center wow fadeInUp"
+              className="tab-className text-center wow fadeInUp"
               data-wow-delay="0.3s"
             >
-              <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5"></ul>
+              <ul className="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5"></ul>
 
               {hoteldata.length ? (
                 hoteldata.map((a) => {
                   return (
-                    <div class="container">
-                      <div class="row">
+                    <div className="container">
+                      <div className="row">
                         <hr />
-                        <div class="col">
+                        <div className="col">
                           <span
-                            class="text-truncate me-3"
+                            className="text-truncate me-3"
                             style={{ fontSize: "1.3rem" }}
                           >
-                            <i class="fa fa-map-marker-alt text-primary me-2"></i>
+                            <i className="fa fa-map-marker-alt text-primary me-2"></i>
                             Hotel Name: {a.name}
                           </span>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           <span
-                            class="text-truncate me-3"
+                            className="text-truncate me-3"
                             style={{ fontSize: "1.3rem" }}
                           >
-                            <i class="fa fa-map-marker-alt text-primary me-2"></i>
+                            <i className="fa fa-map-marker-alt text-primary me-2"></i>
                             Email: {a.email}
                           </span>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           <span
-                            class="text-truncate me-3"
+                            className="text-truncate me-3"
                             style={{ fontSize: "1.3rem" }}
                           >
-                            <i class="far fa-clock text-primary me-2"></i>
+                            <i className="far fa-clock text-primary me-2"></i>
                             Contact: {a.contact}
                           </span>
                         </div>
-                        <div class="col">
+                        <div className="col">
                           <span
-                            class="text-truncate me-0"
+                            className="text-truncate me-0"
                             style={{ fontSize: "1.3rem" }}
                           >
-                            <i class="far fa-money-bill-alt text-primary me-2"></i>
+                            <i className="far fa-money-bill-alt text-primary me-2"></i>
                             Type:{a.type}
                           </span>
                         </div>
@@ -124,7 +124,7 @@ function AdminViewRestReq() {
                           <button
                             style={{ position: "relative", bottom: "5px",marginRight:'5px' }}
                             type="button"
-                            class="btn btn-success"
+                            className="btn btn-success"
                             onClick={() => handleHotelApp(a._id)}
                           >
                             Approve
@@ -132,7 +132,7 @@ function AdminViewRestReq() {
                           <button
                             style={{ position: "relative", bottom: "5px" }}
                             type="button"
-                            class="btn btn-danger"
+                            className="btn btn-danger"
                             onClick={() => reject(a._id)}
                           >
                             Reject
@@ -143,14 +143,14 @@ function AdminViewRestReq() {
                   );
                 })
               ) : (
-                <div class="job-item p-4 mb-4">
-                  <div class="row g-4">
-                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                      <div class="text-start ps-4">
-                        <h5 class="mb-3"> No Restaurants to approve</h5>
+                <div className="job-item p-4 mb-4">
+                  <div className="row g-4">
+                    <div className="col-sm-12 col-md-8 d-flex align-items-center">
+                      <div className="text-start ps-4">
+                        <h5 className="mb-3"> No Restaurants to approve</h5>
                       </div>
                     </div>
-                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                    <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                     </div>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ function AdminViewRestReq() {
         </div>
       </div> */}
       <div style={{ padding: "80px 40px" }}>
-        <table class="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -185,7 +185,7 @@ function AdminViewRestReq() {
                     <td>{a.country}</td>
                     <td>
                       <button
-                        class="btn btn-success"
+                        className="btn btn-success"
                         style={{marginRight:'5px'}}
                         onClick={() => {
                           handleHotelApp(a._id);
@@ -194,7 +194,7 @@ function AdminViewRestReq() {
                         Accept
                       </button>
                       <button
-                        class="btn btn-danger"
+                        className="btn btn-danger"
                         onClick={() => {
                           reject(a._id);
                         }}
