@@ -1,7 +1,7 @@
 import React from "react";
 import pic3 from "../img/pic3.webp";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Navbar from "./LandingNavbar/LandingNavbar";
 
 function About() {
   return (
@@ -31,7 +31,25 @@ function About() {
                 Welcome to <span class="text-primary">Tourist Guide</span>
               </h1>
               <p class="mb-4">
-              Welcome to our comprehensive tourism management system! Our platform offers a seamless and user-centric experience, designed to cater to all your travel needs. With dedicated modules for administrators, users, restaurants, and hotels, we've created a one-stop solution to enhance your travel journey. For administrators, managing tourism details, food options, hotels, routes, bookings, and transport information has never been easier. Users can explore, register, and access a wealth of information including restaurant and hotel details, route options, accommodation booking, and even discover nearby tourist attractions. With the ability to leave reviews, access previous travelers' feedback, and plan your own itinerary, you're in control of your travel experience. Restaurants and hotels also have their dedicated spaces to effortlessly register, login, and update their offerings, ensuring that the information provided to users is always up-to-date. Join us in revolutionizing the way you travel - whether you're an administrator, a business owner, or an enthusiastic traveler, our platform is here to simplify and enhance every aspect of your journey.
+                Welcome to our comprehensive tourism management system! Our
+                platform offers a seamless and user-centric experience, designed
+                to cater to all your travel needs. With dedicated modules for
+                administrators, users, restaurants, and hotels, we've created a
+                one-stop solution to enhance your travel journey. For
+                administrators, managing tourism details, food options, hotels,
+                routes, bookings, and transport information has never been
+                easier. Users can explore, register, and access a wealth of
+                information including restaurant and hotel details, route
+                options, accommodation booking, and even discover nearby tourist
+                attractions. With the ability to leave reviews, access previous
+                travelers' feedback, and plan your own itinerary, you're in
+                control of your travel experience. Restaurants and hotels also
+                have their dedicated spaces to effortlessly register, login, and
+                update their offerings, ensuring that the information provided
+                to users is always up-to-date. Join us in revolutionizing the
+                way you travel - whether you're an administrator, a business
+                owner, or an enthusiastic traveler, our platform is here to
+                simplify and enhance every aspect of your journey.
               </p>
               {/* <p class="mb-4">
                 Joy Travels is a member of prestigious trade bodies like Kashmir

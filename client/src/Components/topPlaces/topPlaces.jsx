@@ -192,8 +192,10 @@ export const TopPlaces = () => {
     ],
   };
   const data = regions[activeRegion];
-  console.log("act reg", activeRegion);
-  const renderingImages = data.map((item, index) => {
+  console.log("act reg =>> ", regions[activeRegion]);
+  console.log("act place =>> ", activeRegion);
+  console.log("act data =>> ", regions[activeRegion]);
+  const renderingImages = regions[activeRegion].map((item, index) => {
     if (index === 0) return;
     return (
       <div className="col-md-4 col-6" key={index}>
@@ -254,7 +256,7 @@ export const TopPlaces = () => {
       <div className="row g-3 mt-3">
         <div className="col-lg-5 col-md-12 col-sm-12">
           <div className="img-container">
-            <img src={data[0]?.image} alt="tourst-place" className="w-100" />
+            <img src={data[0].image} alt="tourst-place" className="w-100" />
             <b>{data[0]?.place}</b>
           </div>
         </div>

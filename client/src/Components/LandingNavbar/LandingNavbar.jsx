@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img9 from "../img/logo.jpg";
+import img9 from "../../img/logo.jpg";
 
-function Navbar() {
+function LandingNavbar() {
   return (
     <div>
       <div className="container-fluid bg-dark px-9 d-none d-lg-block">
@@ -110,4 +110,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default LandingNavbar;

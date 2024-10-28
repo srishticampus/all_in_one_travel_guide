@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "./LandingNavbar/LandingNavbar";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "./BaseUrl";
 import gif2 from "../img/restaurant.gif";

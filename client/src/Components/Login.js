@@ -3,7 +3,7 @@ import axiosInstance from "./BaseUrl";
 import { Link, useNavigate } from "react-router-dom";
 import gif2 from "../img/restaurant.gif";
 import gif1 from "../img/custlog.jpeg";
-import Navbar from "./Navbar";
+import Navbar from "./LandingNavbar/LandingNavbar";
 import Footer from "./Footer";
 
 function Login() {

@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../BaseUrl";
 import GuideNav from "./GuideNav";
-import Navbar from "../Navbar";
-import gif3 from "../../img/Agency.gif"
+import Navbar from "../LandingNavbar/LandingNavbar";
+import gif3 from "../../img/Agency.gif";
 
 function Register() {
   const [register, setRegister] = useState({
@@ -43,38 +43,30 @@ function Register() {
       .catch((error) => {
         console.log("error", error);
         alert("Register Failed");
-
       });
   };
   return (
     <div>
-        <Navbar/>
+      <Navbar />
       <body id="signup">
         <main class="container1">
           <div class="back"></div>
-          <div class="brand" >
-          
-          <h1>
-            <span class="name">
-              <span>Jobs fill your pockets, adventures </span>
-              <span> </span>
-            </span>
-            fill your soul.
-          </h1>
-        <div class="">
-         
-           <img
-            height={380}
-            src={gif3}
-            alt="Panda Logo"
-          />
-          
-        </div>
-        {/* <span class="copyright">Photo by
+          <div class="brand">
+            <h1>
+              <span class="name">
+                <span>Jobs fill your pockets, adventures </span>
+                <span> </span>
+              </span>
+              fill your soul.
+            </h1>
+            <div class="">
+              <img height={380} src={gif3} alt="Panda Logo" />
+            </div>
+            {/* <span class="copyright">Photo by
     <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer">Filip Zrnzević</a>
     on
     <a href="https://unsplash.com/photos/QsWG0kjPQRY" target="_blank" title="Background Photo">Unsplash</a></span> */}
-      </div>
+          </div>
           <div class="formWrapper">
             <div class="form">
               <h2>New member card</h2>
@@ -125,9 +117,9 @@ function Register() {
                     name="contact"
                     value={register.contact}
                     onChange={changehandleSubmit}
-                    min='0000000000'
-                    max='9999999999'
-                    style={{width:'210px'}}
+                    min="0000000000"
+                    max="9999999999"
+                    style={{ width: "210px" }}
                     placeholder="Phone Number"
                     required
                   />
@@ -138,13 +130,12 @@ function Register() {
                     name="pincode"
                     value={register.pincode}
                     onChange={changehandleSubmit}
-                    min='000000'
-                    max='999999'
-                    style={{width:'210px'}}
+                    min="000000"
+                    max="999999"
+                    style={{ width: "210px" }}
                     placeholder="Pincode"
                     required
                   />
-
                 </div>
 
                 <div class="inputWrapper">
@@ -178,7 +169,7 @@ function Register() {
                   name="register"
                   id="register"
                   value="REGISTER"
-                  style={{height:'60px',marginLeft:'15px'}}
+                  style={{ height: "60px", marginLeft: "15px" }}
                 />
               </form>
 

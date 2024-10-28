@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const connectDB = require("./db/DBConnection");
 const app = express();
 const cors = require("cors");
-const PORT = 3000;
+const PORT = 8000;
 const { touristRoutes } = require("./tourist/tourist.routes");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,56 +1,44 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "./BaseUrl";
 import gif from "../../../img/custlog.jpeg";
+import Navbar from "../../LandingNavbar/LandingNavbar";
 
 export default function TouristSignup() {
-  const [register, setRegister] = useState({
+  const [touristData, setTouristData] = useState({
     name: "",
-    contact: "",
     email: "",
-    idtype: "",
-    idnumb: "",
-    password: "",
-    city: "",
     country: "",
     gender: "",
+    password: "",
+    confirmPassword: "",
+    idType: "",
+    idPhoto: {},
+    touristPhoto: {},
   });
-  const changehandleSubmit = (a) => {
-    setRegister({ ...register, [a.target.name]: a.target.value });
+  const handleChanges = (e) => {
+    setTouristData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
-  useEffect(() => {
-    console.log(register);
-  });
-  const navigate = useNavigate();
-  const submitt = (b) => {
-    b.preventDefault();
-    console.log(register);
-    axiosInstance
-      .post("/registerUser", register)
-      .then((result) => {
-        console.log("data entered", result);
-        if (result.status == 200) {
-          alert("Register Sucessfully");
-          navigate("/Login");
-        } else {
-          alert("Register Failed");
-        }
-      })
-      .catch((error) => {
-        console.log("error", error);
-        alert("Register Failed");
-      });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
   };
+  console.log(" => td ", touristData);
   return (
     <div>
       <Navbar />
-      <div class="container mt-5">
-        <main class="container row" style={{ boxShadow: " 0 10px 1rem #0004" }}>
-          {/* <div class="back"></div> */}
-          <div class="brand col-6">
+      <div className="container mt-5">
+        <main
+          className="container row"
+          style={{ boxShadow: " 0 10px 1rem #0004" }}
+        >
+          {/* <div className="back"></div> */}
+          <div className="brand col-6">
             <h1>
-              <span class="name">
+              <span className="name">
                 <span>ADVENTURE</span>
                 <span> </span>
               </span>
@@ -64,123 +52,118 @@ export default function TouristSignup() {
               alt="Panda Logo"
             />
           </div>
-          <div class="formWrapper col-6" style={{ backgroundColor: "white" }}>
-            <div class="form">
+          <div
+            className="formWrapper col-6"
+            style={{ backgroundColor: "white" }}
+          >
+            <div className="form">
               <h2>New member card</h2>
-              <form onSubmit={submitt}>
-                <div class="inputWrapper">
+              <form onSubmit={handleSubmit}>
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder="Full Name"
                     required
-                    value={register.name}
-                    onChange={changehandleSubmit}
+                    value={touristData.name}
+                    onChange={handleChanges}
                   />
                   {/* <label>Name</label> */}
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="email"
                     name="email"
                     placeholder="E-mail"
-                    value={register.email}
-                    onChange={changehandleSubmit}
+                    value={touristData.email}
+                    onChange={handleChanges}
                     required
                   />
                   {/* <label>Email</label> */}
                 </div>
-                <div class="inputWrapper">
-                  <input
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                    value={register.city}
-                    onChange={changehandleSubmit}
-                    required
-                  />
-                </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="country"
-                    placeholder="Country"
-                    value={register.country}
-                    onChange={changehandleSubmit}
+                    placeholder="Country of residence"
+                    value={touristData.country}
+                    onChange={handleChanges}
                     required
+                    minLength="10"
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="number"
                     name="contact"
                     placeholder="Contact"
-                    value={register.contact}
-                    onChange={changehandleSubmit}
+                    value={touristData.contact}
+                    onChange={handleChanges}
                     min="0000000000"
                     max="9999999999"
                     style={{ width: "210px" }}
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
-                    name="idtype"
+                    name="idType"
                     placeholder="ID Type"
-                    value={register.idtype}
-                    onChange={changehandleSubmit}
+                    value={touristData.idType}
+                    onChange={handleChanges}
                     required
                   />
                 </div>
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <select
                     id="dropdown"
-                    class="col-sm-4"
+                    className="col-sm-4"
                     name="gender"
-                    value={register.gender}
-                    onChange={changehandleSubmit}
+                    value={touristData.gender}
+                    onChange={handleChanges}
                     style={{ border: "1px solid grey" }}
                   >
                     <option>Select Gender</option>
                     <option value="Male"> Male </option>
                     <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="text"
                     name="idnumb"
                     placeholder="ID Number"
-                    value={register.idnumb}
-                    onChange={changehandleSubmit}
+                    value={touristData.idnumb}
+                    onChange={handleChanges}
                     required
                   />
                 </div>
 
-                <div class="inputWrapper">
+                <div className="inputWrapper">
                   <input
                     type="password"
                     placeholder="Password"
                     name="password"
-                    value={register.password}
-                    onChange={changehandleSubmit}
+                    value={touristData.password}
+                    onChange={handleChanges}
                     required
                   />
                   {/* <label for="password">Password</label> */}
                 </div>
-                {/* <div class="inputWrapper">
-            <input type="password" name="c_password"  value={register.cpassword}
-                  onChange={changehandleSubmit} required />
+                {/* <div className="inputWrapper">
+            <input type="password" name="c_password"  value={touristData.cpassword}
+                  onChange={handleChanges} required />
             <label for="c_password">Confirm Password</label>
           </div> */}
                 <input
                   type="submit"
-                  name="register"
-                  id="register"
+                  name="touristData"
+                  id="touristData"
                   value="REGISTER"
-                  class="btn btn-dark"
+                  className="btn btn-dark"
                   style={{ height: "60px" }}
                 />
               </form>

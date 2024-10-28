@@ -1,6 +1,6 @@
 import React from "react";
 import About from "./About";
-import Navbar from "./Navbar";
+import Navbar from "./LandingNavbar/LandingNavbar";
 import Footer from "./Footer";
 import { TopPlaces } from "./topPlaces/topPlaces";
 

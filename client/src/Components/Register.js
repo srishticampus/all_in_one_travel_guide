@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "./BaseUrl";
 import gif from "../img/custlog.jpeg";
-import Navbar from "./Navbar";
+import Navbar from "./LandingNavbar/LandingNavbar";
 
 function Register() {
   const [register, setRegister] = useState({
@@ -21,9 +21,7 @@ function Register() {
   const changehandleSubmit = (a) => {
     setRegister({ ...register, [a.target.name]: a.target.value });
   };
-  useEffect(() => {
-    console.log(register);
-  });
+
   const navigate = useNavigate();
   const submitt = (b) => {
     b.preventDefault();
