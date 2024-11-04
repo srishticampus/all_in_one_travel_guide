@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
-
+import axiosInstance from "../../../apis/axiosInstance";
 import "./TouristSignup.css";
 
 export default function TouristSignup() {
@@ -26,8 +26,56 @@ export default function TouristSignup() {
     setConfirmPasswordShown(!confirmPasswordShown);
 
   const onSubmit = (data) => {
-    console.log("data => .", data);
+    
+    const {
+      name,
+      email,
+      password,
+      phoneNumber,
+      idType,
+      idNumber,
+      gender,
+      country,
+      touristPhoto,
+      idPhoto,
+      confirmPassword,
+    } = data;
+
+    if (
+      // !name ||
+      // !email ||
+      // !password ||
+      // !phoneNumber ||
+      // !idType ||
+      // !idNumber ||
+      // !gender ||
+      // !country ||
+      // !touristPhoto ||
+      // !idPhoto ||
+      !confirmPassword || 
+      password !== confirmPassword
+    ) {
+      console.log("missing", data);
+      return;
+    }
+
+    sendDataToServer(data)
+    
   };
+  const sendDataToServer = async (data) => {
+    try {
+      const res = await axiosInstance.post("/tourist/signup", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (res.status === 201) {
+        alert("Tourist Registration Successful");
+      }
+    } catch (error) {
+      console.error("Error on tourist registration: ", error);
+    }
+  }
   console.log(watch());
   return (
     <div>
