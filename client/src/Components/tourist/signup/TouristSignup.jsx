@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import gif from "../../../img/custlog.jpeg";
 import Navbar from "../../LandingNavbar/LandingNavbar";
 import Footer from "../../Footer";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
+
 import "./TouristSignup.css";
 
 export default function TouristSignup() {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+  const togglePassword = () => setPasswordShown(!passwordShown);
+
+  const toggleConfirmPassword = () =>
+    setConfirmPasswordShown(!confirmPasswordShown);
 
   const onSubmit = (data) => {
     console.log("data => .", data);
@@ -139,38 +149,49 @@ export default function TouristSignup() {
                     </p>
                   </div>
 
-                  <div className="inputWrapper">
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      name="password"
-                      {...register("password", {
-                        required: "Password is required",
-                        minLength: {
-                          value: 8,
-                          message: "Min. 8 characters required.",
-                        },
-                      })}
-                    />
+                  <div className="inputWrapper password-box">
+                    <div className="password-box">
+                      <input
+                        type={`${passwordShown ? "text" : "password"}`}
+                        placeholder="Password"
+                        name="password"
+                        {...register("password", {
+                          required: "Password is required",
+                          minLength: {
+                            value: 8,
+                            message: "Min. 8 characters required.",
+                          },
+                        })}
+                      />
+                      <i onClick={togglePassword}>
+                        {passwordShown ? <FaEyeSlash /> : <FaEye />}
+                      </i>
+                    </div>
                     <p className="text-danger">
                       <ErrorMessage errors={errors} name="password" />
                     </p>
                   </div>
 
                   <div className="inputWrapper">
-                    <input
-                      type="password"
-                      placeholder="Confirm Password"
-                      name="confirmPassword"
-                      {...register("confirmPassword", {
-                        required: "Confirm password is required.",
-                        validate: (value) => {
-                          if (watch("password") !== value) {
-                            return "Your passwords do not match.";
-                          }
-                        },
-                      })}
-                    />
+                    <div className="password-box">
+                      <input
+                        type={`${confirmPasswordShown ? "text" : "password"}`}
+                        placeholder="Confirm Password"
+                        name="confirmPassword"
+                        {...register("confirmPassword", {
+                          required: "Confirm password is required.",
+                          validate: (value) => {
+                            if (watch("password") !== value) {
+                              return "Your passwords do not match.";
+                            }
+                          },
+                        })}
+                      />
+                      <i onClick={toggleConfirmPassword}>
+                        {confirmPasswordShown ? <FaEyeSlash /> : <FaEye />}
+                      </i>
+                    </div>
+
                     <p className="text-danger">
                       <ErrorMessage errors={errors} name="confirmPassword" />
                     </p>
@@ -224,6 +245,7 @@ export default function TouristSignup() {
                         required: "ID photo is required",
                       })}
                       type="file"
+                      accept="image/*"
                       name="idPhoto"
                       style={{ width: "100%" }}
                     />
@@ -244,6 +266,7 @@ export default function TouristSignup() {
                       type="file"
                       name="touristPhoto"
                       style={{ width: "100%" }}
+                      accept="image/*"
                     />
                     <p>Upload Your Photo</p>
                     <p className="text-danger">
@@ -257,7 +280,7 @@ export default function TouristSignup() {
                     type="submit"
                     name="touristData"
                     id="touristData"
-                    value="Sign UP"
+                    value="Sign Up"
                     className="btn btn-dark"
                     style={{ height: "60px", width: "13rem" }}
                   />
