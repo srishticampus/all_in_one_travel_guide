@@ -1,20 +1,24 @@
 import React from "react";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import gif from "../../../img/custlog.jpeg";
 import Navbar from "../../LandingNavbar/LandingNavbar";
 import Footer from "../../Footer";
 import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+import "./TouristSignup.css";
+
 export default function TouristSignup() {
   const {
     register,
     handleSubmit,
     watch,
+    formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log("data => .", data);
   };
+  console.log(watch());
   return (
     <div>
       <Navbar />
@@ -47,78 +51,222 @@ export default function TouristSignup() {
             <div className="form">
               <h2>New member card</h2>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="inputWrapper">
-                  <input
-                    type="text"
-                    name="name"
-                    {...register("name", { required: true })}
-                    placeholder="Full Name"
-                  />
-                  {/* <label>Name</label> */}
-                </div>
-                <div className="inputWrapper">
-                  <input type="email" name="email" placeholder="E-mail" />
-                  {/* <label>Email</label> */}
-                </div>
-                <div className="inputWrapper">
-                  <input
-                    type="text"
-                    name="country"
-                    placeholder="Country of residence"
-                    minLength="10"
-                  />
-                </div>
-                <div className="inputWrapper">
-                  <input
-                    type="number"
-                    name="contact"
-                    placeholder="Contact"
-                    style={{ width: "210px" }}
-                  />
-                </div>
-                <div className="inputWrapper">
-                  <input type="text" name="idType" placeholder="ID Type" />
-                </div>
-                <div className="inputWrapper">
-                  <select
-                    id="dropdown"
-                    className="col-sm-4"
-                    name="gender"
-                    style={{ border: "1px solid grey" }}
-                  >
-                    <option>Select Gender</option>
-                    <option value="Male"> Male </option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                  </select>
+                <div id="tourist-signup-form">
+                  <div className="inputWrapper">
+                    <input
+                      type="text"
+                      name="name"
+                      {...register("name", {
+                        required: "Full name is required.",
+
+                        minLength: {
+                          value: 2,
+                          message: "Min. 2 characters required.",
+                        },
+                        pattern: {
+                          value: /^[a-zA-Z\s]*$/,
+                          message: "Only letters are allowed",
+                        },
+                        maxLength: {
+                          value: 30,
+                          message: "Max. 30 characters allowed.",
+                        },
+                      })}
+                      placeholder="Full Name"
+                    />
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="name" />
+                    </p>
+                  </div>
+                  <div className="inputWrapper">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="E-mail"
+                      {...register("email", {
+                        required: "Email is required.",
+
+                        pattern: {
+                          value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                          message: "Email format is incorrect.",
+                        },
+                      })}
+                    />
+
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="email" />
+                    </p>
+                  </div>
+                  <div className="inputWrapper">
+                    <input
+                      type="text"
+                      name="country"
+                      placeholder="Country of residence"
+                      {...register("country", {
+                        required: "Country is required.",
+
+                        pattern: {
+                          value: /^[a-zA-Z\s]*$/,
+                          message: "Only letters are allowed",
+                        },
+                        maxLength: {
+                          value: 30,
+                          message: "Max. 30 characters allowed.",
+                        },
+                      })}
+                    />
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="country" />
+                    </p>
+                  </div>
+
+                  <div className="inputWrapper">
+                    <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      name="phoneNumber"
+                      {...register("phoneNumber", {
+                        required: "Phone Number is required.",
+                        pattern: {
+                          value: /^\d{10}$/,
+                          message: "Invalid phone number",
+                        },
+                      })}
+                    />
+
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="phoneNumber" />
+                    </p>
+                  </div>
+
+                  <div className="inputWrapper">
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      {...register("password", {
+                        required: "Password is required",
+                        minLength: {
+                          value: 8,
+                          message: "Min. 8 characters required.",
+                        },
+                      })}
+                    />
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="password" />
+                    </p>
+                  </div>
+
+                  <div className="inputWrapper">
+                    <input
+                      type="password"
+                      placeholder="Confirm Password"
+                      name="confirmPassword"
+                      {...register("confirmPassword", {
+                        required: "Confirm password is required.",
+                        validate: (value) => {
+                          if (watch("password") !== value) {
+                            return "Your passwords do not match.";
+                          }
+                        },
+                      })}
+                    />
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="confirmPassword" />
+                    </p>
+                  </div>
+
+                  <div className="inputWrapper">
+                    <select
+                      name="gender"
+                      {...register("gender", {
+                        required: "Plese select your gender",
+                      })}
+                      style={{ border: "1px solid grey" }}
+                    >
+                      <option value="">Select Gender</option>
+                      <option value="Male"> Male </option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="gender" />
+                    </p>
+                  </div>
+
+                  <div className="inputWrapper">
+                    <select
+                      name="idType"
+                      id="id-type"
+                      {...register("idType", {
+                        required: "Choose verification ID",
+                      })}
+                      style={{ border: "1px solid grey" }}
+                    >
+                      <option value="">Select verification ID</option>
+                      <option value="Passport">Passport</option>
+                      <option value="Aadhaar Card">Aadhar</option>
+                      <option value="Voter ID">Voter ID</option>
+                      <option value="Driving License">Driving License</option>
+                      <option value="PAN Card">PAN Card</option>
+                    </select>
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="idType" />
+                    </p>
+                  </div>
+                  {/* <div className="d-flex align-items-center ">
+                  <label htmlFor="idPhoto">Upload your ID Photo: </label>
+                </div> */}
+                  <div className="inputWrapper">
+                    <input
+                      className="mx-auto"
+                      {...register("idPhoto", {
+                        required: "ID photo is required",
+                      })}
+                      type="file"
+                      name="idPhoto"
+                      style={{ width: "100%" }}
+                    />
+                    <p>Upload ID Photo</p>
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="idPhoto" />
+                    </p>
+                  </div>
+                  {/* <div className="d-flex align-items-center ">
+                  <label htmlFor="idPhoto">Upload your photo: </label>
+                </div> */}
+                  <div className="inputWrapper">
+                    <input
+                      className="mx-auto"
+                      {...register("touristPhoto", {
+                        required: "Your Photo is required",
+                      })}
+                      type="file"
+                      name="touristPhoto"
+                      style={{ width: "100%" }}
+                    />
+                    <p>Upload Your Photo</p>
+                    <p className="text-danger">
+                      <ErrorMessage errors={errors} name="touristPhoto" />
+                    </p>
+                  </div>
                 </div>
 
-                <div className="inputWrapper">
-                  <input type="text" name="idnumb" placeholder="ID Number" />
-                </div>
-
-                <div className="inputWrapper">
+                <div className="d-flex justify-content-center w-100 mt-5">
                   <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
+                    type="submit"
+                    name="touristData"
+                    id="touristData"
+                    value="Sign UP"
+                    className="btn btn-dark"
+                    style={{ height: "60px", width: "13rem" }}
                   />
-                  {/* <label for="password">Password</label> */}
                 </div>
-
-                <input
-                  type="submit"
-                  name="touristData"
-                  id="touristData"
-                  value="REGISTER"
-                  className="btn btn-dark"
-                  style={{ height: "60px", width: "13rem" }}
-                />
               </form>
 
               <span id="login1" style={{ color: "black" }}>
                 Already have an account?{" "}
-                <Link to="/Login" title="Login" style={{ color: "darkblue" }}>
+                <Link to="/login" title="Login" style={{ color: "darkblue" }}>
                   Log in!
                 </Link>
               </span>

@@ -192,9 +192,6 @@ export const TopPlaces = () => {
     ],
   };
   const data = regions[activeRegion];
-  console.log("act reg =>> ", regions[activeRegion]);
-  console.log("act place =>> ", activeRegion);
-  console.log("act data =>> ", regions[activeRegion]);
   const renderingImages = regions[activeRegion].map((item, index) => {
     if (index === 0) return;
     return (
