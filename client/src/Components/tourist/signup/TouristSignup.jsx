@@ -8,12 +8,12 @@ import { ErrorMessage } from "@hookform/error-message";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import axiosInstance from "../../../apis/axiosInstance";
+import {useNavigate} from "react-router-dom";
 import "./TouristSignup.css";
-
 export default function TouristSignup() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -26,14 +26,12 @@ export default function TouristSignup() {
     setConfirmPasswordShown(!confirmPasswordShown);
 
   const onSubmit = (data) => {
-    
     const {
       name,
       email,
       password,
       phoneNumber,
       idType,
-      idNumber,
       gender,
       country,
       touristPhoto,
@@ -42,25 +40,34 @@ export default function TouristSignup() {
     } = data;
 
     if (
-      // !name ||
-      // !email ||
-      // !password ||
-      // !phoneNumber ||
-      // !idType ||
-      // !idNumber ||
-      // !gender ||
-      // !country ||
-      // !touristPhoto ||
-      // !idPhoto ||
-      !confirmPassword || 
+      !name ||
+      !email ||
+      !password ||
+      !phoneNumber ||
+      !idType ||
+      !gender ||
+      !country ||
+      !touristPhoto ||
+      !idPhoto ||
+      !confirmPassword ||
       password !== confirmPassword
     ) {
       console.log("missing", data);
       return;
     }
-
-    sendDataToServer(data)
-    
+    const serializedData = {
+      name,
+      email,
+      password,
+      phoneNumber,
+      idType,
+      gender,
+      country,
+      touristPhoto: touristPhoto[0],
+      idPhoto: idPhoto[0],
+    };
+    console.log("clear");
+    sendDataToServer(serializedData);
   };
   const sendDataToServer = async (data) => {
     try {
@@ -71,12 +78,13 @@ export default function TouristSignup() {
       });
       if (res.status === 201) {
         alert("Tourist Registration Successful");
+        navigate("/login");
       }
     } catch (error) {
+      alert("Something went wrong.");
       console.error("Error on tourist registration: ", error);
     }
-  }
-  console.log(watch());
+  };
   return (
     <div>
       <Navbar />
