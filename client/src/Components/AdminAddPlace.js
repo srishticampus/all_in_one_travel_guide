@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import axiosInstance from './BaseUrl';
 import AdminNav from './AdminNav';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../apis/axiosInstance';
 
 function AdminAddPlace() {
 

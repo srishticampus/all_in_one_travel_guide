@@ -93,15 +93,17 @@ import AdminViewUsers from "./Components/AdminViewUsers";
 import { TopPlaces } from "./Components/topPlaces/topPlaces";
 import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
+import {Toaster} from 'react-hot-toast'
 function App() {
   // const [baseurl,setbaseurl] = useState('http://hybrid.srishticampus.in:4017')
   const [baseurl, setbaseurl] = useState("http://localhost:4004");
   return (
-    <BrowserRouter basename="tourist_guide">
+    <BrowserRouter basename="travel_guide">
       <div className="App">
+        <Toaster />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/user/home" element={<Home />} />
+          <Route path="/tourist/home" element={<Home />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
           <Route path="/about" element={<LandingAboutPage />} />
           <Route path="/login" element={<Login />} />

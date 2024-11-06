@@ -66,7 +66,6 @@ export default function TouristSignup() {
       touristPhoto: touristPhoto[0],
       idPhoto: idPhoto[0],
     };
-    console.log("clear");
     sendDataToServer(serializedData);
   };
   const sendDataToServer = async (data) => {

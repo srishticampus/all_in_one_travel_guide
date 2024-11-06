@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
-import CustNav from '../CustProf/CustNav'
-import { useNavigate, useParams } from 'react-router-dom';
-import axiosInstance from './BaseUrl';
+import React, { useState } from "react";
+import CustNav from "../CustProf/CustNav";
+import { useNavigate, useParams } from "react-router-dom";
+import axiosInstance from "../apis/axiosInstance";
 
 function CustomerBookTaxi() {
-
-    const { id } = useParams();
-    const cid=localStorage.getItem("userlogid")
-    const navigate=useNavigate();
+  const { id } = useParams();
+  const cid = localStorage.getItem("userlogid");
+  const navigate = useNavigate();
 
   const [register, setRegister] = useState({
     custid: cid,
-    date:'',
+    date: "",
     time: "",
     from: "",
     to: "",
@@ -31,7 +30,7 @@ function CustomerBookTaxi() {
         console.log("data entered", result);
         if (result.data.status == 200) {
           alert("Book Successfully...");
-          navigate('/cust_view_booking')
+          navigate("/cust_view_booking");
         } else {
           alert("Failed to Book");
         }
@@ -43,7 +42,7 @@ function CustomerBookTaxi() {
 
   return (
     <div>
-      <CustNav/>
+      <CustNav />
       <div>
         <body id="signup">
           <main className="container1">
@@ -84,7 +83,7 @@ function CustomerBookTaxi() {
                     onChange={changehandleSubmit}
                     required
                     className="form-control"
-                    min={new Date().toISOString().split('T')[0]}
+                    min={new Date().toISOString().split("T")[0]}
                     id="exampleFormControlInput1"
                   />
 
@@ -106,9 +105,8 @@ function CustomerBookTaxi() {
                   <input
                     type="text"
                     style={{ width: "100%" }}
-                    name='from'
+                    name="from"
                     onChange={changehandleSubmit}
-
                     required
                   />
                   <label for="exampleFormControlInput1" className="form-label">
@@ -117,13 +115,11 @@ function CustomerBookTaxi() {
                   <input
                     type="text"
                     onChange={changehandleSubmit}
-
                     style={{ width: "100%" }}
-                    name='to'
+                    name="to"
                     required
                   />
-                  
-                 
+
                   <button type="submit" className="btn btn-danger">
                     Booking
                   </button>
@@ -134,7 +130,7 @@ function CustomerBookTaxi() {
         </body>
       </div>
     </div>
-  )
+  );
 }
 
-export default CustomerBookTaxi
+export default CustomerBookTaxi;

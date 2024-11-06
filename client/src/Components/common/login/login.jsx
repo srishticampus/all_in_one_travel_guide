@@ -7,17 +7,35 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import styles from "./login.module.css";
+import axiosInstance from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const {
     register,
     formState: { errors },
     watch,
-    handleSubit,
+    handleSubmit,
   } = useForm();
 
-  const handleSubmit = (credentials) => {
-    console.log("cred", credentials);
+  const onSubmit = (credentials) => {
+    const {email, password} = credentials;
+    if (!email || !password) {
+        return;
+    }
+    sendDataToServer()
   };
+  const navigate = useNavigate()
+
+  const sendDataToServer = async (data) => {
+    try {
+        const res = await axiosInstance.post('/auth/login', data);
+        if (res.status === 200) {
+            navigate('/tourist/home')   
+        }
+    } catch (error) {
+        console.log("error on login", error)
+    }
+  }
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => setPasswordShown(!passwordShown);
 
@@ -40,13 +58,14 @@ function Login() {
 
           <div className="formWrapper col-6">
             <div className="form">
-              <h2>Login</h2>
+              {/* <h3 className="text-center">Log In</h3> */}
+              <h2>Log in to Travel Guide</h2>
               <form
                 className="px-5 d-flex flex-column justify-content-between"
                 style={{
-                  height: "200px",
+                  height: "210px",
                 }}
-                onSubmit={handleSubmit(handleSubmit)}
+                onSubmit={handleSubmit(onSubmit)}
               >
                 <div className="inputWrapper">
                   <input
@@ -81,11 +100,11 @@ function Login() {
                     </i>
                   </div>
                   <p className="text-danger">
-                    <ErrorMessage errors={errors} name="email" />
+                    <ErrorMessage errors={errors} name="password" />
                   </p>
                 </div>
 
-                <input type="submit" className={`${styles.loginBtn} p-0`} />
+                <input type="submit" value="Log In" className={`${styles.loginBtn} p-0`} />
               </form>
             </div>
           </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "./BaseUrl";
+
 import CustNav from "../CustProf/CustNav";
+import axiosInstance from "../apis/axiosInstance";
 
 function AddBooking() {
   const { aid } = useParams();

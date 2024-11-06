@@ -1,63 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import CustNav from '../CustProf/CustNav'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import axiosInstance from './BaseUrl';
+import React, { useEffect, useState } from "react";
+import CustNav from "../CustProf/CustNav";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axiosInstance from "../apis/axiosInstance";
 
-function CustViewSearchedPlaces({baseurl}) {
-    
-    const {details}=useParams();
-    const [place, setplace] = useState([]);
+function CustViewSearchedPlaces({ baseurl }) {
+  const { details } = useParams();
+  const [place, setplace] = useState([]);
 
-
-    const fulldetails = JSON.parse(details);
+  const fulldetails = JSON.parse(details);
   const navigate = useNavigate();
   console.log(fulldetails);
 
-  useEffect(()=>{
-
+  useEffect(() => {
     console.log(fulldetails.details.loc);
 
-    if(fulldetails.details.loc){
-        axiosInstance
-      .post(`/searchTouristPlaceByLoc`,{loc:fulldetails.details.loc})
-      .then((res) => {
-        console.log(res);
-        setplace(res.data.data)
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    if (fulldetails.details.loc) {
+      axiosInstance
+        .post(`/searchTouristPlaceByLoc`, { loc: fulldetails.details.loc })
+        .then((res) => {
+          console.log(res);
+          setplace(res.data.data);
+        })
+        .catch((res) => {
+          console.log(res);
+        });
     }
-    if(fulldetails.details.city&&fulldetails.details.district){
-        axiosInstance
-      .post(`/searchTouristPlaceByDistrictAndCity`,{city:fulldetails.details.city,district:fulldetails.details.district})
-      .then((res) => {
-        console.log(res);
-        setplace(res.data.data)
-
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    if (fulldetails.details.city && fulldetails.details.district) {
+      axiosInstance
+        .post(`/searchTouristPlaceByDistrictAndCity`, {
+          city: fulldetails.details.city,
+          district: fulldetails.details.district,
+        })
+        .then((res) => {
+          console.log(res);
+          setplace(res.data.data);
+        })
+        .catch((res) => {
+          console.log(res);
+        });
     }
-    if(fulldetails.details.district){
-        axiosInstance
-      .post(`/searchTouristPlaceByDistrict`,{district:fulldetails.details.district})
-      .then((res) => {
-        console.log(res);
-        setplace(res.data.data)
-
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    if (fulldetails.details.district) {
+      axiosInstance
+        .post(`/searchTouristPlaceByDistrict`, {
+          district: fulldetails.details.district,
+        })
+        .then((res) => {
+          console.log(res);
+          setplace(res.data.data);
+        })
+        .catch((res) => {
+          console.log(res);
+        });
     }
-
-  },[])
+  }, []);
 
   return (
     <div>
-      <CustNav/>
+      <CustNav />
       <div style={{ minHeight: "300px", margin: "15px 0px" }}>
         <div className="container text-center">
           <div className="row">
@@ -89,8 +88,15 @@ function CustViewSearchedPlaces({baseurl}) {
                           Location Type:{a.locType}{" "}
                         </p>
                       </div>
-                      <div><Link to={`/customer_view_place_location/${a.lat}/${a.lon}`} ><button className='btn btn-success mb-3' >View Location</button></Link></div>
-
+                      <div>
+                        <Link
+                          to={`/customer_view_place_location/${a.lat}/${a.lon}`}
+                        >
+                          <button className="btn btn-success mb-3">
+                            View Location
+                          </button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 );
@@ -102,7 +108,7 @@ function CustViewSearchedPlaces({baseurl}) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CustViewSearchedPlaces
+export default CustViewSearchedPlaces;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CustNav from '../CustProf/CustNav';
-import axiosInstance from './BaseUrl';
-
+import axiosInstance from '../apis/axiosInstance';
 function AddPlace() {
     const custid = localStorage.getItem('userlogid');
     console.log(custid);

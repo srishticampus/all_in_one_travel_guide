@@ -12,7 +12,7 @@ function About() {
             <div
               className="col-lg-6 wow fadeInUp"
               data-wow-delay="0.1s"
-              style={{ minHeight: "400px;" }}
+              style={{ minHeight: "400px" }}
             >
               <div className="position-relative h-100">
                 <img

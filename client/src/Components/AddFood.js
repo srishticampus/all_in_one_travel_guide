@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "./BaseUrl";
 import RestNav from "./RestProf/RestNav";
+import axiosInstance from "../apis/axiosInstance";
 
 function AddFood() {
   const id = localStorage.getItem("restlogid");
