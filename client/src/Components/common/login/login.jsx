@@ -16,21 +16,20 @@ function Login() {
     watch,
     handleSubmit,
   } = useForm();
-
+  const navigate = useNavigate()
   const onSubmit = (credentials) => {
     const {email, password} = credentials;
     if (!email || !password) {
         return;
     }
-    sendDataToServer()
+    sendDataToServer(credentials)
   };
-  const navigate = useNavigate()
-
+  
   const sendDataToServer = async (data) => {
     try {
         const res = await axiosInstance.post('/auth/login', data);
         if (res.status === 200) {
-            navigate('/tourist/home')   
+            navigate('/tourist/home')
         }
     } catch (error) {
         console.log("error on login", error)

@@ -95,8 +95,7 @@ import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
 import {Toaster} from 'react-hot-toast'
 function App() {
-  // const [baseurl,setbaseurl] = useState('http://hybrid.srishticampus.in:4017')
-  const [baseurl, setbaseurl] = useState("http://localhost:4004");
+  const [baseurl, setbaseurl] = useState("http://localhost:4050");
   return (
     <BrowserRouter basename="travel_guide">
       <div className="App">

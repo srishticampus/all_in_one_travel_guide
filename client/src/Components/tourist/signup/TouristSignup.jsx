@@ -10,6 +10,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import axiosInstance from "../../../apis/axiosInstance";
 import {useNavigate} from "react-router-dom";
 import "./TouristSignup.css";
+import {toast} from "react-hot-toast";
 export default function TouristSignup() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
@@ -76,7 +77,7 @@ export default function TouristSignup() {
         },
       });
       if (res.status === 201) {
-        alert("Tourist Registration Successful");
+        toast.success("Registration successful");
         navigate("/login");
       }
     } catch (error) {
