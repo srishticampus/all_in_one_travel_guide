@@ -12,13 +12,15 @@ app.use(express.static(`${__dirname}/upload`));
 app.use(cors());
 const route = require("./routes");
 const { errorHandler } = require("./middleware/errorHandler");
+const { authRoutes } = require("./auth/auth.routes");
 app.get("/tourist_guide_api", (req, res) => {
   res.send(
     "Server running successfully on http://localhost:3000/tourist_guide_api"
   );
 });
 // app.use("/tourist_guide_api", route);
-app.use("/tourist_guide_api", touristRoutes);
+app.use("/tourist_guide_api/auth", authRoutes);
+app.use("/tourist_guide_api/tourist", touristRoutes);
 app.use(errorHandler);
 
 connectDB()

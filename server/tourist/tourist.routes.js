@@ -15,12 +15,11 @@ const { isEmailUnique } = require("../middleware/emailUnique");
 const touristRoutes = express.Router();
 
 touristRoutes.post(
-  "/tourist/signup",
+  "/signup",
   touristSignupUploads,
   isEmailUnique,
   touristSignup
 ); 
-touristRoutes.post("/tourist/login", touristLogin);
 touristRoutes.post("/viewUsers", viewUsers);
 touristRoutes.post("/editUserById/:id", editUserById);
 touristRoutes.post("/viewUserById/:id", vieUserById);

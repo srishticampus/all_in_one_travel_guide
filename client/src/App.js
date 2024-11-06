@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/home/Home";
 import Register from "./Components/Register";
 import Navbar from "./Components/LandingNavbar/LandingNavbar";
-import Login from "./Components/Login";
+import Login from "./Components/common/login/login";
 import Admin from "./Components/Admin";
 import Footer from "./Components/Footer";
 import About from "./Components/About";

@@ -4,7 +4,7 @@ import img9 from "../../img/logo.jpg";
 
 function LandingNavbar() {
   return (
-    <div>
+    <div >
       <div className="container-fluid bg-dark px-9 d-none d-lg-block">
         <div className="row gx-0">
           <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0"></div>

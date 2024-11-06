@@ -1,4 +1,12 @@
 const JWT_SECRET_KEY = "12341234";
+const USERS_TYPE = {
+  TOURIST: "TOURIST",
+  TAXI: "TAXI",
+  GUIDE: "GUIDE",
+  ADMIN: "ADMIN",
+  RESTAURANT: "RESTAURANT",
+};
 module.exports = {
   JWT_SECRET_KEY,
+  USERS_TYPE,
 };
