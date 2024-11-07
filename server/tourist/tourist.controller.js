@@ -53,6 +53,8 @@ const touristSignup = async (req, res, next) => {
     const idPhoto = req.files.idPhoto ? req.files.idPhoto[0].path : null;
     const { name, email, country, gender, password, phoneNumber, idType } =
       req.body;
+      
+      p
     const hashedPassword = await hashPassowrd(password);
     const tourist = new TouristModel({
       name,

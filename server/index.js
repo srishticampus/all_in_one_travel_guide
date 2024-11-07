@@ -20,6 +20,8 @@ app.get("/travel_guide_api", (req, res) => {
 });
 // app.use("/tourist_guide_api", route);
 app.use("/travel_guide_api/auth", authRoutes);
+
+
 app.use("/travel_guide_api/tourist", touristRoutes);
 app.use(errorHandler);
 

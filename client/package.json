@@ -2,7 +2,7 @@
   "name": "touristfrontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://hybrid.srishticampus.in/tourist_guide/",
+  "homepage": "http://hybrid.srishticampus.in/travel_guide/",
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
     "@testing-library/jest-dom": "^5.16.5",

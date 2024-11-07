@@ -81,7 +81,14 @@ export default function TouristSignup() {
         navigate("/login");
       }
     } catch (error) {
-      alert("Something went wrong.");
+      const statusCode = error?.response?.status;
+      if (statusCode === 400) {
+        const msg = error?.response?.data?.message || "Email already taken!";
+        toast.error(msg); 
+      }else {
+        const msg = error?.response?.data?.message || "Something went wrong."
+        toast.error(msg);
+      }
       console.error("Error on tourist registration: ", error);
     }
   };

@@ -13,7 +13,6 @@ const {
 const express = require("express");
 const { isEmailUnique } = require("../middleware/emailUnique");
 const touristRoutes = express.Router();
-
 touristRoutes.post(
   "/signup",
   touristSignupUploads,

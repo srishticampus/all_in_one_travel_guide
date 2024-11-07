@@ -1,5 +1,6 @@
 {
   "name": "allinonetravelguide",
+  "homepage": "http://hybrid.srishticampus.in/travel_guide/",
   "version": "1.0.0",
   "description": "all in one travel guide",
   "main": "index.js",
