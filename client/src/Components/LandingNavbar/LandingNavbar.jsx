@@ -47,15 +47,16 @@ function LandingNavbar() {
                   <Link to="/tourist/signup" className="dropdown-item">
                     Tourist
                   </Link>
+                  <Link to="/agency/signup" className="dropdown-item">
+                    Agency
+                  </Link>
                   <Link to="/RestReg" className="dropdown-item">
                     Restaurant
                   </Link>
                   {/* <Link to="/HotelReg" className="dropdown-item">
                     Hotel
                   </Link> */}
-                  <Link to="/GuideRegister" className="dropdown-item">
-                    Agency
-                  </Link>
+                  
                   <Link to="/taxi_register" className="dropdown-item">
                     Taxi
                   </Link>

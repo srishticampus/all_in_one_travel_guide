@@ -1,51 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import AdminNav from './AdminNav'
-import axiosInstance from './BaseUrl';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import AdminNav from "./AdminNav";
+import axiosInstance from "./BaseUrl";
+import { useNavigate } from "react-router-dom";
 
 function AdminViewRest() {
-  const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
-    const [data, sedata] = useState([]);
+  const navigate = useNavigate();
+
+  const [data, sedata] = useState([]);
 
   useEffect(() => {
     axiosInstance.post(`/viewRestaurants`).then((res) => {
       console.log(res);
-      if(res.data.data){
+      if (res.data.data) {
         sedata(res.data.data);
-
-      }else{
+      } else {
         sedata([]);
-
       }
     });
   }, []);
 
-  const handleRemove=(id)=>{
-    axiosInstance.post(`/deleteRestaurantById/${id}`)
-    .then((res)=>{
-        if(res.data.status==200){
-            alert('Removed')
-            window.location.reload()
-        }else{
-          alert('Failed')
+  const handleRemove = (id) => {
+    axiosInstance
+      .post(`/deleteRestaurantById/${id}`)
+      .then((res) => {
+        if (res.data.status == 200) {
+          alert("Removed");
+          window.location.reload();
+        } else {
+          alert("Failed");
         }
-    }
-    
-    )
-    .catch(()=>{
-      alert('Failed')
-
-    })
-  }
+      })
+      .catch(() => {
+        alert("Failed");
+      });
+  };
 
   return (
     <div>
-      <AdminNav/>
+      <AdminNav />
       <div style={{ padding: "80px 40px" }}>
         <table className="table table-bordered">
           <thead>
@@ -66,7 +58,16 @@ function AdminViewRest() {
                     <td>{a.email}</td>
                     <td>{a.type}</td>
                     <td>{a.city}</td>
-                    <td><button className='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Delete</button></td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          handleRemove(a._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 );
               })
@@ -77,7 +78,7 @@ function AdminViewRest() {
         </table>
       </div>
     </div>
-  )
+  );
 }
 
-export default AdminViewRest
+export default AdminViewRest;

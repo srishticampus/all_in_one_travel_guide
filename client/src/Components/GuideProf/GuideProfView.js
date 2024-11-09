@@ -8,11 +8,7 @@ import GuideProfNav from "./GuideProfNav";
 function GuideViewProf() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('guidelogid')==null){
-      navigate('/')
-    }
-  });
+
 
   const [gset, setgset] = useState({});
   useEffect(() => {

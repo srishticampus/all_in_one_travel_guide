@@ -15,9 +15,6 @@ function AddRoom() {
   const changehandleSubmit = (a) => {
     setRegister({ ...register, [a.target.name]: a.target.value });
   };
-  useEffect(() => {
-    console.log(register);
-  });
   const navigate = useNavigate();
   const submitt = (b) => {
     console.log("submitted");

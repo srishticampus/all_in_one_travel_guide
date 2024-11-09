@@ -6,11 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function TaxiViewProfile() {
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("taxiid") == null) {
-      navigate("/");
-    }
-  });
+  
   const [gset, setdata] = useState({});
   const id = localStorage.getItem("taxiid");
 

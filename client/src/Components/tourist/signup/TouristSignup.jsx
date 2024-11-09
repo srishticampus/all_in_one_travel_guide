@@ -131,7 +131,6 @@ export default function TouristSignup() {
                       name="name"
                       {...register("name", {
                         required: "Full name is required.",
-
                         minLength: {
                           value: 2,
                           message: "Min. 2 characters required.",

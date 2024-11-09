@@ -1,56 +1,49 @@
-import React, { useEffect, useState } from 'react'
-import AdminNav from './AdminNav'
-import axiosInstance from './BaseUrl';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import AdminNav from "./AdminNav";
+import axiosInstance from "./BaseUrl";
+import { useNavigate } from "react-router-dom";
 
 function AdminViewTaxi() {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
-
-    const[data,setData]=useState([])
-
-    useEffect(()=>{
-        axiosInstance
-        .post(`/viewTaxis`)
-        .then((res) => {
-          console.log(res, "view hotel");
-          if (res.data.data != undefined) {
-            setData(res.data.data);
-          } else {
-            setData([]);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },[])
-
-    const handleRemove=(id)=>{
-      axiosInstance.post(`/deleteTaxiById/${id}`)
-      .then((res)=>{
-          console.log(res);
-        if(res.data.status==200){
-          alert('Removed')
+    axiosInstance
+      .post(`/viewTaxis`)
+      .then((res) => {
+        console.log(res, "view hotel");
+        if (res.data.data != undefined) {
+          setData(res.data.data);
+        } else {
+          setData([]);
         }
-        if(res.data.status==400){
-          alert(res.data.msg)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
+  const handleRemove = (id) => {
+    axiosInstance
+      .post(`/deleteTaxiById/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status == 200) {
+          alert("Removed");
         }
-         
+        if (res.data.status == 400) {
+          alert(res.data.msg);
+        }
       })
-      .catch((err)=>{
-          console.log(err);
-      })
-    }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
-      <AdminNav/>
+      <AdminNav />
       <div style={{ padding: "80px 40px" }}>
         <table className="table table-bordered">
           <thead>
@@ -69,13 +62,26 @@ function AdminViewTaxi() {
               data.map((a) => {
                 return (
                   <tr>
-                    <th scope="row">{a.driverName}({a.contact})</th>
+                    <th scope="row">
+                      {a.driverName}({a.contact})
+                    </th>
                     <td>{a.email}</td>
                     <td>{a.regNo}</td>
                     <td>{a.brand}</td>
-                    <td>{a.model}({a.ac})</td>
+                    <td>
+                      {a.model}({a.ac})
+                    </td>
                     <td>{a.sc}</td>
-                    <td><button className='btn btn-danger' onClick={()=>{handleRemove(a._id)}} >Remove</button></td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          handleRemove(a._id);
+                        }}
+                      >
+                        Remove
+                      </button>
+                    </td>
                   </tr>
                 );
               })
@@ -86,7 +92,7 @@ function AdminViewTaxi() {
         </table>
       </div>
     </div>
-  )
+  );
 }
 
-export default AdminViewTaxi
+export default AdminViewTaxi;

@@ -6,11 +6,7 @@ import { useNavigate } from "react-router-dom";
 function AdminViewAgencies() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
+
 
   const [data, setData] = useState([]);
 

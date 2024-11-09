@@ -23,9 +23,6 @@ function AddPlace() {
           setRegister({ ...register, [a.target.name]: a.target.value });
         }
       };
-      useEffect(() => {
-        console.log(register);
-      });
       const submitt = (b) => {
         console.log("submitted",register);
     

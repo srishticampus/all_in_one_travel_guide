@@ -6,11 +6,7 @@ import AdminNav from "./AdminNav";
 function Adminpage() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
+  
   const [hoteldata, sethoteldata] = useState([]);
   const [apphoteldata, setapphoteldata] = useState([]);
 

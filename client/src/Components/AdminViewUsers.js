@@ -5,11 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function AdminViewUsers() {
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
+  
     const [data, sedata] = useState([]);
 
     useEffect(() => {

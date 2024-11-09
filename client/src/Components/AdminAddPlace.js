@@ -6,11 +6,7 @@ import axiosInstance from '../apis/axiosInstance';
 function AdminAddPlace() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
+  
 
     const [register, setRegister] = useState({
         district:'',

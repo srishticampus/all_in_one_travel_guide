@@ -6,11 +6,6 @@ import AdminNav from "./AdminNav";
 function Adminpack() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
 
   const [appagdata, setappagdata] = useState([]);
   const [dltag, setdltag] = useState([]);

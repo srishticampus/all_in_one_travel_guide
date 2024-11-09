@@ -6,7 +6,6 @@ import Home from '../home/Home'
 function RestHome() {
   return (
     <div>
-    <HotelNav/>
     <Home/>
     </div>
   )

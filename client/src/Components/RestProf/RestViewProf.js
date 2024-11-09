@@ -9,11 +9,7 @@ function ResttViewProf({ baseurl }) {
   const [rset, setrset] = useState({ image: {} });
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('restlogid')==null){
-      navigate('/')
-    }
-  });
+  
 
   useEffect(() => {
     // const storedUser = localStorage.getItem("users");

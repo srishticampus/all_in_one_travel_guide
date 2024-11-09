@@ -1,5 +1,5 @@
 import "./Asset/Style/Nav.css";
-import "./";
+import ".";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -47,7 +47,7 @@ import ViewSinglePack from "./Components/ViewSinglePack";
 import AdminPack from "./Components/AdminPack";
 import EditPackage from "./Components/Guide/EditPackage";
 import ViewGuidePack from "./Components/Guide/ViewGuidePack";
-import GuideRegister from "./Components/Guide/GuideRegister";
+import GuideRegister from "./Components/Guide/signup/GuideRegister";
 import GuideProfHome from "./Components/GuideProf/GuideProfHome";
 import GuideProfNav from "./Components/GuideProf/GuideProfNav";
 import GuideProfView from "./Components/GuideProf/GuideProfView";
@@ -93,28 +93,25 @@ import AdminViewUsers from "./Components/AdminViewUsers";
 import { TopPlaces } from "./Components/topPlaces/topPlaces";
 import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 function App() {
   const [baseurl, setbaseurl] = useState("http://localhost:4050");
   return (
     <BrowserRouter basename="travel_guide">
-      <div className="App">
+      <div className="App">   
         <Toaster />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/tourist/home" element={<Home />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
+
+          {/* GUIDE REGISTER  */}
+
+          <Route path="/agency/signup" element={<GuideRegister />} />
+
           <Route path="/about" element={<LandingAboutPage />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/RestLogin"
-            element={
-              <>
-                <Navbar />
-                <RestLogin />
-              </>
-            }
-          />
+
           <Route
             path="/RestReg"
             element={
@@ -124,15 +121,6 @@ function App() {
             }
           />
 
-          <Route
-            path="/HotelLogin"
-            element={
-              <>
-                <Navbar />
-                <HotelLogin />
-              </>
-            }
-          />
           <Route
             path="/HotelReg"
             element={
@@ -195,10 +183,7 @@ function App() {
             element={<ViewSingleHot baseurl={baseurl} />}
           />
           <Route path="/GuideNav" element={<GuideNav baseurl={baseurl} />} />
-          <Route
-            path="/GuideLogin"
-            element={<GuideLogin baseurl={baseurl} />}
-          />
+
           <Route
             path="/AddPackage"
             element={<AddPackage baseurl={baseurl} />}
@@ -224,10 +209,7 @@ function App() {
             path="/ViewGuidePack"
             element={<ViewGuidePack baseurl={baseurl} />}
           />
-          <Route
-            path="/GuideRegister"
-            element={<GuideRegister baseurl={baseurl} />}
-          />
+
           <Route
             path="/GuideProfHome"
             element={<GuideProfHome baseurl={baseurl} />}
@@ -267,7 +249,6 @@ function App() {
             path="/ViewTouristPlace/:id"
             element={<ViewTouristPlace baseurl={baseurl} />}
           />
-          <Route path="/taxi_login" element={<TaxiLogin baseurl={baseurl} />} />
           <Route
             path="/taxi_register"
             element={<TaxiReg baseurl={baseurl} />}

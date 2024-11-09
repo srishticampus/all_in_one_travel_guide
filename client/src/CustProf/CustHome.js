@@ -7,7 +7,6 @@ import Home from "../Components/home/Home";
 function CustHome() {
   return (
     <div>
-      <CustNav />
       <Home />
     </div>
   );

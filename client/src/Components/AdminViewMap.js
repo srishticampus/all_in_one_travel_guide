@@ -6,11 +6,7 @@ import NoMap from './NoMap';
 function AdminViewMap() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
+
 
     const { lat } = useParams();
   const { lon } = useParams();

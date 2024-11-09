@@ -6,11 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 function AdminFirst() {
 
   const navigate=useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('adminlog')==null){
-      navigate('/')
-    }
-  })
 
     const [data, sedata] = useState([]);
     const [rest, setrest] = useState([]);

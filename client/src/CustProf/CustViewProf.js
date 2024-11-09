@@ -8,11 +8,7 @@ function CustViewProf() {
   const [cust, setcust] = useState({});
 
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("userlogid") == null) {
-      navigate("/");
-    }
-  });
+  
   useEffect(() => {
     // const storedUser = localStorage.getItem("users");
     const id = localStorage.getItem("userlogid");
