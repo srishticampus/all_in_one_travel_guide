@@ -1,5 +1,4 @@
 import "./Asset/Style/Nav.css";
-import ".";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -94,6 +93,7 @@ import { TopPlaces } from "./Components/topPlaces/topPlaces";
 import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
 import { Toaster } from "react-hot-toast";
+import TouristHome from "./Components/tourist/home/TouristHome";
 function App() {
   const [baseurl, setbaseurl] = useState("http://localhost:4050");
   return (
@@ -102,7 +102,7 @@ function App() {
         <Toaster />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/tourist/home" element={<Home />} />
+          <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
 
           {/* GUIDE REGISTER  */}

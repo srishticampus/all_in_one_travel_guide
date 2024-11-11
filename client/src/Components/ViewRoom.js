@@ -6,19 +6,7 @@ import { Link } from "react-router-dom";
 function ViewRoom() {
   const [room, setroom] = useState([]);
   useEffect(() => {
-    axiosInstance
-      .post(`/viewRoomsByHotelId/${localStorage.getItem("hotellogid")}`)
-      .then((res) => {
-        console.log(res, "viewroom");
-        if (res.data.data) {
-          setroom(res.data.data);
-        } else {
-          setroom([]);
-        }
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    
   }, []);
   const handleDelete = (id) => {
     axiosInstance
