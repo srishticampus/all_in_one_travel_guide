@@ -8,8 +8,6 @@ import Register from "./Components/Register";
 import Navbar from "./Components/LandingNavbar/LandingNavbar";
 import Login from "./Components/common/login/login";
 import Admin from "./Components/Admin";
-import Footer from "./Components/Footer";
-import About from "./Components/About";
 import RestReg from "./Components/RestReg";
 import RestLogin from "./Components/RestLogin";
 import CustHome from "./CustProf/CustHome";
@@ -94,11 +92,12 @@ import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
 import { Toaster } from "react-hot-toast";
 import TouristHome from "./Components/tourist/home/TouristHome";
+import NotFound from "./Components/common/not-found/NotFound";
 function App() {
   const [baseurl, setbaseurl] = useState("http://localhost:4050");
   return (
     <BrowserRouter basename="travel_guide">
-      <div className="App">   
+      <div className="App">
         <Toaster />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -318,9 +317,7 @@ function App() {
           <Route path="/admin_edit_place/:id" element={<AdminEditPlace />} />
           <Route path="/admin_home" element={<AdminFirst />} />
           <Route path="/admin_users" element={<AdminViewUsers />} />
-
-          {/* testing components  */}
-          <Route path="/topPlaces" element={<TopPlaces />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
