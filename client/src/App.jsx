@@ -93,6 +93,7 @@ import TouristSignup from "./Components/tourist/signup/TouristSignup";
 import { Toaster } from "react-hot-toast";
 import TouristHome from "./Components/tourist/home/TouristHome";
 import NotFound from "./Components/common/not-found/NotFound";
+import ForgotPassword from "./Components/common/forgot-password/ForgotPassword";
 function App() {
   const [baseurl, setbaseurl] = useState("http://localhost:4050");
   return (
@@ -104,12 +105,13 @@ function App() {
           <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
 
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* GUIDE REGISTER  */}
 
           <Route path="/agency/signup" element={<GuideRegister />} />
 
           <Route path="/about" element={<LandingAboutPage />} />
-          <Route path="/login" element={<Login />} />
 
           <Route
             path="/RestReg"

@@ -6,35 +6,35 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
-import styles from "./login.module.css";
+import styles from "./ForgotPassword.module.scss";
 import axiosInstance from "../../../apis/axiosInstance";
-import { Link, useNavigate } from "react-router-dom";
-function Login() {
+import { useNavigate } from "react-router-dom";
+function ForgotPassword() {
   const {
     register,
     formState: { errors },
     watch,
     handleSubmit,
   } = useForm();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const onSubmit = (credentials) => {
-    const { email, password } = credentials;
+    const {email, password} = credentials;
     if (!email || !password) {
-      return;
+        return;
     }
-    sendDataToServer(credentials);
+    sendDataToServer(credentials)
   };
-
+  
   const sendDataToServer = async (data) => {
     try {
-      const res = await axiosInstance.post("/auth/login", data);
-      if (res.status === 200) {
-        navigate("/tourist/home");
-      }
+        const res = await axiosInstance.post('/auth/login', data);
+        if (res.status === 200) {
+            navigate('/tourist/home')
+        }
     } catch (error) {
-      console.log("error on login", error);
+        console.log("error on login", error)
     }
-  };
+  }
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => setPasswordShown(!passwordShown);
 
@@ -56,13 +56,13 @@ function Login() {
           </div>
 
           <div className="formWrapper col-6">
-            <div className="form">
+            <div className="forgot-form w-100">
               {/* <h3 className="text-center">Log In</h3> */}
-              <h2>Log in to Travel Guide</h2>
+              <h2 className="text-center mb-5">Forgot Password</h2>
               <form
                 className="px-5 d-flex flex-column justify-content-between"
                 style={{
-                  height: "250px",
+                  height: "300px",
                 }}
                 onSubmit={handleSubmit(onSubmit)}
               >
@@ -89,9 +89,9 @@ function Login() {
                     <input
                       type={`${passwordShown ? "text" : "password"}`}
                       name="password"
-                      placeholder="Password"
+                      placeholder="New Password"
                       {...register("password", {
-                        required: "Password is required",
+                        required: "New Password is required",
                       })}
                     />
                     <i onClick={togglePassword}>
@@ -103,17 +103,26 @@ function Login() {
                   </p>
                 </div>
 
-                <div className="d-flex justify-content-end w-100">
-                  <Link to="/forgot-password" className="m-0">
-                    Forgot Password?
-                  </Link>
-                </div>
 
-                <input
-                  type="submit"
-                  value="Log In"
-                  className={`${styles.loginBtn} p-0`}
-                />
+                <div className="inputWrapper">
+                  <div className="password-box">
+                    <input
+                      type={`${passwordShown ? "text" : "password"}`}
+                      name="confirm-password"
+                      placeholder="Confirm Password"
+                      {...register("confirm-password", {
+                        required: "Confirm Password is required",
+                      })}
+                    />
+                    <i onClick={togglePassword}>
+                      {passwordShown ? <FaEyeSlash /> : <FaEye />}
+                    </i>
+                  </div>
+                  <p className="text-danger">
+                    <ErrorMessage errors={errors} name="confirm-password" />
+                  </p>
+                </div>
+                <input type="submit" value="Submit" className={`${styles.loginBtn} p-0`} />
               </form>
             </div>
           </div>
@@ -124,4 +133,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgotPassword;

@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import CustNav from "./CustNav";
 import axiosInstance from "../Components/BaseUrl";
 import { Link, useNavigate } from "react-router-dom";
-import img1 from "../img/user-verification-symbol-for-interface.png";
 
 function CustViewProf() {
   const [cust, setcust] = useState({});
 
-  const navigate = useNavigate();
   
   useEffect(() => {
     // const storedUser = localStorage.getItem("users");
