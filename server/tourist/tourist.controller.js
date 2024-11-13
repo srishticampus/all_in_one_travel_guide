@@ -54,7 +54,6 @@ const touristSignup = async (req, res, next) => {
     const { name, email, country, gender, password, phoneNumber, idType } =
       req.body;
       
-      p
     const hashedPassword = await hashPassowrd(password);
     const tourist = new TouristModel({
       name,

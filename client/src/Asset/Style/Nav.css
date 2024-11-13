@@ -47,7 +47,7 @@
 
 .btn.btn-primary,
 .btn.btn-secondary {
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 .btn-square {
@@ -81,12 +81,9 @@
   font-family: "Nunito", sans-serif;
   position: relative;
   margin-right: 25px;
-  /* padding: 35px 0; */
-  /* color: #FFFFFF !important; */
   font-size: 18px;
   font-weight: 600;
   outline: none;
-  transition: 0.5s;
 }
 
 .sticky-top.navbar-light .navbar-nav .nav-link {
@@ -94,10 +91,6 @@
   color: var(--dark) !important;
 }
 
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link.active {
-  color: var(--primary) !important;
-}
 
 .navbar-light .navbar-brand img {
   max-height: 60px;
@@ -146,16 +139,16 @@
     background: #ffffff;
   }
 
-  .navbar-light .navbar-nav .nav-link::before {
+  /* .navbar-light .navbar-nav .nav-link::before {
     position: absolute;
     content: "";
     width: 0;
     height: 2px;
     bottom: -1px;
     left: 50%;
-    background: var(--primary);
     transition: 0.5s;
-  }
+  } */
+
 
   .navbar-light .navbar-nav .nav-link:hover::before,
   .navbar-light .navbar-nav .nav-link.active::before {
@@ -303,7 +296,7 @@
 
 .team-item .btn:hover {
   background: var(--primary);
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 /*** Testimonial ***/
@@ -510,15 +503,6 @@ body {
   box-shadow: 0 10px 1rem #0004;
 }
 
-.back {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: url("https://i.imgur.com/EulHW7S.jpeg") center / cover no-repeat;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
 
 .brand {
   width: 40%;
@@ -590,16 +574,16 @@ body {
   font-size: 13px;
   font-weight: 300;
   text-align: center;
-  color: #fffa;
+  /* color: #fffa; */
 }
 .brand .copyright a {
   -webkit-transition: color 0.2s ease;
   -o-transition: color 0.2s ease;
   transition: color 0.2s ease;
-  color: #fffa;
+  /* color: #fffa; */
 }
 .brand .copyright a:hover {
-  color: #fff;
+  /* color: #fff; */
 }
 
 .formWrapper {

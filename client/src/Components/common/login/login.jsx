@@ -9,6 +9,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import styles from "./login.module.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Link, useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
 function Login() {
   const {
     register,
@@ -32,6 +33,9 @@ function Login() {
         navigate("/tourist/home");
       }
     } catch (error) {
+      const status = error?.response?.status; 
+      const msg = error?.response?.data?.message || "Something went wrong."
+      toast.error(msg)
       console.log("error on login", error);
     }
   };

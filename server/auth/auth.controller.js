@@ -15,11 +15,10 @@ const login = async (req, res, next) => {
     const tourist = await TouristModel.findOne({ email });
     if (!tourist) {
       return res.status(404).json({
-        message: "Email id or password is incorrecta",
+        message: "Email id or password is incorrect",
       });
     }
-    const isPasswordCorrect = comparePassword(password, tourist.password);
-
+    const isPasswordCorrect = await comparePassword(password, tourist.password);
     if (!isPasswordCorrect) {
       return res.status(404).json({
         message: "Email id or password is incorrect",
@@ -55,7 +54,7 @@ const forgotPassword = async (req, res, next) => {
       });
     }
 
-    const isOldPasswordSame = comparePassword(password, tourist.password);
+    const isOldPasswordSame = await comparePassword(password, tourist.password);
     if (!isOldPasswordSame) {
       return res.status(400).json({ message: "You can't resue old password." });
     }
