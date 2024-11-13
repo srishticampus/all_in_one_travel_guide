@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import appLogo from "../../Asset/images/logo.jpg";
-
+import styles from "./LandingNavbar.module.scss";
 function LandingNavbar() {
   return (
-    <div>
+    <div id={styles.landingNavbar}>
       <div className="container-fluid bg-dark px-9 d-none d-lg-block">
         <div className="row gx-0">
           <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0"></div>
@@ -49,16 +49,6 @@ function LandingNavbar() {
                   </Link>
                   <Link to="/agency/signup" className="dropdown-item">
                     Agency
-                  </Link>
-                  <Link to="/RestReg" className="dropdown-item">
-                    Restaurant
-                  </Link>
-                  {/* <Link to="/HotelReg" className="dropdown-item">
-                    Hotel
-                  </Link> */}
-
-                  <Link to="/taxi_register" className="dropdown-item">
-                    Taxi
                   </Link>
                 </div>
               </div>

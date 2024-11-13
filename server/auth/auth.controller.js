@@ -1,7 +1,7 @@
 const { TouristModel } = require("../tourist/tourist.model");
 const { USERS_TYPE } = require("../config/constant");
 const { generateAccessToken } = require("../utils/handleToken");
-const { comparePassword } = require("../utils/hanldePasswordEnc");
+const { comparePassword, hashPassowrd } = require("../utils/hanldePasswordEnc");
 
 const login = async (req, res, next) => {
   try {
@@ -38,6 +38,37 @@ const login = async (req, res, next) => {
   }
 };
 
+const forgotPassword = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password are required",
+      });
+    }
+    //todo => add other users model type here. 
+    const tourist = await TouristModel.findOne({ email });
+    if (!tourist) {
+      return res.status(404).json({
+        message: "Email id is incorrect",
+      });
+    }
+
+    const isOldPasswordSame = comparePassword(password, tourist.password);
+    if (!isOldPasswordSame) {
+      return res.status(400).json({ message: "You can't resue old password." });
+    }
+    const myNewPassword = await hashPassowrd(password);
+    tourist.password = myNewPassword;
+
+    await tourist.save();
+    return res.status(200).json({ message: "Password changed successfully." });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   login,
+  forgotPassword,
 };

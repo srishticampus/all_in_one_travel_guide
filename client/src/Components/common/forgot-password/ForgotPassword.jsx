@@ -1,4 +1,4 @@
-import touristImg from "../../../Asset/images/tourist-login.png";
+import touristImg from "../../../Asset/images/fp.png";
 import Navbar from "../../LandingNavbar/LandingNavbar";
 import Footer from "../../Footer";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import styles from "./ForgotPassword.module.scss";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 function ForgotPassword() {
   const {
     register,
@@ -16,27 +17,39 @@ function ForgotPassword() {
     watch,
     handleSubmit,
   } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onSubmit = (credentials) => {
-    const {email, password} = credentials;
+    console.log('cred', credentials);
+
+    const { email, password } = credentials;
     if (!email || !password) {
-        return;
+      return;
     }
-    sendDataToServer(credentials)
+    // if ()
+    sendDataToServer(credentials);
   };
-  
+
   const sendDataToServer = async (data) => {
     try {
-        const res = await axiosInstance.post('/auth/login', data);
-        if (res.status === 200) {
-            navigate('/tourist/home')
-        }
+      const res = await axiosInstance.patch("/auth/forgot-password", data);
+      if (res.status === 200) {
+        toast.success("Password changed successfully.");
+        navigate("/login");
+      }
     } catch (error) {
-        console.log("error on login", error)
+      const status = error?.response?.status;
+      if (status === 400) {
+        toast.error("You can't use old password as new password");
+      }
+
+      console.log("error on login", error);
     }
-  }
+  };
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => setPasswordShown(!passwordShown);
+  const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
+  const toggleConfirmPassword = () =>
+    setConfirmPasswordShown(!confirmPasswordShown);
 
   return (
     <div>
@@ -92,6 +105,10 @@ function ForgotPassword() {
                       placeholder="New Password"
                       {...register("password", {
                         required: "New Password is required",
+                        minLength: {
+                          value: 8,
+                          message: "Min. 8 characters required.",
+                        },
                       })}
                     />
                     <i onClick={togglePassword}>
@@ -103,26 +120,35 @@ function ForgotPassword() {
                   </p>
                 </div>
 
-
                 <div className="inputWrapper">
                   <div className="password-box">
                     <input
-                      type={`${passwordShown ? "text" : "password"}`}
+                      type={`${confirmPasswordShown ? "text" : "password"}`}
                       name="confirm-password"
                       placeholder="Confirm Password"
-                      {...register("confirm-password", {
+                      {...register("confirmPassword", {
                         required: "Confirm Password is required",
+                        validate: (value) => {
+                          if (watch("password") !== value) {
+                            return "Your passwords do not match";
+                          }
+                        },
                       })}
                     />
-                    <i onClick={togglePassword}>
+                    <i onClick={toggleConfirmPassword}>
                       {passwordShown ? <FaEyeSlash /> : <FaEye />}
                     </i>
                   </div>
                   <p className="text-danger">
-                    <ErrorMessage errors={errors} name="confirm-password" />
+                    <ErrorMessage errors={errors} name="confirmPassword" />
                   </p>
                 </div>
-                <input type="submit" value="Submit" className={`${styles.loginBtn} p-0`} />
+                <input
+                  style={{ backgroundColor: "#08d5b7" }}
+                  type="submit"
+                  value="Submit"
+                  className={`${styles.loginBtn} p-0`}
+                />
               </form>
             </div>
           </div>
