@@ -44,7 +44,6 @@ import ViewSinglePack from "./Components/ViewSinglePack";
 import AdminPack from "./Components/AdminPack";
 import EditPackage from "./Components/Guide/EditPackage";
 import ViewGuidePack from "./Components/Guide/ViewGuidePack";
-import GuideRegister from "./Components/Guide/signup/GuideRegister";
 import GuideProfHome from "./Components/GuideProf/GuideProfHome";
 import GuideProfNav from "./Components/GuideProf/GuideProfNav";
 import GuideProfView from "./Components/GuideProf/GuideProfView";
@@ -94,6 +93,7 @@ import { Toaster } from "react-hot-toast";
 import TouristHome from "./Components/tourist/home/TouristHome";
 import NotFound from "./Components/common/not-found/NotFound";
 import ForgotPassword from "./Components/common/forgot-password/ForgotPassword";
+import AgencyRegister from "./Components/Guide/signup/AgencySignup";
 function App() {
   const [baseurl, setbaseurl] = useState("http://localhost:4050");
   return (
@@ -109,7 +109,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* GUIDE REGISTER  */}
 
-          <Route path="/agency/signup" element={<GuideRegister />} />
+          <Route path="/agency/signup" element={<AgencyRegister />} />
 
           <Route path="/about" element={<LandingAboutPage />} />
 
