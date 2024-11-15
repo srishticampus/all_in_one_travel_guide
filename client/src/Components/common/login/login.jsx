@@ -30,7 +30,13 @@ function Login() {
     try {
       const res = await axiosInstance.post("/auth/login", data);
       if (res.status === 200) {
-        navigate("/tourist/home");
+        console.log("rss", res);
+        const userType = res.data?.role || "TOURIST";
+        if (userType === "TOURIST") {
+          navigate("/tourist/home");
+        } else if (userType === "AGENCY") {
+          navigate("/agency/home");
+        }
       }
     } catch (error) {
       const status = error?.response?.status;
