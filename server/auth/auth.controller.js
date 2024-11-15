@@ -1,7 +1,7 @@
 const { TouristModel } = require("../tourist/tourist.model");
 const { USERS_TYPE } = require("../config/constant");
 const { generateAccessToken } = require("../utils/handleToken");
-const { comparePassword, hashPassowrd } = require("../utils/hanldePasswordEnc");
+const { comparePassword, hashPassword } = require("../utils/hanldePasswordEnc");
 const { AgencyModel } = require("../agency/agency.model");
 
 const login = async (req, res, next) => {
@@ -14,11 +14,6 @@ const login = async (req, res, next) => {
       });
     }
     const tourist = await TouristModel.findOne({ email });
-    // if (!tourist) {
-    //   return res.status(404).json({
-    //     message: "Email id or password is incorrect",
-    //   });
-    // }
 
     if (tourist) {
       const isPasswordCorrect = await comparePassword(
@@ -60,6 +55,11 @@ const login = async (req, res, next) => {
         .status(200)
         .json({ message: "Agency Login successfull", role: AGENCY, token });
     }
+
+    // no user matched so ending the resposne
+    return res.status(404).json({
+      message: "Email id or password is incorrect.",
+    });
   } catch (error) {
     next(error);
   }
@@ -76,21 +76,47 @@ const forgotPassword = async (req, res, next) => {
     }
     //todo => add other users model type here.
     const tourist = await TouristModel.findOne({ email });
-    if (!tourist) {
-      return res.status(404).json({
-        message: "Email id is incorrect",
-      });
+
+    if (tourist) {
+      const isOldPasswordSame = await comparePassword(
+        password,
+        tourist.password
+      );
+      if (isOldPasswordSame) {
+        return res
+          .status(400)
+          .json({ message: "You can't resue old password." });
+      }
+      const myNewPassword = await hashPassword(password);
+      tourist.password = myNewPassword;
+
+      await tourist.save();
+      return res
+        .status(200)
+        .json({ message: "Password changed successfully." });
     }
 
-    const isOldPasswordSame = await comparePassword(password, tourist.password);
-    if (!isOldPasswordSame) {
-      return res.status(400).json({ message: "You can't resue old password." });
-    }
-    const myNewPassword = await hashPassowrd(password);
-    tourist.password = myNewPassword;
+    const agency = await AgencyModel.findOne({ email });
+    if (agency) {
+      const isOldPasswordSame = await comparePassword(
+        password,
+        agency.password
+      );
+      if (isOldPasswordSame) {
+        return res
+          .status(400)
+          .json({ message: "You can't resue old password." });
+      }
+      const myNewPassword = await hashPassword(password);
+      agency.password = myNewPassword;
 
-    await tourist.save();
-    return res.status(200).json({ message: "Password changed successfully." });
+      await agency.save();
+      return res
+        .status(200)
+        .json({ message: "Password changed successfully." });
+    }
+
+    return res.status(404).json({ message: "Please check your email" });
   } catch (error) {
     next(error);
   }

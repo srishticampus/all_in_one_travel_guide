@@ -6,7 +6,7 @@ const taxiBooking = require("../Taxi/taxiBooking");
 const booking = require("../Guide/booking");
 const touristPlaces = require("../Admin/touristPlaces");
 const secret = "your-secret-key"; // Replace this with your own secret key
-const { hashPassowrd, comparePassword } = require("../utils/hanldePasswordEnc");
+const { hashPassword, comparePassword } = require("../utils/hanldePasswordEnc");
 
 const createToken = (user) => {
   return jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });
@@ -53,8 +53,8 @@ const touristSignup = async (req, res, next) => {
     const idPhoto = req.files.idPhoto ? req.files.idPhoto[0].path : null;
     const { name, email, country, gender, password, phoneNumber, idType } =
       req.body;
-      
-    const hashedPassword = await hashPassowrd(password);
+
+    const hashedPassword = await hashPassword(password);
     const tourist = new TouristModel({
       name,
       email,

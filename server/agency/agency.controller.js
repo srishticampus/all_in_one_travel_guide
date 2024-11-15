@@ -1,11 +1,11 @@
-const { hashPassowrd } = require("../utils/hanldePasswordEnc");
+const { hashPassword } = require("../utils/hanldePasswordEnc");
 const { AgencyModel } = require("./agency.model");
 
 const agencySignup = async (req, res, next) => {
   try {
     const { agencyName, agencyAddress, password, email, phoneNumber } =
       req.body;
-    const hashedPassword = await hashPassowrd(password);
+    const hashedPassword = await hashPassword(password);
     const agency = new AgencyModel({
       agencyAddress,
       agencyName,

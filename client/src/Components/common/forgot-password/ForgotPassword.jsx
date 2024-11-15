@@ -40,6 +40,9 @@ function ForgotPassword() {
       const status = error?.response?.status;
       if (status === 400) {
         toast.error("You can't use old password as new password");
+      }else if (status === 404) {
+        const msg = error?.response?.data?.message; 
+        toast.error(msg);
       }
 
       console.log("error on login", error);
