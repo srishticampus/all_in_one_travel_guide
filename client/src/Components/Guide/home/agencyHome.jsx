@@ -1,106 +1,21 @@
-import React from "react";
-import logoBlue from "../../../Asset/images/guide/logo.svg";
-import popular1 from "../../../Asset/images/guide/popular-1.jpg";
-import popular2 from "../../../Asset/images/guide/popular-2.jpg";
-import popular3 from "../../../Asset/images/guide/popular-3.jpg";
-import package1 from "../../../Asset/images/guide/packege-1.jpg";
-import package2 from "../../../Asset/images/guide/packege-2.jpg";
-import package3 from "../../../Asset/images/guide/packege-3.jpg";
-import gallery1 from "../../../Asset/images/guide/gallery-1.jpg";
-import gallery2 from "../../../Asset/images/guide/gallery-2.jpg";
-import gallery3 from "../../../Asset/images/guide/gallery-3.jpg";
-import gallery4 from "../../../Asset/images/guide/gallery-4.jpg";
-import gallery5 from "../../../Asset/images/guide/gallery-5.jpg";
-import heroBanner from "../../../Asset/images/guide/hero-banner.jpg";
-
+import logoBlue from "../../../Asset/images/agency/logo.svg";
+import popular1 from "../../../Asset/images/agency/popular-1.jpg";
+import popular2 from "../../../Asset/images/agency/popular-2.jpg";
+import popular3 from "../../../Asset/images/agency/popular-3.jpg";
+import package1 from "../../../Asset/images/agency/packege-1.jpg";
+import package2 from "../../../Asset/images/agency/packege-2.jpg";
+import package3 from "../../../Asset/images/agency/packege-3.jpg";
+import gallery1 from "../../../Asset/images/agency/gallery-1.jpg";
+import gallery2 from "../../../Asset/images/agency/gallery-2.jpg";
+import gallery3 from "../../../Asset/images/agency/gallery-3.jpg";
+import gallery4 from "../../../Asset/images/agency/gallery-4.jpg";
+import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
+import LandingNavbar from "../../common/landingNavbar/landingNavbar";
 import "./agencyHome.scss";
 export default function AgencyHome() {
   return (
     <div id="agency-home">
-      <header class="header" data-header>
-        <div class="overlay" data-overlay></div>
-
-        <div class="header-bottom">
-          <div class="container">
-            <ul class="social-list">
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="social-link">
-                  <ion-icon name="logo-youtube"></ion-icon>
-                </a>
-              </li>
-            </ul>
-
-            <nav class="navbar" data-navbar>
-              <div class="navbar-top">
-                <a href="#" class="logo">
-                  <img src={logoBlue} alt="Tourly logo" />
-                </a>
-
-                <button
-                  class="nav-close-btn"
-                  aria-label="Close Menu"
-                  data-nav-close-btn
-                >
-                  <ion-icon name="close-outline"></ion-icon>
-                </button>
-              </div>
-
-              <ul class="navbar-list">
-                <li>
-                  <a href="#home" class="navbar-link" data-nav-link>
-                    home
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="navbar-link" data-nav-link>
-                    about us
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#destination" class="navbar-link" data-nav-link>
-                    destination
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#package" class="navbar-link" data-nav-link>
-                    packages
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#gallery" class="navbar-link" data-nav-link>
-                    gallery
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#contact" class="navbar-link" data-nav-link>
-                    contact us
-                  </a>
-                </li>
-              </ul>
-            </nav>
-
-            <button class="btn btn-primary">Book Now</button>
-          </div>
-        </div>
-      </header>
-
+      <LandingNavbar />
       <main>
         <article>
           <section class="hero" id="home">
@@ -108,13 +23,12 @@ export default function AgencyHome() {
               <h2 class="h1 hero-title">Journey to explore world</h2>
 
               <p class="hero-text">
-                Ac mi duis mollis. Sapiente? Scelerisque quae, penatibus?
-                Suscipit class corporis nostra rem quos voluptatibus habitant?
-                Fames, vivamus minim nemo enim, gravida lobortis quasi, eum.
+                Embark on a journey to uncover the wonders of the world. Every
+                destination holds a new adventure, waiting to be explored
               </p>
 
               <div class="btn-group">
-                <button class="btn btn-primary">Learn more</button>
+                <button class="btn btn-primary">Find Destinations</button>
 
                 <button class="btn btn-secondary">Book now</button>
               </div>
@@ -476,7 +390,7 @@ export default function AgencyHome() {
                       </div>
 
                       <p class="price">
-                      ₹6,600
+                        ₹6,600
                         <span>/ per person</span>
                       </p>
 

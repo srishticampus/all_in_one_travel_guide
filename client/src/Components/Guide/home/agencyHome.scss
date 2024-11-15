@@ -63,23 +63,6 @@
   }
 
 #agency-home {
-    /*-----------------------------------*\
- * #style.css
-\*-----------------------------------*/
-
-
-
-
-
-
-/*-----------------------------------*\
- * #CUSTOM PROPERTY
-\*-----------------------------------*/
-
-  
-  
-  
-  
   
   /*-----------------------------------*\
    * #RESET
@@ -206,7 +189,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding-top: 61px;
     z-index: 4;
   }
   
@@ -368,7 +350,7 @@
   \*-----------------------------------*/
   
   .hero {
-    background-image: url("../../../Asset/images/guide/hero-banner.jpg");
+    background-image: url("../../../Asset/images/agency/hero-banner.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -881,7 +863,6 @@
      * HEADER
      */
   
-    .header { padding-top: 83px; }
   
     .helpline-box .icon-box { padding: 14px; }
   

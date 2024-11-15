@@ -8,15 +8,15 @@ import TouristHome from "./Components/tourist/home/TouristHome";
 import NotFound from "./Components/common/not-found/NotFound";
 import ForgotPassword from "./Components/common/forgot-password/ForgotPassword";
 import AgencyRegister from "./Components/Guide/signup/AgencySignup";
-import "./App.css";
 import AgencyHome from "./Components/Guide/home/agencyHome";
+import "./App.css";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
       <div className="App">
         <Toaster />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<AgencyHome />} />
           <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
 
@@ -25,7 +25,7 @@ function App() {
           {/* Agency REGISTER  */}
 
           <Route path="/agency/signup" element={<AgencyRegister />} />
-          <Route path="/agency/home" element={<AgencyHome />} />
+          <Route path="/agency/home" element={<Home />} />
 
           <Route path="/about" element={<LandingAboutPage />} />
 
