@@ -1,10 +1,10 @@
 import React from "react";
-import About from "../About";
+import About from "../About/About";
 import Navbar from "../LandingNavbar/LandingNavbar";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import { TopPlaces } from "../topPlaces/topPlaces";
 
-function Home() {
+function LandingPage() {
   return (
     <>
       <Navbar />
@@ -33,4 +33,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default LandingPage;

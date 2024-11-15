@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import gif from "../../../img/custlog.jpeg";
 import Navbar from "../../LandingNavbar/LandingNavbar";
-import Footer from "../../Footer";
+import Footer from "../../Footer/Footer";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import axiosInstance from "../../../apis/axiosInstance";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./TouristSignup.css";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 export default function TouristSignup() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
@@ -84,9 +84,9 @@ export default function TouristSignup() {
       const statusCode = error?.response?.status;
       if (statusCode === 400) {
         const msg = error?.response?.data?.message || "Email already taken!";
-        toast.error(msg); 
-      }else {
-        const msg = error?.response?.data?.message || "Something went wrong."
+        toast.error(msg);
+      } else {
+        const msg = error?.response?.data?.message || "Something went wrong.";
         toast.error(msg);
       }
       console.error("Error on tourist registration: ", error);

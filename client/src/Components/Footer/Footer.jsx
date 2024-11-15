@@ -1,10 +1,10 @@
 import React from "react";
-import img2 from "../img/pic1.jpg";
-import img3 from "../img/pic3.jpg";
-import img4 from "../img/pic3.webp";
-import img5 from "../img/pic4.webp";
-import img6 from "../img/pic6.webp";
-import img7 from "../img/pic9.jpg";
+import img2 from "../../img/pic1.jpg";
+import img3 from "../../img/pic3.jpg";
+import img4 from "../../img/pic3.webp";
+import img5 from "../../img/pic4.webp";
+import img6 from "../../img/pic6.webp";
+import img7 from "../../img/pic9.jpg";
 
 function Footer() {
   return (

@@ -4,16 +4,16 @@ import Navbar from "../../LandingNavbar/LandingNavbar";
 import gif3 from "../../../img/Agency.gif";
 import axiosInstance from "../../../apis/axiosInstance";
 import { ErrorMessage } from "@hookform/error-message";
-import Footer from "../../Footer";
+import Footer from "../../Footer/Footer";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import styles from "./Agency.module.scss";
 import { useNavigate } from "react-router-dom";
-import {toast} from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 function AgencyRegister() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,17 +21,24 @@ function AgencyRegister() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const { agencyName, email, password,confirmPassword,  phoneNumber, agencyAddress } = data;
+    const {
+      agencyName,
+      email,
+      password,
+      confirmPassword,
+      phoneNumber,
+      agencyAddress,
+    } = data;
 
-    console.log('name', agencyName)
-    console.log('addre', agencyAddress)
-    console.log('passwor', password)
-    console.log('pno', phoneNumber)
-    console.log('conf', confirmPassword)
+    console.log("name", agencyName);
+    console.log("addre", agencyAddress);
+    console.log("passwor", password);
+    console.log("pno", phoneNumber);
+    console.log("conf", confirmPassword);
     if (password !== confirmPassword) {
       return;
     }
-    sendDataToServer(data)
+    sendDataToServer(data);
   };
 
   const sendDataToServer = async (data) => {
@@ -45,15 +52,14 @@ function AgencyRegister() {
       const statusCode = error?.response?.status;
       if (statusCode === 400) {
         const msg = error?.response?.data?.message || "Email already taken!";
-        toast.error(msg); 
-      }else {
-        const msg = error?.response?.data?.message || "Something went wrong."
+        toast.error(msg);
+      } else {
+        const msg = error?.response?.data?.message || "Something went wrong.";
         toast.error(msg);
       }
       console.error("Error on tourist registration: ", error);
     }
   };
-
 
   const togglePassword = () => setPasswordShown(!passwordShown);
 

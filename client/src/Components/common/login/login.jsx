@@ -1,6 +1,6 @@
 import touristImg from "../../../Asset/images/tourist-login.png";
 import Navbar from "../../LandingNavbar/LandingNavbar";
-import Footer from "../../Footer";
+import Footer from "../../Footer/Footer";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import styles from "./login.module.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Link, useNavigate } from "react-router-dom";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 function Login() {
   const {
     register,
@@ -33,9 +33,9 @@ function Login() {
         navigate("/tourist/home");
       }
     } catch (error) {
-      const status = error?.response?.status; 
-      const msg = error?.response?.data?.message || "Something went wrong."
-      toast.error(msg)
+      const status = error?.response?.status;
+      const msg = error?.response?.data?.message || "Something went wrong.";
+      toast.error(msg);
       console.log("error on login", error);
     }
   };

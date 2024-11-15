@@ -3,7 +3,7 @@ import TouristHeader from "../header/TouristHeader";
 import TouristNavbar from "../navbar/TouristNavbar";
 import Destination from "../destination/Destination";
 import TourCategory from "../category/TourCategory";
-import Footer from "../../Footer";
+import Footer from "../../Footer/Footer";
 
 export default function TouristHome() {
   return (

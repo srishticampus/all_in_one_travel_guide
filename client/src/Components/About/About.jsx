@@ -1,7 +1,4 @@
-import React from "react";
-import pic3 from "../img/pic3.webp";
-import Footer from "./Footer";
-import Navbar from "./LandingNavbar/LandingNavbar";
+import pic3 from "../../img/pic3.webp";
 
 function About() {
   return (

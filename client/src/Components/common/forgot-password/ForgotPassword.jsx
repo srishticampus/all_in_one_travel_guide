@@ -1,6 +1,6 @@
 import touristImg from "../../../Asset/images/fp.png";
 import Navbar from "../../LandingNavbar/LandingNavbar";
-import Footer from "../../Footer";
+import Footer from "../../Footer/Footer";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useState } from "react";
@@ -19,7 +19,7 @@ function ForgotPassword() {
   } = useForm();
   const navigate = useNavigate();
   const onSubmit = (credentials) => {
-    console.log('cred', credentials);
+    console.log("cred", credentials);
 
     const { email, password } = credentials;
     if (!email || !password) {
@@ -40,8 +40,8 @@ function ForgotPassword() {
       const status = error?.response?.status;
       if (status === 400) {
         toast.error("You can't use old password as new password");
-      }else if (status === 404) {
-        const msg = error?.response?.data?.message; 
+      } else if (status === 404) {
+        const msg = error?.response?.data?.message;
         toast.error(msg);
       }
 
