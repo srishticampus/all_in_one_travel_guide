@@ -1,4 +1,3 @@
-import logoBlue from "../../../Asset/images/agency/logo.svg";
 import popular1 from "../../../Asset/images/agency/popular-1.jpg";
 import popular2 from "../../../Asset/images/agency/popular-2.jpg";
 import popular3 from "../../../Asset/images/agency/popular-3.jpg";
@@ -12,45 +11,50 @@ import gallery4 from "../../../Asset/images/agency/gallery-4.jpg";
 import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
 import LandingNavbar from "../../common/landingNavbar/landingNavbar";
 import "./agencyHome.scss";
+import { useNavigate } from "react-router-dom";
 export default function AgencyHome() {
+  const navigate = useNavigate();
+  const redirectToSignup = () => {
+    navigate("/tourist/signup");
+  };
   return (
     <div id="agency-home">
       <LandingNavbar />
       <main>
         <article>
-          <section class="hero" id="home">
-            <div class="container">
-              <h2 class="h1 hero-title">Journey to explore world</h2>
+          <section className="hero" id="home">
+            <div className="container">
+              <h2 className="h1 hero-title">Journey to explore world</h2>
 
-              <p class="hero-text">
+              <p className="hero-text">
                 Embark on a journey to uncover the wonders of the world. Every
                 destination holds a new adventure, waiting to be explored
               </p>
 
-              <div class="btn-group">
-                <button class="btn btn-primary">Find Destinations</button>
+              <div className="btn-group">
+                <button className="btn btn-primary">Find Destinations</button>
 
-                <button class="btn btn-secondary">Book now</button>
+                <button className="btn btn-secondary">Book now</button>
               </div>
             </div>
           </section>
 
-          <section class="popular" id="destination">
-            <div class="container">
-              <p class="section-subtitle">Uncover place</p>
+          <section className="popular" id="destination">
+            <div className="container">
+              <p className="section-subtitle">Uncover place</p>
 
-              <h2 class="h2 section-title">Popular destination</h2>
+              <h2 className="h2 my-section-title">Popular destination</h2>
 
-              <p class="section-text">
+              <p className="section-text">
                 Discover your next dream destination. Whether it's a tropical
                 beach, bustling city, or serene mountain escape, adventure
                 awaits
               </p>
 
-              <ul class="popular-list">
+              <ul className="popular-list">
                 <li>
-                  <div class="popular-card">
-                    <figure class="card-img">
+                  <div className="popular-card">
+                    <figure className="card-img">
                       <img
                         src={popular1}
                         alt="San miguel, italy"
@@ -58,8 +62,8 @@ export default function AgencyHome() {
                       />
                     </figure>
 
-                    <div class="card-content">
-                      <div class="card-rating">
+                    <div className="card-content">
+                      <div className="card-rating">
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>
@@ -67,15 +71,15 @@ export default function AgencyHome() {
                         <ion-icon name="star"></ion-icon>
                       </div>
 
-                      <p class="card-subtitle">
+                      <p className="card-subtitle">
                         <a href="#">Italy</a>
                       </p>
 
-                      <h3 class="h3 card-title">
+                      <h3 className="h3 card-title">
                         <a href="#">San miguel</a>
                       </h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         Explore the timeless beauty of San miguel. From Rome's
                         ancient wonders to Venice's romantic canals, every
                         moment is a masterpiece
@@ -85,8 +89,8 @@ export default function AgencyHome() {
                 </li>
 
                 <li>
-                  <div class="popular-card">
-                    <figure class="card-img">
+                  <div className="popular-card">
+                    <figure className="card-img">
                       <img
                         src={popular2}
                         alt="Burj khalifa, dubai"
@@ -94,8 +98,8 @@ export default function AgencyHome() {
                       />
                     </figure>
 
-                    <div class="card-content">
-                      <div class="card-rating">
+                    <div className="card-content">
+                      <div className="card-rating">
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>
@@ -103,15 +107,15 @@ export default function AgencyHome() {
                         <ion-icon name="star"></ion-icon>
                       </div>
 
-                      <p class="card-subtitle">
+                      <p className="card-subtitle">
                         <a href="#">Dubai</a>
                       </p>
 
-                      <h3 class="h3 card-title">
+                      <h3 className="h3 card-title">
                         <a href="#">Burj khalifa</a>
                       </h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         Touch the sky at the iconic Burj Khalifa. Experience
                         Dubai from the world's tallest tower and marvel at the
                         breathtaking views
@@ -121,8 +125,8 @@ export default function AgencyHome() {
                 </li>
 
                 <li>
-                  <div class="popular-card">
-                    <figure class="card-img">
+                  <div className="popular-card">
+                    <figure className="card-img">
                       <img
                         src={popular3}
                         alt="Kyoto temple, japan"
@@ -130,8 +134,8 @@ export default function AgencyHome() {
                       />
                     </figure>
 
-                    <div class="card-content">
-                      <div class="card-rating">
+                    <div className="card-content">
+                      <div className="card-rating">
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>
@@ -139,15 +143,15 @@ export default function AgencyHome() {
                         <ion-icon name="star"></ion-icon>
                       </div>
 
-                      <p class="card-subtitle">
+                      <p className="card-subtitle">
                         <a href="#">Japan</a>
                       </p>
 
-                      <h3 class="h3 card-title">
+                      <h3 className="h3 card-title">
                         <a href="#">Kyoto temple</a>
                       </h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         Step into the tranquility of Kyoto's ancient temples.
                         Discover the serene beauty and timeless traditions that
                         define Japan's cultural heart
@@ -157,29 +161,20 @@ export default function AgencyHome() {
                 </li>
               </ul>
 
-              <button class="btn btn-primary">More destintion</button>
+              <button className="btn btn-primary">More destintion</button>
             </div>
           </section>
 
-          <section class="package" id="package">
-            <div class="container">
-              <p class="section-subtitle">Popular Packeges</p>
+          <section className="package" id="package">
+            <div className="container">
+              <p className="section-subtitle">Popular Packeges</p>
 
-              <h2 class="h2 section-title">Checkout Our Packeges</h2>
+              <h2 className="h2 my-section-title">Checkout Our Packeges</h2>
 
-              <p class="section-text">
-                Embark on a thrilling 7-day journey through Costa Rica,
-                featuring guided rainforest canopy tours, white-water rafting,
-                and hikes up the majestic Arenal Volcano. Stay in 4-star
-                accommodations with daily breakfast and dinner included.
-                Round-trip airfare and airport transfers ensure a seamless
-                adventure.
-              </p>
-
-              <ul class="package-list">
+              <ul className="package-list">
                 <li>
-                  <div class="package-card">
-                    <figure class="card-banner">
+                  <div className="package-card">
+                    <figure className="card-banner">
                       <img
                         src={package1}
                         alt="Experience The Great Holiday On Beach"
@@ -187,12 +182,12 @@ export default function AgencyHome() {
                       />
                     </figure>
 
-                    <div class="card-content">
-                      <h3 class="h3 card-title">
+                    <div className="card-content">
+                      <h3 className="h3 card-title">
                         Experience The Great Holiday On Beach
                       </h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         Immerse yourself in the rich heritage of Japan with our
                         10-day package, exploring Tokyo, Kyoto, and Osaka
                         through guided city tours, traditional tea ceremonies,
@@ -203,38 +198,38 @@ export default function AgencyHome() {
                         cultural escapade.
                       </p>
 
-                      <ul class="card-meta-list">
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                      <ul className="card-meta-list">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="time"></ion-icon>
 
-                            <p class="text">7D/6N</p>
+                            <p className="text">7D/6N</p>
                           </div>
                         </li>
 
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="people"></ion-icon>
 
-                            <p class="text">pax: 10</p>
+                            <p className="text">pax: 10</p>
                           </div>
                         </li>
 
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="location"></ion-icon>
 
-                            <p class="text">Malaysia</p>
+                            <p className="text">Malaysia</p>
                           </div>
                         </li>
                       </ul>
                     </div>
 
-                    <div class="card-price">
-                      <div class="wrapper">
-                        <p class="reviews">(25 reviews)</p>
+                    <div className="card-price">
+                      <div className="wrapper">
+                        <p className="reviews">(25 reviews)</p>
 
-                        <div class="card-rating">
+                        <div className="card-rating">
                           <ion-icon name="star"></ion-icon>
                           <ion-icon name="star"></ion-icon>
                           <ion-icon name="star"></ion-icon>
@@ -243,19 +238,19 @@ export default function AgencyHome() {
                         </div>
                       </div>
 
-                      <p class="price">
+                      <p className="price">
                         ₹7,500
                         <span>/ per person</span>
                       </p>
 
-                      <button class="btn btn-secondary">Book Now</button>
+                      <button className="btn btn-secondary">Book Now</button>
                     </div>
                   </div>
                 </li>
 
                 <li>
-                  <div class="package-card">
-                    <figure class="card-banner">
+                  <div className="package-card">
+                    <figure className="card-banner">
                       <img
                         src={package2}
                         alt="Summer Holiday To The Oxolotan River"
@@ -263,12 +258,12 @@ export default function AgencyHome() {
                       />
                     </figure>
 
-                    <div class="card-content">
-                      <h3 class="h3 card-title">
+                    <div className="card-content">
+                      <h3 className="h3 card-title">
                         Summer Holiday To The Oxolotan River
                       </h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         Escape to the Maldives for a 6-day luxury retreat in an
                         overwater bungalow at a 5-star resort. Enjoy an
                         all-inclusive meal plan, snorkeling excursions, and a
@@ -277,38 +272,38 @@ export default function AgencyHome() {
                         transfers complete this idyllic getaway.
                       </p>
 
-                      <ul class="card-meta-list">
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                      <ul className="card-meta-list">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="time"></ion-icon>
 
-                            <p class="text">7D/6N</p>
+                            <p className="text">7D/6N</p>
                           </div>
                         </li>
 
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="people"></ion-icon>
 
-                            <p class="text">pax: 10</p>
+                            <p className="text">pax: 10</p>
                           </div>
                         </li>
 
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="location"></ion-icon>
 
-                            <p class="text">Malaysia</p>
+                            <p className="text">Malaysia</p>
                           </div>
                         </li>
                       </ul>
                     </div>
 
-                    <div class="card-price">
-                      <div class="wrapper">
-                        <p class="reviews">(20 reviews)</p>
+                    <div className="card-price">
+                      <div className="wrapper">
+                        <p className="reviews">(20 reviews)</p>
 
-                        <div class="card-rating">
+                        <div className="card-rating">
                           <ion-icon name="star"></ion-icon>
                           <ion-icon name="star"></ion-icon>
                           <ion-icon name="star"></ion-icon>
@@ -317,19 +312,19 @@ export default function AgencyHome() {
                         </div>
                       </div>
 
-                      <p class="price">
+                      <p className="price">
                         ₹ 520,00
                         <span>/ per person</span>
                       </p>
 
-                      <button class="btn btn-secondary">Book Now</button>
+                      <button className="btn btn-secondary">Book Now</button>
                     </div>
                   </div>
                 </li>
 
                 <li>
-                  <div class="package-card">
-                    <figure class="card-banner">
+                  <div className="package-card">
+                    <figure className="card-banner">
                       <img
                         src={package3}
                         alt="Santorini Island's Weekend Vacation"
@@ -337,50 +332,50 @@ export default function AgencyHome() {
                       />
                     </figure>
 
-                    <div class="card-content">
-                      <h3 class="h3 card-title">
+                    <div className="card-content">
+                      <h3 className="h3 card-title">
                         Every journey tells a story. Make yours extraordinary
                         with us
                       </h3>
 
-                      <p class="card-text">
+                      <p className="card-text">
                         Unlock the secrets of the globe. We’ll be your trusted
                         travel companion. Every journey tells a story. Make
                         yours extraordinary with us.
                       </p>
 
-                      <ul class="card-meta-list">
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                      <ul className="card-meta-list">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="time"></ion-icon>
 
-                            <p class="text">7D/6N</p>
+                            <p className="text">7D/6N</p>
                           </div>
                         </li>
 
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="people"></ion-icon>
 
-                            <p class="text">pax: 10</p>
+                            <p className="text">pax: 10</p>
                           </div>
                         </li>
 
-                        <li class="card-meta-item">
-                          <div class="meta-box">
+                        <li className="card-meta-item">
+                          <div className="meta-box">
                             <ion-icon name="location"></ion-icon>
 
-                            <p class="text">Malaysia</p>
+                            <p className="text">Malaysia</p>
                           </div>
                         </li>
                       </ul>
                     </div>
 
-                    <div class="card-price">
-                      <div class="wrapper">
-                        <p class="reviews">(40 reviews)</p>
+                    <div className="card-price">
+                      <div className="wrapper">
+                        <p className="reviews">(40 reviews)</p>
 
-                        <div class="card-rating">
+                        <div className="card-rating">
                           <ion-icon name="star"></ion-icon>
                           <ion-icon name="star"></ion-icon>
                           <ion-icon name="star"></ion-icon>
@@ -389,60 +384,60 @@ export default function AgencyHome() {
                         </div>
                       </div>
 
-                      <p class="price">
+                      <p className="price">
                         ₹6,600
                         <span>/ per person</span>
                       </p>
 
-                      <button class="btn btn-secondary">Book Now</button>
+                      <button className="btn btn-secondary">Book Now</button>
                     </div>
                   </div>
                 </li>
               </ul>
 
-              <button class="btn btn-primary">View All Packages</button>
+              <button className="btn btn-primary">View All Packages</button>
             </div>
           </section>
 
-          <section class="gallery" id="gallery">
-            <div class="container">
-              <p class="section-subtitle">Photo Gallery</p>
+          <section className="gallery" id="gallery">
+            <div className="container">
+              <p className="section-subtitle">Photo Gallery</p>
 
-              <h2 class="h2 section-title">Photo's From Travellers</h2>
+              <h2 className="h2 my-section-title">Photo's From Travellers</h2>
 
-              <p class="section-text">
+              <p className="section-text">
                 Step into a world of wonder. Your unforgettable journey starts
                 with us. Craft memories that last a lifetime. Choose us for your
                 next adventure.
               </p>
 
-              <ul class="gallery-list">
-                <li class="gallery-item">
-                  <figure class="gallery-image">
+              <ul className="gallery-list">
+                <li className="gallery-item">
+                  <figure className="gallery-image">
                     <img src={gallery1} alt="Gallery image" />
                   </figure>
                 </li>
 
-                <li class="gallery-item">
-                  <figure class="gallery-image">
+                <li className="gallery-item">
+                  <figure className="gallery-image">
                     <img src={gallery2} alt="Gallery image" />
                   </figure>
                 </li>
 
-                <li class="gallery-item">
-                  <figure class="gallery-image">
+                <li className="gallery-item">
+                  <figure className="gallery-image">
                     <img src={gallery3} alt="Gallery image" />
                   </figure>
                 </li>
 
-                <li class="gallery-item">
-                  <figure class="gallery-image">
+                <li className="gallery-item">
+                  <figure className="gallery-image">
                     <img src={gallery4} alt="Gallery image" />
                   </figure>
                 </li>
 
-                <li class="gallery-item">
-                  <figure class="gallery-image">
+                <li className="gallery-item">
+                  <figure className="gallery-image">
                     <img src={gallery4} alt="Gallery image" />
                   </figure>
                 </li>
@@ -450,58 +445,62 @@ export default function AgencyHome() {
             </div>
           </section>
 
-          <section class="cta" id="contact">
-            <div class="container">
-              <div class="cta-content">
-                <p class="section-subtitle">Live in Dream</p>
+          <section className="cta" id="contact">
+            <div className="container">
+              <div className="cta-content">
+                <p className="section-subtitle">Live in Dream</p>
 
-                <h2 class="h2 section-title">
+                <h2 className="h2 section-title">
                   Ready For Unforgatable Travel. Remember Us!
                 </h2>
 
-                <p class="section-text">
+                <p className="section-text">
                   Discover the world like never before. Remember us for your
                   next adventure. Experience the journey of a lifetime. Let us
                   be your guide to unforgettable memories.
                 </p>
               </div>
 
-              <button class="btn btn-secondary">Sign Up!</button>
+              <button className="btn btn-secondary" onClick={redirectToSignup}>
+                Sign Up!
+              </button>
             </div>
           </section>
         </article>
       </main>
 
-      <footer class="footer">
-        <div class="footer-top">
-          <div class="container">
-            <div class="footer-brand">
-              <a href="#" class="logo">
+      <footer className="footer">
+        <div className="footer-top">
+          <div className="container">
+            <div className="footer-brand">
+              <a href="#" className="logo">
                 <img src={gallery5} alt="Tourly logo" />
               </a>
 
-              <p class="footer-text">
+              <p className="footer-text">
                 Unleash your wanderlust with us. Think of us for your next
                 incredible journey.Adventure awaits at every corner. Keep us in
                 mind for your travel dreams.
               </p>
             </div>
 
-            <div class="footer-contact">
-              <h4 class="contact-title">Contact Us</h4>
+            <div className="footer-contact">
+              <h4 className="contact-title">Contact Us</h4>
 
-              <p class="contact-text">Feel free to contact and reach us !!</p>
+              <p className="contact-text">
+                Feel free to contact and reach us !!
+              </p>
 
               <ul>
-                <li class="contact-item">
+                <li className="contact-item">
                   <ion-icon name="call-outline"></ion-icon>
 
-                  <a href="tel:+01123456790" class="contact-link">
+                  <a href="tel:+01123456790" className="contact-link">
                     +01 (123) 4567 90
                   </a>
                 </li>
 
-                <li class="contact-item">
+                <li className="contact-item">
                   <ion-icon name="location-outline"></ion-icon>
 
                   <address>Kerala, Trivandrum</address>
@@ -511,27 +510,27 @@ export default function AgencyHome() {
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <div class="container">
-            <p class="copyright">
+        <div className="footer-bottom">
+          <div className="container">
+            <p className="copyright">
               &copy; 2024 <a href="">Tourist Guide</a>. All rights reserved
             </p>
 
-            <ul class="footer-bottom-list">
+            <ul className="footer-bottom-list">
               <li>
-                <a href="#" class="footer-bottom-link">
+                <a href="#" className="footer-bottom-link">
                   Privacy Policy
                 </a>
               </li>
 
               <li>
-                <a href="#" class="footer-bottom-link">
+                <a href="#" className="footer-bottom-link">
                   Term & Condition
                 </a>
               </li>
 
               <li>
-                <a href="#" class="footer-bottom-link">
+                <a href="#" className="footer-bottom-link">
                   FAQ
                 </a>
               </li>
@@ -540,7 +539,7 @@ export default function AgencyHome() {
         </div>
       </footer>
 
-      <a href="#top" class="go-top" data-go-top>
+      <a href="#top" className="go-top" data-go-top>
         <ion-icon name="chevron-up-outline"></ion-icon>
       </a>
     </div>

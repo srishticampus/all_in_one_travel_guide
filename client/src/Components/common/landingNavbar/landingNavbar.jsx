@@ -1,39 +1,24 @@
+import { Link } from "react-router-dom";
 import appLogo from "../../../Asset/images/logo.jpg";
 const LandingNavbar = () => {
   return (
-    <header class="header" data-header>
-      <div class="overlay" data-overlay></div>
+    <header className="header" data-header>
+      <div className="overlay" data-overlay></div>
 
-      <div class="header-bottom">
-        <div class="container">
-          <ul class="social-list">
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
+      <div className="header-bottom">
+        <div className="container">
+          <Link
+            to="/"
+            className="nav-logo-link d-flex justify-content-between align-items-center"
+          >
+            <img className="nav-logo me-3" src={appLogo} alt="Tourly logo" />
+            <h5>Travel Guide</h5>
+          </Link>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </a>
-            </li>
-          </ul>
-
-          <nav class="navbar" data-navbar>
-            <div class="navbar-top">
-              <a href="#" class="logo">
-                <img src={appLogo} alt="Tourly logo" />
-              </a>
-
+          <nav className="navbar" data-navbar>
+            <div className="navbar-top">
               <button
-                class="nav-close-btn"
+                className="nav-close-btn"
                 aria-label="Close Menu"
                 data-nav-close-btn
               >
@@ -41,46 +26,48 @@ const LandingNavbar = () => {
               </button>
             </div>
 
-            <ul class="navbar-list">
+            <ul className="navbar-list">
               <li>
-                <a href="#home" class="navbar-link" data-nav-link>
+                <a href="#home" className="navbar-link" data-nav-link>
                   home
                 </a>
               </li>
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>
+                <a href="#" className="navbar-link" data-nav-link>
                   about us
                 </a>
               </li>
 
               <li>
-                <a href="#destination" class="navbar-link" data-nav-link>
+                <a href="#destination" className="navbar-link" data-nav-link>
                   destination
                 </a>
               </li>
 
               <li>
-                <a href="#package" class="navbar-link" data-nav-link>
+                <a href="#package" className="navbar-link" data-nav-link>
                   packages
                 </a>
               </li>
 
               <li>
-                <a href="#gallery" class="navbar-link" data-nav-link>
+                <a href="#gallery" className="navbar-link" data-nav-link>
                   gallery
                 </a>
               </li>
 
               <li>
-                <a href="#contact" class="navbar-link" data-nav-link>
+                <a href="#contact" className="navbar-link" data-nav-link>
                   contact us
                 </a>
               </li>
             </ul>
           </nav>
 
-          <button class="btn btn-primary">Book Now</button>
+          <Link to="/tourist/signup">
+            <button className="btn btn-primary">Sign Up </button>
+          </Link>
         </div>
       </div>
     </header>
