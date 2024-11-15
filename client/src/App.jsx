@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/home/Home";
 import Login from "./Components/common/login/login";
@@ -10,6 +9,7 @@ import NotFound from "./Components/common/not-found/NotFound";
 import ForgotPassword from "./Components/common/forgot-password/ForgotPassword";
 import AgencyRegister from "./Components/Guide/signup/AgencySignup";
 import "./App.css";
+import AgencyHome from "./Components/Guide/home/agencyHome";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -22,9 +22,10 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          {/* GUIDE REGISTER  */}
+          {/* Agency REGISTER  */}
 
           <Route path="/agency/signup" element={<AgencyRegister />} />
+          <Route path="/agency/home" element={<AgencyHome />} />
 
           <Route path="/about" element={<LandingAboutPage />} />
 
