@@ -8,10 +8,12 @@ import Footer from "../../Footer";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import styles from "./Agency.module.scss";
+import { useNavigate } from "react-router-dom";
+import {toast} from 'react-hot-toast';
 function AgencyRegister() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
-
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -19,17 +21,39 @@ function AgencyRegister() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    const { name, email, password,confirmPassword,  phoneNumber, address } = data;
+    const { agencyName, email, password,confirmPassword,  phoneNumber, agencyAddress } = data;
 
-    if (!name || !email || !password || !phoneNumber || !address) {
-      console.log("missing", data);
-      return;
-    }
-
+    console.log('name', agencyName)
+    console.log('addre', agencyAddress)
+    console.log('passwor', password)
+    console.log('pno', phoneNumber)
+    console.log('conf', confirmPassword)
     if (password !== confirmPassword) {
       return;
     }
+    sendDataToServer(data)
   };
+
+  const sendDataToServer = async (data) => {
+    try {
+      const res = await axiosInstance.post("/agency/signup", data);
+      if (res.status === 201) {
+        toast.success("Registration successful");
+        navigate("/login");
+      }
+    } catch (error) {
+      const statusCode = error?.response?.status;
+      if (statusCode === 400) {
+        const msg = error?.response?.data?.message || "Email already taken!";
+        toast.error(msg); 
+      }else {
+        const msg = error?.response?.data?.message || "Something went wrong."
+        toast.error(msg);
+      }
+      console.error("Error on tourist registration: ", error);
+    }
+  };
+
 
   const togglePassword = () => setPasswordShown(!passwordShown);
 

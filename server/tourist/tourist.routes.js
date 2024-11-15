@@ -1,7 +1,6 @@
 const {
   touristSignup,
   touristSignupUploads,
-  touristLogin,
   vieUserById,
   editUserById,
   viewUsers,
