@@ -1,10 +1,10 @@
 import React from "react";
-import About from "../About/About";
-import Footer from "../Footer/Footer";
-import { TopPlaces } from "../topPlaces/topPlaces";
-import AgencyNavbar from "../Guide/navbar/agencyNavbar";
+import About from "../../../Components/About/About";
+import Footer from "../../../Components/Footer/Footer";
+import { TopPlaces } from "../../../Components/topPlaces/topPlaces";
+import AgencyNavbar from "../navbar/navbar";
 
-function AgentHomePage() {
+function AgencyHomePage() {
   return (
     <>
       <AgencyNavbar />
@@ -32,4 +32,4 @@ function AgentHomePage() {
   );
 }
 
-export default AgentHomePage;
+export default AgencyHomePage;

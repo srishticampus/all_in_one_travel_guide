@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import appLogo from "../../Asset/images/logo.jpg";
-import styles from "./LandingNavbar.module.scss";
+import styles from "./authNavbar.module.scss";
 function LandingNavbar() {
   return (
     <div id={styles.landingNavbar}>

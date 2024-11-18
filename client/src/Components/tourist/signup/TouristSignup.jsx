@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import gif from "../../../img/custlog.jpeg";
-import Navbar from "../../LandingNavbar/LandingNavbar";
+import Navbar from "../../authNavbar/authNavbar";
 import Footer from "../../Footer/Footer";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";

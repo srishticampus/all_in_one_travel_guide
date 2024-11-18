@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import Navbar from "../../LandingNavbar/LandingNavbar";
+import Navbar from "../../../Components/authNavbar/authNavbar";
 import gif3 from "../../../img/Agency.gif";
 import axiosInstance from "../../../apis/axiosInstance";
 import { ErrorMessage } from "@hookform/error-message";
-import Footer from "../../Footer/Footer";
+import Footer from "../../../Components/Footer/Footer";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
-import styles from "./Agency.module.scss";
+import styles from "./AgencySignup.module.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 function AgencyRegister() {

@@ -4,13 +4,13 @@ import popular3 from "../../../Asset/images/agency/popular-3.jpg";
 import package1 from "../../../Asset/images/agency/packege-1.jpg";
 import package2 from "../../../Asset/images/agency/packege-2.jpg";
 import package3 from "../../../Asset/images/agency/packege-3.jpg";
-import gallery1 from "../../../Asset/images/agency/gallery-1.jpg";
+import gallery1 from "../../../Asset/images/agency/gallery-1.jpg";  
 import gallery2 from "../../../Asset/images/agency/gallery-2.jpg";
 import gallery3 from "../../../Asset/images/agency/gallery-3.jpg";
 import gallery4 from "../../../Asset/images/agency/gallery-4.jpg";
 import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
 import LandingNavbar from "../../common/landingNavbar/landingNavbar";
-import "./agencyHome.scss";
+import "./landingPage.scss";
 import { useNavigate } from "react-router-dom";
 export default function AgencyHome() {
   const navigate = useNavigate();
