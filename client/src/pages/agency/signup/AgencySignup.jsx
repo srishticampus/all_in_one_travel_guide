@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../../../Components/authNavbar/authNavbar";
-import gif3 from "../../../img/Agency.gif";
+import boyImg from "../../../Asset/images/boy.jpg";
 import axiosInstance from "../../../apis/axiosInstance";
 import { ErrorMessage } from "@hookform/error-message";
 import Footer from "../../../Components/Footer/Footer";
@@ -68,7 +68,7 @@ function AgencyRegister() {
       <main className="container1">
         <div className="brand">
           <div className="">
-            <img height={380} src={gif3} alt="Panda Logo" />
+            <img height={380} src={boyImg} alt="Panda Logo" />
           </div>
         </div>
 

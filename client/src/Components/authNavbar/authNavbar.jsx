@@ -50,6 +50,9 @@ function LandingNavbar() {
                   <Link to="/agency/signup" className="dropdown-item">
                     Agency
                   </Link>
+                  <Link to="/hotel/signup" className="dropdown-item">
+                    Hotel
+                  </Link>
                 </div>
               </div>
               <div className="fs-6 align-self-center">
