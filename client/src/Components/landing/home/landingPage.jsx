@@ -12,7 +12,7 @@ import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
 import LandingNavbar from "../../common/landingNavbar/landingNavbar";
 import "./landingPage.scss";
 import { useNavigate } from "react-router-dom";
-export default function AgencyHome() {
+export default function LandingPage() {
   const navigate = useNavigate();
   const redirectToSignup = () => {
     navigate("/tourist/signup");

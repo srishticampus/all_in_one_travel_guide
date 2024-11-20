@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../../../Components/authNavbar/authNavbar";
-import gif3 from "../../../img/Agency.gif";
+import hotelImg from "../../../Asset/images/hotel-signup.jpg";
 import axiosInstance from "../../../apis/axiosInstance";
 import { ErrorMessage } from "@hookform/error-message";
 import Footer from "../../../Components/Footer/Footer";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
-import styles from "./AgencySignup.module.scss";
+import styles from "./hotelSignup.module.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-function AgencyRegister() {
+function HotelRegister() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
   const navigate = useNavigate();
@@ -22,12 +22,12 @@ function AgencyRegister() {
   } = useForm();
   const onSubmit = (data) => {
     const {
-      agencyName,
+      hotelName,
       email,
       password,
       confirmPassword,
       phoneNumber,
-      agencyAddress,
+      hotelAddress,
     } = data;
 
     if (password !== confirmPassword) {
@@ -38,7 +38,7 @@ function AgencyRegister() {
 
   const sendDataToServer = async (data) => {
     try {
-      const res = await axiosInstance.post("/agency/signup", data);
+      const res = await axiosInstance.post("/hotel/signup", data);
       if (res.status === 201) {
         toast.success("Registration successful");
         navigate("/login");
@@ -66,23 +66,23 @@ function AgencyRegister() {
       <Navbar />
 
       <main className="container1">
-        <div className="brand">
+        <div className={styles.leftSection}>
           <div className="">
-            <img height={380} src={gif3} alt="Panda Logo" />
+            <img height={380} src={hotelImg} alt="Panda Logo" />
           </div>
         </div>
 
         <div className="formWrapper">
           <div className="form">
-            <h2>Agency Registration</h2>
+            <h2>Hotel Registration</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div id={`${styles.agencySignupForm}`}>
                 <div className="inputWrapper">
                   <input
                     type="text"
-                    name="agencyName"
-                    {...register("agencyName", {
-                      required: "Agency name is required.",
+                    name="hotelName"
+                    {...register("hotelName", {
+                      required: "hotel name is required.",
                       minLength: {
                         value: 2,
                         message: "Min. 2 characters required.",
@@ -96,19 +96,19 @@ function AgencyRegister() {
                         message: "Max. 30 characters allowed.",
                       },
                     })}
-                    placeholder="Agency Name"
+                    placeholder="hotel Name"
                   />
                   <p className="text-danger">
-                    <ErrorMessage errors={errors} name="agencyName" />
+                    <ErrorMessage errors={errors} name="hotelName" />
                   </p>
                 </div>
 
                 <div className="inputWrapper">
                   <input
                     type="text"
-                    name="agencyAddress"
-                    {...register("agencyAddress", {
-                      required: "Agency address is required.",
+                    name="hotelAddress"
+                    {...register("hotelAddress", {
+                      required: "hotel address is required.",
                       minLength: {
                         value: 2,
                         message: "Min. 2 characters required.",
@@ -118,10 +118,10 @@ function AgencyRegister() {
                         message: "Max. 60 characters allowed.",
                       },
                     })}
-                    placeholder="Agency Address"
+                    placeholder="hotel Address"
                   />
                   <p className="text-danger">
-                    <ErrorMessage errors={errors} name="agencyAddress" />
+                    <ErrorMessage errors={errors} name="hotelAddress" />
                   </p>
                 </div>
 
@@ -231,4 +231,4 @@ function AgencyRegister() {
   );
 }
 
-export default AgencyRegister;
+export default HotelRegister;
