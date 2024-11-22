@@ -14,6 +14,7 @@ const route = require("./routes");
 const { errorHandler } = require("./middleware/errorHandler");
 const { authRoutes } = require("./auth/auth.routes");
 const agencyRoutes = require("./agency/agency.routes");
+const hotelRoutes = require("./hotel/hotel.routes");
 app.get("/travel_guide_api", (req, res) => {
   res.send(
     "Server running successfully on http://localhost:4050/travel_guide_api/"
@@ -25,6 +26,7 @@ app.use("/travel_guide_api/auth", authRoutes);
 
 app.use("/travel_guide_api/tourist", touristRoutes);
 app.use("/travel_guide_api/agency", agencyRoutes);
+app.use("/travel_guide_api/hotel", hotelRoutes);
 app.use(errorHandler);
 
 connectDB()

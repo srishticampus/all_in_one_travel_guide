@@ -10,10 +10,10 @@ import ForgotPassword from "./Components/common/forgot-password/ForgotPassword";
 import AgencyRegister from "./pages/agency/signup/AgencySignup";
 import AgencyHome from "./pages/agency/home/home";
 import LandingPage from "./Components/landing/home/landingPage";
-import "./App.css";
-import "./index.css";
 import AddPackage from "./pages/agency/addPackage/addPackage";
 import HotelRegister from "./pages/hotel/signup/hotelSignup";
+import "./App.css";
+import "./index.css";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">

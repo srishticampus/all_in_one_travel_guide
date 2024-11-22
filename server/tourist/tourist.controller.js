@@ -1,7 +1,6 @@
 const { TouristModel } = require("./tourist.model");
 const jwt = require("jsonwebtoken");
 const tourists = require("../Admin/touristPlaces");
-const bookingSchema = require("../Hotel/bookingSchema");
 const taxiBooking = require("../Taxi/taxiBooking");
 const booking = require("../Guide/booking");
 const touristPlaces = require("../Admin/touristPlaces");

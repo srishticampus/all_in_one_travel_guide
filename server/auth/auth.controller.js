@@ -3,11 +3,12 @@ const { USERS_TYPE } = require("../config/constant");
 const { generateAccessToken } = require("../utils/handleToken");
 const { comparePassword, hashPassword } = require("../utils/hanldePasswordEnc");
 const { AgencyModel } = require("../agency/agency.model");
+const { HotelModel } = require("../hotel/hotel.model");
 
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-
+    
     if (!email || !password) {
       return res.status(400).json({
         message: "Email and password are required",
@@ -54,6 +55,26 @@ const login = async (req, res, next) => {
       return res
         .status(200)
         .json({ message: "Agency Login successfull", role: AGENCY, token });
+    }
+    const hotel = await HotelModel.findOne({ email });
+    if (hotel) {
+      const isPasswordCorrect = await comparePassword(
+        password,
+        hotel.password
+      );
+      if (!isPasswordCorrect) {
+        return res.status(404).json({
+          message: "Email id or password is incorrect",
+        });
+      }
+
+      const hotelCopy = hotel.toObject();
+      delete hotelCopy.password;
+      const { HOTEL } = USERS_TYPE;
+      const token = generateAccessToken(hotelCopy);
+      return res
+        .status(200)
+        .json({ message: "Hotel Login successfull", role: HOTEL, token });
     }
 
     // no user matched so ending the resposne

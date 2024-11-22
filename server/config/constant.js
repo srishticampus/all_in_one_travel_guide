@@ -4,7 +4,7 @@ const USERS_TYPE = {
   TAXI: "TAXI",
   AGENCY: "AGENCY",
   ADMIN: "ADMIN",
-  RESTAURANT: "RESTAURANT",
+  HOTEL: "HOTEL",
 };
 module.exports = {
   JWT_SECRET_KEY,
