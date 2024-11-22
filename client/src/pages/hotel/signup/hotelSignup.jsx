@@ -96,7 +96,7 @@ function HotelRegister() {
                         message: "Max. 30 characters allowed.",
                       },
                     })}
-                    placeholder="hotel Name"
+                    placeholder="Hotel Name"
                   />
                   <p className="text-danger">
                     <ErrorMessage errors={errors} name="hotelName" />
@@ -106,9 +106,9 @@ function HotelRegister() {
                 <div className="inputWrapper">
                   <input
                     type="text"
-                    name="hotelAddress"
-                    {...register("hotelAddress", {
-                      required: "hotel address is required.",
+                    name="hotelLocation"
+                    {...register("hotelLocation", {
+                      required: "Hotel location is required.",
                       minLength: {
                         value: 2,
                         message: "Min. 2 characters required.",
@@ -118,10 +118,10 @@ function HotelRegister() {
                         message: "Max. 60 characters allowed.",
                       },
                     })}
-                    placeholder="hotel Address"
+                    placeholder="Hotel Location"
                   />
                   <p className="text-danger">
-                    <ErrorMessage errors={errors} name="hotelAddress" />
+                    <ErrorMessage errors={errors} name="hotelLocation" />
                   </p>
                 </div>
 

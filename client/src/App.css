@@ -162,10 +162,11 @@
 /*** Hero Header ***/
 .hero-header {
   background: linear-gradient(rgba(20, 20, 31, 0.7), rgba(20, 20, 31, 0.7)),
-    url(/src/img/frontimg.webp);
+    url('./Asset/images/agency/travel-girl.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 100vh;
 }
 .home_head_div {
   font-size: 8vmin;
