@@ -96,8 +96,8 @@ const forgotPassword = async (req, res, next) => {
       });
     }
     //todo => add other users model type here.
+    //tourist
     const tourist = await TouristModel.findOne({ email });
-
     if (tourist) {
       const isOldPasswordSame = await comparePassword(
         password,
@@ -116,7 +116,7 @@ const forgotPassword = async (req, res, next) => {
         .status(200)
         .json({ message: "Password changed successfully." });
     }
-
+    //agency
     const agency = await AgencyModel.findOne({ email });
     if (agency) {
       const isOldPasswordSame = await comparePassword(
@@ -132,6 +132,27 @@ const forgotPassword = async (req, res, next) => {
       agency.password = myNewPassword;
 
       await agency.save();
+      return res
+        .status(200)
+        .json({ message: "Password changed successfully." });
+    }
+
+    // hotel
+    const hotel = await HotelModel.findOne({ email });
+    if (hotel) {
+      const isOldPasswordSame = await comparePassword(
+        password,
+        hotel.password
+      );
+      if (isOldPasswordSame) {
+        return res
+          .status(400)
+          .json({ message: "You can't resue old password." });
+      }
+      const myNewPassword = await hashPassword(password);
+      hotel.password = myNewPassword;
+
+      await hotel.save();
       return res
         .status(200)
         .json({ message: "Password changed successfully." });
