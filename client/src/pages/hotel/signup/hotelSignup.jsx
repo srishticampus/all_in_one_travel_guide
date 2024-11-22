@@ -27,16 +27,20 @@ function HotelRegister() {
       password,
       confirmPassword,
       phoneNumber,
-      hotelAddress,
+      hotelLocation,
     } = data;
-
+    if (!hotelName || !email || !password || !confirmPassword || !phoneNumber || !hotelLocation) {
+      return;
+    }
     if (password !== confirmPassword) {
       return;
     }
+    console.log('data => ', data);
     sendDataToServer(data);
   };
 
   const sendDataToServer = async (data) => {
+    console.log('wokring..')
     try {
       const res = await axiosInstance.post("/hotel/signup", data);
       if (res.status === 201) {
