@@ -8,7 +8,12 @@ module.exports = {
     "./public/index.html"
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '128':  '32rem',
+        '500': '125rem'
+      }
+    },
   },
   plugins: [],
 }

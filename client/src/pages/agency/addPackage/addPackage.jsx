@@ -1,9 +1,13 @@
+import Footer from "../../../Components/Footer/Footer";
+import AgencyNavbar from "../navbar/navbar";
+import PackageForm from "./packageForm";
+
 const AddPackage = () => {
   return (
     <div>
-      <p className="tw-text-4xl tw-font-bold tw-text-center">
-        Hello, Tailwind and Bootstrap!
-      </p>
+      <AgencyNavbar />
+      <PackageForm />
+      <Footer />
     </div>
   );
 };
