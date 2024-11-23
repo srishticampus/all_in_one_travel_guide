@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Home from "./Components/agencyHome/agentHome";
 import Login from "./Components/common/login/login";
 import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
@@ -14,6 +13,7 @@ import AddPackage from "./pages/agency/addPackage/addPackage";
 import HotelRegister from "./pages/hotel/signup/hotelSignup";
 import "./App.css";
 import "./index.css";
+import HotelDashboard from "./pages/hotel/dashboard/hotelDashboard";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -34,6 +34,7 @@ function App() {
 
           {/* hotels  */}
           <Route path="/hotel/signup" element={<HotelRegister />} />
+          <Route path="/hotel/dashboard" element={<HotelDashboard />} />
           <Route path="/about" element={<LandingAboutPage />} />
 
           <Route path="/*" element={<NotFound />} />

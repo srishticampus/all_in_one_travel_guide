@@ -37,7 +37,7 @@ function Login() {
         } else if (userType === "AGENCY") {
           navigate("/agency/home");
         }else if (userType === "HOTEL") {
-          navigate('/hotel/home')
+          navigate('/hotel/dashboard')
         }
       }
     } catch (error) {
