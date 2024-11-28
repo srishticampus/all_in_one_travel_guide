@@ -4,12 +4,10 @@ const packageSchema = mongoose.Schema(
     packageName: {
       required: [true, "Package Name is required."],
       type: String,
-      minLength: [4, "Min. 4 characters required"],
     },
-    description: {
+    packageDescription: {
       required: [true, "Description is required."],
       type: String,
-      minLength: [4, "Min. 4 characters required"],
     },
     packageType: {
       enum: [
@@ -28,7 +26,6 @@ const packageSchema = mongoose.Schema(
     destination: {
       required: [true, "Destination is required."],
       type: String,
-      minLength: [4, "Min. 4 characters required"],
     },
     costPerHead: {
       required: [true, "Cost per head is required."],

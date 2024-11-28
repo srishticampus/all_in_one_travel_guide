@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-hot-toast";
-
+import axiosInstance from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
 const PackageForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -11,9 +13,75 @@ const PackageForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    // Send data to server
-    console.log("Form Data:", data);
-    toast.success("Package added successfully!");
+    const {
+      packageName,
+      packageDescription,
+      packageType,
+      costPerHead,
+      totalAvailableSeats,
+      startingDate,
+      days,
+      nights,
+      destination,
+      packagePhoto,
+    } = data;
+
+    if (
+      !packageName ||
+      !packageDescription ||
+      !packageType ||
+      !costPerHead ||
+      !totalAvailableSeats ||
+      !startingDate ||
+      !days ||
+      !nights ||
+      !destination ||
+      packagePhoto.length === 0
+    ) {
+      console.log("All fields are required", data);
+      return;
+    }
+    const serializedData = {
+      packageName,
+      packageDescription,
+      packageType,
+      costPerHead,
+      totalAvailableSeats,
+      startingDate,
+      days,
+      nights,
+      destination,
+      packagePhoto: packagePhoto[0],
+    };
+    sendDataToServer(serializedData);
+  };
+  const sendDataToServer = async (data) => {
+    try {
+      const formData = new FormData();
+
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
+        
+      const res = await axiosInstance.post("/package/add-package", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (res.status === 201) {
+        toast.success("Package created successfully");
+      }
+    } catch (error) {
+      const statusCode = error?.response?.status;
+      if (statusCode === 400) {
+        const msg = error?.response?.data?.errors[0] || "Something went wrong.";
+        toast.error(msg);
+      } else {
+        const msg = error?.response?.data?.message || "Something went wrong.";
+        toast.error(msg);
+      }
+      console.error("Error on create package: ", error);
+    }
   };
 
   return (
@@ -216,7 +284,6 @@ const PackageForm = () => {
             className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
             id="totalAvailableSeats"
             type="number"
-
             placeholder="Enter package duration"
             {...register("totalAvailableSeats", {
               required: "Total available seats is required.",
@@ -226,7 +293,6 @@ const PackageForm = () => {
             <ErrorMessage errors={errors} name="totalAvailableSeats" />
           </p>
         </div>
-
 
         <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
           <label
@@ -239,7 +305,6 @@ const PackageForm = () => {
             className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
             id="packagePhoto"
             type="file"
-
             {...register("packagePhoto", {
               required: "Package photo is required.",
             })}

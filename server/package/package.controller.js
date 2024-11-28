@@ -24,15 +24,15 @@ const packagePhoto = multer({
   limits: {
     fileSize: 1024 * 1024 * 5,
   },
-}).fields([{ name: "packagePhoto", maxCount: 1 }]);
+}).single("packagePhoto")
 
 const addPackage = async (req, res, next) => {
   try {
-    const packagePhoto = req.files?.packagePhoto[0].path;
 
+    const packagePhoto = req.file
     const {
       packageName,
-      description,
+      packageDescription,
       packageType,
       destination,
       costPerHead,
@@ -40,29 +40,28 @@ const addPackage = async (req, res, next) => {
       days,
       nights,
       totalAvailableSeats,
-      agencyId,
-      
+      agencyId = "6736f420c5935a47de53dffa",
     } = req.body;
 
     if (
       !packageName ||
-      !description ||
+      !packageDescription ||
       !packageType ||
       !destination ||
       !costPerHead ||
-      !startingDate  ||
+      !startingDate ||
       !totalAvailableSeats ||
       !agencyId
     ) {
       return res.status(400).json({
         message: "All fields are required",
-        data: req.body
+        data: req.body,
       });
     }
 
     const newPackage = new PackageModel({
       packageName,
-      description,
+      packageDescription,
       packageType,
       destination,
       costPerHead: Number(costPerHead),
@@ -70,7 +69,7 @@ const addPackage = async (req, res, next) => {
       days,
       nights,
       totalAvailableSeats: Number(totalAvailableSeats),
-      packagePhoto,
+      packagePhoto: packagePhoto.filename,
       agencyId,
     });
     await newPackage.save();

@@ -30,6 +30,18 @@ function AgencyRegister() {
       agencyAddress,
     } = data;
 
+    
+    if (
+      !agencyName ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      !phoneNumber ||
+      !agencyAddress
+    ) {
+      return;
+    }
+    
     if (password !== confirmPassword) {
       return;
     }
