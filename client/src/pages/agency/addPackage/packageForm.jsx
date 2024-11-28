@@ -1,116 +1,263 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "react-hot-toast";
+
 const PackageForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    // Send data to server
+    console.log("Form Data:", data);
+    toast.success("Package added successfully!");
+  };
+
   return (
-    <form className="tw-bg-slate-200 tw-mt-24 tw-w-11/12 tw-mx-auto tw-min-h-128 p-5">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="tw-bg-gray-50 tw-mt-24 tw-w-11/12 tw-mx-auto tw-min-h-128 p-5"
+    >
       <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
         <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
           <label
             className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-            for="grid-first-name"
+            htmlFor="packageName"
           >
             Package Name
           </label>
           <input
-            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-red-500 tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
-            id="grid-first-name"
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="packageName"
             type="text"
-            placeholder="Jane"
+            placeholder="Enter package name"
+            {...register("packageName", {
+              required: "Package name is required.",
+            })}
           />
           <p className="tw-text-red-500 tw-text-xs tw-italic">
-            Please fill out this field.
+            <ErrorMessage errors={errors} name="packageName" />
           </p>
         </div>
         <div className="tw-w-full md:tw-w-1/2 tw-px-3">
           <label
             className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-            for="grid-last-name"
+            htmlFor="packageDescription"
           >
-            Last Name
+            Package Description
           </label>
           <input
-            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white focus:tw-border-gray-500"
-            id="grid-last-name"
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="packageDescription"
             type="text"
-            placeholder="Doe"
+            placeholder="Enter package description"
+            {...register("packageDescription", {
+              required: "Package description is required.",
+            })}
           />
-        </div>
-      </div>
-      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
-        <div className="tw-w-full tw-px-3">
-          <label
-            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-            for="grid-password"
-          >
-            Password
-          </label>
-          <input
-            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-mb-3 tw-leading-tight focus:tw-outline-none focus:tw-bg-white focus:tw-border-gray-500"
-            id="grid-password"
-            type="password"
-            placeholder="******************"
-          />
-          <p className="tw-text-gray-600 tw-text-xs tw-italic">
-            Make it as long and as crazy as you'd like
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="packageDescription" />
           </p>
         </div>
       </div>
-      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-2">
-        <div className="tw-w-full md:tw-w-1/3 tw-px-3 tw-mb-6 md:tw-mb-0">
+      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
           <label
             className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-            for="grid-city"
+            htmlFor="packageType"
           >
-            City
+            Package Type
+          </label>
+          <select
+            className="tw-block tw-appearance-none tw-w-full tw-bg-gray-200 tw-border tw-border-gray-200 tw-text-gray-700 tw-py-3 tw-px-4 tw-pr-8 tw-rounded tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="packageType"
+            {...register("packageType", {
+              required: "Package type is required.",
+            })}
+          >
+            <option value="">Select package type</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Honeymoon">Honeymoon</option>
+            <option value="Family">Family</option>
+            <option value="Group">Group</option>
+            <option value="Solo">Solo</option>
+            <option value="Couple">Couple</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Other">Other</option>
+          </select>
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="packageType" />
+          </p>
+        </div>
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3">
+          <label
+            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
+            htmlFor="packagePrice"
+          >
+            Cost Per Head
           </label>
           <input
-            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white focus:tw-border-gray-500"
-            id="grid-city"
-            type="text"
-            placeholder="Albuquerque"
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="costPerHead"
+            type="number"
+            placeholder="Cost per head"
+            {...register("costPerHead", {
+              required: "Cost per head is required.",
+            })}
           />
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="costPerHead" />
+          </p>
         </div>
-        <div className="tw-w-full md:tw-w-1/3 tw-px-3 tw-mb-6 md:tw-mb-0">
+      </div>
+
+      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
           <label
             className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-            for="grid-state"
+            htmlFor="packageType"
           >
-            State
+            Destination
           </label>
-          <div className="tw-relative">
-            <select
-              className="tw-block tw-appearance-none tw-w-full tw-bg-gray-200 tw-border tw-border-gray-200 tw-text-gray-700 tw-py-3 tw-px-4 tw-pr-8 tw-rounded tw-leading-tight focus:tw-outline-none focus:tw-bg-white focus:tw-border-gray-500"
-              id="grid-state"
-            >
-              <option>New Mexico</option>
-              <option>Missouri</option>
-              <option>Texas</option>
-            </select>
-            <div className="tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-flex tw-items-center tw-px-2 tw-text-gray-700">
-              <svg
-                className="tw-fill-current tw-h-4 tw-w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
-          </div>
+
+          <input
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="destination"
+            type="text  "
+            placeholder="Enter destinations"
+            {...register("destination", {
+              required: "Destination is required.",
+            })}
+          />
+
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="destination" />
+          </p>
         </div>
-        <div className="tw-w-full md:tw-w-1/3 tw-px-3 tw-mb-6 md:tw-mb-0">
+
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3">
           <label
             className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
-            for="grid-zip"
+            htmlFor="packagePrice"
           >
-            Zip
+            Starting date
           </label>
           <input
-            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white focus:tw-border-gray-500"
-            id="grid-zip"
-            type="text"
-            placeholder="90210"
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="startingDate"
+            type="date"
+            min={new Date().toISOString().split("T")[0]}
+            {...register("startingDate", {
+              required: "Starting date is required.",
+            })}
           />
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="startingDate" />
+          </p>
         </div>
+      </div>
+
+      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
+          <label
+            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
+            htmlFor="packageType"
+          >
+            Days
+          </label>
+
+          <input
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="days"
+            type="number"
+            placeholder="Enter number of days"
+            {...register("days", { required: "Number of days is required." })}
+          />
+
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="days" />
+          </p>
+        </div>
+
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3">
+          <label
+            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
+            htmlFor="packagePrice"
+          >
+            Nights
+          </label>
+          <input
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="startingDate"
+            type="number"
+            placeholder="Enter number of nights"
+            {...register("nights", {
+              required: "Total number of night is required.",
+            })}
+          />
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="nights" />
+          </p>
+        </div>
+      </div>
+
+      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
+          <label
+            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
+            htmlFor="packageDuration"
+          >
+            Total Available seats
+          </label>
+          <input
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="totalAvailableSeats"
+            type="number"
+
+            placeholder="Enter package duration"
+            {...register("totalAvailableSeats", {
+              required: "Total available seats is required.",
+            })}
+          />
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="totalAvailableSeats" />
+          </p>
+        </div>
+
+
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
+          <label
+            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
+            htmlFor="packageDuration"
+          >
+            Package photo
+          </label>
+          <input
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="packagePhoto"
+            type="file"
+
+            {...register("packagePhoto", {
+              required: "Package photo is required.",
+            })}
+          />
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="packagePhoto" />
+          </p>
+        </div>
+      </div>
+      <div className="tw-flex tw-justify-center">
+        <input
+          type="submit"
+          value="Add Package"
+          className="tw-bg-blue-500 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded hover:tw-bg-blue-700 focus:tw-outline-none focus:tw-shadow-outline"
+        />
       </div>
     </form>
   );
 };
+
 export default PackageForm;
