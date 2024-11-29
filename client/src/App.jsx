@@ -14,6 +14,7 @@ import HotelRegister from "./pages/hotel/signup/hotelSignup";
 import "./App.css";
 import "./index.css";
 import HotelDashboard from "./pages/hotel/dashboard/hotelDashboard";
+import MyPackage from "./pages/agency/myPackage/myPackage";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -31,6 +32,7 @@ function App() {
           <Route path="/agency/signup" element={<AgencyRegister />} />
           <Route path="/agency/home" element={<AgencyHome />} />
           <Route path="/agency/add-package" element={<AddPackage />} />
+          <Route path="/agency/my-packages" element={<MyPackage />} />
 
           {/* hotels  */}
           <Route path="/hotel/signup" element={<HotelRegister />} />

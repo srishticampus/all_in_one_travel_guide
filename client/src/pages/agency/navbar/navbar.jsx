@@ -26,8 +26,8 @@ const AgencyNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/agency/view-tourists" className="navbar-link" data-nav-link>
-                  View Tourists
+                <Link to="/agency/my-packages" className="navbar-link" data-nav-link>
+                  My Packages
                 </Link>
               </li>
               <li>

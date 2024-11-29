@@ -26,6 +26,10 @@ function Login() {
     sendDataToServer(credentials);
   };
 
+  const saveIdToLocalStorage = (id, userType) => {
+    localStorage.setItem("travel_guide_active_user_type", userType);
+    localStorage.setItem("travel_guide_user_id", id);
+  };
   const sendDataToServer = async (data) => {
     try {
       const res = await axiosInstance.post("/auth/login", data);
@@ -35,9 +39,13 @@ function Login() {
         if (userType === "TOURIST") {
           navigate("/tourist/home");
         } else if (userType === "AGENCY") {
-          navigate("/agency/home");
-        }else if (userType === "HOTEL") {
-          navigate('/hotel/dashboard')
+          const id = res.data?.id || null;
+          if (id) {
+            saveIdToLocalStorage(id, userType);
+            navigate("/agency/home");
+          }
+        } else if (userType === "HOTEL") {
+          navigate("/hotel/dashboard");
         }
       }
     } catch (error) {

@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 const PackageForm = () => {
+  const [agencyId, setAgencyId] = useState("");
+  useEffect(() => {
+    const id = localStorage.getItem("travel_guide_user_id") || null;
+    if (id) {
+      setAgencyId(id);
+    }else {
+      toast.error("Please login first");
+      navigate('/agency/login')
+    }
+  }, []);
   const navigate = useNavigate();
   const {
     register,
@@ -51,6 +61,7 @@ const PackageForm = () => {
       days,
       nights,
       destination,
+      agencyId,
       packagePhoto: packagePhoto[0],
     };
     sendDataToServer(serializedData);
@@ -62,7 +73,7 @@ const PackageForm = () => {
       for (const key in data) {
         formData.append(key, data[key]);
       }
-        
+
       const res = await axiosInstance.post("/package/add-package", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -70,6 +81,7 @@ const PackageForm = () => {
       });
       if (res.status === 201) {
         toast.success("Package created successfully");
+        navigate("/agency/my-packages");
       }
     } catch (error) {
       const statusCode = error?.response?.status;

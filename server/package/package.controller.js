@@ -24,12 +24,11 @@ const packagePhoto = multer({
   limits: {
     fileSize: 1024 * 1024 * 5,
   },
-}).single("packagePhoto")
+}).single("packagePhoto");
 
 const addPackage = async (req, res, next) => {
   try {
-
-    const packagePhoto = req.file
+    const packagePhoto = req.file;
     const {
       packageName,
       packageDescription,
@@ -40,7 +39,7 @@ const addPackage = async (req, res, next) => {
       days,
       nights,
       totalAvailableSeats,
-      agencyId = "6736f420c5935a47de53dffa",
+      agencyId,
     } = req.body;
 
     if (
@@ -82,4 +81,18 @@ const addPackage = async (req, res, next) => {
   }
 };
 
-module.exports = { addPackage, packagePhoto };
+const getPackageByAgencyId = async (req, res, next) => {
+  try {
+    const { agencyId } = req.params;
+    const packages = await PackageModel.find({ agencyId })
+      .populate("agencyId")
+      .exec();
+    return res.status(200).json({
+      message: "Packages fetched successfully",
+      data: packages,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+module.exports = { addPackage, packagePhoto, getPackageByAgencyId };
