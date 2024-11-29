@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/upload`));
 
 app.use(cors());
-const route = require("./routes");
 const { errorHandler } = require("./middleware/errorHandler");
 const { authRoutes } = require("./auth/auth.routes");
 const agencyRoutes = require("./agency/agency.routes");
@@ -21,7 +20,6 @@ app.get("/travel_guide_api", (req, res) => {
     "Server running successfully on http://localhost:4050/travel_guide_api/"
   );
 });
-// app.use("/tourist_guide_api", route);
 app.use("/travel_guide_api/auth", authRoutes);
 
 
