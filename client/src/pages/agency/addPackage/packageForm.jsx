@@ -12,7 +12,7 @@ const PackageForm = () => {
       setAgencyId(id);
     }else {
       toast.error("Please login first");
-      navigate('/agency/login')
+      navigate('/login')
     }
   }, []);
   const navigate = useNavigate();

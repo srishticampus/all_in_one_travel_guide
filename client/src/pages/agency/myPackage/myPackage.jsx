@@ -11,7 +11,7 @@ const MyPackage = () => {
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_user_id") || null;
     if (!id) {
-      navigate("/agency/login");
+      navigate("/login");
     } else {
       setAgencyId(id);
       getPackages(id);
