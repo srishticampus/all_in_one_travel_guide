@@ -15,6 +15,7 @@ import "./App.css";
 import "./index.css";
 import HotelDashboard from "./pages/hotel/dashboard/hotelDashboard";
 import MyPackage from "./pages/agency/myPackage/myPackage";
+import ViewPackages from "./pages/tourist/viewPackages/viewPackages";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
+          <Route path="/tourist/view-packages" element={<ViewPackages />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
