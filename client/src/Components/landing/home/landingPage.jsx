@@ -18,7 +18,7 @@ export default function LandingPage() {
     navigate("/tourist/signup");
   };
   return (
-    <div id="agency-home">
+    <div id="landing-page">
       <LandingNavbar />
       <main>
         <article>
@@ -172,7 +172,7 @@ export default function LandingPage() {
               <h2 className="h2 my-section-title">Checkout Our Packeges</h2>
 
               <ul className="package-list">
-                <li>
+                <li style={{backgroundColor: "red"}}>
                   <div className="package-card">
                     <figure className="card-banner">
                       <img

@@ -22,13 +22,15 @@ function App() {
       <div className="App">
         <Toaster />
         <Routes>
+          {/* common pages  */}
           <Route exact path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          {/* tourist pages  */}
           <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
           <Route path="/tourist/view-packages" element={<ViewPackages />} />
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* Agency */}
           <Route path="/agency/signup" element={<AgencyRegister />} />

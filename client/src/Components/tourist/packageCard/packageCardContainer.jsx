@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import PackageCard from "./packageCard";
+import "./packageCard.scss";
 const PackageCardContainer = () => {
   const [packages, setPackages] = useState([]);
   useEffect(() => {
@@ -18,9 +19,9 @@ const PackageCardContainer = () => {
     }
   };
   return (
-    <div>
+    <div id="pack-card-container">
       <h1>All Packages </h1>
-      <div className="tw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
+      <div className="tw-mx-autotw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
         {packages.map((item) => {
           return <PackageCard key={item._id} item={item} />;
         })}

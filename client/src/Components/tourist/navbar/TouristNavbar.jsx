@@ -38,10 +38,10 @@ export default function TouristNavbar() {
               <Link to="/restaurants" className="fs-6 nav-item nav-link">
                 Restaurant
               </Link>
-              <Link to="/taxi" className="fs-6 nav-item nav-link">
+              <Link to="/tourist/view-packages" className="fs-6 nav-item nav-link">
                 Packages
               </Link>
-              <Link to="/packages" className="fs-6 nav-item nav-link">
+              <Link to="/profile" className="fs-6 nav-item nav-link">
                 Profile
               </Link>
             </div>
