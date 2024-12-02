@@ -81,6 +81,17 @@ const addPackage = async (req, res, next) => {
   }
 };
 
+const getAllPackages = async (req, res, next) => {
+  try {
+    const packages = await PackageModel.find().populate("agencyId").exec();
+    return res.status(200).json({
+      message: "Packages fetched successfully",
+      data: packages,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 const getPackageByAgencyId = async (req, res, next) => {
   try {
     const { agencyId } = req.params;
@@ -95,4 +106,9 @@ const getPackageByAgencyId = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { addPackage, packagePhoto, getPackageByAgencyId };
+module.exports = {
+  addPackage,
+  packagePhoto,
+  getPackageByAgencyId,
+  getAllPackages,
+};
