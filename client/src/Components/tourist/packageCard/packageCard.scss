@@ -15,12 +15,11 @@
   .package-card {
     background: var(--cultured);
     overflow: hidden;
+    height: 400px;
     border-radius: 15px;
   }
 
-  .package-card .card-banner {
-    height: 250px;
-  }
+ 
 
   .package-card .card-banner img {
     width: 100%;
@@ -37,7 +36,6 @@
   }
 
   .package-card .card-text {
-    line-height: 1.6;
     margin-bottom: 20px;
   }
 

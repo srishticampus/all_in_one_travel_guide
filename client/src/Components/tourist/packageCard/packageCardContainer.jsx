@@ -20,8 +20,8 @@ const PackageCardContainer = () => {
   };
   return (
     <div id="pack-card-container">
-      <h1>All Packages </h1>
-      <div className="tw-mx-autotw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
+      <h1 className="tw-text-center tw-mt-3">Packages for you </h1>
+      <div className="tw-mx-auto tw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
         {packages.map((item) => {
           return <PackageCard key={item._id} item={item} />;
         })}
