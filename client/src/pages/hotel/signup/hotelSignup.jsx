@@ -29,18 +29,25 @@ function HotelRegister() {
       phoneNumber,
       hotelLocation,
     } = data;
-    if (!hotelName || !email || !password || !confirmPassword || !phoneNumber || !hotelLocation) {
+    if (
+      !hotelName ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      !phoneNumber ||
+      !hotelLocation
+    ) {
       return;
     }
     if (password !== confirmPassword) {
       return;
     }
-    console.log('data => ', data);
+    console.log("data => ", data);
     sendDataToServer(data);
   };
 
   const sendDataToServer = async (data) => {
-    console.log('wokring..')
+    console.log("wokring..");
     try {
       const res = await axiosInstance.post("/hotel/signup", data);
       if (res.status === 201) {
@@ -86,7 +93,7 @@ function HotelRegister() {
                     type="text"
                     name="hotelName"
                     {...register("hotelName", {
-                      required: "hotel name is required.",
+                      required: "Hotel name is required.",
                       minLength: {
                         value: 2,
                         message: "Min. 2 characters required.",
@@ -214,15 +221,14 @@ function HotelRegister() {
                     <ErrorMessage errors={errors} name="confirmPassword" />
                   </p>
                 </div>
-                <div className="d-flex justify-content-center">
-                  <input
-                    type="submit"
-                    name="register"
-                    id="register"
-                    value="REGISTER"
-                    style={{ height: "60px", marginLeft: "15px" }}
-                  />
-                </div>
+              </div>
+              <div className="d-flex tw-justify-center tw-w-full ">
+                <input
+                  className="tw-mt-3 tw-text-white tw-bg-gray-800 hover:tw-bg-gray-900 focus:tw-outline-none focus:tw-ring-4 focus:tw-ring-gray-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 me-2 tw-mb-2 dark:tw-bg-gray-800 dark:hover:tw-bg-gray-700 dark:focus:tw-ring-gray-700 dark:tw-border-gray-700"
+                  type="submit"
+                  name="register"
+                  value="Sign Up"
+                />
               </div>
             </form>
           </div>

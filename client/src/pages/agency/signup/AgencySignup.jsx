@@ -30,7 +30,6 @@ function AgencyRegister() {
       agencyAddress,
     } = data;
 
-    
     if (
       !agencyName ||
       !email ||
@@ -41,7 +40,7 @@ function AgencyRegister() {
     ) {
       return;
     }
-    
+
     if (password !== confirmPassword) {
       return;
     }
@@ -222,15 +221,14 @@ function AgencyRegister() {
                     <ErrorMessage errors={errors} name="confirmPassword" />
                   </p>
                 </div>
-                <div className="d-flex justify-content-center">
-                  <input
-                    type="submit"
-                    name="register"
-                    id="register"
-                    value="REGISTER"
-                    style={{ height: "60px", marginLeft: "15px" }}
-                  />
-                </div>
+              </div>
+              <div className="d-flex tw-justify-center tw-w-full ">
+                <input
+                  className="tw-mt-3 tw-text-white tw-bg-gray-800 hover:tw-bg-gray-900 focus:tw-outline-none focus:tw-ring-4 focus:tw-ring-gray-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 me-2 tw-mb-2 dark:tw-bg-gray-800 dark:hover:tw-bg-gray-700 dark:focus:tw-ring-gray-700 dark:tw-border-gray-700"
+                  type="submit"
+                  name="register"
+                  value="Sign Up"
+                />
               </div>
             </form>
           </div>
