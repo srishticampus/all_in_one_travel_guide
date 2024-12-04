@@ -5,14 +5,20 @@ module.exports = {
   prefix: 'tw-',
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html"
+    "./public/index.html",
+
   ],
   theme: {
     extend: {
       spacing: {
         '128':  '32rem',
-        '500': '125rem'
-      }
+        '500': '125rem',
+      },
+      colors: {
+        blueShade: "#1c2434",
+        grayDark: "#333a48"
+      }        
+
     },
   },
   plugins: [],
