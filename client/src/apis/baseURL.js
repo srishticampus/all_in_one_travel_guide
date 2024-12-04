@@ -1,3 +1,3 @@
-// export const BASE_URL = 'http://localhost:4050';
-export const BASE_URL = 'http://hybrid.srishticampus.in/travel_guide/';
+export const BASE_URL = 'http://localhost:4050';
+// export const BASE_URL = 'http://hybrid.srishticampus.in/travel_guide/';
 
