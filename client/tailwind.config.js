@@ -16,7 +16,8 @@ module.exports = {
       },
       colors: {
         blueShade: "#1c2434",
-        grayDark: "#333a48"
+        grayDark: "#333a48",
+        dashboardBlue: "#f1f5f9"
       }        
 
     },

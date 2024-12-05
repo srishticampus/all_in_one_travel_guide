@@ -38,11 +38,21 @@ export default function TouristNavbar() {
               <Link to="/restaurants" className="fs-6 nav-item nav-link">
                 Restaurant
               </Link>
-              <Link to="/tourist/view-packages" className="fs-6 nav-item nav-link">
+              <Link
+                to="/tourist/view-packages"
+                className="fs-6 nav-item nav-link"
+              >
                 Packages
               </Link>
               <Link to="/profile" className="fs-6 nav-item nav-link">
                 Profile
+              </Link>
+              <Link
+                to="/login"
+                style={{color: "red"}}
+                className="fs-6 nav-item nav-link tw-text-red-800 "
+              >
+                Logout
               </Link>
             </div>
           </div>

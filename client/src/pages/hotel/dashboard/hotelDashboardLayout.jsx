@@ -5,10 +5,9 @@ const HotelDashboardLayout = ({ children }) => {
     <div className="tw-flex tw-h-screen tw-overflow-hidden">
       <Sidebar />
 
-      <main>
-        
+      <main className="tw-bg-dashboardBlue tw-h-500 tw-w-full">
+        <div className="tw-mx-auto tw-max-w-screen-2xl tw-p-4 ">{children}</div>
       </main>
-      <div className="tw-mx-auto tw-max-w-screen-2xl tw-p-4 ">{children}</div>
     </div>
   );
 };
