@@ -6,6 +6,7 @@ import { TouristProfileModal } from "../../../Components/tourist/profile/profile
 import TouristNavbar from "../../../Components/tourist/navbar/TouristNavbar";
 import Footer from "../../../Components/Footer/Footer";
 import axiosInstance from "../../../apis/axiosInstance";
+import { BASE_URL } from "../../../apis/baseURL";
 
 function TouristProfile() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -16,28 +17,28 @@ function TouristProfile() {
     country: "United States",
     phoneNumber: "+1 234 567 8900",
     gender: "male",
-    imageUrl:
+    touristPhoto:
       "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60",
-    certificateUrl:
+    idPhoto:
       "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=400&auto=format&fit=crop&q=60",
   });
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_tourist_id") || null;
     if (id) {
-        getTouristData(id)
+      getTouristData(id);
     }
-  }, [])
+  }, []);
+  console.log("prof", profile);
   const getTouristData = async (id) => {
     try {
-        const res = await axiosInstance.get(`/tourist/getTourist/${id}`);
-        if (res.status === 200) {
-            setProfile(res.data?.data);
-        }
+      const res = await axiosInstance.get(`/tourist/getTourist/${id}`);
+      if (res.status === 200) {
+        setProfile(res.data?.data);
+      }
     } catch (error) {
-        console.log("Error on get tourist data", error);   
+      console.log("Error on get tourist data", error);
     }
-  }
-  
+  };
 
   const handleSaveProfile = (updatedProfile) => {
     setProfile(updatedProfile);
@@ -60,13 +61,13 @@ function TouristProfile() {
           </div>
 
           <ProfileImage
-            imageUrl={profile.imageUrl}
+            imageUrl={`${BASE_URL}${profile.touristPhoto}`}
             onOpenModal={() => setIsImageModalOpen(true)}
           />
 
           <div className="tw-text-center tw-mb-8">
             <h1 className="tw-text-2xl tw-font-bold tw-text-gray-900">
-              {profile.name}
+              {profile?.name}
             </h1>
             <button
               onClick={() => setIsImageModalOpen(true)}
@@ -83,7 +84,7 @@ function TouristProfile() {
                   Email
                 </h3>
                 <p className="tw-mt-1 tw-text-sm tw-text-gray-900">
-                  {profile.email}
+                  {profile?.email}
                 </p>
               </div>
               <div>
@@ -91,7 +92,7 @@ function TouristProfile() {
                   Country
                 </h3>
                 <p className="tw-mt-1 tw-text-sm tw-text-gray-900">
-                  {profile.country}
+                  {profile?.country}
                 </p>
               </div>
             </div>
@@ -101,7 +102,7 @@ function TouristProfile() {
                   Phone Number
                 </h3>
                 <p className="tw-mt-1 tw-text-sm tw-text-gray-900">
-                  {profile.phoneNumber}
+                  {profile?.phoneNumber}
                 </p>
               </div>
               <div>
@@ -109,7 +110,7 @@ function TouristProfile() {
                   Gender
                 </h3>
                 <p className="tw-mt-1 tw-text-sm tw-text-gray-900">
-                  {profile.gender}
+                  {profile?.gender}
                 </p>
               </div>
             </div>
@@ -123,7 +124,7 @@ function TouristProfile() {
       >
         <div className="tw-max-w-2xl tw-mx-auto">
           <img
-            src={isImageModalOpen ? profile.certificateUrl : profile.imageUrl}
+            src={isImageModalOpen ? `${BASE_URL}${profile.idPhoto}` : `${BASE_URL}${profile.touristPhoto}`}
             alt="Certificate"
             className="tw-w-full tw-h-auto tw-rounded-lg"
           />

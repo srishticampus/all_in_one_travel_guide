@@ -43,9 +43,9 @@ const touristSignupUploads = multer({
 const touristSignup = async (req, res, next) => {
   try {
     const touristPhoto = req.files.touristPhoto
-      ? req.files.touristPhoto[0].path
+      ? req.files.touristPhoto[0].filename
       : null;
-    const idPhoto = req.files.idPhoto ? req.files.idPhoto[0].path : null;
+    const idPhoto = req.files.idPhoto ? req.files.idPhoto[0].filename : null;
     const { name, email, country, gender, password, phoneNumber, idType } =
       req.body;
 
