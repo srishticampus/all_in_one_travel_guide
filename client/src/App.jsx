@@ -16,6 +16,7 @@ import "./index.css";
 import HotelDashboard from "./pages/hotel/dashboard/hotelDashboard";
 import MyPackage from "./pages/agency/myPackage/myPackage";
 import ViewPackages from "./pages/tourist/viewPackages/viewPackages";
+import TouristProfile from "./pages/tourist/profile/profile";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -31,6 +32,7 @@ function App() {
           <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
           <Route path="/tourist/view-packages" element={<ViewPackages />} />
+          <Route path="/tourist/profile" element={<TouristProfile />} />
 
           {/* Agency */}
           <Route path="/agency/signup" element={<AgencyRegister />} />

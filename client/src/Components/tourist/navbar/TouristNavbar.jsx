@@ -29,13 +29,13 @@ export default function TouristNavbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto py-0">
-              <Link to="/" className="fs-6 nav-item nav-link ">
+              <Link to="/tourist/home" className="fs-6 nav-item nav-link ">
                 Home
               </Link>
-              <Link to="/hotels" className="fs-6 nav-item nav-link">
+              <Link to="/tourist/hotels" className="fs-6 nav-item nav-link">
                 Hotels
               </Link>
-              <Link to="/restaurants" className="fs-6 nav-item nav-link">
+              <Link to="/tourist/restaurants" className="fs-6 nav-item nav-link">
                 Restaurant
               </Link>
               <Link
@@ -44,7 +44,7 @@ export default function TouristNavbar() {
               >
                 Packages
               </Link>
-              <Link to="/profile" className="fs-6 nav-item nav-link">
+              <Link to="/tourist/profile" className="fs-6 nav-item nav-link">
                 Profile
               </Link>
               <Link

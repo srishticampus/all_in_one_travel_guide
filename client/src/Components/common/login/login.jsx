@@ -10,6 +10,7 @@ import styles from "./login.module.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { clearLocalStorage } from "../../../utils/localStorage.js";
 function Login() {
   const {
     register,
@@ -26,26 +27,29 @@ function Login() {
     sendDataToServer(credentials);
   };
 
-  const saveIdToLocalStorage = (id, userType) => {
-    localStorage.setItem("travel_guide_active_user_type", userType);
-    localStorage.setItem("travel_guide_user_id", id);
-  };
   const sendDataToServer = async (data) => {
     try {
       const res = await axiosInstance.post("/auth/login", data);
       if (res.status === 200) {
-        console.log("rss", res);
-        const userType = res.data?.role || "TOURIST";
+        clearLocalStorage();
+        const userType = res.data?.role;
+        const id = res?.data?.id || null;
+        if (!id) {
+          toast.error("Error on login.");
+          console.log("id can't find.");
+          return;
+        }
         if (userType === "TOURIST") {
+          localStorage.setItem("travel_guide_tourist_id", id);
           navigate("/tourist/home");
         } else if (userType === "AGENCY") {
-          const id = res.data?.id || null;
-          if (id) {
-            saveIdToLocalStorage(id, userType);
-            navigate("/agency/home");
-          }
+          localStorage.setItem("travel_guide_agency_id", id);
+          navigate("/agency/home");
         } else if (userType === "HOTEL") {
+          localStorage.setItem("travel_guide_hotel_id", id);
           navigate("/hotel/dashboard");
+        } else {
+          toast.error("Something went wrong.");
         }
       }
     } catch (error) {
