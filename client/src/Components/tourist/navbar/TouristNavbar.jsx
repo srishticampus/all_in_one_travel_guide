@@ -53,7 +53,7 @@ export default function TouristNavbar() {
                 className="fs-6 nav-item nav-link tw-text-red-800 "
               >
                 Logout
-              </Link>
+              </Link> 
             </div>
           </div>
         </nav>

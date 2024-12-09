@@ -12,15 +12,13 @@ function TouristProfile() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john.doe@example.com",
-    country: "United States",
-    phoneNumber: "+1 234 567 8900",
-    gender: "male",
-    touristPhoto:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60",
-    idPhoto:
-      "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=400&auto=format&fit=crop&q=60",
+    name: "",
+    email: "",
+    country: "",
+    phoneNumber: "",
+    gender: "",
+    touristPhoto: "",
+    idPhoto: "",
   });
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_tourist_id") || null;
@@ -122,7 +120,7 @@ function TouristProfile() {
         isOpen={isImageModalOpen}
         onClose={() => setIsImageModalOpen(false)}
       >
-        <div className="tw-max-w-2xl tw-mx-auto">
+        <div className="tw-max-w-md tw-mx-auto">
           <img
             src={isImageModalOpen ? `${BASE_URL}${profile.idPhoto}` : `${BASE_URL}${profile.touristPhoto}`}
             alt="Certificate"
