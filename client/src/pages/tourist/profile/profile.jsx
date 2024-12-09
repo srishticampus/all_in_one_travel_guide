@@ -7,6 +7,7 @@ import TouristNavbar from "../../../Components/tourist/navbar/TouristNavbar";
 import Footer from "../../../Components/Footer/Footer";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
+import {useNavigate} from 'react-router-dom';
 
 function TouristProfile() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -20,13 +21,15 @@ function TouristProfile() {
     touristPhoto: "",
     idPhoto: "",
   });
+  const navigate = useNavigate();
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_tourist_id") || null;
     if (id) {
       getTouristData(id);
+    } else {
+      navigate("/login");
     }
   }, []);
-  console.log("prof", profile);
   const getTouristData = async (id) => {
     try {
       const res = await axiosInstance.get(`/tourist/getTourist/${id}`);

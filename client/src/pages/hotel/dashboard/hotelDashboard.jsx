@@ -4,6 +4,7 @@ import Overview from "./overview/overview";
 import AddRoom from "./room/addRoom";
 import { useSelector } from "react-redux";
 import AddFood from "./food/addFood";
+import { LoadingSpinner } from "../../../Components/common/loadingSpinner/loadingSpinner";
 
 const HotelDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +14,7 @@ const HotelDashboard = () => {
   }, []);
 
   return isLoading ? (
-    <h1>Loading..</h1>
+    <LoadingSpinner />
   ) : (
     <HotelDashboardLayout>
       {activePage === "overview" && <Overview />}

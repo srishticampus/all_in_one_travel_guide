@@ -11,39 +11,50 @@ import AgencyHome from "./pages/agency/home/home";
 import LandingPage from "./Components/landing/home/landingPage";
 import AddPackage from "./pages/agency/addPackage/addPackage";
 import HotelRegister from "./pages/hotel/signup/hotelSignup";
-import "./App.css";
-import "./index.css";
 import HotelDashboard from "./pages/hotel/dashboard/hotelDashboard";
 import MyPackage from "./pages/agency/myPackage/myPackage";
 import ViewPackages from "./pages/tourist/viewPackages/viewPackages";
 import TouristProfile from "./pages/tourist/profile/profile";
+import {
+  TouristProtectedRoutes,
+  AgencyProtectedRoutes,
+  HotelProtectedRoutes,
+} from "./Components/protectedRoutes";
+import "./App.css";
+import "./index.css";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
       <div className="App">
         <Toaster />
         <Routes>
-          {/* common pages  */}
+          {/* public routes  */}
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-
-          {/* tourist pages  */}
-          <Route path="/tourist/home" element={<TouristHome />} />
           <Route path="/tourist/signup" element={<TouristSignup />} />
-          <Route path="/tourist/view-packages" element={<ViewPackages />} />
-          <Route path="/tourist/profile" element={<TouristProfile />} />
-
-          {/* Agency */}
           <Route path="/agency/signup" element={<AgencyRegister />} />
-          <Route path="/agency/home" element={<AgencyHome />} />
-          <Route path="/agency/add-package" element={<AddPackage />} />
-          <Route path="/agency/my-packages" element={<MyPackage />} />
-
-          {/* hotels  */}
           <Route path="/hotel/signup" element={<HotelRegister />} />
-          <Route path="/hotel/dashboard" element={<HotelDashboard />} />
           <Route path="/about" element={<LandingAboutPage />} />
+
+          {/* tourist routes  */}
+          <Route element={<TouristProtectedRoutes />}>
+            <Route path="/tourist/home" element={<TouristHome />} />
+            <Route path="/tourist/view-packages" element={<ViewPackages />} />
+            <Route path="/tourist/profile" element={<TouristProfile />} />
+          </Route>
+
+            {/* Agency routes */}
+          <Route element={<AgencyProtectedRoutes />}>
+            <Route path="/agency/home" element={<AgencyHome />} />
+            <Route path="/agency/add-package" element={<AddPackage />} />
+            <Route path="/agency/my-packages" element={<MyPackage />} />
+          </Route>
+
+          {/* hotels routes */}
+          <Route element={<HotelProtectedRoutes />}>
+            <Route path="/hotel/dashboard" element={<HotelDashboard />} />
+          </Route>
 
           <Route path="/*" element={<NotFound />} />
         </Routes>

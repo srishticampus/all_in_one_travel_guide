@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { setActivePage } from "../../../../redux/hotel/activePageSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { clearLocalStorage } from "../../../../utils/localStorage";
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const activePage = useSelector((state) => state.hotelActivePage.activePage);
   const navigate = useNavigate();
   const changePage = (newPage) => {
     dispatch(setActivePage(newPage));
   };
 
   const handleLogout = () => {
+    clearLocalStorage();
     navigate("/login");
-  }
+  };
 
   return (
     <aside className="tw-h-screen tw-bg-blueShade tw-w-72 tw-p-4">
@@ -24,7 +25,10 @@ const Sidebar = () => {
             <h3>Travel Guide</h3>
           </div>
         </li>
-        <li className="tw-list-none tw-mt-5" onClick={() => changePage("overview")}>
+        <li
+          className="tw-list-none tw-mt-5"
+          onClick={() => changePage("overview")}
+        >
           <div
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
@@ -48,7 +52,10 @@ const Sidebar = () => {
             Overview
           </div>
         </li>
-        <li className="tw-list-none tw-mt-5" onClick={() => changePage("addFood")}>
+        <li
+          className="tw-list-none tw-mt-5"
+          onClick={() => changePage("addFood")}
+        >
           <div
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
@@ -84,7 +91,10 @@ const Sidebar = () => {
             Add Food
           </div>
         </li>
-        <li  className="tw-list-none tw-mt-5" onClick={() => changePage("viewFood")}>
+        <li
+          className="tw-list-none tw-mt-5"
+          onClick={() => changePage("viewFood")}
+        >
           <div
             className={` tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
@@ -112,7 +122,10 @@ const Sidebar = () => {
             View Food
           </div>
         </li>
-        <li className="tw-list-none tw-mt-5" onClick={() => changePage("addRoom")}>
+        <li
+          className="tw-list-none tw-mt-5"
+          onClick={() => changePage("addRoom")}
+        >
           <div
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
@@ -131,7 +144,10 @@ const Sidebar = () => {
             Add Room
           </div>
         </li>
-        <li className="tw-list-none tw-mt-5" onClick={() => changePage("bookings")}>
+        <li
+          className="tw-list-none tw-mt-5"
+          onClick={() => changePage("bookings")}
+        >
           <div
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
