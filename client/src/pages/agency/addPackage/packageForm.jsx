@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const PackageForm = () => {
   const [agencyId, setAgencyId] = useState("");
   useEffect(() => {
-    const id = localStorage.getItem("travel_guide_user_id") || null;
+    const id = localStorage.getItem("travel_guide_agency_id") || null;
     if (id) {
       setAgencyId(id);
     }else {

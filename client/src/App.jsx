@@ -22,6 +22,7 @@ import {
 } from "./Components/protectedRoutes";
 import "./App.css";
 import "./index.css";
+import MyPackageDetails from "./pages/agency/myPackage/myPackageDetails";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -49,6 +50,7 @@ function App() {
             <Route path="/agency/home" element={<AgencyHome />} />
             <Route path="/agency/add-package" element={<AddPackage />} />
             <Route path="/agency/my-packages" element={<MyPackage />} />
+            <Route path="/agency/my-packages/:id" element={<MyPackageDetails />} />
           </Route>
 
           {/* hotels routes */}

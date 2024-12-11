@@ -9,7 +9,7 @@ const MyPackage = () => {
   const [agencyId, setAgencyId] = useState("");
   const [packages, setPackages] = useState([]);
   useEffect(() => {
-    const id = localStorage.getItem("travel_guide_user_id") || null;
+    const id = localStorage.getItem("travel_guide_agency_id") || null;
     if (!id) {
       navigate("/login");
     } else {
@@ -62,7 +62,9 @@ const MyPackage = () => {
                     <h3 className="mb-4">{item.packageName}</h3>
                     <h6 className="mb-0">{item.packageType}</h6>
                     <div className="tw-justify-center tw-flex tw-mt-5">
-                      <button className="btn btn-primary py-2 px-4 ms-2">
+                      <button className="btn btn-primary py-2 px-4 ms-2" onClick={() => {
+                        navigate(`/agency/my-packages/${item._id}`)
+                      }}>
                         View More{" "}
                       </button>
                     </div>

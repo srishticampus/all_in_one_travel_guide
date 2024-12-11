@@ -106,9 +106,23 @@ const getPackageByAgencyId = async (req, res, next) => {
     next(error);
   }
 };
+
+const getPackageById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const package = await PackageModel.findById(id);
+    return res.status(200).json({
+      message: "Package fetched successfully",
+      data: package,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   addPackage,
   packagePhoto,
   getPackageByAgencyId,
   getAllPackages,
+  getPackageById,
 };
