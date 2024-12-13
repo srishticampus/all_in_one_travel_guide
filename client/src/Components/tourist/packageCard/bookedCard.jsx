@@ -3,7 +3,7 @@ import { useState } from "react";
 import BookPackageModal from "./bookPackageModal";
 const BookedPackageCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  console.log('item', item)
   const onClose = () => {
     setIsModalOpen(false);
   };
@@ -73,14 +73,13 @@ const BookedPackageCard = ({ item }) => {
             <span>/ per person</span>
           </p>
 
-          <button
-            className="btn btn-secondary"
+          <div
             onClick={() => {
               setIsModalOpen(true);
             }}
           >
-            Book Now
-          </button>
+            Booked
+          </div>
         </div>
       </div>
 

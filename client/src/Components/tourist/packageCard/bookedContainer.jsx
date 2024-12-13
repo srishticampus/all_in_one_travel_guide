@@ -34,7 +34,7 @@ const BookedContainer = () => {
       <h1 className="tw-text-center tw-mt-3">Booked Packages</h1>
       <div className="tw-mx-auto tw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
         {packages.map((item) => {
-          return <BookedPackageCard key={item._id} item={item} />;
+          return <BookedPackageCard key={item._id} item={item?.packageId} />;
         })}
       </div>
     </div>
