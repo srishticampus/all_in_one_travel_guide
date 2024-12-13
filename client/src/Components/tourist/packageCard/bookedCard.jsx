@@ -1,7 +1,7 @@
 import { BASE_URL } from "../../../apis/baseURL";
 import { useState } from "react";
 import BookPackageModal from "./bookPackageModal";
-const PackageCard = ({ item }) => {
+const BookedPackageCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onClose = () => {
@@ -55,7 +55,7 @@ const PackageCard = ({ item }) => {
           </ul>
         </div>
 
-        <div className="card-price">
+        <div className="card-price-success">
           <div className="wrapper">
             <p className="reviews">({item?.review?.length || 0} reviews)</p>
 
@@ -88,4 +88,4 @@ const PackageCard = ({ item }) => {
     </>
   );
 };
-export default PackageCard;
+export default BookedPackageCard;

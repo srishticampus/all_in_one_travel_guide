@@ -23,6 +23,7 @@ import {
 import "./App.css";
 import "./index.css";
 import MyPackageDetails from "./pages/agency/myPackage/myPackageDetails";
+import BookedPackages from "./pages/tourist/bookedPackages/bookedPackages";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -42,6 +43,7 @@ function App() {
           <Route element={<TouristProtectedRoutes />}>
             <Route path="/tourist/home" element={<TouristHome />} />
             <Route path="/tourist/view-packages" element={<ViewPackages />} />
+            <Route path="/tourist/booked-packages" element={<BookedPackages />} />
             <Route path="/tourist/profile" element={<TouristProfile />} />
           </Route>
 
