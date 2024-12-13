@@ -31,8 +31,8 @@ const AgencyNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/agency/view-bookings" className="navbar-link" data-nav-link>
-                  View Bookings
+                <Link to="/agency/profile" className="navbar-link" data-nav-link>
+                  Profile
                 </Link>
               </li>
             </ul>

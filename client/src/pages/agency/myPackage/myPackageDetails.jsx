@@ -14,7 +14,7 @@ const MyPackageDetails = () => {
     if (id) {
       getpackageData(id);
     }
-  }, []);
+  }, [id]);
   const getpackageData = async (id) => {
     try {
       const res = await axiosInstance.get(`/package/getData/${id}`);
@@ -28,7 +28,7 @@ const MyPackageDetails = () => {
   return (
     <>
       <AgencyNavbar />
-      <div className="tw-container-fluid tw-bg-primary tw-mt-5">
+      <div className="tw-container-fluid tw-bg-primary tw-mt-20">
         <div className="tw-col-lg-10 tw-pt-lg-5 tw-mt-lg-5 tw-text-center">
           <h1 className="tw-display-3  tw-mb-3 animated slideInDown tw-text-blueShade">
             Package Details
