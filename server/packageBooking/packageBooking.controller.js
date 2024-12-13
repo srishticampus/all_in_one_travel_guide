@@ -5,20 +5,21 @@ const addPackageBooking = async (req, res, next) => {
     const {
       packageId,
       touristId,
+      agencyId,
       accountHolderName,
       accountNumber,
       expiryDate,
       cvv,
     } = req.body;
-    console.log(req.body);
-    if (!packageId || !touristId) {
+    if (!packageId || !touristId || !agencyId) {
       return res.status(400).json({
-        message: "Package id and tourist id are required.",
+        message: "Package id, tourist id and agency id are required.",
       });
     }
     const packageBooking = new PackageBooking({
       packageId,
       touristId,
+      agencyId,
       accountHolderName,
       accountNumber,
       expiryDate,
@@ -81,19 +82,15 @@ const getBookingsByPackageId = async (req, res, next) => {
 const getBookingsByAgencyId = async (req, res, next) => {
   try {
     const { agencyId } = req.params;
-    const bookings = await PackageBooking.find({})
-      .populate({
-        path: "packageId",
-        match: { agencyId },
-      })
+    const bookings = await PackageBooking.find({ agencyId })
+      .populate("agencyId")
       .populate("touristId")
+      .populate("packageId")
       .exec();
-    const filteredBookings = bookings.filter(
-      (booking) => booking.packageId !== null
-    );
+
     return res.status(200).json({
       message: "fetch the bookings that match the agency id",
-      data: filteredBookings,
+      data: bookings,
     });
   } catch (error) {
     next(error);
@@ -101,9 +98,9 @@ const getBookingsByAgencyId = async (req, res, next) => {
 };
 
 module.exports = {
+  getAllBookings,
   addPackageBooking,
   getBookingsByTouristId,
   getBookingsByAgencyId,
-  getAllBookings,
   getBookingsByPackageId,
 };

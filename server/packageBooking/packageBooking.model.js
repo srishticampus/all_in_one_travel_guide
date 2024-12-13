@@ -12,6 +12,11 @@ const packageBookingSchema = mongoose.Schema(
       ref: "Tourist",
       required: [true, "Tourist id is required."],
     },
+    agencyId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Agency",
+      required: [true, "Agency id is required"],
+    },
     accountHolderName: {
       type: String,
       required: [true, "Account holder name is required."],
