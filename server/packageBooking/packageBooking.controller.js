@@ -26,7 +26,7 @@ const addPackageBooking = async (req, res, next) => {
       cvv,
     });
     await packageBooking.save();
-    return res.status(200).json({
+    return res.status(201).json({
       message: "Package booking added successfully",
       data: packageBooking,
     });

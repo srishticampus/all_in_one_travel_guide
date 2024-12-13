@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import appLogo from "../../../Asset/images/logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function TouristNavbar() {
+  const navigate = useNavigate();
+
+  const handleOptionChange = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    if (value === "view-all-packages") {
+      navigate("/tourist/view-packages");
+    } else if (value === "view-booked-packages") {
+      navigate("/tourist/booked-packages");
+    }
+  };
+
   return (
     <div>
       <div className="container-fluid bg-dark px-9 d-none d-lg-block">
@@ -35,25 +48,52 @@ export default function TouristNavbar() {
               <Link to="/tourist/hotels" className="fs-6 nav-item nav-link">
                 Hotels
               </Link>
-              <Link to="/tourist/restaurants" className="fs-6 nav-item nav-link">
-                Restaurant
-              </Link>
               <Link
-                to="/tourist/view-packages"
+                to="/tourist/restaurants"
                 className="fs-6 nav-item nav-link"
               >
-                Packages
+                Restaurant
               </Link>
-              <Link to="/tourist/profile" className="fs-6 nav-item nav-link">
+
+              <select
+                className="fs-6 nav-item nav-link tw-cursor-pointer tw-w-28"
+                onChange={handleOptionChange}
+                defaultValue=""
+              >
+                <option value="" disabled hidden selected>
+                  {" "}
+                  Packages
+                </option>
+                <option
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                  value="view-all-packages"
+                >
+                  Packages
+                </option>
+
+                <option
+                  value="view-booked-packages"
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                >
+                  Booked
+                </option>
+              </select>
+
+              <Link
+                to="/tourist/profile"
+                className="fs-6 nav-item nav-link tw-cursor-pointer"
+              >
                 Profile
               </Link>
               <Link
                 to="/login"
-                style={{color: "red"}}
+                style={{ color: "red" }}
                 className="fs-6 nav-item nav-link tw-text-red-800 "
               >
                 Logout
-              </Link> 
+              </Link>
             </div>
           </div>
         </nav>
