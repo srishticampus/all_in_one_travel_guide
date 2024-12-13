@@ -1,4 +1,7 @@
 import { useForm } from "react-hook-form";
+// import TouristAPIs from "../../../apis/tourist";
+import { packageBookingProcess } from "../../../apis/tourist";
+import {toast} from "react-hot-toast";
 
 const BookPackageModal = ({ item, onClose }) => {
   const {
@@ -8,8 +11,44 @@ const BookPackageModal = ({ item, onClose }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const { cardHolderName, cardNumber, expiryDate, cvv } = data;
+    if (!cardHolderName || !cardNumber || !expiryDate || !cvv) {
+      console.log("Please fill all the fields");
+      return;
+    }
+    const packageId = item._id || null;
+    const touristId = localStorage.getItem("travel_guide_tourist_id") || null;
+    const agencyId = item.agencyId?._id || null;
+    
+    if (!packageId || !touristId || !agencyId) {
+      console.log("Please login to book the package");
+      return;
+    }
+    const serializedData = {
+      packageId,
+      touristId,
+      agencyId,
+      accountHolderName: cardHolderName,
+      accountNumber: cardNumber,
+      expiryDate,
+      cvv,
+    };
+
+    handlePayment(serializedData);
     // Handle payment logic here
+  };
+
+  const handlePayment = async (data) => {
+    try {
+      const res = await packageBookingProcess(data);
+      if (res) {
+        toast.success("Package booked successfull.");
+        onClose()
+      }
+    } catch (error) {
+      console.log("Error on payment process", error);
+      toast.error("Something went wrong.");
+    }
   };
 
   return (
