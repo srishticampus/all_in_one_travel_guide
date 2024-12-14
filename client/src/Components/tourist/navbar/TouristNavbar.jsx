@@ -27,7 +27,7 @@ export default function TouristNavbar() {
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
           <Link to="/" className="navbar-brand p-0">
-            <h5 className="text-primary m-0">
+            <h5 className="text-primary m-0 tw-flex tw-items-center tw-justify-center tw-gap-2">
               <img src={appLogo} alt="logo" className="w-25" />
               Travel Guide
             </h5>

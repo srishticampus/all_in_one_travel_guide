@@ -48,7 +48,7 @@ const BookedPackageCard = ({ item }) => {
           </ul>
         </div>
 
-        <div className="card-price-success">
+        <div className="card-price-success tw-flex tw-flex-col tw-justify-center tw-items-center">
           <div className="wrapper">
             <p className="reviews">({item?.review?.length || 0} reviews)</p>
 
@@ -63,7 +63,7 @@ const BookedPackageCard = ({ item }) => {
 
           <p className="price">
             {item?.costPerHead}
-            <span>/ per person</span>
+            <span className="tw-ms-3">Paid</span>
           </p>
 
           <div>Booked</div>
