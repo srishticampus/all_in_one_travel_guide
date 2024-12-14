@@ -27,7 +27,6 @@ const MyPackage = () => {
       console.log("Error on getting packages: ", error);
     }
   };
-  console.log("pa", packages);
   return (
     <>
       <AgencyNavbar />
@@ -45,6 +44,11 @@ const MyPackage = () => {
       <div className="container-xxl py-5">
         <div className="container">
           <div className="row g-4">
+            {packages.length === 0 && (
+              <div className="col-lg-12 tw-flex tw-justify-center tw-items-center tw-h-40">
+                <h1 className="tw-text-2xl tw-font-bold">No packages found</h1>
+              </div>
+            )}
             {packages.map((item) => (
               <div
                 className="col-lg-4 col-md-6 wow fadeInUp tw-bg-slate-200"

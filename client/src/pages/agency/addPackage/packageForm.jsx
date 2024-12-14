@@ -206,7 +206,7 @@ const PackageForm = () => {
           <input
             className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
             id="destination"
-            type="text  "
+            type="text"
             placeholder="Enter destinations"
             {...register("destination", {
               required: "Destination is required.",
@@ -317,6 +317,7 @@ const PackageForm = () => {
             className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
             id="packagePhoto"
             type="file"
+            accept="image/*"
             {...register("packagePhoto", {
               required: "Package photo is required.",
             })}

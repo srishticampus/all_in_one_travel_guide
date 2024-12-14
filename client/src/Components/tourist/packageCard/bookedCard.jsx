@@ -1,12 +1,5 @@
 import { BASE_URL } from "../../../apis/baseURL";
-import { useState } from "react";
-import BookPackageModal from "./bookPackageModal";
 const BookedPackageCard = ({ item }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log('item', item)
-  const onClose = () => {
-    setIsModalOpen(false);
-  };
   return (
     <>
       <div className="package-card tw-mt-10 tw-w-full">
@@ -73,17 +66,9 @@ const BookedPackageCard = ({ item }) => {
             <span>/ per person</span>
           </p>
 
-          <div
-            onClick={() => {
-              setIsModalOpen(true);
-            }}
-          >
-            Booked
-          </div>
+          <div>Booked</div>
         </div>
       </div>
-
-      {isModalOpen && <BookPackageModal item={item} onClose={onClose} />}
     </>
   );
 };

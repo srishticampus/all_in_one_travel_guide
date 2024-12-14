@@ -42,7 +42,7 @@ const BookPackageModal = ({ item, onClose }) => {
     try {
       const res = await packageBookingProcess(data);
       if (res) {
-        toast.success("Package booked successfull.");
+        toast.success("Package booked successfully");
         onClose()
       }
     } catch (error) {
