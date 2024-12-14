@@ -5,7 +5,7 @@ const roomSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Hotel',
     required: true,
-    unique: true
+    unique: [true, "Rooms already exists for this hotel"]
   },
   
   totalRooms: {

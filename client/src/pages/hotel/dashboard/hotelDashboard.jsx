@@ -5,6 +5,7 @@ import AddRoom from "./room/addRoom";
 import { useSelector } from "react-redux";
 import AddFood from "./food/addFood";
 import { LoadingSpinner } from "../../../Components/common/loadingSpinner/loadingSpinner";
+import ViewRoom from "./room/viewRoom";
 
 const HotelDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +21,7 @@ const HotelDashboard = () => {
       {activePage === "overview" && <Overview />}
       {activePage === "addRoom" && <AddRoom />}
       {activePage === "addFood" && <AddFood />}
+      {activePage === "viewRoom" && <ViewRoom />}
     </HotelDashboardLayout>
   );
 };

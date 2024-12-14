@@ -32,6 +32,8 @@ const AddRoom = () => {
       }
     } catch (error) {
       console.error("Error creating room:", error);
+      const errorMessage = error.response.data.message || "An error occurred";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -206,7 +208,7 @@ const AddRoom = () => {
             disabled={loading}
             className="tw-w-full tw-bg-blue-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-md tw-hover:bg-blue-700 tw-transition-colors tw-duration-200"
           >
-            {loading ? "Creating..." : "Create Room Configuration"}
+            {loading ? "Creating..." : "Create Room"}
           </button>
         </div>
       </form>

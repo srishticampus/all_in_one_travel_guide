@@ -32,6 +32,8 @@ app.use("/travel_guide_api/hotel", hotelRoutes);
 app.use("/travel_guide_api/package", packageRoutes);
 app.use("/travel_guide_api/package-booking", packageBookingRoutes);
 app.use("/travel_guide_api/rooms", roomRoutes);
+
+// error routes 
 app.use(errorHandler);
 
 connectDB()

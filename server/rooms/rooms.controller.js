@@ -11,7 +11,12 @@ const createRoom = async (req, res, next) => {
       acRoomPrice,
       nonAcRoomPrice,
     } = req.body;
-
+    const isRoomsAlreadyCreated = await RoomModel.findOne({ hotelId });
+    if (isRoomsAlreadyCreated) {
+      return res
+        .status(400)
+        .json({ message: "Rooms already exists for this hotel" });
+    }
     const room = await RoomModel({
       hotelId,
       totalRooms,
@@ -22,7 +27,8 @@ const createRoom = async (req, res, next) => {
       acRoomPrice,
       nonAcRoomPrice,
     });
-    await room.save()
+
+    await room.save();
     res.status(201).json({ message: "Room created successfully", data: room });
   } catch (error) {
     next(error);
@@ -56,10 +62,13 @@ const getRoomById = async (req, res, next) => {
 const getRoomsByHotelId = async (req, res, next) => {
   try {
     const { hotelId } = req.params;
-    const rooms = await RoomModel.find({ hotelId });
+    const room = await RoomModel.findOne({ hotelId });
+    if (!room) {
+      return res.status(404).json({ message: "Room not found" });
+    }   
     res
       .status(200)
-      .json({ message: "Rooms fetched successfully", data: rooms });
+      .json({ message: "Rooms fetched successfully", data: room });
   } catch (error) {
     next(error);
   }

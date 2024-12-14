@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { setActivePage } from "../../../../redux/hotel/activePageSlice";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { clearLocalStorage } from "../../../../utils/localStorage";
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -142,6 +142,28 @@ const Sidebar = () => {
               <path d="M12 8H52V28H12V8Z" fill="white" />
             </svg>
             Add Room
+          </div>
+        </li>
+        <li
+          className="tw-list-none tw-mt-5"
+          onClick={() => changePage("viewRoom")}
+        >
+          <div
+            className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4 4H60V60H4V4Z" stroke="white" stroke-width="4" />
+              <path d="M16 44H48V60H16V44Z" fill="white" />
+              <path d="M20 28H44V44H20V28Z" fill="white" />
+              <path d="M12 8H52V28H12V8Z" fill="white" />
+            </svg>
+            View Room
           </div>
         </li>
         <li
