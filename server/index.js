@@ -16,6 +16,8 @@ const agencyRoutes = require("./agency/agency.routes");
 const hotelRoutes = require("./hotel/hotel.routes");
 const packageRoutes = require("./package/package.routes");
 const packageBookingRoutes = require("./packageBooking/packageBooking.routes");
+const roomRoutes = require("./rooms/rooms.routes");
+
 app.get("/travel_guide_api", (req, res) => {
   res.send(
     "Server running successfully on http://localhost:4050/travel_guide_api/"
@@ -29,6 +31,7 @@ app.use("/travel_guide_api/agency", agencyRoutes);
 app.use("/travel_guide_api/hotel", hotelRoutes);
 app.use("/travel_guide_api/package", packageRoutes);
 app.use("/travel_guide_api/package-booking", packageBookingRoutes);
+app.use("/travel_guide_api/rooms", roomRoutes);
 app.use(errorHandler);
 
 connectDB()
