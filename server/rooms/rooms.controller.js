@@ -37,7 +37,7 @@ const createRoom = async (req, res, next) => {
 
 const geAllRooms = async (req, res, next) => {
   try {
-    const rooms = await RoomModel.find();
+    const rooms = await RoomModel.find().populate("hotelId");
     res
       .status(200)
       .json({ message: "Rooms fetched successfully", data: rooms });
