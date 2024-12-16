@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import RoomDetailsPage from "./roomDetailsPage";
+import TouristNavbar from "../navbar/TouristNavbar";
+import Footer from "../../Footer/Footer";
 export default function RoomPage() {
   // Fetch room data from API
   const { id } = useParams();
@@ -24,5 +26,11 @@ export default function RoomPage() {
     }
   };
 
-  return <RoomDetailsPage room={roomData} />;
+  return (
+    <div>
+      <TouristNavbar />
+      <RoomDetailsPage room={roomData} />
+      <Footer />
+    </div>
+  );
 }

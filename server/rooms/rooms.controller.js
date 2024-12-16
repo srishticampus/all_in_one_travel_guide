@@ -49,7 +49,7 @@ const geAllRooms = async (req, res, next) => {
 const getRoomById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const room = await RoomModel.findById(id);
+    const room = await RoomModel.findById(id).populate("hotelId").exec();
     if (!room) {
       return res.status(404).json({ message: "Room not found" });
     }
@@ -65,10 +65,8 @@ const getRoomsByHotelId = async (req, res, next) => {
     const room = await RoomModel.findOne({ hotelId });
     if (!room) {
       return res.status(404).json({ message: "Room not found" });
-    }   
-    res
-      .status(200)
-      .json({ message: "Rooms fetched successfully", data: room });
+    }
+    res.status(200).json({ message: "Rooms fetched successfully", data: room });
   } catch (error) {
     next(error);
   }
