@@ -56,7 +56,9 @@ const roomSchema = new mongoose.Schema({
     type: String,
     default: "11:00 AM"
   },
-  
+  roomImg: {
+    type: String,
+  }
 }, {
   timestamps: true
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import "./RoomCard.css";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../apis/baseURL";
 const RoomCard = ({ room }) => {
   const navigate = useNavigate();
   return (
@@ -10,20 +11,20 @@ const RoomCard = ({ room }) => {
     >
       <div className="room-card-image">
         <img
-          src="https://placeholder.com/400x300"
-          alt={room.hotelId.hotelName}
+          src={`${BASE_URL}/${room.roomImg}`}
+          alt={room.hotelId?.hotelName}
         />
       </div>
 
       <div className="room-card-content">
         <div className="hotel-info">
-          <h2>{room.hotelId.hotelName}</h2>
+          <h2>{room.hotelId?.hotelName}</h2>
           <p className="location">
             <i className="fas fa-map-marker-alt"></i>
-            {room.hotelId.hotelLocation}
+            {room.hotelId?.hotelLocation}
           </p>
           <p className="contact">
-            <i className="fas fa-phone"></i> {room.hotelId.phoneNumber}
+            <i className="fas fa-phone"></i> {room.hotelId?.phoneNumber}
           </p>
         </div>
 

@@ -1,14 +1,15 @@
 import React from "react";
 import "./roomDetails.css";
+import { BASE_URL } from "../../../apis/baseURL";
 
 const RoomDetailsPage = ({ room }) => {
   return (
     <div className="room-details-container">
       <div className="room-hero ">
         <img
-          src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"
+          src={`${BASE_URL}/${room.roomImg}`}
           alt="Hotel Room"
-          className="room-hero-image tw-mx-auto tw-h-auto tw-max-h-[400px] tw-w-full"
+          className="room-hero-image tw-mx-auto tw-h-auto tw-max-h-[400px] tw-w-auto"
         />
       </div>
 

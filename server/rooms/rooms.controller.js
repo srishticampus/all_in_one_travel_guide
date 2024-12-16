@@ -1,6 +1,34 @@
 const RoomModel = require("./rooms.model");
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, res, cb) {
+    cb(null, "./upload");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+  if (allowedTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only JPEG, JPG and PNG files are allowed."));
+  }
+};
+const roomImgUpload = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+}).single("roomImg");
+
 const createRoom = async (req, res, next) => {
   try {
+    const roomImg = req.file;
     const {
       hotelId,
       totalRooms,
@@ -22,10 +50,12 @@ const createRoom = async (req, res, next) => {
       totalRooms,
       acRooms,
       nonAcRooms,
+      roomImg,
       checkInTime,
       checkOutTime,
       acRoomPrice,
       nonAcRoomPrice,
+      roomImg: roomImg.filename,
     });
 
     await room.save();
@@ -71,4 +101,10 @@ const getRoomsByHotelId = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { createRoom, geAllRooms, getRoomById, getRoomsByHotelId };
+module.exports = {
+  createRoom,
+  geAllRooms,
+  getRoomById,
+  getRoomsByHotelId,
+  roomImgUpload,
+};

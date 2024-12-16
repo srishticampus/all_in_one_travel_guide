@@ -20,13 +20,21 @@ const AddRoom = () => {
 
   const sendDataToServer = async (data) => {
     try {
+      const formData = new FormData();
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
       setLoading(true);
       const hotelId = localStorage.getItem("travel_guide_hotel_id");
       if (!hotelId) {
         navigate("/logins");
         return;
       }
-      const response = await axiosInstance.post(`/rooms`, data);
+      const response = await axiosInstance.post(`/rooms`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
       if (response.status === 201) {
         toast.success("Room created successfully");
       }
@@ -39,6 +47,7 @@ const AddRoom = () => {
     }
   };
   const onSubmit = async (data) => {
+    console.log('dataa', data)
     const hotelId = localStorage.getItem("travel_guide_hotel_id") || null;
     if (!hotelId) {
       navigate("/login");
@@ -51,6 +60,7 @@ const AddRoom = () => {
       nonAcRoomPrice,
       checkInTime,
       checkOutTime,
+      roomImg
     } = data;
 
     if (acRooms === 0 && nonAcRooms === 0) {
@@ -66,8 +76,20 @@ const AddRoom = () => {
       toast.error("Price cannot be negative");
       return;
     }
+
+    if (roomImg.length === 0) {
+      toast.error("Room image is required.");
+      return;
+    }
     const totalRooms = parseInt(acRooms) + parseInt(nonAcRooms);
-    sendDataToServer({ ...data, hotelId, totalRooms });
+    const serializedData = {
+      ...data,
+      hotelId,
+      totalRooms,
+      roomImg: roomImg[0],
+    };
+    console.log('serializedData', serializedData)
+    sendDataToServer(serializedData);
   };
 
   return (
@@ -197,6 +219,24 @@ const AddRoom = () => {
             {errors.checkOutTime && (
               <p className="tw-text-red-500 tw-text-sm">
                 {errors.checkOutTime.message}
+              </p>
+            )}
+          </div>
+          {/* room image  */}
+          <div>
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+              Room Photo
+            </label>
+            <input
+              type="file"
+              {...register("roomImg", {
+                required: "Room image is required.",
+              })}
+              className="tw-w-full tw-p-2 tw-border tw-rounded-md"
+            />
+            {errors.checkOutTime && (
+              <p className="tw-text-red-500 tw-text-sm">
+                {errors.roomImg.message}
               </p>
             )}
           </div>

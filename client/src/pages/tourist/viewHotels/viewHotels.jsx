@@ -6,7 +6,6 @@ const ViewHotels = () => {
   return (
     <div>
       <TouristNavbar />
-      {/* todo: add restaurents and hotels here. */}
       <div className="tw-min-h-96 tw-w-full">
         <BookRooms />
       </div>
