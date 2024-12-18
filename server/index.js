@@ -17,7 +17,7 @@ const hotelRoutes = require("./hotel/hotel.routes");
 const packageRoutes = require("./package/package.routes");
 const packageBookingRoutes = require("./packageBooking/packageBooking.routes");
 const roomRoutes = require("./rooms/rooms.routes");
-const hotelBookingRoutes = require("./hotelBooking/hotelBooking.routes");
+const roomsBookingRoutes = require("./hotelBooking/hotelBooking.routes");
 
 app.get("/travel_guide_api", (req, res) => {
   res.send(
@@ -33,7 +33,7 @@ app.use("/travel_guide_api/hotel", hotelRoutes);
 app.use("/travel_guide_api/package", packageRoutes);
 app.use("/travel_guide_api/package-booking", packageBookingRoutes);
 app.use("/travel_guide_api/rooms", roomRoutes);
-app.use("/travel_guide_api/hotel-booking", hotelBookingRoutes);
+app.use("/travel_guide_api/rooms-booking", roomsBookingRoutes);
 // error routes 
 app.use(errorHandler);
 

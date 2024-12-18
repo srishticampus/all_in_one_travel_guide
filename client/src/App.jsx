@@ -26,6 +26,7 @@ import MyPackageDetails from "./pages/agency/myPackage/myPackageDetails";
 import BookedPackages from "./pages/tourist/bookedPackages/bookedPackages";
 import ViewHotels from "./pages/tourist/viewHotels/viewHotels";
 import RoomPage from "./Components/tourist/roomDetails/roomDetails";
+import BookedRooms from "./pages/tourist/bookedRooms/bookedRooms";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -46,7 +47,8 @@ function App() {
             <Route path="/tourist/home" element={<TouristHome />} />
             <Route path="/tourist/view-packages" element={<ViewPackages />} />
             <Route path="/tourist/booked-packages" element={<BookedPackages />} />
-            <Route path="/tourist/hotels" element={<ViewHotels />} />
+            <Route path="/tourist/view-hotels" element={<ViewHotels />} />
+            <Route path="/tourist/booked-rooms" element={<BookedRooms />} />
             <Route path="/tourist/profile" element={<TouristProfile />} />
             <Route path="/tourist/room/:id" element={<RoomPage />} />
           </Route>

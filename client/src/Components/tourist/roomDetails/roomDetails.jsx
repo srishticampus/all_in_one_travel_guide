@@ -17,7 +17,6 @@ export default function RoomPage() {
   const getRoomDetails = async () => {
     try {
       const response = await axiosInstance.get(`/rooms/${id}`);
-      console.log(response.data);
       if (response.status === 200) {
         setRoomData(response.data.data);
       }

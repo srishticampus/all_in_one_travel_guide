@@ -101,10 +101,24 @@ const getRoomsByHotelId = async (req, res, next) => {
     next(error);
   }
 };
+
+const getBookedRoomsByTouristId = async (req, res, next) => {
+  try {
+    const { touristId } = req.params;
+    const rooms = await RoomModel.find({ touristId });
+    res
+      .status(200)
+      .json({ message: "Rooms fetched successfully", data: rooms });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createRoom,
   geAllRooms,
   getRoomById,
   getRoomsByHotelId,
   roomImgUpload,
+  getBookedRoomsByTouristId,
 };

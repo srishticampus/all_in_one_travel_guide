@@ -54,6 +54,7 @@ const getBookingsByTouristId = async (req, res, next) => {
     const { touristId } = req.params;
     const bookings = await HotelBooking.find({ touristId })
       .populate("hotelId")
+      .populate("roomId")
       .exec();
     return res.status(200).json({
       message: "Bookings fetched successfully",
@@ -80,28 +81,10 @@ const getBookingsByHotelId = async (req, res, next) => {
   }
 };
 
-const getBookingsByAgencyId = async (req, res, next) => {
-  try {
-    const { agencyId } = req.params;
-    const bookings = await HotelBooking.find({ agencyId })
-      .populate("hotelId")
-      .populate("touristId")
-      .populate("roomId")
-      .exec();
-
-    return res.status(200).json({
-      message: "fetch the bookings that match the agency id",
-      data: bookings,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
 
 module.exports = {
   getAllBookings,
   addHotelBooking,
   getBookingsByTouristId,
   getBookingsByHotelId,
-  getBookingsByAgencyId,
 };

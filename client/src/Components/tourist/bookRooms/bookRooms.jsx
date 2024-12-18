@@ -14,7 +14,6 @@ const BookRooms = () => {
       setRooms(response.data.data);
     }
   };
-  console.log(rooms);
   return (
     <div>
       <h4 className="tw-text-center tw-mt-20">Book Rooms</h4>

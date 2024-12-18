@@ -17,7 +17,7 @@ export const packageBookingProcess = async (data) => {
 export const hotelBookingProcess = async (data) => {
   try {
     const res = await axiosInstance.post(
-      "/hotel-booking/add-hotel-booking",
+      "/rooms-booking/add-hotel-booking",
       data
     );
     if (res.status === 201) {

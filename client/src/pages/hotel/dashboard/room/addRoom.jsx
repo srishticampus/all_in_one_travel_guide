@@ -47,7 +47,6 @@ const AddRoom = () => {
     }
   };
   const onSubmit = async (data) => {
-    console.log('dataa', data)
     const hotelId = localStorage.getItem("travel_guide_hotel_id") || null;
     if (!hotelId) {
       navigate("/login");
@@ -88,7 +87,6 @@ const AddRoom = () => {
       totalRooms,
       roomImg: roomImg[0],
     };
-    console.log('serializedData', serializedData)
     sendDataToServer(serializedData);
   };
 

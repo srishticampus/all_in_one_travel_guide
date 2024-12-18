@@ -8,11 +8,14 @@ export default function TouristNavbar() {
 
   const handleOptionChange = (e) => {
     const value = e.target.value;
-    console.log(value);
     if (value === "view-all-packages") {
       navigate("/tourist/view-packages");
     } else if (value === "view-booked-packages") {
       navigate("/tourist/booked-packages");
+    } else if (value === "view-all-hotels") {
+      navigate("/tourist/view-hotels");
+    } else if (value === "view-booked-hotels") {
+      navigate("/tourist/booked-rooms");
     }
   };
 
@@ -45,9 +48,31 @@ export default function TouristNavbar() {
               <Link to="/tourist/home" className="fs-6 nav-item nav-link ">
                 Home
               </Link>
-              <Link to="/tourist/hotels" className="fs-6 nav-item nav-link">
-                Hotels
-              </Link>
+              <select
+                className="fs-6 nav-item nav-link tw-cursor-pointer tw-w-24"
+                onChange={handleOptionChange}
+                defaultValue=""
+              >
+                <option value="" disabled hidden selected>
+                  {" "}
+                  Hotels
+                </option>
+                <option
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                  value="view-all-hotels"
+                >
+                  Hotels
+                </option>
+
+                <option
+                  value="view-booked-hotels"
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                >
+                  Booked
+                </option>
+              </select>
               <Link
                 to="/tourist/restaurants"
                 className="fs-6 nav-item nav-link"
