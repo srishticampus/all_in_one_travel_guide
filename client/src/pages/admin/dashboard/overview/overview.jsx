@@ -11,7 +11,7 @@ const Overview = () => {
 
   return (
     <div className="tw-p-6 tw-w-full">
-      <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-text-gray-800">Hotel Dashboard</h1>
+      <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-text-gray-800">Admin Dashboard</h1>
       
       <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
         {/* Users Card */}

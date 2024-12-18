@@ -24,6 +24,7 @@ function Login() {
     if (!email || !password) {
       return;
     }
+
     sendDataToServer(credentials);
   };
 
@@ -48,6 +49,9 @@ function Login() {
         } else if (userType === "HOTEL") {
           localStorage.setItem("travel_guide_hotel_id", id);
           navigate("/hotel/dashboard");
+        } else if (userType === "ADMIN") {
+          localStorage.setItem("travel_guide_admin_id", id);
+          navigate("/admin/dashboard");
         } else {
           toast.error("Something went wrong.");
         }

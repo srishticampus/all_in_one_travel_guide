@@ -15,3 +15,7 @@ export const HotelProtectedRoutes = () => {
     return hotelId ? <Outlet /> : <Navigate to='/login' />
 }
     
+export const AdminProtectedRoutes = () => {
+    const adminId = localStorage.getItem('travel_guide_admin_id');
+    return adminId ? <Outlet /> : <Navigate to='/login' />
+}

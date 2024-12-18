@@ -1,7 +1,8 @@
 const {
   touristSignup,
   touristSignupUploads,
-  getTouristById
+  getTouristById,
+  getAllTourist
 } = require("./tourist.controller");
 const express = require("express");
 const { isEmailUnique } = require("../middleware/emailUnique");
@@ -14,5 +15,6 @@ touristRoutes.post(
 ); 
 
 touristRoutes.get('/getTourist/:id', getTouristById);
+touristRoutes.get('/getAllTourist', getAllTourist);
 
 module.exports = { touristRoutes };

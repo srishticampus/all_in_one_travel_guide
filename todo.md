@@ -1,0 +1,1 @@
+1. remove admin mail id from other user's email list.

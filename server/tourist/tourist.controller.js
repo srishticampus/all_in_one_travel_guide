@@ -85,9 +85,18 @@ const getTouristById = async (req, res, next) => {
     next(error);
   }
 };
+const getAllTourist = async (req, res, next) => {
+  try {
+    const tourist = await TouristModel.find();
+    return res.status(200).json({ data: tourist, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   touristSignup,
   touristSignupUploads,
   getTouristById,
+  getAllTourist,
 };

@@ -19,14 +19,16 @@ import {
   TouristProtectedRoutes,
   AgencyProtectedRoutes,
   HotelProtectedRoutes,
+  AdminProtectedRoutes,
 } from "./Components/protectedRoutes";
-import "./App.css";
-import "./index.css";
 import MyPackageDetails from "./pages/agency/myPackage/myPackageDetails";
 import BookedPackages from "./pages/tourist/bookedPackages/bookedPackages";
 import ViewHotels from "./pages/tourist/viewHotels/viewHotels";
 import RoomPage from "./Components/tourist/roomDetails/roomDetails";
 import BookedRooms from "./pages/tourist/bookedRooms/bookedRooms";
+import AdminDashboard from "./pages/admin/dashboard/adminDashboard";
+import "./App.css";
+import "./index.css";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -64,6 +66,11 @@ function App() {
           {/* hotels routes */}
           <Route element={<HotelProtectedRoutes />}>
             <Route path="/hotel/dashboard" element={<HotelDashboard />} />
+          </Route>
+
+          {/* admin routes */}
+          <Route element={<AdminProtectedRoutes />}>
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Route>
 
           <Route path="/*" element={<NotFound />} />
