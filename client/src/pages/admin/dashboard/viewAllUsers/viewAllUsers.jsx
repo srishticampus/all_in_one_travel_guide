@@ -5,7 +5,11 @@ import axiosInstance from "../../../../apis/axiosInstance";
 const ViewAllUsers = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const rowsPerPage = 5;
+  const totalPages = Math.ceil(users.length / rowsPerPage);
+  const startIdx = (currentPage - 1) * rowsPerPage;
+  const endIdx = startIdx + rowsPerPage;
+  const currentUsers = users.slice(startIdx, endIdx);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const itemsPerPage = 10;
@@ -18,7 +22,7 @@ const ViewAllUsers = () => {
     try {
       const response = await axiosInstance.get(`/tourist/getAllTourist`);
       setUsers(response.data.data);
-      setTotalPages(Math.ceil(response.data.data.length / itemsPerPage));
+      // setTotalPages(Math.ceil(response.data.data.length / itemsPerPage));
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -39,14 +43,22 @@ const ViewAllUsers = () => {
   };
 
   return (
-    <div className="tw-p-6">
-      <h1 className="tw-text-2xl tw-font-bold tw-mb-6">View All Users</h1>
+    <div className="tw-p-6 ">
+      <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-overflow-auto">
+        View All Tourists
+      </h1>
 
       {/* Table */}
-      <div className="tw-overflow-x-auto tw-bg-white tw-rounded-lg tw-shadow">
-        <table className="tw-min-w-full tw-divide-y tw-divide-gray-200">
+      <div
+        className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow "
+        style={{ maxHeight: "500px" }}
+      >
+        <table className="  tw-min-w-full tw-divide-y tw-divide-gray-200 tw-h-96 ">
           <thead className="tw-bg-gray-50">
             <tr>
+              <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
+                No.
+              </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 Name
               </th>
@@ -66,13 +78,19 @@ const ViewAllUsers = () => {
                 Country
               </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
+                View
+              </th>
+              <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
           <tbody className="tw-bg-white tw-divide-y tw-divide-gray-200">
-            {users.map((user) => (
+            {currentUsers.map((user, idx) => (
               <tr key={user._id}>
+                <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
+                  {idx + 1 + (currentPage * rowsPerPage - 5)}
+                </td>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {user.name}
                 </td>
@@ -98,6 +116,8 @@ const ViewAllUsers = () => {
                   >
                     View ID
                   </button>
+                </td>
+                <td>
                   <button
                     onClick={() => handleDeactivate(user._id)}
                     className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"

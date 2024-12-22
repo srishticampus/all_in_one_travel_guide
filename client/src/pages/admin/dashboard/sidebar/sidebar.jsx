@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="tw-h-screen tw-bg-blueShade tw-w-72 tw-p-4">
+    <aside className="tw-h-screen tw-bg-blueShade tw-w-full tw-p-4">
       <div>
         <li className="tw-list-none tw-mt-5">
           <div
@@ -71,7 +71,7 @@ const Sidebar = () => {
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
-            View Users
+            View Tourists
           </div>
         </li>
         <li
