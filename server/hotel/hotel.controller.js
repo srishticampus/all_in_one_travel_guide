@@ -3,8 +3,7 @@ const { HotelModel } = require("./hotel.model");
 
 const hotelSignup = async (req, res, next) => {
   try {
-    const { hotelName, hotelLocation, password, email, phoneNumber } =
-      req.body;
+    const { hotelName, hotelLocation, password, email, phoneNumber } = req.body;
     const hashedPassword = await hashPassword(password);
     const hotel = new HotelModel({
       hotelLocation,
@@ -23,6 +22,18 @@ const hotelSignup = async (req, res, next) => {
   }
 };
 
+const getAllHotels = async (req, res, next) => {
+  try {
+    const hotels = await HotelModel.find();
+    return res
+      .status(200)
+      .json({ data: hotels, message: "All hotels fetched successfully"  });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   hotelSignup,
+  getAllHotels,
 };

@@ -22,7 +22,19 @@ const agencySignup = async (req, res, next) => {
     next(error);
   }
 };
+const getAllAgencies = async (req, res, next) => {
+  try {
+    const agencies = await AgencyModel.find();
+    return res.status(200).json({
+      message: "All agencies fetched successfully",
+      data: agencies,
+    });
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports = {
   agencySignup,
+  getAllAgencies
 };
