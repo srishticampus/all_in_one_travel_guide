@@ -4,6 +4,8 @@ import Overview from "./overview/overview";
 import { useSelector } from "react-redux";
 import { LoadingSpinner } from "../../../Components/common/loadingSpinner/loadingSpinner";
 import ViewAllUsers from "./viewAllUsers/viewAllUsers";
+import ViewAllAgencies from "./viewAllAgencies/viewAllAgencies";
+import ViewAllHotels from "./viewAllHotels/viewAllHotels";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +20,8 @@ const AdminDashboard = () => {
     <AdminDashboardLayout>
       {activePage === "overview" && <Overview />}
       {activePage === "view-all-users" && <ViewAllUsers />}
+      {activePage === "view-all-agencies" && <ViewAllAgencies />}
+      {activePage === "view-all-hotels" && <ViewAllHotels />}
 
     </AdminDashboardLayout>
   );
