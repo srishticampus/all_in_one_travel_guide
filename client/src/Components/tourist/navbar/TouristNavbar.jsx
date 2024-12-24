@@ -16,6 +16,8 @@ export default function TouristNavbar() {
       navigate("/tourist/view-hotels");
     } else if (value === "view-booked-hotels") {
       navigate("/tourist/booked-rooms");
+    } else if (value === "view-taxies") {
+      navigate("/tourist/view-taxi");
     }
   };
 
@@ -62,7 +64,7 @@ export default function TouristNavbar() {
                   style={{ fontSize: "14px" }}
                   value="view-all-hotels"
                 >
-                  Hotels
+                  Rooms
                 </option>
 
                 <option
@@ -70,15 +72,49 @@ export default function TouristNavbar() {
                   className="tw-cursor-pointer"
                   style={{ fontSize: "14px" }}
                 >
-                  Booked
+                  Booked Rooms
+                </option>
+                <option
+                  value="view-booked-hotels"
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                >
+                  Food
+                </option>
+                <option
+                  value="view-booked-hotels"
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                >
+                  Booked Foods
                 </option>
               </select>
-              <Link
-                to="/tourist/restaurants"
-                className="fs-6 nav-item nav-link"
+
+              <select
+                className="fs-6 nav-item nav-link tw-cursor-pointer tw-w-20"
+                onChange={handleOptionChange}
+                defaultValue=""
               >
-                Restaurant
-              </Link>
+                <option value="" disabled hidden selected>
+                  {" "}
+                  Taxi
+                </option>
+                <option
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                  value="view-taxies"
+                >
+                  Available Taxi
+                </option>
+
+                <option
+                  value="view-taxies"
+                  className="tw-cursor-pointer"
+                  style={{ fontSize: "14px" }}
+                >
+                  Booked Taxi
+                </option>
+              </select>
 
               <select
                 className="fs-6 nav-item nav-link tw-cursor-pointer tw-w-28"

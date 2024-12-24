@@ -46,6 +46,15 @@ const signup = async (req, res, next) => {
   }
 };
 
+const getAllTaxies = async (req, res, next) => {
+  try {
+    const taxis = await TaxiModel.find();
+    return res.status(200).json({ message: "Taxis fetched successfully", data: taxis });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
-    signup
+    signup, getAllTaxies
 }

@@ -20,6 +20,7 @@ import {
   AgencyProtectedRoutes,
   HotelProtectedRoutes,
   AdminProtectedRoutes,
+  TaxiProtectedRoutes,
 } from "./Components/protectedRoutes";
 import MyPackageDetails from "./pages/agency/myPackage/myPackageDetails";
 import BookedPackages from "./pages/tourist/bookedPackages/bookedPackages";
@@ -30,6 +31,8 @@ import AdminDashboard from "./pages/admin/dashboard/adminDashboard";
 import "./App.css";
 import "./index.css";
 import TaxiSignup from "./pages/hotel/taxi/signup/taxiSignup";
+import TaxiDashboard from "./pages/admin/taxi/taxiDashboard";
+import ViewTaxies from "./pages/tourist/viewTaxies/viewTaxies";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -55,6 +58,7 @@ function App() {
             />
             <Route path="/tourist/view-hotels" element={<ViewHotels />} />
             <Route path="/tourist/booked-rooms" element={<BookedRooms />} />
+            <Route path="/tourist/view-taxi" element={<ViewTaxies />} />
             <Route path="/tourist/profile" element={<TouristProfile />} />
             <Route path="/tourist/room/:id" element={<RoomPage />} />
           </Route>
@@ -78,6 +82,11 @@ function App() {
           {/* admin routes */}
           <Route element={<AdminProtectedRoutes />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          </Route>
+
+          {/* taxi routes  */}
+          <Route element={<TaxiProtectedRoutes />}>
+            <Route path="/taxi/dashboard" element={<TaxiDashboard />} />
           </Route>
 
           <Route path="/*" element={<NotFound />} />
