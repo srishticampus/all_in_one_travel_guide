@@ -4,6 +4,7 @@ const { generateAccessToken } = require("../utils/handleToken");
 const { comparePassword, hashPassword } = require("../utils/hanldePasswordEnc");
 const { AgencyModel } = require("../agency/agency.model");
 const { HotelModel } = require("../hotel/hotel.model");
+const { TaxiModel } = require("../taxi/taxi.model");
 
 const login = async (req, res, next) => {
   try {
@@ -14,7 +15,7 @@ const login = async (req, res, next) => {
         message: "Email and password are required",
       });
     }
-
+    // admin 
     if (email === "admin@gmail.com" && password === "admin@123") {
       const token = generateAccessToken({
         email: "admin@gmail.com",
@@ -28,7 +29,7 @@ const login = async (req, res, next) => {
         id: "admin",
       });
     }
-    
+    // tourist
     const tourist = await TouristModel.findOne({ email });
 
     if (tourist) {
@@ -53,7 +54,7 @@ const login = async (req, res, next) => {
         id: touristCopy._id,
       });
     }
-
+    //agency
     const agency = await AgencyModel.findOne({ email });
     if (agency) {
       const isPasswordCorrect = await comparePassword(
@@ -78,6 +79,7 @@ const login = async (req, res, next) => {
         id: agencyCopy._id,
       });
     }
+    // hotel 
     const hotel = await HotelModel.findOne({ email });
     if (hotel) {
       const isPasswordCorrect = await comparePassword(password, hotel.password);
@@ -100,6 +102,29 @@ const login = async (req, res, next) => {
           id: hotelCopy._id,
         });
     }
+
+    // taxi
+    const taxi = await TaxiModel.findOne({ email });
+    if (taxi) {
+      const isPasswordCorrect = await comparePassword(password, taxi.password);
+      if (!isPasswordCorrect) {
+        return res.status(404).json({
+          message: "Email id or password is incorrect",
+        });
+      }
+
+      const taxiCopy = taxi.toObject();
+      delete taxiCopy.password;
+      const { TAXI } = USERS_TYPE;
+      const token = generateAccessToken(taxiCopy);
+      return res.status(200).json({
+        message: "Taxi Login successfull",
+        role: TAXI,
+        token,
+        id: taxiCopy._id,
+      });
+    }
+
 
     // no user matched so ending the resposne
     return res.status(404).json({
@@ -179,6 +204,23 @@ const forgotPassword = async (req, res, next) => {
         .json({ message: "Password changed successfully." });
     }
 
+    // taxi
+    const taxi = await TaxiModel.findOne({ email });
+    if (taxi) {
+      const isOldPasswordSame = await comparePassword(password, taxi.password);
+      if (isOldPasswordSame) {
+        return res
+          .status(400)
+          .json({ message: "You can't resue old password." });
+      }
+      const myNewPassword = await hashPassword(password);
+      taxi.password = myNewPassword;
+
+      await taxi.save();
+      return res
+        .status(200)
+        .json({ message: "Password changed successfully." });
+    }
     return res.status(404).json({ message: "Please check your email" });
   } catch (error) {
     next(error);

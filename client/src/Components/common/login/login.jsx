@@ -52,6 +52,9 @@ function Login() {
         } else if (userType === "ADMIN") {
           localStorage.setItem("travel_guide_admin_id", id);
           navigate("/admin/dashboard");
+        } else if (userType === "TAXI") {
+          localStorage.setItem("travel_guide_taxi_id", id);
+          navigate("/taxi/dashboard");
         } else {
           toast.error("Something went wrong.");
         }
