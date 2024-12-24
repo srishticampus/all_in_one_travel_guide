@@ -3,6 +3,8 @@ import TaxiDashboardLayout from "./taxiDashboardLayout";
 import Overview from "./overview/overview";
 import { useSelector } from "react-redux";
 import { LoadingSpinner } from "../../Components/common/loadingSpinner/loadingSpinner";
+import TaxiBookingRequests from "./viewReq/viewPendingReq.jsx";
+import TaxiApprovedRequests from "./viewReq/viewApprovedReq.jsx";
 
 const TaxiDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +18,8 @@ const TaxiDashboard = () => {
   ) : (
     <TaxiDashboardLayout>
       {activePage === "overview" && <Overview />}
-      {activePage === "view-request" && <Overview />}
+      {activePage === "view-pending-request" && <TaxiBookingRequests />}
+      {activePage === "view-approved-request" && <TaxiApprovedRequests />}
 
     </TaxiDashboardLayout>
   );

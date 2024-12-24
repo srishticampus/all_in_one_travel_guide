@@ -66,6 +66,7 @@ const taxiRequets = async (req, res, next) => {
 const getAllTaxiBookingByTouristId = async (req, res, next) => {
   try {
     const { id } = req.params;
+    //todo => check this function
     // if (!isValildMongooseId(id)) {
     //   return res.status(401).json({ message: "id is not valid" });
     // }
@@ -79,8 +80,73 @@ const getAllTaxiBookingByTouristId = async (req, res, next) => {
   }
 };
 
+const getAllTaxiBookings = async (req, res, next) => {
+  try {
+    const bookings = await TaxiBookingModel.find({})
+      .populate("touristId")
+      .exec();
+    return res
+      .status(200)
+      .json({ message: "Taxi bookings fetched. ", data: bookings });
+  } catch (error) {
+    next(error);
+  }
+};
+const getAllPendingTaxiBookings = async (req, res, next) => {
+  try {
+    const bookings = await TaxiBookingModel.find({taxiDriverStatus: "pending"})
+      .populate("touristId")
+      .exec();
+    return res
+      .status(200)
+      .json({ message: "Taxi bookings fetched. ", data: bookings });
+  } catch (error) {
+    next(error);
+  }
+};
+const getAllAcceptedBookingsByDriver = async (req, res, next) => {
+  try {
+    const {taxiId} = req.params;
+    const bookings = await TaxiBookingModel.find({
+      taxiDriverStatus: "accepted",
+      taxiId
+    })
+      .populate("touristId")
+      .exec();
+    return res
+      .status(200)
+      .json({ message: "Taxi bookings fetched. ", data: bookings });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const acceptReqById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const {taxiId} = req.body;
+    const taxiRequest = await TaxiBookingModel.findById(id);
+
+    if (!taxiRequest) {
+      return res.status(404).json({ message: "request not found" });
+    }
+    taxiRequest.taxiDriverStatus = "accepted";
+    taxiRequest.taxiId = taxiId;
+    await taxiRequest.save();
+    return res.status(200).json({
+      message: "Taxi request approved successfully",
+      data: taxiRequest,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   calculateTaxiFare,
   taxiRequets,
-  getAllTaxiBookingByTouristId
+  getAllTaxiBookingByTouristId,
+  getAllTaxiBookings,
+  getAllPendingTaxiBookings,
+  acceptReqById,
 };
