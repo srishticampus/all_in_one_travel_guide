@@ -29,6 +29,7 @@ import BookedRooms from "./pages/tourist/bookedRooms/bookedRooms";
 import AdminDashboard from "./pages/admin/dashboard/adminDashboard";
 import "./App.css";
 import "./index.css";
+import TaxiSignup from "./pages/hotel/taxi/signup/taxiSignup";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -42,25 +43,31 @@ function App() {
           <Route path="/tourist/signup" element={<TouristSignup />} />
           <Route path="/agency/signup" element={<AgencyRegister />} />
           <Route path="/hotel/signup" element={<HotelRegister />} />
+          <Route path="/taxi/signup" element={<TaxiSignup />} />
           <Route path="/about" element={<LandingAboutPage />} />
-
           {/* tourist routes  */}
           <Route element={<TouristProtectedRoutes />}>
             <Route path="/tourist/home" element={<TouristHome />} />
             <Route path="/tourist/view-packages" element={<ViewPackages />} />
-            <Route path="/tourist/booked-packages" element={<BookedPackages />} />
+            <Route
+              path="/tourist/booked-packages"
+              element={<BookedPackages />}
+            />
             <Route path="/tourist/view-hotels" element={<ViewHotels />} />
             <Route path="/tourist/booked-rooms" element={<BookedRooms />} />
             <Route path="/tourist/profile" element={<TouristProfile />} />
             <Route path="/tourist/room/:id" element={<RoomPage />} />
           </Route>
 
-            {/* Agency routes */}
+          {/* Agency routes */}
           <Route element={<AgencyProtectedRoutes />}>
             <Route path="/agency/home" element={<AgencyHome />} />
             <Route path="/agency/add-package" element={<AddPackage />} />
             <Route path="/agency/my-packages" element={<MyPackage />} />
-            <Route path="/agency/my-packages/:id" element={<MyPackageDetails />} />
+            <Route
+              path="/agency/my-packages/:id"
+              element={<MyPackageDetails />}
+            />
           </Route>
 
           {/* hotels routes */}

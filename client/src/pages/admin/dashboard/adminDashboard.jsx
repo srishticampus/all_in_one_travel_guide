@@ -6,6 +6,7 @@ import { LoadingSpinner } from "../../../Components/common/loadingSpinner/loadin
 import ViewAllUsers from "./viewAllUsers/viewAllUsers";
 import ViewAllAgencies from "./viewAllAgencies/viewAllAgencies";
 import ViewAllHotels from "./viewAllHotels/viewAllHotels";
+import ViewAllRooms from "./viewAllRooms/viewAllRooms";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,7 @@ const AdminDashboard = () => {
       {activePage === "view-all-users" && <ViewAllUsers />}
       {activePage === "view-all-agencies" && <ViewAllAgencies />}
       {activePage === "view-all-hotels" && <ViewAllHotels />}
+      {activePage === "view-all-rooms" && <ViewAllRooms />}
 
     </AdminDashboardLayout>
   );

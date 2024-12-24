@@ -14,9 +14,9 @@ function LandingNavbar() {
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
           <Link to="/" className="navbar-brand p-0">
-            <h5 className="text-primary m-0">
+            <h5 className="text-primary m-0 tw-flex tw-align-middle">
               <img src={appLogo} alt="logo" className="w-25" />
-              Travel Guide
+              <span className="tw-flex tw-align-middle">Travel Guide</span>
             </h5>
           </Link>
           <button
@@ -52,6 +52,9 @@ function LandingNavbar() {
                   </Link>
                   <Link to="/hotel/signup" className="dropdown-item">
                     Hotel
+                  </Link>
+                  <Link to="/taxi/signup" className="dropdown-item">
+                    Taxi
                   </Link>
                 </div>
               </div>
