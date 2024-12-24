@@ -33,6 +33,7 @@ import "./index.css";
 import TaxiSignup from "./pages/hotel/taxi/signup/taxiSignup";
 import TaxiDashboard from "./pages/admin/taxi/taxiDashboard";
 import ViewTaxies from "./pages/tourist/viewTaxies/viewTaxies";
+import RequestTaxi from "./pages/tourist/requestTaxi/requestTaxi";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -58,6 +59,7 @@ function App() {
             />
             <Route path="/tourist/view-hotels" element={<ViewHotels />} />
             <Route path="/tourist/booked-rooms" element={<BookedRooms />} />
+            <Route path="/tourist/request-taxi" element={<RequestTaxi />} />
             <Route path="/tourist/view-taxi" element={<ViewTaxies />} />
             <Route path="/tourist/profile" element={<TouristProfile />} />
             <Route path="/tourist/room/:id" element={<RoomPage />} />

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import axiosInstance from "../../../apis/axiosInstance";
+import BookTaxiModal from "./bookTaxiModal";
 
 const TaxiContainer = () => {
   const [taxis, setTaxis] = useState([]);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     getTaxiData();
   }, []);
@@ -20,6 +21,13 @@ const TaxiContainer = () => {
     }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="tw-container tw-mx-auto tw-p-4">
       <table className="tw-w-full tw-table-auto tw-border-collapse">
@@ -27,7 +35,7 @@ const TaxiContainer = () => {
           <tr className="tw-bg-gray-200">
             <th className="tw-px-4 tw-py-2">Driver Name</th>
             <th className="tw-px-4 tw-py-2">Contact No</th>
-            
+
             <th className="tw-px-4 tw-py-2">Duty Area</th>
             <th className="tw-px-4 tw-py-2">Charge Per Km</th>
             <th className="tw-px-4 tw-py-2">Work Experience</th>
@@ -43,7 +51,10 @@ const TaxiContainer = () => {
               <td className="tw-px-4 tw-py-2">{taxi.chargePerKm}</td>
               <td className="tw-px-4 tw-py-2">{taxi.workExperience}</td>
               <td className="tw-px-4 tw-py-2">
-                <button className="tw-bg-blue-500 tw-text-white tw-px-4 tw-py-2 tw-rounded hover:tw-bg-blue-600">
+                <button
+                  className="tw-bg-blue-500 tw-text-white tw-px-4 tw-py-2 tw-rounded hover:tw-bg-blue-600"
+                  onClick={openModal}
+                >
                   Book
                 </button>
               </td>
@@ -51,6 +62,7 @@ const TaxiContainer = () => {
           ))}
         </tbody>
       </table>
+      {isModalOpen && <BookTaxiModal onClose={closeModal} />}
     </div>
   );
 };
