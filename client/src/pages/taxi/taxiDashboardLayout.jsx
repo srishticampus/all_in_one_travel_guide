@@ -3,7 +3,7 @@ import Sidebar from "./sidebar/sidebar";
 const TaxiDashboardLayout = ({ children }) => {
   return (
     <div className="tw-flex tw-h-screen tw-overflow-hidden">
-      <div className="tw-w-3/12">
+      <div style={{width: '20%'}}>
         <Sidebar />
       </div>
 

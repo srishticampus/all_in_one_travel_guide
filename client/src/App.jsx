@@ -31,7 +31,7 @@ import AdminDashboard from "./pages/admin/dashboard/adminDashboard";
 import "./App.css";
 import "./index.css";
 import TaxiSignup from "./pages/hotel/taxi/signup/taxiSignup";
-import TaxiDashboard from "./pages/admin/taxi/taxiDashboard";
+import TaxiDashboard from "./pages/taxi/taxiDashboard";
 import ViewTaxies from "./pages/tourist/viewTaxies/viewTaxies";
 import RequestTaxi from "./pages/tourist/requestTaxi/requestTaxi";
 import ViewTaxiesBooking from "./pages/tourist/taxiBookings/taxiBookings";

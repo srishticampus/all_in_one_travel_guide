@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { setActivePage } from "../../../../redux/hotel/activePageSlice";
+import { setActivePage } from "../../../redux/hotel/activePageSlice";
 import { useDispatch } from "react-redux";
-import { clearLocalStorage } from "../../../../utils/localStorage";
+import { clearLocalStorage } from "../../../utils/localStorage";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
