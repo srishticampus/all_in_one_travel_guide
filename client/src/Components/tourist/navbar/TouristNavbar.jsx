@@ -18,8 +18,10 @@ export default function TouristNavbar() {
       navigate("/tourist/booked-rooms");
     } else if (value === "view-taxies") {
       navigate("/tourist/view-taxi");
-    }else if (value === "request-taxi") {
-      navigate('/tourist/request-taxi')
+    } else if (value === "request-taxi") {
+      navigate("/tourist/request-taxi");
+    } else if (value === "view-taxi-booking") {
+      navigate("/tourist/view-taxi-booking");
     }
   };
 
@@ -108,13 +110,12 @@ export default function TouristNavbar() {
                 >
                   Request
                 </option>
-
                 <option
-                  value="view-taxies"
                   className="tw-cursor-pointer"
                   style={{ fontSize: "14px" }}
+                  value="view-taxi-booking"
                 >
-                  Booked Taxi
+                  Booking
                 </option>
               </select>
 

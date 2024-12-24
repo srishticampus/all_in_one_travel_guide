@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import taxiImg from "../../../Asset/images/taxi-booking.jpg";
+import axiosInstance from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
 const RequestTaxiForm = () => {
   const {
     register,
@@ -9,7 +11,10 @@ const RequestTaxiForm = () => {
     formState: { errors },
     control,
   } = useForm();
+  const navigate = useNavigate();
   const [totalFare, setTotalFare] = useState(0);
+  const [touristId, setTouristId] = useState("");
+
   const travelDistance = useWatch({
     control,
     name: "travelDistance",
@@ -19,19 +24,33 @@ const RequestTaxiForm = () => {
   const onSubmit = (data) => {
     const { pickUpLocation, destination, travelDistance, pickUpDateTime } =
       data;
-    if (!pickUpLocation || !destination || !travelDistance || !pickUpDateTime) {
+    if (
+      !touristId ||
+      !pickUpLocation ||
+      !destination ||
+      travelDistance === undefined ||
+      !totalFare ||
+      !pickUpDateTime ||
+      !totalFare
+    ) {
       console.log("Please fill all the fields");
       return;
     }
-
-    // Calculate total fare (example calculation)
-    const farePerKm = 10; // Example fare per km
-    const calculatedFare = travelDistance * farePerKm;
-    setTotalFare(calculatedFare);
-
-    toast.success("Taxi request submitted successfully");
+    sendDataToServer({ ...data, touristId, totalFare });
   };
-
+  const sendDataToServer = async (data) => {
+    try {
+      const res = await axiosInstance.post("/taxi-booking/taxi-request", data);
+      if (res.status === 201) {
+        toast.success("Your request sent successfully.");
+        navigate("/tourist/view-taxi-booking");
+      }
+    } catch (error) {
+      const msg = error?.response?.data?.message || "Server issue.";
+      toast.error(msg);
+      console.log("Error on send req", error);
+    }
+  };
   const calculateFare = (distance) => {
     const baseFare = 50;
     const chargePerKM = 10;
@@ -39,12 +58,21 @@ const RequestTaxiForm = () => {
     const totalCharge = baseFare + totalKMCharge;
     setTotalFare(totalCharge);
   };
-
+  const getTouristId = () => {
+    const id = localStorage.getItem("travel_guide_tourist_id") || null;
+    if (id) {
+      setTouristId(id);
+    }
+  };
   useEffect(() => {
     if (travelDistance) {
       calculateFare(travelDistance);
     }
   }, [travelDistance]);
+
+  useEffect(() => {
+    getTouristId();
+  }, []);
   return (
     <div className=" tw-mt-10 tw-flex tw-items-center tw-justify-center tw-min-h-screen tw-bg-gray-100">
       <div className="tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-w-full tw-max-w-4xl tw-flex">
@@ -115,8 +143,8 @@ const RequestTaxiForm = () => {
                   },
                   max: {
                     value: 5000,
-                    message: "Travel distance must be within 5000 km"
-                  }
+                    message: "Travel distance must be within 5000 km",
+                  },
                 })}
                 className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
                   errors.travelDistance
@@ -137,7 +165,6 @@ const RequestTaxiForm = () => {
               </label>
               <input
                 type="datetime-local"
-                min={new Date().toISOString().split(".")[0]}
                 {...register("pickUpDateTime", {
                   required: "Pick up date & time is required",
                 })}
