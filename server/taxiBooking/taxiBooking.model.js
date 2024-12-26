@@ -40,7 +40,7 @@ const taxiBookingScheama = mongoose.Schema(
     },
     paymentStatus: {
       type: String,
-      enum: ["pending", "paid", "unpaid"],
+      enum: ["pending", "paid", "cancelled"],
       default: "pending",
     },
   },

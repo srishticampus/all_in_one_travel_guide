@@ -27,3 +27,14 @@ export const hotelBookingProcess = async (data) => {
     throw error;
   }
 };
+
+export const taxiBookingProcess = async (id) => {
+  try {
+    const res = await axiosInstance.patch(`/taxi-booking/payment-accept/${id}`);
+    if (res.status === 201) {
+      return res.data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
