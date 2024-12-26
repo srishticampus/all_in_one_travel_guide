@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
-// import TouristAPIs from "../../../apis/tourist";
-import { hotelBookingProcess } from "../../../apis/tourist/paymentService";
+import {  taxiBookingProcess } from "../../../apis/tourist/paymentService";
 import {toast} from "react-hot-toast";
 
 const PaymentTaxiModal = ({ id, onClose }) => {
@@ -28,9 +27,10 @@ const PaymentTaxiModal = ({ id, onClose }) => {
     handlePayment(serializedData);
   };
 
-  const handlePayment = async (data) => {
+  const handlePayment = async () => {
     try {
-      const res = await hotelBookingProcess(data);
+      const res = await taxiBookingProcess(id);
+
       if (res) {
         toast.success("Transaction successful");
         onClose()

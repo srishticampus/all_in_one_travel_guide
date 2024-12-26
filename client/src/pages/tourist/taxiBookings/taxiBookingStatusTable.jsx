@@ -12,7 +12,7 @@ const TaxiBookingStatusTable = () => {
     if (id) {
       getTaxiData(id);
     }
-  }, []);
+  }, [isModalOpen]);
 
   const getTaxiData = async (id) => {
     try {
@@ -89,7 +89,7 @@ const TaxiBookingStatusTable = () => {
                             Pay
                           </button>
                         ) : (
-                          <h4 className="tw-text-green-500">Paid</h4>
+                          <p className="tw-text-green-500">Paid</p>
                         )}
                       </td>
                     </>

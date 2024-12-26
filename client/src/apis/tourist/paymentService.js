@@ -31,8 +31,8 @@ export const hotelBookingProcess = async (data) => {
 export const taxiBookingProcess = async (id) => {
   try {
     const res = await axiosInstance.patch(`/taxi-booking/payment-accept/${id}`);
-    if (res.status === 201) {
-      return res.data.data;
+    if (res.status === 200) {
+      return true
     }
   } catch (error) {
     throw error;
