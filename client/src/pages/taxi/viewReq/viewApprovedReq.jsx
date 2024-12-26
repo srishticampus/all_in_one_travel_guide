@@ -6,12 +6,15 @@ const TaxiApprovedRequests = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    getTaxiData();
+    const id = localStorage.getItem("travel_guide_taxi_id");
+    if (id) {
+      getTaxiData(id);
+    }
   }, []);
-  const getTaxiData = async () => {
+  const getTaxiData = async (id) => {
     try {
       const response = await axiosInstance.get(
-        `/taxi-booking/getAllPendingTaxiBookings`
+        `/taxi-booking/getAllDriverApprovedReqByTaxiId/${id}`
       );
       if (response.status === 200) {
         setRequests(response.data.data);
@@ -21,7 +24,7 @@ const TaxiApprovedRequests = () => {
     }
   };
 
-
+  console.log('reqq ', requests)
   const openModal = () => {
     setIsModalOpen(true);
   };

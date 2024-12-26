@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
+import { SpaceContext } from "antd/es/space";
 
 const TaxiBookingStatusTable = () => {
   const [requests, setRequests] = useState([]);
@@ -17,7 +18,9 @@ const TaxiBookingStatusTable = () => {
         `/taxi-booking/by-tourist-id/${id}`
       );
       if (response.status === 200) {
-        setRequests(response.data.data);
+        let data = response.data?.data || [];
+        data.reverse();
+        setRequests(data);
       }
     } catch (error) {
       console.error("Error fetching requests: ", error);
@@ -36,6 +39,7 @@ const TaxiBookingStatusTable = () => {
       <table className="tw-w-full tw-table-auto tw-border-collapse">
         <thead>
           <tr className="tw-bg-gray-200">
+            <th className="tw-px-4 tw-py-2">No.</th>
             <th className="tw-px-4 tw-py-2">Pick Up</th>
             <th className="tw-px-4 tw-py-2">Destination</th>
 
@@ -46,22 +50,35 @@ const TaxiBookingStatusTable = () => {
           </tr>
         </thead>
         <tbody>
-          {requests.map((request) => (
+          {requests.map((request, idx) => (
             <tr key={request._id} className="tw-border-b">
+              <td className="tw-px-4 tw-py-2">{idx + 1}</td>
               <td className="tw-px-4 tw-py-2">{request.pickUpLocation}</td>
               <td className="tw-px-4 tw-py-2">{request.destination}</td>
               <td className="tw-px-4 tw-py-2">{request.travelDistance}</td>
               <td className="tw-px-4 tw-py-2">{request.totalFare}</td>
-              <td className="tw-px-4 tw-py-2">{request.taxiDriverStatus}</td>
-              <td className="tw-px-4 tw-py-2">{request.paymentStatus}</td>
-              {/* <td className="tw-px-4 tw-py-2">
-                <button
-                  className="tw-bg-blue-500 tw-text-white tw-px-4 tw-py-2 tw-rounded hover:tw-bg-blue-600"
-                  onClick={openModal}
-                >
-                  Book
-                </button>
-              </td> */}
+              <td className="tw-px-4 tw-py-2">
+                {request.taxiDriverStatus === "pending" ? (
+                  <span className="tw-text-red-500"> Pending</span>
+                ) : (
+                  <span className="tw-text-green-500">Accepted</span>
+                )}
+              </td>
+              <td className="tw-px-4 tw-py-2">
+                {request.taxiDriverStatus === "pending" ? (
+                  <span className="tw-text-red-500"> Not Allowed</span>
+                ) : (
+                  <>
+                    <td className=" tw-py-2">
+                      {request.paymentStatus === "pending" ? (
+                        <button className="tw-px-4 tw-text-white tw-bg-green-500">Pay</button>
+                      ) : (
+                        <h4 className="tw-text-green-500">Paid</h4>
+                      )}
+                    </td>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

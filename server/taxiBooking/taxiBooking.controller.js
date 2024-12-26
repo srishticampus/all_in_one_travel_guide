@@ -94,7 +94,9 @@ const getAllTaxiBookings = async (req, res, next) => {
 };
 const getAllPendingTaxiBookings = async (req, res, next) => {
   try {
-    const bookings = await TaxiBookingModel.find({taxiDriverStatus: "pending"})
+    const bookings = await TaxiBookingModel.find({
+      taxiDriverStatus: "pending",
+    })
       .populate("touristId")
       .exec();
     return res
@@ -106,10 +108,10 @@ const getAllPendingTaxiBookings = async (req, res, next) => {
 };
 const getAllAcceptedBookingsByDriver = async (req, res, next) => {
   try {
-    const {taxiId} = req.params;
+    const { taxiId } = req.params;
     const bookings = await TaxiBookingModel.find({
       taxiDriverStatus: "accepted",
-      taxiId
+      taxiId,
     })
       .populate("touristId")
       .exec();
@@ -124,7 +126,7 @@ const getAllAcceptedBookingsByDriver = async (req, res, next) => {
 const acceptReqById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const {taxiId} = req.body;
+    const { taxiId } = req.body;
     const taxiRequest = await TaxiBookingModel.findById(id);
 
     if (!taxiRequest) {
@@ -142,6 +144,26 @@ const acceptReqById = async (req, res, next) => {
   }
 };
 
+const getAllDriverApprovedReqByTaxiId = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const taxiRequests = await TaxiBookingModel.find({
+      taxiId: id,
+      taxiDriverStatus: "accepted",
+    })
+      .populate("taxiId")
+      .populate("touristId")
+      .exec();
+
+    return res.status(200).json({
+      message: "Taxi request approved successfully",
+      data: taxiRequests,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   calculateTaxiFare,
   taxiRequets,
@@ -149,4 +171,5 @@ module.exports = {
   getAllTaxiBookings,
   getAllPendingTaxiBookings,
   acceptReqById,
+  getAllDriverApprovedReqByTaxiId,
 };

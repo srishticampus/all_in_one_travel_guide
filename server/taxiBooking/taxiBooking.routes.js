@@ -6,6 +6,7 @@ const {
   getAllTaxiBookings,
   getAllPendingTaxiBookings,
   acceptReqById,
+  getAllDriverApprovedReqByTaxiId,
 } = require("./taxiBooking.controller");
 const taxiBookingRoutes = express.Router();
 
@@ -15,4 +16,5 @@ taxiBookingRoutes.get("/by-tourist-id/:id", getAllTaxiBookingByTouristId);
 taxiBookingRoutes.get("/getAllTaxiBookings", getAllTaxiBookings);
 taxiBookingRoutes.get("/getAllPendingTaxiBookings", getAllPendingTaxiBookings);
 taxiBookingRoutes.patch("/accept/:id", acceptReqById);
+taxiBookingRoutes.get("/getAllDriverApprovedReqByTaxiId/:id", getAllDriverApprovedReqByTaxiId);
 module.exports = taxiBookingRoutes;
