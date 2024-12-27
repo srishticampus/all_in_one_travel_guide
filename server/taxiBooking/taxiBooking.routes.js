@@ -8,9 +8,10 @@ const {
   acceptReqById,
   getAllDriverApprovedReqByTaxiId,
   paymentAcceptReqById,
+  getBookingById,
 } = require("./taxiBooking.controller");
 const taxiBookingRoutes = express.Router();
-
+taxiBookingRoutes.get("/getBookingById/:id", getBookingById)
 taxiBookingRoutes.post("/fare-calculation", calculateTaxiFare);
 taxiBookingRoutes.post("/taxi-request", taxiRequets);
 taxiBookingRoutes.get("/by-tourist-id/:id", getAllTaxiBookingByTouristId);

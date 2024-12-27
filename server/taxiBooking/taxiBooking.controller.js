@@ -182,6 +182,25 @@ const getAllDriverApprovedReqByTaxiId = async (req, res, next) => {
   }
 };
 
+const getBookingById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const taxiRequest = await TaxiBookingModel.findById(id)
+      .populate("taxiId")
+      .populate("touristId")
+      .exec();
+    if (!taxiRequest) {
+      return res.status(404).json({ message: "request not found" });
+    }
+    return res.status(200).json({
+      message: "Taxi request approved successfully",
+      data: taxiRequest,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   calculateTaxiFare,
   taxiRequets,
@@ -190,5 +209,6 @@ module.exports = {
   getAllPendingTaxiBookings,
   acceptReqById,
   getAllDriverApprovedReqByTaxiId,
-  paymentAcceptReqById
+  paymentAcceptReqById,
+  getBookingById,
 };

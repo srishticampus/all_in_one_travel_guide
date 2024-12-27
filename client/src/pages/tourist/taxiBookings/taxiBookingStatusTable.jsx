@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
-import { SpaceContext } from "antd/es/space";
 import PaymentTaxiModal from "./paymentTaxiModal";
-
+import { useNavigate } from "react-router-dom";
 const TaxiBookingStatusTable = () => {
   const [requests, setRequests] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeReqId, setActiveReqId] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_tourist_id") || [];
     if (id) {
@@ -41,6 +41,10 @@ const TaxiBookingStatusTable = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const navigateToDetails = (id) => {
+    navigate(`/tourist/view-taxi-booking/${id}`);
+  };
   return (
     <>
       {" "}
@@ -51,11 +55,11 @@ const TaxiBookingStatusTable = () => {
               <th className="tw-px-4 tw-py-2">No.</th>
               <th className="tw-px-4 tw-py-2">Pick Up</th>
               <th className="tw-px-4 tw-py-2">Destination</th>
-
               <th className="tw-px-4 tw-py-2">Travel Distance</th>
               <th className="tw-px-4 tw-py-2">Total Fare</th>
               <th className="tw-px-4 tw-py-2">Driver status</th>
               <th className="tw-px-4 tw-py-2">Payment</th>
+              <th className="tw-px-4 tw-py-2">View More</th>
             </tr>
           </thead>
           <tbody>
@@ -89,11 +93,21 @@ const TaxiBookingStatusTable = () => {
                             Pay
                           </button>
                         ) : (
-                          <p className="tw-text-green-500">Paid</p>
+                          <p className="tw-text-green-500 m-0">Paid</p>
                         )}
                       </td>
                     </>
                   )}
+                </td>
+                <td>
+                  <button
+                    className="tw-px-4 tw-py-2 tw-text-white tw-bg-green-500"
+                    onClick={() => {
+                      navigateToDetails(request._id);
+                    }}
+                  >
+                    View More
+                  </button>
                 </td>
               </tr>
             ))}
