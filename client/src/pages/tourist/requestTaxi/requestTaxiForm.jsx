@@ -36,6 +36,11 @@ const RequestTaxiForm = () => {
       console.log("Please fill all the fields");
       return;
     }
+
+    // check pickUpDateTime is future date or not
+    
+
+
     sendDataToServer({ ...data, touristId, totalFare });
   };
   const sendDataToServer = async (data) => {
@@ -165,8 +170,15 @@ const RequestTaxiForm = () => {
               </label>
               <input
                 type="datetime-local"
+    
                 {...register("pickUpDateTime", {
                   required: "Pick up date & time is required",
+                  validate: (value) => {
+                    const selectedDate = new Date(value);
+                    const currentDate = new Date();
+                    currentDate.setHours(0, 0, 0, 0);
+                    return selectedDate >= currentDate || "Pick up date & time must be valid";
+                  },
                 })}
                 className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
                   errors.pickUpDateTime

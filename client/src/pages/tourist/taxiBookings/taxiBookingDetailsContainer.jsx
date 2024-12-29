@@ -1,4 +1,3 @@
-
 const TaxiBookingDetailsContainer = ({ bookingData }) => {
   const {
     pickUpLocation,
@@ -45,12 +44,14 @@ const TaxiBookingDetailsContainer = ({ bookingData }) => {
                     : "tw-text-red-500"
                 }`}
               >
-                {paymentStatus}
+                {paymentStatus === "paid" ? "Paid" : "Not Paid"}
               </p>
             </div>
             <div>
               <h4 className="tw-font-semibold tw-text-lg">Driver Status</h4>
-              <p className="tw-text-gray-700">{taxiDriverStatus}</p>
+              <p className="tw-text-gray-700">
+                {taxiDriverStatus === "accepted" ? "Assigned" : "Not Assigned"}
+              </p>
             </div>
             <div>
               <h4 className="tw-font-semibold tw-text-lg">Total Fare</h4>
@@ -60,14 +61,7 @@ const TaxiBookingDetailsContainer = ({ bookingData }) => {
               <h4 className="tw-font-semibold tw-text-lg">Travel Distance</h4>
               <p className="tw-text-gray-700">{travelDistance} KM</p>
             </div>
-            <div>
-              <h4 className="tw-font-semibold tw-text-lg">Tourist Name</h4>
-              <p className="tw-text-gray-700">{touristId?.name}</p>
-            </div>
-            <div>
-              <h4 className="tw-font-semibold tw-text-lg">Tourist Email</h4>
-              <p className="tw-text-gray-700">{touristId?.email}</p>
-            </div>
+            
             <div>
               <h4 className="tw-font-semibold tw-text-lg">Taxi Driver Name</h4>
               <p className="tw-text-gray-700">{taxiId?.driverName}</p>

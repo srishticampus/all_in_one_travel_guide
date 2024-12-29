@@ -10,6 +10,7 @@ const BookRoomModal = ({ item, onClose }) => {
     formState: { errors },
   } = useForm();
 
+
   const onSubmit = (data) => {
     const { cardHolderName, cardNumber, expiryDate, cvv } = data;
     if (!cardHolderName || !cardNumber || !expiryDate || !cvv) {

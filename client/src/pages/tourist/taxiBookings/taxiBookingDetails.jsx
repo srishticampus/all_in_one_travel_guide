@@ -31,7 +31,6 @@ const TaxiBookingDetails = () => {
     <div>
       <TouristNavbar />
       <div className="tw-min-h-96 tw-w-full">
-        <h3 className="tw-text-center tw-mt-3">Taxi Booking details </h3>
         <TaxiBookingDetailsContainer bookingData={bookingData} />
       </div>
       <Footer />
