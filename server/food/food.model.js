@@ -20,13 +20,18 @@ const foodItemSchema = new mongoose.Schema(
       required: [true, "Price is required"],
       min: [0, "Price must be a positive number"],
     },
-    isVegItem: {
-      type: Boolean,
-      required: [true, "Food item is vegitarian or not is required"],
+    foodType: {
+      type: String,
+      enum: ["veg", "non-veg"],
+      required: true,
     },
     foodImg: {
-        type: String,
-        required: [true, "Food image is required"],
+      type: String,
+      required: [true, "Food image is required"],
+    },
+    ingredients: {
+      type: String,
+      required: [true, "Ingredients are required"],
     },
     availability: {
       type: Boolean,
@@ -38,4 +43,4 @@ const foodItemSchema = new mongoose.Schema(
 
 const FoodItemModel = mongoose.model("FoodItem", foodItemSchema);
 
-module.exports = {FoodItemModel};
+module.exports = { FoodItemModel };

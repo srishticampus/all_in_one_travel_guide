@@ -30,14 +30,22 @@ const addFood = async (req, res, next) => {
   try {
     const foodImg = req.file;
 
-    const { hotelId, name, description, price, isVegItem } = req.body;
+    const {
+      hotelId,
+      name,
+      description,
+      price,
+      ingredients,
+      foodType,
+    } = req.body;
 
     const foodItem = await FoodItemModel({
       hotelId,
       name,
       description,
       price,
-      isVegItem,
+      foodType,
+      ingredients,
       foodImg: foodImg.filename,
     });
 

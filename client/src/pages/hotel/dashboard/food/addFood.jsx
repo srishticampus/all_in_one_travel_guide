@@ -49,11 +49,7 @@ const AddFood = () => {
     }
   };
   const onSubmit = async (data) => {
-    const hotelId = localStorage.getItem("travel_guide_hotel_id") || null;
-    if (!hotelId) {
-      navigate("/login");
-      return;
-    }
+    
     const { name, price, foodImg, description, foodType, ingredients } = data;
 
     if (!name || !price || !description || !foodType || !ingredients) {
@@ -74,7 +70,7 @@ const AddFood = () => {
   };
 
   return (
-    <div className="tw-p-6 tw-max-w-3xl tw-mx-auto">
+    <div className="tw-p-6  tw-max-w-3xl tw-mx-auto">
       <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-text-gray-800 tw-text-center">
         Add Food Details
       </h1>

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { setActivePage } from "../../../../redux/hotel/activePageSlice";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearLocalStorage } from "../../../../utils/localStorage";
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -158,10 +158,10 @@ const Sidebar = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M4 4H60V60H4V4Z" stroke="white" stroke-width="4" />
-              <path d="M16 44H48V60H16V44Z" fill="white" />
-              <path d="M20 28H44V44H20V28Z" fill="white" />
-              <path d="M12 8H52V28H12V8Z" fill="white" />
+              <path d="M3 3H15V15H3V3Z" stroke="white" stroke-width="2" />
+              <path d="M5 10H13V15H5V10Z" fill="white" />
+              <path d="M6 6H12V10H6V6Z" fill="white" />
+              <path d="M4 4H14V6H4V4Z" fill="white" />
             </svg>
             View Room
           </div>

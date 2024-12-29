@@ -8,7 +8,7 @@ const {
 } = require("./food.controller");
 
 const foodRoutes = express.Router()
-foodRoutes.post('/add-food', foodImgUpload, addFood);
+foodRoutes.post('/', foodImgUpload, addFood);
 foodRoutes.get('/get-food-by-hotel/:hotelId', getAllFoodByHotelId);
 foodRoutes.get('/get-all-food', getAllFoodItems);
 foodRoutes.get('/get-food-by-id/:foodId', getFoodItemById);
