@@ -166,61 +166,7 @@ const Sidebar = () => {
             View Room
           </div>
         </li>
-        <li
-          className="tw-list-none tw-mt-5"
-          onClick={() => changePage("bookings")}
-        >
-          <div
-            className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="1"
-                y="5"
-                width="16"
-                height="8"
-                rx="2"
-                ry="2"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
-              <line
-                x1="1"
-                y1="9"
-                x2="17"
-                y2="9"
-                stroke="white"
-                stroke-width="2"
-              />
-              <circle cx="4" cy="9" r="1" fill="white" />
-              <circle cx="14" cy="9" r="1" fill="white" />
-              <line
-                x1="6"
-                y1="7"
-                x2="12"
-                y2="7"
-                stroke="white"
-                stroke-width="1.5"
-              />
-              <line
-                x1="6"
-                y1="11"
-                x2="12"
-                y2="11"
-                stroke="white"
-                stroke-width="1.5"
-              />
-            </svg>
-            Bookings
-          </div>
-        </li>
+        
         <li className="tw-list-none tw-mt-5" onClick={handleLogout}>
           <div
             className={` tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
