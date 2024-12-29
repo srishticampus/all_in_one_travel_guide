@@ -2,3 +2,4 @@
 2. fix admin table rows height
 3. fx passwords eye icons positition cente of input
 4. payment for taxi modal
+5. charge per km not required of taxi registrion, remove from input, (removed from db too)
