@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import AddFood from "./food/addFood";
 import { LoadingSpinner } from "../../../Components/common/loadingSpinner/loadingSpinner";
 import ViewRoom from "./room/viewRoom";
+import ViewFood from "./food/viewFood";
 
 const HotelDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,8 +20,9 @@ const HotelDashboard = () => {
   ) : (
     <HotelDashboardLayout>
       {activePage === "overview" && <Overview />}
-      {activePage === "addRoom" && <AddRoom />}
       {activePage === "addFood" && <AddFood />}
+      {activePage === "viewFood" && <ViewFood />}
+      {activePage === "addRoom" && <AddRoom />}
       {activePage === "viewRoom" && <ViewRoom />}
     </HotelDashboardLayout>
   );

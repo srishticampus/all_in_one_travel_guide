@@ -5,9 +5,9 @@ const HotelDashboardLayout = ({ children }) => {
     <div className="tw-flex tw-h-screen tw-overflow-hidden">
       <Sidebar />
 
-      <main className="tw-bg-dashboardBlue tw-h-500 tw-w-full">
+      <main className="tw-bg-dashboardBlue tw-h-screen tw-w-full ">
         <div
-          className="tw-mx-auto tw-max-w-screen-2xl tw-p-4 tw-h-full tw-w-100% "
+          className="tw-mx-auto tw-max-w-screen-2xl tw-p-4 tw-h-full tw-w-100% tw-overflow-scroll"
           style={{
             backgroundImage: `url(${hotelImg})`,
             backgroundSize: "cover",
