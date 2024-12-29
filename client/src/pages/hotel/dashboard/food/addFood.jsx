@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../../apis/axiosInstance";
 import toast from "react-hot-toast";
-
+import { useDispatch } from "react-redux";
+import { setActivePage } from "../../../../redux/hotel/activePageSlice";
 const AddFood = () => {
   const navigate = useNavigate();
   const [hotelId, setHotelId] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -39,6 +40,7 @@ const AddFood = () => {
       });
       if (response.status === 201) {
         toast.success("Food added successfully");
+        dispatch(setActivePage("viewFood"));
       }
     } catch (error) {
       console.error("Error creating room:", error);
