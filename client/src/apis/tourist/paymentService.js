@@ -38,3 +38,7 @@ export const taxiBookingProcess = async (id) => {
     throw error;
   }
 };
+
+export const foodBookingProcess = async (id) => {
+  
+}

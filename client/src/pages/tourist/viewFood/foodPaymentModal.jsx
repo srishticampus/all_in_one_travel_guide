@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import {  taxiBookingProcess } from "../../../apis/tourist/paymentService";
 import {toast} from "react-hot-toast";
 
-const PaymentTaxiModal = ({ id, onClose }) => {
+const FoodPaymentModal = ({ id, onClose }) => {
   const {
     register,
     handleSubmit,
@@ -172,4 +172,4 @@ const PaymentTaxiModal = ({ id, onClose }) => {
   );
 };
 
-export default PaymentTaxiModal;
+export default FoodPaymentModal;
