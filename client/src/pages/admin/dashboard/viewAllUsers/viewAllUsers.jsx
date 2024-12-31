@@ -49,11 +49,8 @@ const ViewAllUsers = () => {
       </h1>
 
       {/* Table */}
-      <div
-        className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow "
-        style={{ maxHeight: "500px" }}
-      >
-        <table className="  tw-min-w-full tw-divide-y tw-divide-gray-200 tw-h-96 ">
+      <div className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow ">
+        <table className="  tw-min-w-full tw-divide-y tw-divide-gray-200 tw-max-h-96 ">
           <thead className="tw-bg-gray-50">
             <tr>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">

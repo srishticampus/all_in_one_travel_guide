@@ -24,7 +24,6 @@ const AdminDashboard = () => {
       {activePage === "view-all-agencies" && <ViewAllAgencies />}
       {activePage === "view-all-hotels" && <ViewAllHotels />}
       {activePage === "view-all-rooms" && <ViewAllRooms />}
-
     </AdminDashboardLayout>
   );
 };
