@@ -51,9 +51,10 @@ function TaxiSignup() {
   };
 
   const sendDataToServer = async (data) => {
-    console.log("wokring..");
     try {
+      console.log("wokring.. data", data);
       const res = await axiosInstance.post("/taxi/signup", data);
+      console.log("wokring..", res);
       if (res.status === 201) {
         toast.success("Registration successful");
         navigate("/login");
@@ -82,7 +83,7 @@ function TaxiSignup() {
 
       <main className="container1">
         <div className={styles.leftSection}>
-          <div className="">
+          <div>
             <img height={380} src={taxiImg} alt="Panda Logo" />
           </div>
         </div>

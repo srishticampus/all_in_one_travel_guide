@@ -72,11 +72,11 @@ const ViewRoom = () => {
       <div className="view-room-container" style={{ padding: "24px" }}>
         <Card
           title="Room Details"
-          extra={
-            <Button type="primary" onClick={showModal}>
-              Edit Room
-            </Button>
-          }
+          // extra={
+          //   <Button type="primary" onClick={showModal}>
+          //     Edit Room
+          //   </Button>
+          // }
           style={{ margin: "0 auto" }}
         >
           <div

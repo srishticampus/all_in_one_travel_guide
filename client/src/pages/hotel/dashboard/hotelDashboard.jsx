@@ -8,6 +8,7 @@ import { LoadingSpinner } from "../../../Components/common/loadingSpinner/loadin
 import ViewRoom from "./room/viewRoom";
 import ViewFood from "./food/viewFood";
 import ViewFoodDetails from "./food/viewFoodDetails";
+import HotelProfile from "./profile/hotelProfile";
 
 const HotelDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +31,8 @@ const HotelDashboard = () => {
       {activePage === "viewFoodDetails" && <ViewFoodDetails activeFoodId={activeFoodId} />}
       {activePage === "addRoom" && <AddRoom />}
       {activePage === "viewRoom" && <ViewRoom />}
+      {activePage === "hotelProfile" && <HotelProfile />}
+
     </HotelDashboardLayout>
   );
 };

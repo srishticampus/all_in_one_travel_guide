@@ -5,17 +5,16 @@ const signup = async (req, res, next) => {
     const {
       driverName,
       chargePerKm,
-      confirmPassword,
       contactNo,
       dutyArea,
       email,
       password,
       workExperience,
     } = req.body;
+
     if (
       !driverName ||
       !chargePerKm ||
-      !confirmPassword ||
       !contactNo ||
       !dutyArea ||
       !email ||
@@ -24,11 +23,8 @@ const signup = async (req, res, next) => {
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    if (password !== confirmPassword) {
-      return res.status(400).json({ message: "Passwords do not match" });
-    }
 
-    const hashedPassword = hashPassword(password)
+    const hashedPassword = await hashPassword(password)
 
     const taxi = new TaxiModel({
       driverName,
