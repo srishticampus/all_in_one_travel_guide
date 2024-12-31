@@ -10,8 +10,11 @@ const addHotelBooking = async (req, res, next) => {
       accountNumber,
       expiryDate,
       cvv,
+      roomType,
+      checkInDate,
+      checkOutDate
     } = req.body;
-    if (!hotelId || !touristId || !roomId) {
+    if (!hotelId || !touristId || !roomId || !roomType || !checkInDate || !checkOutDate) {
       return res.status(400).json({
         message: "Hotel id, tourist id and room id are required.",
       });
@@ -20,10 +23,14 @@ const addHotelBooking = async (req, res, next) => {
       hotelId,
       touristId,
       roomId,
+      roomType,
+      checkInDate,
+      checkOutDate,
       accountHolderName,
       accountNumber,
       expiryDate,
       cvv,
+
     });
     await hotelBooking.save();
     return res.status(201).json({

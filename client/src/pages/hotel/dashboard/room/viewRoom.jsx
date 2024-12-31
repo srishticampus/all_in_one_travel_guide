@@ -101,11 +101,11 @@ const ViewRoom = () => {
             </div>
             <div className="info-item">
               <h5>AC Room Price</h5>
-              <p>${roomData.acRoomPrice}/night</p>
+              <p>₹{roomData.acRoomPrice}/night</p>
             </div>
             <div className="info-item">
               <h5>Non-AC Room Price</h5>
-              <p>${roomData.nonAcRoomPrice}/night</p>
+              <p>₹{roomData.nonAcRoomPrice}/night</p>
             </div>
             <div className="info-item">
               <h5>Check-in Time</h5>
@@ -168,7 +168,7 @@ const ViewRoom = () => {
                 },
               ]}
             >
-              <InputNumber prefix="$" style={{ width: "100%" }} />
+              <InputNumber prefix="₹" style={{ width: "100%" }} />
             </Form.Item>
 
             {/* Non-AC Room Price */}
@@ -184,7 +184,7 @@ const ViewRoom = () => {
                 },
               ]}
             >
-              <InputNumber prefix="$" style={{ width: "100%" }} />
+              <InputNumber prefix="₹" style={{ width: "100%" }} />
             </Form.Item>
 
             {/* Check-in Time */}

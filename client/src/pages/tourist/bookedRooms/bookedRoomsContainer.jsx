@@ -22,7 +22,7 @@ const BookedRoomsContainer = () => {
         `/rooms-booking/tourist/${activeTouristId}`
       );
       if (res.status === 200) {
-        setRooms(res.data?.data || []);
+        setRooms(res.data?.data?.reverse() || []);
       }
     } catch (error) {
       console.log("error on get packages", error);

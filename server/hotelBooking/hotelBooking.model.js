@@ -17,6 +17,19 @@ const hotelBookingSchema = mongoose.Schema(
       ref: "Room",
       required: [true, "Room id is required"],
     },
+    roomType: {
+      type: String,
+      enum: ["AC", "NON-AC"],
+      required: true,
+    },
+    checkInDate: {
+      type: String,
+      required: true,
+    },
+    checkOutDate: {
+      type: String,
+      required: true,
+    },
     accountHolderName: {
       type: String,
       required: [true, "Account holder name is required."],

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 // import TouristAPIs from "../../../apis/tourist";
 import { hotelBookingProcess } from "../../../apis/tourist/paymentService";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const BookRoomModal = ({ item, onClose }) => {
   const {
@@ -10,17 +10,32 @@ const BookRoomModal = ({ item, onClose }) => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = (data) => {
-    const { cardHolderName, cardNumber, expiryDate, cvv } = data;
-    if (!cardHolderName || !cardNumber || !expiryDate || !cvv) {
+    const {
+      cardHolderName,
+      cardNumber,
+      expiryDate,
+      cvv,
+      checkInDate,
+      checkOutDate,
+      roomType,
+    } = data;
+    if (
+      !cardHolderName ||
+      !cardNumber ||
+      !expiryDate ||
+      !cvv ||
+      !checkInDate ||
+      !checkOutDate ||
+      !roomType
+    ) {
       console.log("Please fill all the fields");
       return;
     }
     const roomId = item._id || null;
     const touristId = localStorage.getItem("travel_guide_tourist_id") || null;
     const hotelId = item.hotelId?._id || null;
-    
+
     if (!roomId || !touristId || !hotelId) {
       console.log("Please login to book the package");
       return;
@@ -33,6 +48,9 @@ const BookRoomModal = ({ item, onClose }) => {
       accountNumber: cardNumber,
       expiryDate,
       cvv,
+      checkInDate,
+      checkOutDate,
+      roomType,
     };
 
     handlePayment(serializedData);
@@ -43,7 +61,7 @@ const BookRoomModal = ({ item, onClose }) => {
       const res = await hotelBookingProcess(data);
       if (res) {
         toast.success("Room booked successfully");
-        onClose()
+        onClose();
       }
     } catch (error) {
       console.log("Error on payment process", error);
@@ -60,9 +78,76 @@ const BookRoomModal = ({ item, onClose }) => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="tw-space-y-6">
           <div>
+            <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-4">
+              <div>
+                <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+                  Check-in Date
+                </label>
+                <input
+                  type="date"
+                  {...register("checkInDate", {
+                    required: "Check-in date is required",
+                  })}
+                  className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
+                    errors.checkInDate
+                      ? "tw-border-red-500"
+                      : "tw-border-gray-300"
+                  } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
+                />
+                {errors.checkInDate && (
+                  <p className="tw-mt-1 tw-text-sm tw-text-red-600">
+                    {errors.checkInDate.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+                  Check-out Date
+                </label>
+                <input
+                  type="date"
+                  {...register("checkOutDate", {
+                    required: "Check-out date is required",
+                  })}
+                  className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
+                    errors.checkOutDate
+                      ? "tw-border-red-500"
+                      : "tw-border-gray-300"
+                  } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
+                />
+                {errors.checkOutDate && (
+                  <p className="tw-mt-1 tw-text-sm tw-text-red-600">
+                    {errors.checkOutDate.message}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+              Room Type
+            </label>
+            <select
+              {...register("roomType", {
+                required: "Room type is required",
+              })}
+              className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
+                errors.roomType ? "tw-border-red-500" : "tw-border-gray-300"
+              } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
+            >
+              <option value="">Select Room Type</option>
+              <option value="AC">AC</option>
+              <option value="NON-AC">Non-AC</option>
+            </select>
+            {errors.roomType && (
+              <p className="tw-mt-1 tw-text-sm tw-text-red-600">
+                {errors.roomType.message}
+              </p>
+            )}
             <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
               Card Holder Name
             </label>
+
             <input
               type="text"
               {...register("cardHolderName", {

@@ -2,18 +2,22 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../../apis/axiosInstance";
-import { BASE_URL } from "../../../../apis/baseURL";
 import toast from "react-hot-toast";
-
+import { useDispatch } from "react-redux";
+import { setActivePage } from "../../../../redux/hotel/activePageSlice";
 const AddRoom = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
   } = useForm();
+  const changePage = (newPage) => {
+    dispatch(setActivePage(newPage));
+  };
 
   const totalRooms = watch("totalRooms", 0);
   const acRooms = watch("acRooms", 0);
@@ -27,16 +31,17 @@ const AddRoom = () => {
       setLoading(true);
       const hotelId = localStorage.getItem("travel_guide_hotel_id");
       if (!hotelId) {
-        navigate("/logins");
+        navigate("/login");
         return;
       }
       const response = await axiosInstance.post(`/rooms`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
       if (response.status === 201) {
         toast.success("Room created successfully");
+        changePage("viewRoom")
       }
     } catch (error) {
       console.error("Error creating room:", error);
@@ -59,7 +64,7 @@ const AddRoom = () => {
       nonAcRoomPrice,
       checkInTime,
       checkOutTime,
-      roomImg
+      roomImg,
     } = data;
 
     if (acRooms === 0 && nonAcRooms === 0) {
@@ -146,7 +151,7 @@ const AddRoom = () => {
           {/* AC Room Price */}
           <div>
             <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
-              AC Room Price
+            ₹ AC Room Price
             </label>
             <input
               type="number"
@@ -166,7 +171,7 @@ const AddRoom = () => {
           {/* Non-AC Room Price */}
           <div>
             <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
-            ₹ Non-AC Room Price
+              ₹ Non-AC Room Price
             </label>
             <input
               type="number"
