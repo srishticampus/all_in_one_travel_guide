@@ -5,11 +5,15 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import TouristNavbar from "../../../Components/tourist/navbar/TouristNavbar";
 import Footer from "../../../Components/Footer/Footer";
+import FoodPaymentModal from "./foodPaymentModal";
 const ViewFoodDetails = () => {
   const [foodItem, setFoodItem] = useState({});
   const { id } = useParams();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [touristId, setTouristId] = useState("");
   useEffect(() => {
+    const touristId = localStorage.getItem("travel_guide_tourist_id");
+    setTouristId(touristId);
     if (id) {
       fetchFoodItem(id);
     }
@@ -28,6 +32,12 @@ const ViewFoodDetails = () => {
     }
   };
 
+  const orderFood = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <TouristNavbar />
@@ -84,13 +94,23 @@ const ViewFoodDetails = () => {
             </div>
 
             <div className="tw-flex tw-justify-center tw-items-center">
-              <button className="tw-bg-green-700 tw-px-6 tw-py-2 tw-text-white tw-rounded-md tw-mt-6">
+              <button
+                className="tw-bg-green-700 tw-px-6 tw-py-2 tw-text-white tw-rounded-md tw-mt-6"
+                onClick={orderFood}
+              >
                 Order Food
               </button>
             </div>
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <FoodPaymentModal
+          touristId={touristId}
+          foodId={id}
+          onClose={closeModal}
+        />
+      )}
       <Footer />
     </>
   );

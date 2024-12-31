@@ -80,7 +80,7 @@ const getAllFoodItems = async (req, res, next) => {
 const getFoodItemById = async (req, res, next) => {
   try {
     const { foodId } = req.params;
-    const foodItem = await FoodItemModel.findById(foodId);
+    const foodItem = await FoodItemModel.findById(foodId).populate("hotelId");
     res.status(200).json({ message: "Food item fetched", data: foodItem });
   } catch (error) {
     next(error);

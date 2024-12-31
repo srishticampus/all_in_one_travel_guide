@@ -6,7 +6,7 @@ import OrderedUsersTable from "./orderedUsers";
 
 const ViewFoodDetails = ({ activeFoodId }) => {
   const [foodItem, setFoodItem] = useState({});
-
+  const [orders, setOrders] = useState([]);
   const fetchFoodItem = async () => {
     try {
       const response = await axiosInstance.get(
@@ -21,28 +21,23 @@ const ViewFoodDetails = ({ activeFoodId }) => {
     }
   };
 
+  const fetchAllTheOrders = async () => {
+    try {
+      const res = await axiosInstance.get(`food-booking/get-orders-by-food/${activeFoodId}`);
+      if (res.status === 200) {
+        setOrders(res.data?.data?.reverse() || [])
+      }
+    } catch (error) {
+      console.log('Error on fetch all orders', error)
+    }
+  }
   useEffect(() => {
     if (activeFoodId) {
       fetchFoodItem();
+      fetchAllTheOrders()
     }
   }, [activeFoodId]);
 
-  const dummyOrders = [
-    {
-      name: "mark",
-      date: "12/12/2021",
-      time: "09:00",
-      persons: 5,
-      phoneNumber: "1234123412"
-    },
-    {
-      name: "Jark",
-      date: "12/12/2021",
-      time: "09:00",
-      persons: 5,
-      phoneNumber: "1234123412"
-    }
-  ]
   return (
 
     <div className="tw-container tw-mx-auto tw-p-4 tw-max-w-4xl">
@@ -101,7 +96,7 @@ const ViewFoodDetails = ({ activeFoodId }) => {
         </div>
       </div>
 
-      <OrderedUsersTable orders={dummyOrders}/>
+      <OrderedUsersTable orders={orders}/>
     </div>
 
   );

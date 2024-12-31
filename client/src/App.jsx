@@ -39,6 +39,8 @@ import TaxiBookingDetails from "./pages/tourist/taxiBookings/taxiBookingDetails"
 import ViewFood from "./pages/tourist/viewFood/viewFood";
 import TouristViewFood from "./pages/tourist/viewFood/viewFood";
 import ViewFoodDetails from "./pages/tourist/viewFood/viewFoodDetails";
+import BookedFoods from "./pages/tourist/bookedFoods/bookedFoods";
+import ViewHotelDetails from "./pages/tourist/viewHotelDetails/viewHotelDetails";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -71,7 +73,9 @@ function App() {
             <Route path="/tourist/profile" element={<TouristProfile />} />
             <Route path="/tourist/room/:id" element={<RoomPage />} />
             <Route path="/tourist/view-foods" element={<TouristViewFood />} />
+            <Route path="/tourist/booked-foods" element={<BookedFoods />} />
             <Route path="/tourist/view-foods/:id" element={<ViewFoodDetails />} />
+            <Route path="/tourist/view-hotel-details/:id" element={<ViewHotelDetails />} />
           </Route>
 
           {/* Agency routes */}

@@ -39,6 +39,13 @@ export const taxiBookingProcess = async (id) => {
   }
 };
 
-export const foodBookingProcess = async (id) => {
-  
+export const foodBookingProcess = async (data) => {
+  try {
+    const res = await axiosInstance.post(`/food-booking`, data);
+    if (res.status === 201) {
+      return true
+    }
+  } catch (error) {
+    throw error;
+  }
 }

@@ -166,7 +166,7 @@ const AddRoom = () => {
           {/* Non-AC Room Price */}
           <div>
             <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
-              Non-AC Room Price
+            ₹ Non-AC Room Price
             </label>
             <input
               type="number"

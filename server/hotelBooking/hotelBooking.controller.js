@@ -71,6 +71,7 @@ const getBookingsByHotelId = async (req, res, next) => {
     const bookings = await HotelBooking.find({ hotelId })
       .populate("hotelId")
       .populate("roomId")
+      .populate("touristId")
       .exec();
     return res.status(200).json({
       message: "Bookings fetched successfully",
@@ -80,7 +81,6 @@ const getBookingsByHotelId = async (req, res, next) => {
     next(error);
   }
 };
-
 
 module.exports = {
   getAllBookings,

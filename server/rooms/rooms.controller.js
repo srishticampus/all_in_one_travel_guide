@@ -57,8 +57,7 @@ const createRoom = async (req, res, next) => {
       nonAcRoomPrice,
       roomImg: roomImg.filename,
     });
-
-    await room.save();
+ await room.save();
     res.status(201).json({ message: "Room created successfully", data: room });
   } catch (error) {
     next(error);

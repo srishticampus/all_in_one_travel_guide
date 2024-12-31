@@ -1,23 +1,27 @@
 import { useForm } from "react-hook-form";
-import {  taxiBookingProcess } from "../../../apis/tourist/paymentService";
-import {toast} from "react-hot-toast";
-
-const FoodPaymentModal = ({ id, onClose }) => {
+import { foodBookingProcess, taxiBookingProcess } from "../../../apis/tourist/paymentService";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+const FoodPaymentModal = ({ foodId,touristId, onClose }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const navigate = useNavigate()
   const onSubmit = (data) => {
-    const { cardHolderName, cardNumber, expiryDate, cvv } = data;
-    if (!cardHolderName || !cardNumber || !expiryDate || !cvv) {
+    const { cardHolderName, cardNumber, expiryDate, cvv, noOfPersons, dateAndTime } = data;
+    if (!cardHolderName || !cardNumber || !expiryDate || !cvv || !dateAndTime || !noOfPersons) {
       console.log("Please fill all the fields");
       return;
     }
     const serializedData = {
+      foodId,
+      touristId,
+      dateAndTime,
+      noOfPersons,
       accountHolderName: cardHolderName,
-      accountNumber: cardNumber,
+      cardNumber,
       expiryDate,
       cvv,
     };
@@ -25,13 +29,14 @@ const FoodPaymentModal = ({ id, onClose }) => {
     handlePayment(serializedData);
   };
 
-  const handlePayment = async () => {
+  const handlePayment = async (data) => {
     try {
-      const res = await taxiBookingProcess(id);
+      const res = await foodBookingProcess(data);
 
       if (res) {
-        toast.success("Transaction successful");
-        onClose()
+        toast.success("Your order has confirmed.");
+        navigate(`/tourist/booked-foods`)
+        onClose();
       }
     } catch (error) {
       console.log("Error on payment process", error);
@@ -47,6 +52,64 @@ const FoodPaymentModal = ({ id, onClose }) => {
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="tw-space-y-6">
+          <div className="tw-grid tw-grid-cols-2 tw-gap-4">
+            <div>
+              <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+                Date and time
+              </label>
+              <input
+                type="datetime-local"
+                {...register("dateAndTime", {
+                  required: "Date and time is required",
+                  validate: (value) => {
+                    const selectedDate = new Date(value);
+                    const currentDate = new Date();
+                    currentDate.setHours(0, 0, 0, 0);
+                    return selectedDate >= currentDate || "Date & time must be valid";
+                  },
+                })}
+                className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
+                  errors.dateAndTime
+                    ? "tw-border-red-500"
+                    : "tw-border-gray-300"
+                } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
+              />
+              {errors.dateAndTime && (
+                <p className="tw-mt-1 tw-text-sm tw-text-red-600">
+                  {errors.dateAndTime.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+                No of persons
+              </label>
+              <input
+                type="number"
+                {...register("noOfPersons", {
+                  required: "Number of persons is required",
+                  min: {
+                    value: 1,
+                    message: "Minimum should be one"
+                  },
+                  max: {
+                    value: 100,
+                    message: "Maximum should be 100"
+                  }
+                })}
+                className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
+                  errors.noOfPersons
+                    ? "tw-border-red-500"
+                    : "tw-border-gray-300"
+                } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
+              />
+              {errors.noOfPersons && (
+                <p className="tw-mt-1 tw-text-sm tw-text-red-600">
+                  {errors.noOfPersons.message}
+                </p>
+              )}
+            </div>
+          </div>
           <div>
             <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
               Card Holder Name

@@ -6,7 +6,7 @@ const RoomCard = ({ room }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="room-card"
+      className="room-card tw-cursor-pointer"
       onClick={() => navigate(`/tourist/room/${room._id}`)}
     >
       <div className="room-card-image">

@@ -4,7 +4,7 @@ const foodItemSchema = new mongoose.Schema(
   {
     hotelId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Hotel",
+      ref: "hotel",
       required: [true, "Hotel ID is required"],
     },
     name: {

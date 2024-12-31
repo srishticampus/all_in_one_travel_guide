@@ -16,16 +16,7 @@ const ViewRoom = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [roomData, setRoomData] = useState({
-    hotelId: localStorage.getItem("travel_guide_hotel_id"),
-    totalRooms: 0,
-    acRooms: 0,
-    nonAcRooms: 0,
-    acRoomPrice: 0,
-    nonAcRoomPrice: 0,
-    checkInTime: "12:00",
-    checkOutTime: "11:00",
-  });
+  const [roomData, setRoomData] = useState({});
 
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_hotel_id");
@@ -69,7 +60,13 @@ const ViewRoom = () => {
       setLoading(false);
     }
   };
-
+  if (!roomData || !roomData.totalRooms) {
+    return (
+      <div className="tw-h-screen tw-flex tw-justify-center">
+        <h3 className="tw-text-center "> You haven't registerd your rooms yet!</h3>
+      </div>
+    );
+  }
   return (
     <>
       <div className="view-room-container" style={{ padding: "24px" }}>
@@ -241,7 +238,6 @@ const ViewRoom = () => {
             </Form.Item>
           </Form>
         </Modal>
-        
       </div>
     </>
   );
