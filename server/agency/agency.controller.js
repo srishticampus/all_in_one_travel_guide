@@ -30,11 +30,52 @@ const getAllAgencies = async (req, res, next) => {
       data: agencies,
     });
   } catch (error) {
+    next(error);
+  }
+};
+
+const getAgencyById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const agency = await AgencyModel.findById(id);
+    if (!agency) {
+      return res.status(404).json({ message: "Agency not found" });
+    }
+
+    return res.status(200).json({ data: agency, message: "Agency found" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateAgencyById = async (req, res, next) => {
+  try {
+    const {id} = req.params;
+    const {agencyName, agencyAddress, phoneNumber} = req.body;
+    const agency = await AgencyModel.findById(id);
+    if (!agency) {
+      return res.status(404).json({message: "Agency not found."})
+    }
+    if (agencyName) {
+      agency.agencyName = agencyName
+    }
+    if (agencyAddress) {
+      agency.agencyAddress = agencyAddress
+    }
+    if (phoneNumber) {
+      agency.phoneNumber = phoneNumber
+    }
+    await agency.save()
+    return res.status(200).json({message: "agency updated", data: agency})
+
+  } catch (error) {
     next(error)
   }
 }
 
 module.exports = {
   agencySignup,
-  getAllAgencies
+  getAllAgencies,
+  getAgencyById,
+  updateAgencyById
 };

@@ -28,19 +28,19 @@ import ViewHotels from "./pages/tourist/viewHotels/viewHotels";
 import RoomPage from "./Components/tourist/roomDetails/roomDetails";
 import BookedRooms from "./pages/tourist/bookedRooms/bookedRooms";
 import AdminDashboard from "./pages/admin/dashboard/adminDashboard";
-import "./App.css";
-import "./index.css";
 import TaxiSignup from "./pages/hotel/taxi/signup/taxiSignup";
 import TaxiDashboard from "./pages/taxi/taxiDashboard";
 import ViewTaxies from "./pages/tourist/viewTaxies/viewTaxies";
 import RequestTaxi from "./pages/tourist/requestTaxi/requestTaxi";
 import ViewTaxiesBooking from "./pages/tourist/taxiBookings/taxiBookings";
 import TaxiBookingDetails from "./pages/tourist/taxiBookings/taxiBookingDetails";
-import ViewFood from "./pages/tourist/viewFood/viewFood";
 import TouristViewFood from "./pages/tourist/viewFood/viewFood";
 import ViewFoodDetails from "./pages/tourist/viewFood/viewFoodDetails";
 import BookedFoods from "./pages/tourist/bookedFoods/bookedFoods";
 import ViewHotelDetails from "./pages/tourist/viewHotelDetails/viewHotelDetails";
+import AgencyProfile from "./pages/agency/profile/profile";
+import "./App.css";
+import "./index.css";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -83,6 +83,7 @@ function App() {
             <Route path="/agency/home" element={<AgencyHome />} />
             <Route path="/agency/add-package" element={<AddPackage />} />
             <Route path="/agency/my-packages" element={<MyPackage />} />
+            <Route path="/agency/profile" element={<AgencyProfile />} />
             <Route
               path="/agency/my-packages/:id"
               element={<MyPackageDetails />}
