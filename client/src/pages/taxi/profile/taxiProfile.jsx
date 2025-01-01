@@ -9,19 +9,17 @@ export default function TaxiProfile() {
 
   const imageUrl = taxiHeaderImg;
   const [editProfile, setEditProfile] = useState({
-    hotelName: "",
-    email: "",
-    phoneNumber: "",
-    hotelLocation: "",
+    driverName: "",
+    contactNo: "",
+    dutyArea: "",
+    workExperience: "",
   });
 
   const onSubmit = () => {
-    console.log("Updated data:", editProfile);
-    const { hotelName, email, phoneNumber, hotelLocation } = editProfile;
     if (!validateFields(editProfile)) {
       return;
     }
-
+  console.log("Updated data:", editProfile);
     sendDataToServer();
 
     setIsEditModalOpen(false);
@@ -29,7 +27,7 @@ export default function TaxiProfile() {
   const sendDataToServer = async () => {
     try {
       const res = await axiosInstance.patch(
-        `/taxi/updateTaxiProfile/${taxiProfile._id}`,
+        `/taxi/update-taxi-by-id/${taxiProfile._id}`,
         editProfile
       );
       if (res.status === 200) {
@@ -43,26 +41,21 @@ export default function TaxiProfile() {
   };
 
   const validateFields = (data) => {
-    const { hotelName, email, phoneNumber, hotelLocation } = data;
-    if (!hotelName) {
-      toast.error("Hotel name is required.");
+    const { driverName, contactNo, dutyArea, workExperience } = data;
+    if (!driverName) {
+      toast.error("Driver name is required.");
       return false;
     }
-    if (!email) {
-      toast.error("Email is required.");
+    if (!contactNo) {
+      toast.error("Contact number is required.");
       return false;
     }
-    // check email format
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      toast.error("Invalid email format.");
+    if (!dutyArea) {
+      toast.error("Duty area is required.");
       return false;
     }
-    if (!phoneNumber) {
-      toast.error("Phone number is required.");
-      return false;
-    }
-    if (phoneNumber.length !== 10) {
-      toast.error("Phone number should be 10 digits.");
+    if (!workExperience) {
+      toast.error("Work experience is required.");
       return false;
     }
     return true;
@@ -103,7 +96,7 @@ export default function TaxiProfile() {
         <div className="tw-relative tw-h-48 md:tw-h-64">
           <img
             src={imageUrl}
-            alt={taxiProfile?.name}
+            alt={taxiProfile?.driverName}
             className="tw-w-full tw-h-full tw-object-cover"
           />
           <div className="tw-absolute tw-inset-0 tw-bg-black/30" />
@@ -116,7 +109,7 @@ export default function TaxiProfile() {
                 {isEditModalOpen ? (
                   <input
                     type="text"
-                    value={editProfile.hotelName}
+                    value={editProfile.driverName}
                     onChange={(e) =>
                       setEditProfile({
                         ...editProfile,
@@ -134,11 +127,11 @@ export default function TaxiProfile() {
                 {isEditModalOpen ? (
                   <input
                     type="text"
-                    value={editProfile.hotelLocation}
+                    value={editProfile.dutyArea}
                     onChange={(e) =>
                       setEditProfile({
                         ...editProfile,
-                        hotelLocation: e.target.value,
+                        dutyArea: e.target.value,
                       })
                     }
                     className="tw-border tw-rounded tw-p-2 tw-w-full"
@@ -177,23 +170,7 @@ export default function TaxiProfile() {
               </div>
               <div>
                 <p className="tw-text-sm tw-text-gray-500">Email</p>
-                <p className="tw-text-gray-900">
-                  {isEditModalOpen ? (
-                    <input
-                      type="email"
-                      value={editProfile.email}
-                      onChange={(e) =>
-                        setEditProfile({
-                          ...editProfile,
-                          email: e.target.value,
-                        })
-                      }
-                      className="tw-border tw-rounded tw-p-2 tw-w-full"
-                    />
-                  ) : (
-                    taxiProfile?.email
-                  )}
-                </p>
+                <p className="tw-text-gray-900">{taxiProfile?.email}</p>
               </div>
             </div>
 
@@ -206,12 +183,12 @@ export default function TaxiProfile() {
                 <p className="tw-text-gray-900">
                   {isEditModalOpen ? (
                     <input
-                      type="text"
-                      value={editProfile.phoneNumber}
+                      type="tel"
+                      value={editProfile.contactNo}
                       onChange={(e) =>
                         setEditProfile({
                           ...editProfile,
-                          phoneNumber: e.target.value,
+                          contactNo: e.target.value,
                         })
                       }
                       className="tw-border tw-rounded tw-p-2 tw-w-full"
@@ -228,8 +205,27 @@ export default function TaxiProfile() {
                 <Building2 className="tw-w-5 tw-h-5 tw-text-primary" />
               </div>
               <div>
-                <p className="tw-text-sm tw-text-gray-500">Business Type</p>
-                <p className="tw-text-gray-900">Taxi service</p>
+                <p className="tw-text-sm tw-text-gray-500">
+                  Year of experience
+                </p>
+
+                <p className="tw-text-gray-900">
+                  {isEditModalOpen ? (
+                    <input
+                      type="number"
+                      value={editProfile.workExperience}
+                      onChange={(e) =>
+                        setEditProfile({
+                          ...editProfile,
+                          workExperience: e.target.value,
+                        })
+                      }
+                      className="tw-border tw-rounded tw-p-2 tw-w-full"
+                    />
+                  ) : (
+                    taxiProfile?.workExperience
+                  )}
+                </p>
               </div>
             </div>
 

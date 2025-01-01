@@ -124,7 +124,7 @@ const Sidebar = () => {
                 fill=""
               />
             </svg>
-            Profile
+              Profile
           </div>
         </li>
         <li className="tw-list-none tw-mt-5" onClick={handleLogout}>

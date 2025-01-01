@@ -179,21 +179,7 @@ export default function HotelProfile() {
               <div>
                 <p className="tw-text-sm tw-text-gray-500">Email</p>
                 <p className="tw-text-gray-900">
-                  {isEditModalOpen ? (
-                    <input
-                      type="email"
-                      value={editProfile.email}
-                      onChange={(e) =>
-                        setEditProfile({
-                          ...editProfile,
-                          email: e.target.value,
-                        })
-                      }
-                      className="tw-border tw-rounded tw-p-2 tw-w-full"
-                    />
-                  ) : (
-                    hotelProfile?.email
-                  )}
+                  {hotelProfile?.email}
                 </p>
               </div>
             </div>
