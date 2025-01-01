@@ -2,7 +2,15 @@ import React from "react";
 import earthVideo from "../../../Asset/videos/video-1.mp4";
 import { TouristButton } from "../button/TouristButton";
 import "./TouristHeader.scss";
+import { useNavigate } from "react-router-dom";
 export default function TouristHeader() {
+  const navigate = useNavigate()
+  const navigateToPackages = () => {
+    navigate('/tourist/packages')
+  }
+  // const navigateToPackages = () => {
+  //   navigate('/tourist/packages')
+  // }
   return (
     <div className="hero-container">
       <video src={earthVideo} autoPlay loop muted />
@@ -14,6 +22,7 @@ export default function TouristHeader() {
             className="btns"
             buttonStyle="btn--outline"
             buttonSize="btn--large"
+            onClick={navigateToPackages}
           >
             View Packages
           </TouristButton>
