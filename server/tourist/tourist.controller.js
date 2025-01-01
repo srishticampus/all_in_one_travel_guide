@@ -94,9 +94,34 @@ const getAllTourist = async (req, res, next) => {
   }
 };
 
+const updateTourist = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { name, country, phoneNumber } = req.body;
+    const isTouristExist = await TouristModel.findById(id);
+    if (!isTouristExist) {
+      return res.status(404).json({ message: "Tourist not found" });
+    }
+    if (name) {
+      isTouristExist.name = name;
+    }
+    if (country) {
+      isTouristExist.country = country;
+    }
+    if (phoneNumber) {
+      isTouristExist.phoneNumber = phoneNumber;
+    }
+    await isTouristExist.save();
+    return res.status(200).json({ data: isTouristExist, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   touristSignup,
   touristSignupUploads,
   getTouristById,
   getAllTourist,
+  updateTourist
 };
