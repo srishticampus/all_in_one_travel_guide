@@ -8,6 +8,7 @@ import Footer from "../../../Components/Footer/Footer";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-hot-toast';
 
 function TouristProfile() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
@@ -43,8 +44,40 @@ function TouristProfile() {
 
   const handleSaveProfile = (updatedProfile) => {
     setProfile(updatedProfile);
+    const obj = {};
+    
+    obj.name = updatedProfile.name;
+    obj.country = updatedProfile.country;
+    obj.phoneNumber = updatedProfile.phoneNumber;
+    
+    if (obj.name === "" || obj.country === "" || obj.phoneNumber === "") {
+      toast.error("Field can't be empty");
+      return;
+    }
+
+    if (obj.phoneNumber.length !== 10) {
+      toast.error("Phone number must be 10 digits");
+      return;
+    }
+
+    sendDataServer(obj, updatedProfile._id)
+
+
+    
+    console.log('updat => ', obj);
     setIsEditModalOpen(false);
   };
+
+  const sendDataServer = async (obj, id) => {
+    try {
+      const res = await axiosInstance.patch(`/tourist/updateTourist/${id}`, obj);
+      if (res.status === 200) {
+        toast.success("Profile updated successfully");
+      }
+    } catch (error) {
+      console.log('error on tourist update', error)
+    }
+  }
 
   return (
     <div className="tw-min-h-screen tw-bg-gray-100">

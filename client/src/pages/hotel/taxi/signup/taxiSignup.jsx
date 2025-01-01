@@ -28,7 +28,6 @@ function TaxiSignup() {
       confirmPassword,
       contactNo,
       dutyArea,
-      chargePerKm,
       workExperience,
     } = data;
     if (
@@ -38,7 +37,6 @@ function TaxiSignup() {
       !confirmPassword ||
       !contactNo ||
       !dutyArea ||
-      !chargePerKm ||
       !workExperience
     ) {
       return;
@@ -46,15 +44,12 @@ function TaxiSignup() {
     if (password !== confirmPassword) {
       return;
     }
-    console.log("data => ", data);
-    sendDataToServer(data);
+    sendDataToServer({...data, chargePerKm: 50});
   };
 
   const sendDataToServer = async (data) => {
     try {
-      console.log("wokring.. data", data);
       const res = await axiosInstance.post("/taxi/signup", data);
-      console.log("wokring..", res);
       if (res.status === 201) {
         toast.success("Registration successful");
         navigate("/login");
@@ -224,23 +219,6 @@ function TaxiSignup() {
                   </p>
                 </div>
 
-                <div className="inputWrapper">
-                  <input
-                    type="number"
-                    name="chargePerKm"
-                    {...register("chargePerKm", {
-                      required: "Charge per km is required.",
-                      min: {
-                        value: 0,
-                        message: "Charge per km cannot be negative.",
-                      },
-                    })}
-                    placeholder="Charge per km"
-                  />
-                  <p className="text-danger">
-                    <ErrorMessage errors={errors} name="chargePerKm" />
-                  </p>
-                </div>
 
                 <div className="inputWrapper">
                   <input

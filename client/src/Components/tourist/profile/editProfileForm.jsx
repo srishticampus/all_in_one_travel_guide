@@ -6,6 +6,8 @@ export const EditProfileForm = ({ profile, onSave, onCancel }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSave(formData);
+    
+
   };
 
   return (
@@ -16,15 +18,6 @@ export const EditProfileForm = ({ profile, onSave, onCancel }) => {
           type="text"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 tw-p-2 tw-border"
-        />
-      </div>
-      <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Email</label>
-        <input
-          type="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 tw-p-2 tw-border"
         />
       </div>
@@ -45,18 +38,6 @@ export const EditProfileForm = ({ profile, onSave, onCancel }) => {
           onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
           className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 tw-p-2 tw-border"
         />
-      </div>
-      <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Gender</label>
-        <select
-          value={formData.gender}
-          onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-          className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-border-blue-500 focus:tw-ring-blue-500 tw-p-2 tw-border"
-        >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
       </div>
       <div className="tw-flex tw-justify-end tw-space-x-3 tw-mt-6">
         <button
