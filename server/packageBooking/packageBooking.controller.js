@@ -68,7 +68,7 @@ const getBookingsByPackageId = async (req, res, next) => {
     const { packageId } = req.params;
     const bookings = await PackageBooking.find({ packageId })
       .populate("packageId")
-      .populate("packageId")
+      .populate("touristId")
       .exec();
     return res.status(200).json({
       message: "Bookings fetched successfully",

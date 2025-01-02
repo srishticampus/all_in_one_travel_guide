@@ -72,7 +72,13 @@
 }
 
 .price {
-  color: #27ae60;
+  color: color;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+.price-green {
+  color: color;
   font-weight: bold;
   font-size: 18px;
   margin-top: 10px;

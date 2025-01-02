@@ -9,22 +9,37 @@ import { useParams } from "react-router-dom";
 const MyPackageDetails = () => {
   const navigate = useNavigate();
   const [packageData, setPackageData] = useState({});
+  const [bookings, setBookings] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     if (id) {
       getpackageData(id);
+      getPackageBookings(id);
     }
   }, [id]);
+
+  const getPackageBookings = async (id) => {
+    try {
+      const res = await axiosInstance.get(`/package-booking/package/${id}`);
+      if (res.status === 200) {
+        const data = res.data?.data?.reverse() || [];
+        setBookings(data);
+      }
+    } catch (err) {
+      console.log("error on get package bookings: ", err);
+    }
+  };
   const getpackageData = async (id) => {
     try {
       const res = await axiosInstance.get(`/package/getData/${id}`);
       if (res.status === 200) {
-        setPackageData(res.data?.data || []);
+        setPackageData(res.data?.data || {});
       }
     } catch (error) {
       console.log("Error on getting packageData: ", error);
     }
   };
+  console.log("booking. ", bookings);
   return (
     <>
       <AgencyNavbar />
@@ -192,10 +207,45 @@ const MyPackageDetails = () => {
                   {packageData.startingDate}
                 </p>
               </div>
-              <button className="tw-bg-blue-500 tw-text-white tw-px-6 tw-py-2 tw-rounded-lg hover:tw-bg-blue-600 tw-transition-colors">
-                View Bookings
-              </button>
             </div>
+          </div>
+          <div>
+            <h3 className="tw-text-xl tw-font-semibold tw-text-gray-800 tw-p-8">
+              Bookings
+            </h3>
+            <table className="tw-w-11/12 tw-mx-auto tw-border-collapse tw-p-8 tw-text-left tw-text-gray-600">
+              <thead>
+                <tr className="tw-bg-gray-200">
+                  <th className="tw-px-4 tw-py-2 tw-border-b">No.</th>
+                  <th className="tw-px-4 tw-py-2 tw-border-b">Name</th>
+                  <th className="tw-px-4 tw-py-2 tw-border-b">Email</th>
+                  <th className="tw-px-4 tw-py-2 tw-border-b">Phone Number</th>
+                  <th className="tw-px-4 tw-py-2 tw-border-b">Gender</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookings.map((item, index) => (
+                  <tr
+                    key={index}
+                    className="tw-odd:bg-white tw-even:bg-gray-100"
+                  >
+                    <td className="tw-px-4 tw-py-2 tw-border-b">{index + 1}</td>
+                    <td className="tw-px-4 tw-py-2 tw-border-b">
+                      {item.touristId?.name}
+                    </td>
+                    <td className="tw-px-4 tw-py-2 tw-border-b">
+                      {item.touristId?.email}
+                    </td>
+                    <td className="tw-px-4 tw-py-2 tw-border-b">
+                      {item.touristId?.phoneNumber}
+                    </td>
+                    <td className="tw-px-4 tw-py-2 tw-border-b">
+                      {item.touristId?.gender}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

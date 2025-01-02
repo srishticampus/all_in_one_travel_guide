@@ -21,7 +21,9 @@ const MyPackage = () => {
     try {
       const res = await axiosInstance.get(`/package/agency/${id}`);
       if (res.status === 200) {
-        setPackages(res.data?.data || []);
+        const data = res.data?.data?.reverse() || []; 
+        console.log('data', data)
+        setPackages(data);
       }
     } catch (error) {
       console.log("Error on getting packages: ", error);
@@ -51,6 +53,7 @@ const MyPackage = () => {
             )}
             {packages.map((item) => (
               <div
+                key={item._id}
                 className="col-lg-4 col-md-6 wow fadeInUp tw-bg-slate-200"
                 data-wow-delay="0.1s"
               >
