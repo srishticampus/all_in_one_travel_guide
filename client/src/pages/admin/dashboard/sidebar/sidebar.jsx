@@ -149,7 +149,7 @@ const Sidebar = () => {
         </li>
         <li
           className="tw-list-none tw-mt-5"
-          onClick={() => changePage("bookings")}
+          onClick={() => changePage("add-destinations")}
         >
           <div
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
@@ -199,7 +199,7 @@ const Sidebar = () => {
                 stroke-width="1.5"
               />
             </svg>
-            Bookings
+            Add Destinations
           </div>
         </li>
         <li className="tw-list-none tw-mt-5" onClick={handleLogout}>

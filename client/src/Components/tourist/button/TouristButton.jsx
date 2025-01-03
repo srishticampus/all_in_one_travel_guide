@@ -9,9 +9,9 @@ const SIZES = ["btn--medium", "btn--large"];
 export const TouristButton = ({
   children,
   type,
-  onClick,
   buttonStyle,
   buttonSize,
+  redirectionLink
 }) => {
   // conditional button class
   const checkButtonStyle = STYLES.includes(buttonStyle)
@@ -21,11 +21,10 @@ export const TouristButton = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-    <Link to="/sign-up" className="btn-mobile">
+    <Link to={redirectionLink} className="btn-mobile">
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         type={type}
-        onClick={onClick}
       >
         {children}
       </button>

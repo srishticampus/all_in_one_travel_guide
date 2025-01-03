@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function TouristHeader() {
   const navigate = useNavigate()
   const navigateToPackages = () => {
-    navigate('/tourist/packages')
+    navigate('/tourist/view-packages')
   }
   // const navigateToPackages = () => {
   //   navigate('/tourist/packages')
@@ -22,16 +22,17 @@ export default function TouristHeader() {
             className="btns"
             buttonStyle="btn--outline"
             buttonSize="btn--large"
-            onClick={navigateToPackages}
+            redirectionLink={'/tourist/view-packages'}
           >
-            View Packages
+            View Packages 
           </TouristButton>
           <TouristButton
             className="btns"
             buttonStyle="btn--primary"
             buttonSize="btn--large"
+            redirectionLink={'/tourist/request-taxi'}
           >
-            Top Destinations <i className="far fa-play-circle" />
+            Request Taxi <i className="far fa-play-circle" />
           </TouristButton>
         </div>
       </div>

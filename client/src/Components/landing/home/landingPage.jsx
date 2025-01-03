@@ -17,6 +17,9 @@ export default function LandingPage() {
   const redirectToSignup = () => {
     navigate("/tourist/signup");
   };
+  const saveToLS = (key, value) => {
+    localStorage.setItem(key, value);
+  }
   return (
     <div id="landing-page">
       <LandingNavbar />

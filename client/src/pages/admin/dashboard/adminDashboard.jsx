@@ -7,6 +7,7 @@ import ViewAllUsers from "./viewAllUsers/viewAllUsers";
 import ViewAllAgencies from "./viewAllAgencies/viewAllAgencies";
 import ViewAllHotels from "./viewAllHotels/viewAllHotels";
 import ViewAllRooms from "./viewAllRooms/viewAllRooms";
+import AddDestinations from "./addDestinations/addDestinations";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,7 @@ const AdminDashboard = () => {
       {activePage === "view-all-agencies" && <ViewAllAgencies />}
       {activePage === "view-all-hotels" && <ViewAllHotels />}
       {activePage === "view-all-rooms" && <ViewAllRooms />}
+      {activePage === "add-destinations" && <AddDestinations />}
     </AdminDashboardLayout>
   );
 };
