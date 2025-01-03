@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="tw-h-screen tw-bg-blueShade tw-w-full tw-p-4">
+    <aside className="tw-h-screen tw-bg-blueShade tw-w-72 tw-p-4">
       <div>
         <li className="tw-list-none tw-mt-5">
           <div

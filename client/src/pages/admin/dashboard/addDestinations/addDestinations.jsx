@@ -15,7 +15,7 @@ const AddDestinations = () => {
   };
 
   return (
-    <div className="tw-min-h-screen tw-bg-gray-50 tw-py-12 tw-px-4 sm:tw-px-6 lg:tw-px-8">
+    <div className="tw-min-h-screen tw-bg-gray-50 tw-py-2 tw-px-4 sm:tw-px-6 lg:tw-px-8">
       <div className="tw-max-w-3xl tw-mx-auto">
         <div className="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6 md:tw-p-8">
           <div className="tw-flex tw-items-center tw-space-x-2 tw-mb-6">
@@ -122,7 +122,7 @@ const AddDestinations = () => {
               </div>
             </div>
 
-            <div className="tw-flex tw-justify-end">
+            <div className="tw-flex tw-justify-center">
               <button
                 type="submit"
                 className="tw-bg-blue-600 tw-text-white tw-px-4 tw-py-2 tw-rounded-md hover:tw-bg-blue-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500 focus:tw-ring-offset-2 tw-transition-colors"
