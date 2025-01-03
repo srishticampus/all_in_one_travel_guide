@@ -1,6 +1,8 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Upload, MapPin, AlertCircle } from 'lucide-react';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Upload, MapPin, AlertCircle } from "lucide-react";
+import axiosInstance from "../../../../apis/axiosInstance";
+import toast from "react-hot-toast";
 
 const AddDestinations = () => {
   const {
@@ -11,21 +13,52 @@ const AddDestinations = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Handle form submission
+    const { title, description, img2, img1 } = data;
+    if (!title || !description || !img1 || !img2) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("img1", img1[0]);
+    formData.append("img2", img2[0]);
+
+    sendDataToServer(formData);
+  };
+
+  const sendDataToServer = async (formData) => {
+    try {
+      const res = await axiosInstance.post("/top-destinations/add", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      if (res.status === 201) {
+        toast.success("Destination added successfully");
+      }
+    } catch (error) {
+      console.log("Error on sending data to server", error);
+    }
   };
 
   return (
-    <div className="tw-min-h-screen tw-bg-gray-50 tw-py-2 tw-px-4 sm:tw-px-6 lg:tw-px-8">
+    <div className="tw-min-h-screen tw-bg-gray-50 tw-py-5 tw-px-4 sm:tw-px-6 lg:tw-px-8">
       <div className="tw-max-w-3xl tw-mx-auto">
         <div className="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6 md:tw-p-8">
-          <div className="tw-flex tw-items-center tw-space-x-2 tw-mb-6">
+          <div className="tw-flex tw-items-center tw-space-x-2 tw-mb-6 ">
             <MapPin className="tw-w-6 tw-h-6 tw-text-blue-600" />
-            <h1 className="tw-text-2xl tw-font-bold tw-text-gray-900">Add New Destination</h1>
+            <h1 className="tw-text-2xl tw-font-bold tw-text-gray-900">
+              Add New Destination
+            </h1>
           </div>
-          
+
           <form onSubmit={handleSubmit(onSubmit)} className="tw-space-y-6">
             <div>
-              <label htmlFor="title" className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">
+              <label
+                htmlFor="title"
+                className="tw-block tw-text-sm tw-font-medium tw-text-gray-700"
+              >
                 Destination Title
               </label>
               <input
@@ -43,13 +76,18 @@ const AddDestinations = () => {
             </div>
 
             <div>
-              <label htmlFor="description" className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">
+              <label
+                htmlFor="description"
+                className="tw-block tw-text-sm tw-font-medium tw-text-gray-700"
+              >
                 Description
               </label>
               <textarea
                 id="description"
                 rows={4}
-                {...register("description", { required: "Description is required" })}
+                {...register("description", {
+                  required: "Description is required",
+                })}
                 className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-border tw-p-2"
               />
               {errors.description && (
@@ -69,24 +107,31 @@ const AddDestinations = () => {
                   <div className="tw-space-y-1 tw-text-center">
                     <Upload className="tw-mx-auto tw-h-12 tw-w-12 tw-text-gray-400" />
                     <div className="tw-flex tw-text-sm tw-text-gray-600">
-                      <label htmlFor="mainImage" className="tw-relative tw-cursor-pointer tw-rounded-md tw-font-medium tw-text-blue-600 hover:tw-text-blue-500">
+                      <label
+                        htmlFor="img2"
+                        className="tw-relative tw-cursor-pointer tw-rounded-md tw-font-medium tw-text-blue-600 hover:tw-text-blue-500"
+                      >
                         <span>Upload main image</span>
                         <input
-                          id="mainImage"
+                          id="img2"
                           type="file"
                           className="tw-sr-only"
                           accept="image/*"
-                          {...register("mainImage", { required: "Main image is required" })}
+                          {...register("img2", {
+                            required: "Main image is required",
+                          })}
                         />
                       </label>
                     </div>
-                    <p className="tw-text-xs tw-text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                    <p className="tw-text-xs tw-text-gray-500">
+                      PNG, JPG, GIF up to 5MB
+                    </p>
                   </div>
                 </div>
-                {errors.mainImage && (
+                {errors.img2 && (
                   <p className="tw-mt-1 tw-text-sm tw-text-red-600 tw-flex tw-items-center">
                     <AlertCircle className="tw-w-4 tw-h-4 tw-mr-1" />
-                    {errors.mainImage.message}
+                    {errors.img2.message}
                   </p>
                 )}
               </div>
@@ -99,24 +144,31 @@ const AddDestinations = () => {
                   <div className="tw-space-y-1 tw-text-center">
                     <Upload className="tw-mx-auto tw-h-12 tw-w-12 tw-text-gray-400" />
                     <div className="tw-flex tw-text-sm tw-text-gray-600">
-                      <label htmlFor="thumbnailImage" className="tw-relative tw-cursor-pointer tw-rounded-md tw-font-medium tw-text-blue-600 hover:tw-text-blue-500">
+                      <label
+                        htmlFor="img1"
+                        className="tw-relative tw-cursor-pointer tw-rounded-md tw-font-medium tw-text-blue-600 hover:tw-text-blue-500"
+                      >
                         <span>Upload thumbnail</span>
                         <input
-                          id="thumbnailImage"
+                          id="img1"
                           type="file"
                           className="tw-sr-only"
                           accept="image/*"
-                          {...register("thumbnailImage", { required: "Thumbnail image is required" })}
+                          {...register("img1", {
+                            required: "Thumbnail image is required",
+                          })}
                         />
                       </label>
                     </div>
-                    <p className="tw-text-xs tw-text-gray-500">PNG, JPG, GIF up to 5MB</p>
+                    <p className="tw-text-xs tw-text-gray-500">
+                      PNG, JPG, GIF up to 5MB
+                    </p>
                   </div>
                 </div>
-                {errors.thumbnailImage && (
+                {errors.img1 && (
                   <p className="tw-mt-1 tw-text-sm tw-text-red-600 tw-flex tw-items-center">
                     <AlertCircle className="tw-w-4 tw-h-4 tw-mr-1" />
-                    {errors.thumbnailImage.message}
+                    {errors.img1.message}
                   </p>
                 )}
               </div>

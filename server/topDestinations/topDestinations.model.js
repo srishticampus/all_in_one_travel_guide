@@ -1,4 +1,4 @@
-const mongoose = require("mongosoe");
+const mongoose = require("mongoose");
 const topDestinationSchema = new mongoose.Schema(
   {
     title: {
@@ -25,6 +25,7 @@ const TopDestinationModel = mongoose.model(
   "TopDestination",
   topDestinationSchema
 );
+
 module.exports = {
   TopDestinationModel,
 };
