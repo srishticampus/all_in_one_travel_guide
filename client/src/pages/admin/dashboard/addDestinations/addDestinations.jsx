@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { Upload, MapPin, AlertCircle } from "lucide-react";
 import axiosInstance from "../../../../apis/axiosInstance";
 import toast from "react-hot-toast";
-
+import { useDispatch } from "react-redux";
+import { setActivePage } from "../../../../redux/hotel/activePageSlice";
 const AddDestinations = () => {
   const {
     register,
@@ -11,6 +12,7 @@ const AddDestinations = () => {
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
   const onSubmit = (data) => {
     console.log(data);
     const { title, description, img2, img1 } = data;
@@ -27,15 +29,19 @@ const AddDestinations = () => {
     sendDataToServer(formData);
   };
 
+  const changePage = (newPage) => {
+    dispatch(setActivePage(newPage));
+  };
   const sendDataToServer = async (formData) => {
     try {
       const res = await axiosInstance.post("/top-destinations/add", formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
       if (res.status === 201) {
         toast.success("Destination added successfully");
+        changePage("view-destinations");
       }
     } catch (error) {
       console.log("Error on sending data to server", error);

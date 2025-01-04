@@ -1,6 +1,6 @@
 // create a middleware for adding 2 tourist place photos
 const multer = require("multer");
-const {TopDestinationModel} = require("./topDestinations.model");
+const { TopDestinationModel } = require("./topDestinations.model");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./upload");
@@ -49,7 +49,20 @@ const addTouristPlace = async (req, res, next) => {
   }
 };
 
+const getAllDestination = async (req, res, next) => {
+  try {
+    const allDestination = await TopDestinationModel.find();
+    return res.status(200).json({
+      message: "All Destination",
+      data: allDestination,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addTouristPlace,
   destinationImages,
+  getAllDestination,
 };

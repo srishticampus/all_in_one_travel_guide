@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import DestinationList from "./destinationList";
-
+import axiosInstance from "../../../../apis/axiosInstance"
 // Example data - replace with your actual data source
 const exampleDestinations = [
   {
@@ -25,9 +26,27 @@ const exampleDestinations = [
 ];
 
 function ViewDestinations() {
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    getDestination()
+  }, [])
+  const getDestination = async () => {
+    try {
+      const res = await axiosInstance.get('/top-destinations/get-all');
+      if (res.status === 200) {
+        const data = res?.data?.data?.reverse() || [];
+        setDestinations(data)
+      }
+    } catch (error) {
+      console.log('error on get destination', error)
+    }
+  }
+
+  console.log('res dest', destinations)
   return (
     <div>
-      <DestinationList destinations={exampleDestinations} />
+      <DestinationList destinations={destinations} />
     </div>
   );
 }

@@ -1,13 +1,16 @@
 import React from "react";
 import { Eye, Trash2 } from "lucide-react";
 import Button from "./ui/Button";
+import { BASE_URL } from "../../../../apis/baseURL";
 
 const DestinationCard = ({ destination, onView, onDelete }) => {
+  const img1Url = `${BASE_URL}${destination.img1}`;
+  const img2Url = `${BASE_URL}${destination.img2}`;
   return (
     <div className="tw-bg-white tw-rounded-lg tw-shadow-md tw-overflow-hidden tw-transition-transform hover:tw-transform hover:tw-scale-[1.02]">
       <div className="tw-relative tw-h-48">
         <img
-          src={destination.thumbnailImage}
+          src={img1Url}
           alt={destination.title}
           className="tw-w-full tw-h-full tw-object-cover"
         />

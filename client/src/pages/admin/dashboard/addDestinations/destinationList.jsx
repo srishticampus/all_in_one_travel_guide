@@ -23,7 +23,7 @@ const DestinationList = ({ destinations = [] }) => {
         <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
           {destinations.map((destination) => (
             <DestinationCard
-              key={destination.id}
+              key={destination._id}
               destination={destination}
               onView={setViewDestination}
               onDelete={setDeleteDestination}

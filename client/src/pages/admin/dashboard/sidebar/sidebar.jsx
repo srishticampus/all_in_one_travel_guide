@@ -155,49 +155,25 @@ const Sidebar = () => {
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
             <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-cable-car"
             >
-              <rect
-                x="1"
-                y="5"
-                width="16"
-                height="8"
-                rx="2"
-                ry="2"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
-              <line
-                x1="1"
-                y1="9"
-                x2="17"
-                y2="9"
-                stroke="white"
-                stroke-width="2"
-              />
-              <circle cx="4" cy="9" r="1" fill="white" />
-              <circle cx="14" cy="9" r="1" fill="white" />
-              <line
-                x1="6"
-                y1="7"
-                x2="12"
-                y2="7"
-                stroke="white"
-                stroke-width="1.5"
-              />
-              <line
-                x1="6"
-                y1="11"
-                x2="12"
-                y2="11"
-                stroke="white"
-                stroke-width="1.5"
-              />
+              <path d="M10 3h.01" />
+              <path d="M14 2h.01" />
+              <path d="m2 9 20-5" />
+              <path d="M12 12V6.5" />
+              <rect width="16" height="10" x="4" y="12" rx="3" />
+              <path d="M9 12v5" />
+              <path d="M15 12v5" />
+              <path d="M4 17h16" />
             </svg>
             Add Destinations
           </div>
@@ -210,49 +186,19 @@ const Sidebar = () => {
             className={`tw-cursor-pointer tw-group tw-relative tw-flex tw-items-center tw-gap-2.5 tw-rounded-sm tw-py-2 tw-px-4 tw-font-medium tw-text-bodydark1 tw-duration-300 tw-ease-in-out tw-text-white tw-no-underline hover:tw-bg-grayDark`}
           >
             <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-mountain-snow"
             >
-              <rect
-                x="1"
-                y="5"
-                width="16"
-                height="8"
-                rx="2"
-                ry="2"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
-              <line
-                x1="1"
-                y1="9"
-                x2="17"
-                y2="9"
-                stroke="white"
-                stroke-width="2"
-              />
-              <circle cx="4" cy="9" r="1" fill="white" />
-              <circle cx="14" cy="9" r="1" fill="white" />
-              <line
-                x1="6"
-                y1="7"
-                x2="12"
-                y2="7"
-                stroke="white"
-                stroke-width="1.5"
-              />
-              <line
-                x1="6"
-                y1="11"
-                x2="12"
-                y2="11"
-                stroke="white"
-                stroke-width="1.5"
-              />
+              <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+              <path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19" />
             </svg>
             View Destinations
           </div>
