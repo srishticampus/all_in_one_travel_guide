@@ -118,10 +118,40 @@ const updateTourist = async (req, res, next) => {
   }
 };
 
+const deActivateTourist = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const tourist = await TouristModel.findById(id);
+    if (!tourist) {
+      return res.status(404).json({ message: "Tourist can't found" });
+    }
+    tourist.activeStatus = false;
+    await tourist.save();
+    return res.status(200).json({ data: tourist, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+const activateTourist = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const tourist = await TouristModel.findById(id);
+    if (!tourist) {
+      return res.status(404).json({ message: "Tourist can't found" });
+    }
+    tourist.activeStatus = true;
+    await tourist.save();
+    return res.status(200).json({ data: tourist, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   touristSignup,
   touristSignupUploads,
   getTouristById,
   getAllTourist,
-  updateTourist
+  updateTourist,
+  deActivateTourist,
+  activateTourist
 };

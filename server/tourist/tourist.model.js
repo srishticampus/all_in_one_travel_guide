@@ -55,6 +55,10 @@ const touristSchema = mongoose.Schema(
       type: String,
       required: [true, "Photo is required"],
     },
+    activeStatus: {
+      type: Boolean,
+      default: true,
+    }
   },
   {
     timestamps: true,

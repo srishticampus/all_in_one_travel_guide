@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import axiosInstance from "../../../../apis/axiosInstance";
+import { BASE_URL } from "../../../../apis/baseURL";
+import { toast } from "react-hot-toast";
 
 const ViewAllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -30,7 +32,26 @@ const ViewAllUsers = () => {
 
   const handleDeactivate = async (userId) => {
     try {
-      await axios.patch(`/api/users/${userId}/deactivate`);
+      const res = await axiosInstance.patch(
+        `/tourist/deActivateTourist/${userId}`
+      );
+      if (res.status === 200) {
+        toast.success("Tourist deactivated successfully");
+      }
+      fetchUsers();
+    } catch (error) {
+      console.error("Error deactivating user:", error);
+    }
+  };
+
+  const handleActivate = async (userId) => {
+    try {
+      const res = await axiosInstance.patch(
+        `/tourist/activateTourist/${userId}`
+      );
+      if (res.status === 200) {
+        toast.success("Tourist activated successfully");
+      }
       fetchUsers();
     } catch (error) {
       console.error("Error deactivating user:", error);
@@ -49,8 +70,8 @@ const ViewAllUsers = () => {
       </h1>
 
       {/* Table */}
-      <div className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow ">
-        <table className="  tw-min-w-full tw-divide-y tw-divide-gray-200 tw-max-h-96 ">
+      <div className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow  tw-max-w-[95%]">
+        <table className="  tw-min-w-full tw-divide-y tw-divide-red-500 tw-max-h-96 8">
           <thead className="tw-bg-gray-50">
             <tr>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
@@ -64,9 +85,6 @@ const ViewAllUsers = () => {
               </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 Phone
-              </th>
-              <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
-                ID Type
               </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 Gender
@@ -98,9 +116,6 @@ const ViewAllUsers = () => {
                   {user.phoneNumber}
                 </td>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
-                  {user.idType}
-                </td>
-                <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {user.gender}
                 </td>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
@@ -115,12 +130,21 @@ const ViewAllUsers = () => {
                   </button>
                 </td>
                 <td>
-                  <button
-                    onClick={() => handleDeactivate(user._id)}
-                    className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"
-                  >
-                    Deactivate
-                  </button>
+                  {user.activeStatus ? (
+                    <button
+                      onClick={() => handleDeactivate(user._id)}
+                      className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"
+                    >
+                      Deactivate
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleActivate(user._id)}
+                      className="tw-bg-green-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-green-600"
+                    >
+                      Activate
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -161,7 +185,7 @@ const ViewAllUsers = () => {
             <div className="tw-aspect-w-16 tw-aspect-h-9">
               {selectedUser?.touristPhoto ? (
                 <img
-                  src={selectedUser.touristPhoto}
+                  src={`${BASE_URL}/${selectedUser.touristPhoto}`}
                   alt="User ID"
                   className="tw-object-contain tw-w-full"
                 />

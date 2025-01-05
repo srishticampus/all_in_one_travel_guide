@@ -43,6 +43,11 @@ const login = async (req, res, next) => {
         });
       }
 
+      if (tourist && tourist.activeStatus === false) {
+        return res.status(400).json({
+          message: "Your account has been deactivated."
+        })
+      }
       const touristCopy = tourist.toObject();
       delete touristCopy.password;
       const { TOURIST } = USERS_TYPE;
