@@ -58,6 +58,9 @@ export default function TouristNavbar() {
               <Link to="/tourist/home" className="fs-6 nav-item nav-link ">
                 Home
               </Link>
+              <Link to="/tourist/top-destinations" className="fs-6 nav-item nav-link ">
+                Destinations
+              </Link>
               <select
                 className="fs-6 nav-item nav-link tw-cursor-pointer tw-w-24"
                 onChange={handleOptionChange}

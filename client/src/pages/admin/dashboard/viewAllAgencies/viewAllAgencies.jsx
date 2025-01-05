@@ -4,13 +4,13 @@ import axiosInstance from "../../../../apis/axiosInstance";
 
 const ViewAllAgencies = () => {
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
-  const totalPages = Math.ceil(users.length / rowsPerPage);
+  const totalPages = Math.ceil(filteredUsers.length / rowsPerPage);
   const startIdx = (currentPage - 1) * rowsPerPage;
   const endIdx = startIdx + rowsPerPage;
-  const currentUsers = users.slice(startIdx, endIdx);
-
+  const currentUsers = filteredUsers.slice(startIdx, endIdx);
   useEffect(() => {
     fetchUsers();
   }, [currentPage]);
@@ -18,7 +18,9 @@ const ViewAllAgencies = () => {
   const fetchUsers = async () => {
     try {
       const response = await axiosInstance.get(`/agency/getAllAgencies`);
-      setUsers(response.data.data);
+      const data = response.data.data?.reverse() || [];
+      setUsers(data);
+      setFilteredUsers(data);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -33,13 +35,31 @@ const ViewAllAgencies = () => {
     }
   };
 
-
   return (
     <div className="tw-p-6 ">
       <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-overflow-auto">
         View All Agencies
       </h1>
 
+      <div className="tw-flex tw-items-center tw-justify-between tw-mb-6">
+        <input
+          type="text"
+          className="tw-w-full tw-p-2 tw-px-4 tw-rounded-md tw-bg-gray-100 tw-text-gray-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          placeholder="Search by name or email"
+          onChange={(e) => {
+            const searchValue = e.target.value.toLowerCase();
+            if (!searchValue) {
+              setFilteredUsers(users);
+            }
+            const filteredUsers = users.filter(
+              (user) =>
+                user.agencyName.toLowerCase().includes(searchValue) ||
+                user.email.toLowerCase().includes(searchValue)
+            );
+            setFilteredUsers(filteredUsers);
+          }}
+        />
+      </div>
       {/* Table */}
       <div
         className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow "
@@ -85,11 +105,11 @@ const ViewAllAgencies = () => {
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {user.phoneNumber}
                 </td>
-             
+
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap tw-min-w-28 tw-max-w-32 tw-overflow-auto">
                   {user.agencyAddress}
                 </td>
-            
+
                 <td>
                   <button
                     onClick={() => handleDeactivate(user._id)}
@@ -120,8 +140,6 @@ const ViewAllAgencies = () => {
           </button>
         ))}
       </div>
-
-  
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DestinationCard from "./destinationCard";
 import ViewDestinationModal from "./viewDestinationModal";
 import DeleteConfirmModal from "./deleteConfirmModal";
-import axiosInstance from "../../../../apis/axiosInstance";
+import axiosInstance from "../../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 
 const DestinationList = ({
@@ -12,6 +12,7 @@ const DestinationList = ({
   fixedDest = [],
 }) => {
   const [viewDestination, setViewDestination] = useState(null);
+
   const [deleteDestination, setDeleteDestination] = useState(null);
 
   const handleDelete = async (destination) => {
@@ -22,7 +23,6 @@ const DestinationList = ({
         );
         if (res.status === 200) {
           toast.success("Destination deleted successfully");
-          
         }
       } catch (error) {
         console.log("error on delete destination", error);
@@ -37,7 +37,7 @@ const DestinationList = ({
     <div className="tw-min-h-screen tw-bg-gray-50 tw-py-12 tw-px-4 sm:tw-px-6 lg:tw-px-8">
       <div className="tw-max-w-7xl tw-mx-auto">
         <h2 className="tw-text-3xl tw-font-bold tw-text-gray-900 tw-mb-8 tw-text-center">
-          Top destinations
+          Top Destinations
         </h2>
         <form className="tw-flex tw-items-center tw-mb-4 tw-max-w-md tw-mx-auto">
           <label htmlFor="search" className="tw-sr-only">
@@ -58,7 +58,6 @@ const DestinationList = ({
             }}
           />
         </form>
-
         <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
           {destinations.map((destination) => (
             <DestinationCard

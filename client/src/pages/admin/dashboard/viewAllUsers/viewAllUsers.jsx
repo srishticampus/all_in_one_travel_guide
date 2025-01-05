@@ -6,12 +6,13 @@ import { toast } from "react-hot-toast";
 
 const ViewAllUsers = () => {
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
-  const totalPages = Math.ceil(users.length / rowsPerPage);
+  const totalPages = Math.ceil(filteredUsers.length / rowsPerPage);
   const startIdx = (currentPage - 1) * rowsPerPage;
   const endIdx = startIdx + rowsPerPage;
-  const currentUsers = users.slice(startIdx, endIdx);
+  const currentUsers = filteredUsers.slice(startIdx, endIdx);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const itemsPerPage = 10;
@@ -23,7 +24,9 @@ const ViewAllUsers = () => {
   const fetchUsers = async () => {
     try {
       const response = await axiosInstance.get(`/tourist/getAllTourist`);
-      setUsers(response.data.data);
+      const data = response.data?.data?.reverse() || [];
+      setUsers(data);
+      setFilteredUsers(data)
       // setTotalPages(Math.ceil(response.data.data.length / itemsPerPage));
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -69,8 +72,29 @@ const ViewAllUsers = () => {
         View All Tourists
       </h1>
 
+      {/* Search */}
+      <div className="tw-flex tw-items-center tw-justify-between tw-mb-6">
+        <input
+          type="text"
+          className="tw-w-full tw-p-2 tw-px-4 tw-rounded-md tw-bg-gray-100 tw-text-gray-700 focus:outline-none focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          placeholder="Search by name or email"
+          onChange={(e) => {
+            const searchValue = e.target.value.toLowerCase();
+            if (!searchValue) {
+              setFilteredUsers(users)
+            }
+            const filteredUsers = users.filter(
+              (user) =>
+                user.name.toLowerCase().includes(searchValue) ||
+                user.email.toLowerCase().includes(searchValue)
+            );
+            setFilteredUsers(filteredUsers);
+          }}
+        />
+      </div>
+
       {/* Table */}
-      <div className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow  tw-max-w-[95%]">
+      <div className="tw-overflow-auto tw-bg-white tw-rounded-lg tw-shadow  tw-max-w-[100%]">
         <table className="  tw-min-w-full tw-divide-y tw-divide-red-500 tw-max-h-96 8">
           <thead className="tw-bg-gray-50">
             <tr>
@@ -174,7 +198,7 @@ const ViewAllUsers = () => {
         <div className="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-flex tw-items-center tw-justify-center">
           <div className="tw-bg-white tw-p-6 tw-rounded-lg tw-max-w-lg tw-w-full">
             <div className="tw-flex tw-justify-between tw-mb-4">
-              <h2 className="tw-text-xl tw-font-bold">User ID Document</h2>
+              <h2 className="tw-text-xl tw-font-bold">User ID</h2>
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="tw-text-gray-500 hover:tw-text-gray-700"

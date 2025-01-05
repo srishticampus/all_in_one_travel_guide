@@ -14,3 +14,4 @@
 13. when user try to logout change the default value of redux
 14. admin - view all tourist => view id not working
 15. admin - view all tourist => deactivate not working
+16. ADMIN - AGENCY DEACTIVE PENDIBNG

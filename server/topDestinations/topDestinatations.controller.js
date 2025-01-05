@@ -61,8 +61,22 @@ const getAllDestination = async (req, res, next) => {
   }
 };
 
+const deleteDestination = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const deletedDestination = await TopDestinationModel.findByIdAndDelete(id);
+    return res.status(200).json({
+      message: "Destination deleted successfully",
+      data: deletedDestination,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   addTouristPlace,
   destinationImages,
   getAllDestination,
+  deleteDestination,
 };

@@ -39,6 +39,7 @@ import ViewFoodDetails from "./pages/tourist/viewFood/viewFoodDetails";
 import BookedFoods from "./pages/tourist/bookedFoods/bookedFoods";
 import ViewHotelDetails from "./pages/tourist/viewHotelDetails/viewHotelDetails";
 import AgencyProfile from "./pages/agency/profile/profile";
+import ViewDestinations from "./pages/tourist/addDestinations/viewDestinations";
 import "./App.css";
 import "./index.css";
 function App() {
@@ -76,6 +77,7 @@ function App() {
             <Route path="/tourist/booked-foods" element={<BookedFoods />} />
             <Route path="/tourist/view-foods/:id" element={<ViewFoodDetails />} />
             <Route path="/tourist/view-hotel-details/:id" element={<ViewHotelDetails />} />
+            <Route path="/tourist/top-destinations" element={<ViewDestinations />} />
           </Route>
 
           {/* Agency routes */}

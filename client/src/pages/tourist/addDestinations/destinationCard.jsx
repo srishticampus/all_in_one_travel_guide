@@ -1,7 +1,7 @@
 import React from "react";
 import { Eye, Trash2 } from "lucide-react";
 import Button from "./ui/Button";
-import { BASE_URL } from "../../../../apis/baseURL";
+import { BASE_URL } from "../../../apis/baseURL";
 
 const DestinationCard = ({ destination, onView, onDelete }) => {
   const img1Url = `${BASE_URL}${destination.img1}`;
