@@ -22,18 +22,26 @@ const BookedRoomsContainer = () => {
         `/rooms-booking/tourist/${activeTouristId}`
       );
       if (res.status === 200) {
-        setRooms(res.data?.data?.reverse() || []);
+        const data = res.data?.data?.reverse() || [];
+        setRooms(data);
       }
     } catch (error) {
       console.log("error on get packages", error);
     }
   };
+  console.log('room', rooms)
   return (
     <div id="pack-card-container">
       <h3 className="tw-text-center tw-mt-16">Booked Rooms</h3>
-      <div className="tw-mx-auto tw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
+      <div className="tw-mx-auto tw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between  tw-bg-neutral-50">
         {rooms.map((item) => {
-          return <BookedRoomCard key={item._id} room={item?.roomId} />;
+          return (
+            <BookedRoomCard
+              key={item._id}
+              room={item?.roomId}
+              hotel={item?.hotelId}
+            />
+          );
         })}
       </div>
     </div>

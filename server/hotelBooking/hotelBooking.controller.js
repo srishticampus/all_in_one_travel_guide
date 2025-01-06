@@ -30,7 +30,6 @@ const addHotelBooking = async (req, res, next) => {
       accountNumber,
       expiryDate,
       cvv,
-
     });
     await hotelBooking.save();
     return res.status(201).json({
@@ -41,6 +40,7 @@ const addHotelBooking = async (req, res, next) => {
     next(error);
   }
 };
+
 const getAllBookings = async (req, res, next) => {
   try {
     const bookings = await HotelBooking.find()
@@ -56,9 +56,13 @@ const getAllBookings = async (req, res, next) => {
     next(error);
   }
 };
+
 const getBookingsByTouristId = async (req, res, next) => {
   try {
     const { touristId } = req.params;
+    if (!touristId) {
+      return res.status(400).json({ message: "Tourist id is required." });
+    }
     const bookings = await HotelBooking.find({ touristId })
       .populate("hotelId")
       .populate("roomId")
@@ -95,3 +99,4 @@ module.exports = {
   getBookingsByTouristId,
   getBookingsByHotelId,
 };
+
