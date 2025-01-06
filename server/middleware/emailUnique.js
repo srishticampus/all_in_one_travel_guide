@@ -11,12 +11,14 @@ const isEmailUnique = async (req, res, next) => {
       });
     }
 
+    
+
     const agency = await AgencyModel.findOne({ email });
     const tourist = await TouristModel.findOne({ email });
     const hotel = await HotelModel.findOne({ email });
     const taxi = await TaxiModel.findOne({ email });
 
-    if (tourist || hotel || agency || taxi) {
+    if (tourist || hotel || agency || taxi || email === "admin@gmail.com") {
       return res.status(400).json({
         message: "Email already exists",
       });

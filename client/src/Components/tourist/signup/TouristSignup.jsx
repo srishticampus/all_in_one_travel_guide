@@ -225,7 +225,15 @@ export default function TouristSignup() {
                           },
                         })}
                       />
-                      <i onClick={togglePassword}>
+                      <i
+                        style={{
+                          top: "0",
+                          bottom: "0",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        onClick={togglePassword}
+                      >
                         {passwordShown ? <FaEyeSlash /> : <FaEye />}
                       </i>
                     </div>
@@ -249,7 +257,15 @@ export default function TouristSignup() {
                           },
                         })}
                       />
-                      <i onClick={toggleConfirmPassword}>
+                      <i
+                        style={{
+                          top: "0",
+                          bottom: "0",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        onClick={toggleConfirmPassword}
+                      >
                         {confirmPasswordShown ? <FaEyeSlash /> : <FaEye />}
                       </i>
                     </div>

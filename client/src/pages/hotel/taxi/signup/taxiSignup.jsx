@@ -44,7 +44,7 @@ function TaxiSignup() {
     if (password !== confirmPassword) {
       return;
     }
-    sendDataToServer({...data, chargePerKm: 50});
+    sendDataToServer({ ...data, chargePerKm: 50 });
   };
 
   const sendDataToServer = async (data) => {
@@ -186,7 +186,15 @@ function TaxiSignup() {
                         },
                       })}
                     />
-                    <i onClick={togglePassword}>
+                    <i
+                      style={{
+                        top: "0",
+                        bottom: "0",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      onClick={togglePassword}
+                    >
                       {passwordShown ? <FaEyeSlash /> : <FaEye />}
                     </i>
                   </div>
@@ -210,7 +218,15 @@ function TaxiSignup() {
                         },
                       })}
                     />
-                    <i onClick={toggleConfirmPassword}>
+                    <i
+                      style={{
+                        top: "0",
+                        bottom: "0",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      onClick={toggleConfirmPassword}
+                    >
                       {confirmPasswordShown ? <FaEyeSlash /> : <FaEye />}
                     </i>
                   </div>
@@ -218,7 +234,6 @@ function TaxiSignup() {
                     <ErrorMessage errors={errors} name="confirmPassword" />
                   </p>
                 </div>
-
 
                 <div className="inputWrapper">
                   <input

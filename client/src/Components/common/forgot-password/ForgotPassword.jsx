@@ -114,7 +114,15 @@ function ForgotPassword() {
                         },
                       })}
                     />
-                    <i onClick={togglePassword}>
+                    <i
+                      style={{
+                        top: "0",
+                        bottom: "0",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      onClick={togglePassword}
+                    >
                       {passwordShown ? <FaEyeSlash /> : <FaEye />}
                     </i>
                   </div>
@@ -138,7 +146,15 @@ function ForgotPassword() {
                         },
                       })}
                     />
-                    <i onClick={toggleConfirmPassword}>
+                    <i
+                      style={{
+                        top: "0",
+                        bottom: "0",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                      onClick={toggleConfirmPassword}
+                    >
                       {passwordShown ? <FaEyeSlash /> : <FaEye />}
                     </i>
                   </div>
