@@ -25,14 +25,14 @@ const DestinationCard = ({ destination, onView, onDelete }) => {
       </div>
 
       <div className="tw-p-4">
-        <h3 className="tw-text-xl tw-font-semibold tw-line-clamp-2 tw-text-gray-800 tw-mb-2">
+        <h3 className="tw-text-xl tw-h-16 tw-font-semibold tw-line-clamp-2 tw-text-gray-800 tw-mb-2">
           {destination.title}
         </h3>
-        <p className="tw-text-gray-600 tw-line-clamp-2 tw-mb-4">
+        <p className="tw-text-gray-600 tw-h-20 tw-line-clamp-2 tw-mb-4">
           {destination.description}
         </p>
 
-        <Button onClick={() => onView(destination)}>
+        <Button className="tw-mx-auto" onClick={() => onView(destination)}>
           <Eye className="tw-w-5 tw-h-5" />
           View More
         </Button>

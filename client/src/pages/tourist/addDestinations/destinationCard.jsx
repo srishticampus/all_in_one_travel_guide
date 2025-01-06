@@ -15,24 +15,25 @@ const DestinationCard = ({ destination, onView, onDelete }) => {
           className="tw-w-full tw-h-full tw-object-cover"
         />
         <div className="tw-absolute tw-top-0 tw-right-0 tw-p-2">
-          <button
+          {/* <button
             onClick={() => onDelete(destination)}
             className="tw-p-2 tw-bg-red-500/80 tw-rounded-full hover:tw-bg-red-600/80 tw-transition-colors"
           >
             <Trash2 className="tw-w-5 tw-h-5 tw-text-white" />
-          </button>
+          </button> */}
         </div>
       </div>
 
       <div className="tw-p-4">
-        <h3 className="tw-text-xl tw-font-semibold tw-line-clamp-2 tw-text-gray-800 tw-mb-2">
+        <h3 className="tw-text-xl tw-font-semibold tw-line-clamp-2 tw-h-16 tw-text-gray-800 tw-mb-2">
           {destination.title}
         </h3>
-        <p className="tw-text-gray-600 tw-line-clamp-2 tw-mb-4">
+        <p className="tw-text-gray-600 tw-line-clamp-2 tw-mb-4 tw-h-20">
           {destination.description}
         </p>
 
-        <Button onClick={() => onView(destination)}>
+
+        <Button className="tw-mx-auto" onClick={() => onView(destination)}>
           <Eye className="tw-w-5 tw-h-5" />
           View More
         </Button>
