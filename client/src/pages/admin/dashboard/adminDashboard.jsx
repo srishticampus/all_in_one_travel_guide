@@ -9,6 +9,7 @@ import ViewAllHotels from "./viewAllHotels/viewAllHotels";
 import ViewAllRooms from "./viewAllRooms/viewAllRooms";
 import AddDestinations from "./addDestinations/addDestinations";
 import ViewDestinations from "./addDestinations/viewDestinations";
+import TaxiReviews from "./viewTaxiRatings/viewTaxiRatings";
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ const AdminDashboard = () => {
       {activePage === "view-all-rooms" && <ViewAllRooms />}
       {activePage === "add-destinations" && <AddDestinations />}
       {activePage === "view-destinations" && <ViewDestinations />}
+      {activePage === "taxi-reviews" && <TaxiReviews />}
     
     </AdminDashboardLayout>
   );

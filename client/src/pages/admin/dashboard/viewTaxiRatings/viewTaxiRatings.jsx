@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axiosInstance from "../../../apis/axiosInstance";
+import axiosInstance from "../../../../apis/axiosInstance";
 
 const TaxiReviews = () => {
   const [reviews, setreviews] = useState([]);
 
   useEffect(() => {
-    const id = localStorage.getItem("travel_guide_taxi_id");
-    if (id) {
-      getTaxiData(id);
-    }
+    getTaxiData();
   }, []);
   const getTaxiData = async (id) => {
     try {
-      const response = await axiosInstance.get(`/taxi-rating/taxi/${id}`);
+      const response = await axiosInstance.get(`/taxi-rating`);
       if (response.status === 200) {
         setreviews(response.data.data);
       }
@@ -30,6 +27,7 @@ const TaxiReviews = () => {
           <tr className="tw-bg-gray-200">
             <th className="tw-px-4 tw-py-2">No.</th>
             <th className="tw-px-4 tw-py-2">Tourist Name</th>
+            <th className="tw-px-4 tw-py-2">Taxi Name</th>
             <th className="tw-px-4 tw-py-2">Rating</th>
             <th className="tw-px-4 tw-py-2">Review</th>
           </tr>
@@ -39,6 +37,7 @@ const TaxiReviews = () => {
             <tr key={request._id} className="tw-border-b">
               <td className="tw-px-4 tw-py-2">{idx + 1}</td>
               <td className="tw-px-4 tw-py-2">{request.touristId?.name}</td>
+              <td className="tw-px-4 tw-py-2">{request.taxiId?.driverName}</td>
               <td className="tw-px-4 tw-py-2">{request.rating}</td>
               <td className="tw-px-4 tw-py-2">{request.review}</td>
             </tr>
