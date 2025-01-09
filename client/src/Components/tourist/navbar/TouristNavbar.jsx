@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import appLogo from "../../../Asset/images/logo.jpg";
 import { useNavigate } from "react-router-dom";
@@ -29,6 +29,7 @@ export default function TouristNavbar() {
     }
   };
 
+
   return (
     <div>
       <div className="container-fluid bg-dark px-9 d-none d-lg-block">
@@ -39,7 +40,7 @@ export default function TouristNavbar() {
       </div>
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          <Link to="/" className="navbar-brand p-0">
+          <Link to="/tourist/home" className="navbar-brand p-0">
             <h5 className="text-primary m-0 tw-flex tw-items-center tw-justify-center tw-gap-2">
               <img src={appLogo} alt="logo" className="w-25" />
               Travel Guide

@@ -4,22 +4,21 @@ import popular3 from "../../../Asset/images/agency/popular-3.jpg";
 import package1 from "../../../Asset/images/agency/packege-1.jpg";
 import package2 from "../../../Asset/images/agency/packege-2.jpg";
 import package3 from "../../../Asset/images/agency/packege-3.jpg";
-import gallery1 from "../../../Asset/images/agency/gallery-1.jpg";  
+import gallery1 from "../../../Asset/images/agency/gallery-1.jpg";
 import gallery2 from "../../../Asset/images/agency/gallery-2.jpg";
 import gallery3 from "../../../Asset/images/agency/gallery-3.jpg";
 import gallery4 from "../../../Asset/images/agency/gallery-4.jpg";
 import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
 import LandingNavbar from "../../common/landingNavbar/landingNavbar";
-import "./landingPage.scss";
 import { useNavigate } from "react-router-dom";
+import "./landingPage.scss";
 export default function LandingPage() {
   const navigate = useNavigate();
-  const redirectToSignup = () => {
-    navigate("/tourist/signup");
-  };
+
   const saveToLS = (key, value) => {
     localStorage.setItem(key, value);
-  }
+    navigate("/login");
+  };
   return (
     <div id="landing-page">
       <LandingNavbar />
@@ -35,9 +34,23 @@ export default function LandingPage() {
               </p>
 
               <div className="btn-group">
-                <button className="btn btn-primary">Find Destinations</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    saveToLS("tourist-clicked-route", "/tourist/view-packages");
+                  }}
+                >
+                  Find Packages
+                </button>
 
-                <button className="btn btn-secondary">Book now</button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    saveToLS("tourist-clicked-route", "/tourist/request-taxi");
+                  }}
+                >
+                  Book taxi
+                </button>
               </div>
             </div>
           </section>
@@ -164,7 +177,17 @@ export default function LandingPage() {
                 </li>
               </ul>
 
-              <button className="btn btn-primary">More destintion</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  saveToLS(
+                    "tourist-clicked-route",
+                    "/tourist/top-destinations"
+                  );
+                }}
+              >
+                More destintions
+              </button>
             </div>
           </section>
 
@@ -175,7 +198,7 @@ export default function LandingPage() {
               <h2 className="h2 my-section-title">Checkout Our Packeges</h2>
 
               <ul className="package-list">
-                <li style={{backgroundColor: "red"}}>
+                <li style={{ backgroundColor: "red" }}>
                   <div className="package-card">
                     <figure className="card-banner">
                       <img
@@ -246,7 +269,17 @@ export default function LandingPage() {
                         <span>/ per person</span>
                       </p>
 
-                      <button className="btn btn-secondary">Book Now</button>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => {
+                          saveToLS(
+                            "tourist-clicked-route",
+                            "/tourist/view-packages"
+                          );
+                        }}
+                      >
+                        Book Now
+                      </button>
                     </div>
                   </div>
                 </li>
@@ -320,7 +353,17 @@ export default function LandingPage() {
                         <span>/ per person</span>
                       </p>
 
-                      <button className="btn btn-secondary">Book Now</button>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => {
+                          saveToLS(
+                            "tourist-clicked-route",
+                            "/tourist/view-packages"
+                          );
+                        }}
+                      >
+                        Book Now
+                      </button>
                     </div>
                   </div>
                 </li>
@@ -392,13 +435,30 @@ export default function LandingPage() {
                         <span>/ per person</span>
                       </p>
 
-                      <button className="btn btn-secondary">Book Now</button>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => {
+                          saveToLS(
+                            "tourist-clicked-route",
+                            "/tourist/view-packages"
+                          );
+                        }}
+                      >
+                        Book Now
+                      </button>
                     </div>
                   </div>
                 </li>
               </ul>
 
-              <button className="btn btn-primary">View All Packages</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  saveToLS("tourist-clicked-route", "/tourist/view-packages");
+                }}
+              >
+                View All Packages
+              </button>
             </div>
           </section>
 
@@ -464,7 +524,12 @@ export default function LandingPage() {
                 </p>
               </div>
 
-              <button className="btn btn-secondary" onClick={redirectToSignup}>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
                 Sign Up!
               </button>
             </div>
