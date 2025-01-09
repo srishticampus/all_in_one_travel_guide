@@ -1,3 +1,5 @@
+import { ReviewTaxi } from "./reviewTaxi/review";
+
 const TaxiBookingDetailsContainer = ({ bookingData }) => {
   const {
     pickUpLocation,
@@ -55,22 +57,35 @@ const TaxiBookingDetailsContainer = ({ bookingData }) => {
             </div>
             <div>
               <h4 className="tw-font-semibold tw-text-lg">Total Fare</h4>
-              <p className="tw-text-gray-700">${totalFare}</p>
+              <p className="tw-text-gray-700">₹ {totalFare}</p>
             </div>
             <div>
               <h4 className="tw-font-semibold tw-text-lg">Travel Distance</h4>
               <p className="tw-text-gray-700">{travelDistance} KM</p>
             </div>
-            
-            <div>
-              <h4 className="tw-font-semibold tw-text-lg">Taxi Driver Name</h4>
-              <p className="tw-text-gray-700">{taxiId?.driverName}</p>
-            </div>
-            <div>
-              <h4 className="tw-font-semibold tw-text-lg">Taxi Contact No</h4>
-              <p className="tw-text-gray-700">{taxiId?.contactNo}</p>
-            </div>
+            {taxiId?.driverName && (
+              <>
+                <div>
+                  <h4 className="tw-font-semibold tw-text-lg">
+                    Taxi Driver Name
+                  </h4>
+                  <p className="tw-text-gray-700">{taxiId?.driverName}</p>
+                </div>
+                <div>
+                  <h4 className="tw-font-semibold tw-text-lg">
+                    Taxi Contact No
+                  </h4>
+                  <p className="tw-text-gray-700">{taxiId?.contactNo}</p>
+                </div>
+              </>
+            )}
           </div>
+
+          {taxiDriverStatus === "accepted" && (
+            <div>
+              <ReviewTaxi taxiId={taxiId} touristId={touristId} />
+            </div>
+          )}
         </div>
       </div>
     </div>

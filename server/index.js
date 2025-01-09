@@ -24,6 +24,7 @@ const foodRoutes = require("./food/food.routes");
 const foodBookingRoutes = require("./foodBooking/foodBooking.routes");
 const usageRoutes = require("./usage/usage.routes");
 const destinationRoutes = require("./topDestinations/topDestination.routes");
+const taxiRatingRoutes = require("./rateTaxi/rateTaxi.routes");
 
 app.get("/travel_guide_api", (req, res) => {
   res.send(
@@ -46,6 +47,7 @@ app.use("/travel_guide_api/food", foodRoutes)
 app.use("/travel_guide_api/food-booking",  foodBookingRoutes)
 app.use("/travel_guide_api/usage",  usageRoutes)
 app.use("/travel_guide_api/top-destinations",  destinationRoutes)
+app.use("/travel_guide_api/taxi-rating",  taxiRatingRoutes)
 
 // error routes 
 app.use(errorHandler);
