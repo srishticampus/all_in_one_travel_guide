@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 
-const TaxiApprovedRequests = () => {
-  const [requests, setRequests] = useState([]);
+const TaxiReviews = () => {
+  const [reviews, setreviews] = useState([]);
 
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_taxi_id");
@@ -12,42 +12,36 @@ const TaxiApprovedRequests = () => {
   }, []);
   const getTaxiData = async (id) => {
     try {
-      const response = await axiosInstance.get(
-        `/taxi-booking/getAllDriverApprovedReqByTaxiId/${id}`
-      );
+      const response = await axiosInstance.get(`/taxi-rating/taxi/${id}`);
       if (response.status === 200) {
-        setRequests(response.data.data);
+        setreviews(response.data.data);
       }
     } catch (error) {
-      console.error("Error fetching requests: ", error);
+      console.error("Error fetching reviews: ", error);
     }
   };
-
+  console.log('review ', reviews)
 
   return (
     <div className="tw-container tw-mx-auto tw-p-4">
-      <h3 className="tw-text-center tw-mb-5"> Your Approved Requests</h3>
+      <h3 className="tw-text-center tw-mb-5"> Your Reviews</h3>
       <table className="tw-w-full tw-table-auto tw-border-collapse">
         <thead>
           <tr className="tw-bg-gray-200">
             <th className="tw-px-4 tw-py-2">No.</th>
             <th className="tw-px-4 tw-py-2">Tourist Name</th>
-            <th className="tw-px-4 tw-py-2">Departure</th>
-            <th className="tw-px-4 tw-py-2">Destination</th>
+            <th className="tw-px-4 tw-py-2">Rating</th>
+            <th className="tw-px-4 tw-py-2">Review</th>
 
-            <th className="tw-px-4 tw-py-2">Travel Distance</th>
-            <th className="tw-px-4 tw-py-2">Total Fare</th>
           </tr>
         </thead>
         <tbody>
-          {requests.map((request, idx) => (
+          {reviews.map((request, idx) => (
             <tr key={request._id} className="tw-border-b">
               <td className="tw-px-4 tw-py-2">{idx + 1}</td>
               <td className="tw-px-4 tw-py-2">{request.touristId?.name}</td>
-              <td className="tw-px-4 tw-py-2">{request.pickUpLocation}</td>
-              <td className="tw-px-4 tw-py-2">{request.destination}</td>
-              <td className="tw-px-4 tw-py-2">{request.travelDistance}</td>
-              <td className="tw-px-4 tw-py-2">{request.totalFare}</td>
+              <td className="tw-px-4 tw-py-2">{request.rating}</td>
+              <td className="tw-px-4 tw-py-2">{request.review}</td>
 
               {/* <td className="tw-px-4 tw-py-2">
                 <button
@@ -65,4 +59,4 @@ const TaxiApprovedRequests = () => {
   );
 };
 
-export default TaxiApprovedRequests;
+export default TaxiReviews;

@@ -6,6 +6,7 @@ import { LoadingSpinner } from "../../Components/common/loadingSpinner/loadingSp
 import TaxiBookingRequests from "./viewReq/viewPendingReq.jsx";
 import TaxiApprovedRequests from "./viewReq/viewApprovedReq.jsx";
 import TaxiProfile from "./profile/taxiProfile.jsx";
+import TaxiReviews from "./taxiRating/taxiRating.jsx";
 
 const TaxiDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ const TaxiDashboard = () => {
       {activePage === "view-pending-request" && <TaxiBookingRequests />}
       {activePage === "view-approved-request" && <TaxiApprovedRequests />}
       {activePage === "taxiProfile" && <TaxiProfile />}
-
+      {activePage === "taxi-reviews" && <TaxiReviews />}
     </TaxiDashboardLayout>
   );
 };
