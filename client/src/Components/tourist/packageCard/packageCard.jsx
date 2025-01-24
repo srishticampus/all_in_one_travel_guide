@@ -58,7 +58,7 @@ const PackageCard = ({ item }) => {
 
         <div className="card-price">
           <div className="wrapper">
-            <p className="reviews">({item?.review?.length || 0} reviews)</p>
+            {/* <p className="reviews">({item?.review?.length || 0} reviews)</p> */}
 
             <div className="card-rating">
               <ion-icon name="star"></ion-icon>

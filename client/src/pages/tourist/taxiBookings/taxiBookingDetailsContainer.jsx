@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { ReviewTaxi } from "./reviewTaxi/review";
+import ShowReviewModal from "../../../Components/viewReview/viewReview";
+import axiosInstance from "../../../apis/axiosInstance";
 
 const TaxiBookingDetailsContainer = ({ bookingData }) => {
   const {
@@ -12,7 +15,30 @@ const TaxiBookingDetailsContainer = ({ bookingData }) => {
     touristId,
     taxiId,
   } = bookingData;
+  const [showReview, setShowReview] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const openReview = () => {
+    setShowReview(true);
+  };
+  const closeReview = () => {
+    setShowReview(false);
+  };
 
+  useEffect(() => {
+    if (bookingData && bookingData.taxiId) {
+      getReviews(bookingData.taxiId?._id);
+    }
+  }, [bookingData?.taxiId]);
+  const getReviews = async (id) => {
+    try {
+      const res = await axiosInstance.get(`/taxi-rating/taxi/${id}`);
+      if (res.status === 200) {
+        setReviews(res.data.data);
+      }
+    } catch (error) {
+      console.log("Error on get reviews", error);
+    }
+  };
   return (
     <div>
       <div className="tw-min-h-screen tw-w-full tw-bg-gray-100 tw-py-10">
@@ -77,6 +103,14 @@ const TaxiBookingDetailsContainer = ({ bookingData }) => {
                   </h4>
                   <p className="tw-text-gray-700">{taxiId?.contactNo}</p>
                 </div>
+                <div>
+                  <button
+                    className="tw-bg-blue-500 tw-p-2 tw-rounded-md tw-text-white"
+                    onClick={openReview}
+                  >
+                    Taxi Reviews{" "}
+                  </button>
+                </div>
               </>
             )}
           </div>
@@ -87,6 +121,14 @@ const TaxiBookingDetailsContainer = ({ bookingData }) => {
             </div>
           )}
         </div>
+
+        {showReview && (
+          <ShowReviewModal
+            reviews={reviews}
+            isOpen={showReview}
+            onClose={closeReview}
+          />
+        )}
       </div>
     </div>
   );

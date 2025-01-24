@@ -155,7 +155,7 @@ function ForgotPassword() {
                       }}
                       onClick={toggleConfirmPassword}
                     >
-                      {passwordShown ? <FaEyeSlash /> : <FaEye />}
+                      {confirmPasswordShown ? <FaEyeSlash /> : <FaEye />}
                     </i>
                   </div>
                   <p className="text-danger">
