@@ -1,11 +1,13 @@
-import React from 'react';
-import { Camera } from 'lucide-react';
+import { Camera } from "lucide-react";
 
 export const ProfileImage = ({ imageUrl, onOpenModal }) => {
   return (
     <div className="tw-relative tw-w-32 tw-h-32 tw-mx-auto tw-mb-4">
       <img
-        src={imageUrl || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60"}
+        src={
+          imageUrl ||
+          "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60"
+        }
         alt="Profile"
         className="tw-w-full tw-h-full tw-rounded-full tw-object-cover tw-border-4 tw-border-white tw-shadow-lg"
       />
@@ -17,4 +19,4 @@ export const ProfileImage = ({ imageUrl, onOpenModal }) => {
       </button>
     </div>
   );
-}
+};

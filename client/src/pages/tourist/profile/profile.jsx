@@ -7,12 +7,16 @@ import TouristNavbar from "../../../Components/tourist/navbar/TouristNavbar";
 import Footer from "../../../Components/Footer/Footer";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
-import {useNavigate} from 'react-router-dom';
-import {toast} from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 function TouristProfile() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [newPhoto, setNewPhoto] = useState(null);
+  const [photoUpdated, setPhotoUpdated] = useState(false);
+
   const [profile, setProfile] = useState({
     name: "",
     email: "",
@@ -30,7 +34,7 @@ function TouristProfile() {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [photoUpdated]);
   const getTouristData = async (id) => {
     try {
       const res = await axiosInstance.get(`/tourist/getTourist/${id}`);
@@ -45,11 +49,11 @@ function TouristProfile() {
   const handleSaveProfile = (updatedProfile) => {
     setProfile(updatedProfile);
     const obj = {};
-    
+
     obj.name = updatedProfile.name;
     obj.country = updatedProfile.country;
     obj.phoneNumber = updatedProfile.phoneNumber;
-    
+
     if (obj.name === "" || obj.country === "" || obj.phoneNumber === "") {
       toast.error("Field can't be empty");
       return;
@@ -60,25 +64,55 @@ function TouristProfile() {
       return;
     }
 
-    sendDataServer(obj, updatedProfile._id)
+    sendDataServer(obj, updatedProfile._id);
 
-
-    
-    console.log('updat => ', obj);
     setIsEditModalOpen(false);
   };
 
   const sendDataServer = async (obj, id) => {
     try {
-      const res = await axiosInstance.patch(`/tourist/updateTourist/${id}`, obj);
+      const res = await axiosInstance.patch(
+        `/tourist/updateTourist/${id}`,
+        obj
+      );
       if (res.status === 200) {
         toast.success("Profile updated successfully");
       }
     } catch (error) {
-      console.log('error on tourist update', error)
+      console.log("error on tourist update", error);
     }
-  }
+  };
 
+  const updateTouristPhoto = async () => {
+    try {
+      if (!newPhoto) {
+        toast.error("Please select a photo");
+        return;
+      }
+      console.log("pro", profile);
+      const formData = new FormData();
+      formData.append("touristPhoto", newPhoto);
+      const res = await axiosInstance.patch(
+        `/tourist/updateTouristPhoto/${profile._id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      if (res.status === 200) {
+        toast.success("Profile photo updated successfully");
+      }
+    } catch (err) {
+      console.log("Err on update tourist photo", err);
+      toast.error("Something went wrong. please try again later.");
+    } finally {
+      setIsImageModalOpen(false);
+      setNewPhoto(null);
+      setPhotoUpdated(!photoUpdated);
+    }
+  };
   return (
     <div className="tw-min-h-screen tw-bg-gray-100">
       <TouristNavbar />
@@ -104,7 +138,7 @@ function TouristProfile() {
               {profile?.name}
             </h1>
             <button
-              onClick={() => setIsImageModalOpen(true)}
+              onClick={() => setIsCertificateModalOpen(true)}
               className="tw-mt-2 tw-text-blue-500 hover:tw-text-blue-600 tw-text-sm tw-font-medium"
             >
               View Certificate
@@ -151,14 +185,39 @@ function TouristProfile() {
           </div>
         </div>
       </div>
-
       <TouristProfileModal
         isOpen={isImageModalOpen}
         onClose={() => setIsImageModalOpen(false)}
       >
+        <div className="tw-max-w-2xl tw-flex tw-h-40 tw-justify-between tw-items-start tw-flex-col tw-mx-auto">
+          <h3> Upload new photo</h3>
+          <input
+            type="file"
+            onChange={(e) => {
+              setNewPhoto(e.target.files[0]);
+            }}
+          />
+          <div className="tw-mx-auto">
+            <button
+              className="tw-bg-green-600 tw-text-white tw-w-40"
+              onClick={updateTouristPhoto}
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </TouristProfileModal>
+      <TouristProfileModal
+        isOpen={isCertificateModalOpen}
+        onClose={() => setIsCertificateModalOpen(false)}
+      >
         <div className="tw-max-w-md tw-mx-auto">
           <img
-            src={isImageModalOpen ? `${BASE_URL}${profile.idPhoto}` : `${BASE_URL}${profile.touristPhoto}`}
+            src={
+              isCertificateModalOpen
+                ? `${BASE_URL}${profile.idPhoto}`
+                : `${BASE_URL}${profile.touristPhoto}`
+            }
             alt="Certificate"
             className="tw-w-full tw-h-auto tw-rounded-lg"
           />

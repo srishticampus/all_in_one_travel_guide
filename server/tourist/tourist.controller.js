@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const secret = "your-secret-key"; // Replace this with your own secret key
 const { hashPassword } = require("../utils/hanldePasswordEnc");
 
+
 const createToken = (user) => {
   return jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });
 };
@@ -38,7 +39,13 @@ const touristSignupUploads = multer({
   { name: "idPhoto", maxCount: 1 },
 ]);
 
-//User Registration
+const updateProfilePicture = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+}).single("touristPhoto");
 
 const touristSignup = async (req, res, next) => {
   try {
@@ -70,6 +77,37 @@ const touristSignup = async (req, res, next) => {
     next(error);
   }
 };
+const updateTouristPhoto = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const tourist = await TouristModel.findById(id);
+    if (!tourist) {
+      return res.status(404).json({ message: "Tourist not found" });
+    }
+
+    console.log('req files', req.file.filename)
+    const touristPhoto = req.file?.filename || "";
+    if (!touristPhoto) {
+      return res.status(400).json({ message: "Tourist photo is required" });
+    }
+    console.log('req files', touristPhoto)
+
+   
+
+    const updatedTourist = await TouristModel.findByIdAndUpdate(
+      id,
+      { touristPhoto },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      message: "Tourist photo updated successfully",
+      data: updatedTourist,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 // GET TOURIST BY ID
 
@@ -153,5 +191,7 @@ module.exports = {
   getAllTourist,
   updateTourist,
   deActivateTourist,
-  activateTourist
+  activateTourist,
+  updateProfilePicture,
+  updateTouristPhoto
 };

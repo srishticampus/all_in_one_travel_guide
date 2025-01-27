@@ -49,7 +49,7 @@ const BookedPackageCard = ({ item }) => {
 
       <div className="tw-bg-gray-50 tw-p-4 tw-border-t tw-flex tw-flex-col tw-items-center">
         <div className="tw-flex tw-items-center tw-mb-2">
-          <p className="tw-text-sm tw-text-gray-500">({item?.review?.length || 0} reviews)</p>
+          {/* <p className="tw-text-sm tw-text-gray-500">({item?.review?.length || 0} reviews)</p> */}
 
           <div className="tw-flex tw-text-yellow-500 tw-ml-2">
             {[...Array(5)].map((_, index) => (

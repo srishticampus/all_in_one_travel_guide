@@ -41,7 +41,7 @@ function LandingNavbar() {
                   className="nav-link dropdown-toggle fs-6"
                   data-bs-toggle="dropdown"
                 >
-                  Regsiter
+                  Register
                 </Link>
                 <div className="dropdown-menu m-0 fs-6">
                   <Link to="/tourist/signup" className="dropdown-item">

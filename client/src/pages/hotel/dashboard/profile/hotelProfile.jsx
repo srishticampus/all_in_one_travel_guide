@@ -49,6 +49,10 @@ export default function HotelProfile() {
       toast.error("Hotel name is required.");
       return false;
     }
+    if (/[^\p{L}\s]/u.test(hotelName)) {
+      toast.error("Hotel name should not have special characters or numbers.");
+      return false;
+    }
     if (!email) {
       toast.error("Email is required.");
       return false;
