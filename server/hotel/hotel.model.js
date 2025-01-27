@@ -28,6 +28,10 @@ const hotelSchema = mongoose.Schema(
       required: [true, "Password is required"],
       minLength: 8,
     },
+    activeStatus: {
+      type: Boolean,
+      default: true,
+    }
   },
   {
     timestamps: true,

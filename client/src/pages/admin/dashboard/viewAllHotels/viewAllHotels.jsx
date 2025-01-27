@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import axiosInstance from "../../../../apis/axiosInstance";
+import {toast} from "react-hot-toast";
 
 const ViewAllHotels = () => {
   const [users, setUsers] = useState([]);
@@ -26,14 +26,27 @@ const ViewAllHotels = () => {
 
   const handleDeactivate = async (userId) => {
     try {
-      await axios.patch(`/api/users/${userId}/deactivate`);
+      const res = await axiosInstance.patch(`/hotel/deActivate/${userId}`);
+      if (res.status === 200) {
+        toast.success("Hotel deactivated successfully");
+      }
       fetchUsers();
     } catch (error) {
       console.error("Error deactivating user:", error);
     }
   };
 
-
+  const handleActivate = async (userId) => {
+    try {
+      const res = await axiosInstance.patch(`/hotel/activate/${userId}`);
+      if (res.status === 200) {
+        toast.success("Hotel activated successfully");
+      }
+      fetchUsers();
+    } catch (error) {
+      console.error("Error activate user:", error);
+    }
+  };
   return (
     <div className="tw-p-6 ">
       <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-overflow-auto">
@@ -85,18 +98,27 @@ const ViewAllHotels = () => {
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {user.phoneNumber}
                 </td>
-             
+
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap tw-min-w-28 tw-max-w-32 tw-overflow-auto">
                   {user.hotelLocation}
                 </td>
-            
+
                 <td>
-                  <button
-                    onClick={() => handleDeactivate(user._id)}
-                    className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"
-                  >
-                    Deactivate
-                  </button>
+                  {user.activeStatus ? (
+                    <button
+                      onClick={() => handleDeactivate(user._id)}
+                      className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"
+                    >
+                      Deactivate
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleActivate(user._id)}
+                      className="tw-bg-green-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-green-600"
+                    >
+                      Activate
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -120,8 +142,6 @@ const ViewAllHotels = () => {
           </button>
         ))}
       </div>
-
-  
     </div>
   );
 };

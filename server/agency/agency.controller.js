@@ -72,10 +72,41 @@ const updateAgencyById = async (req, res, next) => {
     next(error)
   }
 }
+const deActivateAgency = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const agency = await AgencyModel.findById(id);
+    if (!agency) {
+      return res.status(404).json({ message: "Agency can't found" });
+    }
+    agency.activeStatus = false;
+    await agency.save();
+    return res.status(200).json({ data: agency, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+const activateAgency = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const agency = await AgencyModel.findById(id);
+    if (!agency) {
+      return res.status(404).json({ message: "Agency can't found" });
+    }
+    agency.activeStatus = true;
+    await agency.save();
+    return res.status(200).json({ data: agency, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 module.exports = {
   agencySignup,
   getAllAgencies,
   getAgencyById,
-  updateAgencyById
+  updateAgencyById,
+  deActivateAgency,
+  activateAgency
 };

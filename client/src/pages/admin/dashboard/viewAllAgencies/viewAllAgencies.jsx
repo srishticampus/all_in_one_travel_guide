@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import axiosInstance from "../../../../apis/axiosInstance";
+import { toast } from "react-hot-toast";
 
 const ViewAllAgencies = () => {
   const [users, setUsers] = useState([]);
@@ -28,10 +29,25 @@ const ViewAllAgencies = () => {
 
   const handleDeactivate = async (userId) => {
     try {
-      await axios.patch(`/api/users/${userId}/deactivate`);
+      const res = await axiosInstance.patch(`/agency/deActivate/${userId}`);
+      if (res.status === 200) {
+        toast.success("Agency deactivated successfully");
+      }
       fetchUsers();
     } catch (error) {
       console.error("Error deactivating user:", error);
+    }
+  };
+
+  const handleActivate = async (userId) => {
+    try {
+      const res = await axiosInstance.patch(`/agency/activate/${userId}`);
+      if (res.status === 200) {
+        toast.success("Agency activated successfully");
+      }
+      fetchUsers();
+    } catch (error) {
+      console.error("Error activate user:", error);
     }
   };
 
@@ -111,12 +127,21 @@ const ViewAllAgencies = () => {
                 </td>
 
                 <td>
-                  <button
-                    onClick={() => handleDeactivate(user._id)}
-                    className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"
-                  >
-                    Deactivate
-                  </button>
+                  {user.activeStatus ? (
+                    <button
+                      onClick={() => handleDeactivate(user._id)}
+                      className="tw-bg-red-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-red-600"
+                    >
+                      Deactivate
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleActivate(user._id)}
+                      className="tw-bg-green-500 tw-text-white tw-px-3 tw-py-1 tw-rounded hover:tw-bg-green-600"
+                    >
+                      Activate
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

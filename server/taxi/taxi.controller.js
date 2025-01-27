@@ -98,9 +98,40 @@ const getTaxiById = async (req, res, next) => {
     next(error);
   }
 };
+
+const activateTaxi = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const taxi = await TaxiModel.findById(id);
+    if (!taxi) {
+      return res.status(404).json({ message: "taxi can't found" });
+    }
+    taxi.activeStatus = true;
+    await taxi.save();
+    return res.status(200).json({ data: taxi, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+const deActivateTaxi = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const taxi = await TaxiModel.findById(id);
+    if (!taxi) {
+      return res.status(404).json({ message: "taxi can't found" });
+    }
+    taxi.activeStatus = false;
+    await taxi.save();
+    return res.status(200).json({ data: taxi, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   signup,
   updateTaxiProfile,
   getAllTaxies,
-  getTaxiById
+  getTaxiById,
+  activateTaxi,
+  deActivateTaxi,
 };

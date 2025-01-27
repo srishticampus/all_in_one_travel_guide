@@ -71,7 +71,11 @@ const login = async (req, res, next) => {
           message: "Email id or password is incorrect",
         });
       }
-
+      if (agency && agency.activeStatus === false) {
+        return res.status(400).json({
+          message: "Your account has been deactivated."
+        })
+      }
       
       const agencyCopy = agency.toObject();
       delete agencyCopy.password;
@@ -92,6 +96,12 @@ const login = async (req, res, next) => {
         return res.status(404).json({
           message: "Email id or password is incorrect",
         });
+      }
+
+      if (hotel && hotel.activeStatus === false) {
+        return res.status(400).json({
+          message: "Your account has been deactivated."
+        })
       }
 
       const hotelCopy = hotel.toObject();
@@ -116,6 +126,12 @@ const login = async (req, res, next) => {
         return res.status(404).json({
           message: "Email id or password is incorrect",
         });
+      }
+
+      if (taxi && taxi.activeStatus === false) {
+        return res.status(400).json({
+          message: "Your account has been deactivated."
+        })
       }
 
       const taxiCopy = taxi.toObject();

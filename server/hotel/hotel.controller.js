@@ -64,9 +64,40 @@ const editHotel = async (req, res, next) => {
   }
 };
 
+const activateHotel = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const hotel = await HotelModel.findById(id);
+    if (!hotel) {
+      return res.status(404).json({ message: "Hotel can't found" });
+    }
+    hotel.activeStatus = true;
+    await hotel.save();
+    return res.status(200).json({ data: hotel, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+const deActivateHotel = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const hotel = await HotelModel.findById(id);
+    if (!hotel) {
+      return res.status(404).json({ message: "Hotel can't found" });
+    }
+    hotel.activeStatus = false;
+    await hotel.save();
+    return res.status(200).json({ data: hotel, message: "success" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   hotelSignup,
   getAllHotels,
   getHotelDataById,
   editHotel,
+  activateHotel,
+  deActivateHotel
 };

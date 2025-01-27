@@ -42,6 +42,10 @@ const taxiSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    activeStatus: {
+      type: Boolean,
+      default: true,
+    }
   },
   {
     timestamps: true,
