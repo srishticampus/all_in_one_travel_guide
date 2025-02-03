@@ -17,7 +17,7 @@ const ViewRoom = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [roomData, setRoomData] = useState({});
-
+  console.log("rom", roomData);
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_hotel_id");
     if (!id) {
@@ -63,7 +63,10 @@ const ViewRoom = () => {
   if (!roomData || !roomData.totalRooms) {
     return (
       <div className="tw-h-screen tw-flex tw-justify-center">
-        <h3 className="tw-text-center "> You haven't registerd your rooms yet!</h3>
+        <h3 className="tw-text-center ">
+          {" "}
+          You haven't registerd your rooms yet!
+        </h3>
       </div>
     );
   }
@@ -79,8 +82,11 @@ const ViewRoom = () => {
           // }
           style={{ margin: "0 auto" }}
         >
+          <div className="tw-w-full tw-flex tw-justify-center">
+            <img src="https://picsum.photos/200/300" className="tw-w-auto tw-h-full" alt="" />
+          </div>
           <div
-            className="room-info"
+            className="room-info tw-mt-10"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",

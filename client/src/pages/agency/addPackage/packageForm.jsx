@@ -10,9 +10,9 @@ const PackageForm = () => {
     const id = localStorage.getItem("travel_guide_agency_id") || null;
     if (id) {
       setAgencyId(id);
-    }else {
+    } else {
       toast.error("Please login first");
-      navigate('/login')
+      navigate("/login");
     }
   }, []);
   const navigate = useNavigate();
@@ -186,6 +186,10 @@ const PackageForm = () => {
             placeholder="Cost per head"
             {...register("costPerHead", {
               required: "Cost per head is required.",
+              min: {
+                value: 0,
+                message: "Cost per head cannot be negative.",
+              },
             })}
           />
           <p className="tw-text-red-500 tw-text-xs tw-italic">
@@ -254,7 +258,13 @@ const PackageForm = () => {
             id="days"
             type="number"
             placeholder="Enter number of days"
-            {...register("days", { required: "Number of days is required." })}
+            {...register("days", {
+              required: "Number of days is required.",
+              min: {
+                value: 0,
+                message: "Days cannot be negative.",
+              },
+            })}
           />
 
           <p className="tw-text-red-500 tw-text-xs tw-italic">
@@ -276,6 +286,10 @@ const PackageForm = () => {
             placeholder="Enter number of nights"
             {...register("nights", {
               required: "Total number of night is required.",
+              min: {
+                value: 0,
+                message: "Nights cannot be negative.",
+              },
             })}
           />
           <p className="tw-text-red-500 tw-text-xs tw-italic">
@@ -299,6 +313,10 @@ const PackageForm = () => {
             placeholder="Enter package duration"
             {...register("totalAvailableSeats", {
               required: "Total available seats is required.",
+              min: {
+                value: 1,
+                message: "Total available seats cannot be zero or negative.",
+              },
             })}
           />
           <p className="tw-text-red-500 tw-text-xs tw-italic">

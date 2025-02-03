@@ -59,7 +59,7 @@ function AgencyProfile() {
 
   const sendDataServer = async (obj, id) => {
     try {
-      const res = await axiosInstance.patch(`/tourist/updateAgency/${id}`, obj);
+      const res = await axiosInstance.patch(`/agency/updateAgency/${id}`, obj);
       if (res.status === 200) {
         toast.success("Profile updated successfully");
       }

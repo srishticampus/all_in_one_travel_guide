@@ -71,7 +71,7 @@ const BookRoomModal = ({ item, onClose }) => {
 
   return (
     <div className="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-flex tw-items-center tw-justify-center">
-      <div className="tw-bg-white tw-rounded-lg tw-p-8 tw-w-full tw-max-w-md tw-mx-4">
+      <div className="tw-bg-white tw-rounded-lg tw-p-8 tw-w-full tw-max-w-md tw-mx-4  tw-max-h-96 tw-overflow-auto">
         <h2 className="tw-text-2xl tw-font-bold tw-mb-6 tw-text-gray-800">
           Payment Details
         </h2>
