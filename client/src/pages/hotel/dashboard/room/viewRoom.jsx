@@ -17,7 +17,7 @@ const ViewRoom = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [roomData, setRoomData] = useState({});
-  console.log("rom", roomData);
+  const [trigger, setTrigger] = useState(false);
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_hotel_id");
     if (!id) {
@@ -25,7 +25,7 @@ const ViewRoom = () => {
       return;
     }
     getData(id);
-  }, []);
+  }, [trigger]);
 
   const getData = async (id) => {
     try {
@@ -50,10 +50,15 @@ const ViewRoom = () => {
   const handleUpdate = async (values) => {
     setLoading(true);
     try {
+      const totalRooms = parseInt(values.acRooms) + parseInt(values.nonAcRooms);
       // Add your API call here to update the room
-      // await updateRoom(values);
-      message.success("Room updated successfully");
-      setIsModalVisible(false);
+      console.log('value', values)
+      const res = await axiosInstance.patch(`/rooms/${roomData._id}`, {...values, totalRooms});
+      if (res.status === 200) {
+        message.success("Room updated successfully");
+        setIsModalVisible(false);
+        setTrigger(!trigger);
+      }
     } catch (error) {
       message.error("Failed to update room");
     } finally {
@@ -75,15 +80,19 @@ const ViewRoom = () => {
       <div className="view-room-container" style={{ padding: "24px" }}>
         <Card
           title="Room Details"
-          // extra={
-          //   <Button type="primary" onClick={showModal}>
-          //     Edit Room
-          //   </Button>
-          // }
+          extra={
+            <Button type="primary" onClick={showModal}>
+              Edit Room
+            </Button>
+          }
           style={{ margin: "0 auto" }}
         >
           <div className="tw-w-full tw-flex tw-justify-center">
-            <img src="https://picsum.photos/200/300" className="tw-w-auto tw-h-full" alt="" />
+            <img
+              src="https://picsum.photos/200/300"
+              className="tw-w-auto tw-h-full"
+              alt=""
+            />
           </div>
           <div
             className="room-info tw-mt-10"
@@ -216,17 +225,7 @@ const ViewRoom = () => {
             </Form.Item>
 
             {/* Status */}
-            <Form.Item
-              name="status"
-              label="Status"
-              rules={[{ required: true, message: "Please select status!" }]}
-            >
-              <Select>
-                <Select.Option value="available">Available</Select.Option>
-                <Select.Option value="occupied">Occupied</Select.Option>
-                <Select.Option value="maintenance">Maintenance</Select.Option>
-              </Select>
-            </Form.Item>
+
 
             <Form.Item>
               <div
