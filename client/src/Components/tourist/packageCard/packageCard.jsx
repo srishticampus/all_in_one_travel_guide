@@ -70,7 +70,7 @@ const PackageCard = ({ item }) => {
           </div>
 
           <p className="price">
-            {item?.costPerHead}
+            Rs {item?.costPerHead}
             <span> / per person</span>
           </p>
 

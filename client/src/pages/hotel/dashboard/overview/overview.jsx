@@ -71,9 +71,6 @@ const Overview = () => {
               <h2 className="tw-text-2xl tw-font-bold tw-text-gray-800">
                 {collLeng.roomCount || 0}
               </h2>
-              <p className="tw-text-sm tw-text-green-600">
-                {collLeng.roomCount || 0} Available
-              </p>
             </div>
             <div className="tw-bg-green-100 tw-p-3 tw-rounded-full">
               <svg

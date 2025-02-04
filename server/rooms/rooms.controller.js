@@ -64,6 +64,54 @@ const createRoom = async (req, res, next) => {
   }
 };
 
+const editRoomById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const {
+      totalRooms,
+      acRooms,
+      nonAcRooms,
+      checkInTime,
+      checkOutTime,
+      acRoomPrice,
+      nonAcRoomPrice,
+    } = req.body;
+
+    let obj = {};
+    if (totalRooms) {
+      obj.totalRooms = totalRooms;
+    }
+    if (acRooms) {
+      obj.acRooms = acRooms;
+    }
+    if (nonAcRooms) {
+      obj.nonAcRooms = nonAcRooms;
+    }
+    if (checkInTime) {
+      obj.checkInTime = checkInTime;
+    }
+    if (checkOutTime) {
+      obj.checkOutTime = checkOutTime;
+    }
+    if (acRoomPrice) {
+      obj.acRoomPrice = acRoomPrice;
+    }
+    if (nonAcRoomPrice) {
+      obj.nonAcRoomPrice = nonAcRoomPrice;
+    }
+
+    const room = await RoomModel.findByIdAndUpdate(id, obj, {
+      new: true,
+    });
+    if (!room) {
+      return res.status(404).json({ message: "Room not found" });
+    }
+    res.status(200).json({ message: "Room edited successfully", data: room });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const geAllRooms = async (req, res, next) => {
   try {
     const rooms = await RoomModel.find().populate("hotelId");
@@ -120,4 +168,5 @@ module.exports = {
   getRoomsByHotelId,
   roomImgUpload,
   getBookedRoomsByTouristId,
+  editRoomById
 };

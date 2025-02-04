@@ -70,7 +70,12 @@ const AddDestinations = () => {
               <input
                 type="text"
                 id="title"
-                {...register("title", { required: "Title is required" })}
+                {...register("title", { required: "Title is required",
+                  pattern: {
+                    value: /^[A-Za-z\s]+$/,
+                    message: "Please enter a valid title",
+                  }
+                 })}
                 className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-border tw-p-2"
               />
               {errors.title && (

@@ -33,6 +33,7 @@ const ViewAllRooms = () => {
     }
   };
 
+  console.log('room', rooms)
   return (
     <div className="tw-p-6 ">
       <h1 className="tw-text-2xl tw-font-bold tw-mb-6 tw-overflow-auto">
@@ -49,6 +50,9 @@ const ViewAllRooms = () => {
             <tr>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 No.
+              </th>
+              <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
+                Hotel Name
               </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 Total rooms
@@ -80,6 +84,9 @@ const ViewAllRooms = () => {
               <tr key={room._id}>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {idx + 1 + (currentPage * rowsPerPage - 5)}
+                </td>
+                <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
+                  {room?.hotelId?.hotelName}
                 </td>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {room.totalRooms}

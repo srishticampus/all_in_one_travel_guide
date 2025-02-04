@@ -73,7 +73,7 @@ export default function TouristNavbar() {
                 </option>
                 <option
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                   value="view-all-hotels"
                 >
                   Rooms
@@ -82,21 +82,21 @@ export default function TouristNavbar() {
                 <option
                   value="view-booked-hotels"
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                 >
                   Booked Rooms
                 </option>
                 <option
                   value="view-foods"
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                 >
                   Food
                 </option>
                 <option
                   value="booked-foods"
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                 >
                   Booked Foods
                 </option>
@@ -113,14 +113,14 @@ export default function TouristNavbar() {
                 </option>
                 <option
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                   value="request-taxi"
                 >
                   Request
                 </option>
                 <option
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                   value="view-taxi-booking"
                 >
                   Booking
@@ -138,7 +138,7 @@ export default function TouristNavbar() {
                 </option>
                 <option
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                   value="view-all-packages"
                 >
                   Packages
@@ -147,7 +147,7 @@ export default function TouristNavbar() {
                 <option
                   value="view-booked-packages"
                   className="tw-cursor-pointer"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "12px" }}
                 >
                   Booked
                 </option>

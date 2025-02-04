@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../apis/baseURL";
 import { Phone, Mail, MapPin } from "lucide-react";
 
-const BookedRoomCard = ({ room, hotel }) => {
-  console.log("rrom", room, hotel);
+const BookedRoomCard = ({ room, hotel, item }) => {
+  console.log("rrom", room);
   return (
-    <div className=" tw-bg-white tw-min-w-128 tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-cursor-pointer tw-transition-transform tw-duration-300 hover:tw-scale-105">
+    <div className=" tw-bg-white tw-w-128 tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-cursor-pointer tw-transition-transform tw-duration-300 hover:tw-scale-105">
       {/* Room Image */}
       <div className="tw-relative tw-min-w-128 tw-h-48 tw-overflow-hidden">
         <img
@@ -45,6 +45,15 @@ const BookedRoomCard = ({ room, hotel }) => {
           </div>
           <div>
             <strong>Check-out:</strong> {room?.checkOutTime}
+          </div>
+        </div>
+        {/* todo fix this */}
+        <div className="tw-flex tw-justify-between tw-items-center tw-text-sm tw-text-gray-600">
+          <div>
+            <strong>Total Price:</strong> {item?.totalPrice || room?.nonAcRoomPrice}
+          </div>
+          <div>
+            <strong>Number of days:</strong> {item?.numberOfDays || 1}
           </div>
         </div>
 

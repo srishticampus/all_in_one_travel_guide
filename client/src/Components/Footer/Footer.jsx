@@ -5,6 +5,7 @@ import img4 from "../../img/pic3.webp";
 import img5 from "../../img/pic4.webp";
 import img6 from "../../img/pic6.webp";
 import img7 from "../../img/pic9.jpg";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -17,21 +18,16 @@ function Footer() {
           <div className="row g-5">
             <div className="col-lg-4 col-md-6">
               <h4 className="text-white mb-3">Company</h4>
-              <a className="btn btn-link" href="">
-                About Us
-              </a>
-              <a className="btn btn-link" href="">
-                Contact Us
-              </a>
-              <a className="btn btn-link" href="">
-                Privacy Policy
-              </a>
-              <a className="btn btn-link" href="">
-                Terms & Condition
-              </a>
-              <a className="btn btn-link" href="">
-                FAQs & Help
-              </a>
+              <Link className="btn btn-link" to="/tourist/top-destinations">
+                Destinations
+              </Link>
+              <Link className="btn btn-link" to="/tourist/request-taxi">
+                Request Taxi
+              </Link>
+              <Link className="btn btn-link" to="/tourist/view-hotels">
+                View Rooms
+              </Link>
+             
             </div>
             <div className="col-lg-4 col-md-6">
               <h4 className="text-white mb-3">Contact</h4>

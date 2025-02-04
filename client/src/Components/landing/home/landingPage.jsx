@@ -186,7 +186,7 @@ export default function LandingPage() {
                   );
                 }}
               >
-                More destintions
+                More Destinations
               </button>
             </div>
           </section>
@@ -466,7 +466,7 @@ export default function LandingPage() {
             <div className="container">
               <p className="section-subtitle">Photo Gallery</p>
 
-              <h2 className="h2 my-section-title">Photo's From Travellers</h2>
+              <h2 className="h2 my-section-title">Photos From Travellers</h2>
 
               <p className="section-text">
                 Step into a world of wonder. Your unforgettable journey starts
@@ -508,6 +508,56 @@ export default function LandingPage() {
             </div>
           </section>
 
+          <section className="about-us tw-mt-5" id="about">
+            <div className="container">
+              <p className="section-subtitle">Learn About Us</p>
+
+              <h2 className="h2 my-section-title">About Us</h2>
+
+              <p className="section-text">
+                We are passionate about connecting travelers with unforgettable
+                experiences. Our mission is to provide exceptional service and
+                tailor-made journeys that cater to your unique preferences and
+                interests.
+              </p>
+
+              <div
+                className="about-us-content"
+                style={{
+                  textAlign: "center",
+                  maxWidth: "700px",
+                  margin: "0 auto",
+                }}
+              >
+                <p
+                  className="about-us-text"
+                  style={{
+                    fontSize: "1.2rem",
+                    lineHeight: "1.5",
+                    marginBottom: "20px",
+                  }}
+                >
+                  With years of experience in the travel industry, our dedicated
+                  team is committed to ensuring your trip is nothing short of
+                  extraordinary. From the moment you book with us, we handle all
+                  the details, so you can focus on creating memories.
+                </p>
+
+                <p
+                  className="about-us-text"
+                  style={{
+                    fontSize: "1.2rem",
+                    lineHeight: "1.5",
+                    marginBottom: "20px",
+                  }}
+                >
+                  Join us on a journey of discovery and exploration, and let us
+                  show you the world like never before.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section className="cta" id="contact">
             <div className="container">
               <div className="cta-content">
@@ -527,10 +577,18 @@ export default function LandingPage() {
               <button
                 className="btn btn-secondary"
                 onClick={() => {
-                  navigate("/signup");
+                  navigate("/tourist/signup");
                 }}
               >
                 Sign Up!
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Login
               </button>
             </div>
           </section>
@@ -561,17 +619,16 @@ export default function LandingPage() {
 
               <ul>
                 <li className="contact-item">
-                  <ion-icon name="call-outline"></ion-icon>
-
-                  <a href="tel:+01123456790" className="contact-link">
+                  <span> Phone: </span>
+                  <span>
                     +01 (123) 4567 90
-                  </a>
+                  </span>
                 </li>
 
                 <li className="contact-item">
-                  <ion-icon name="location-outline"></ion-icon>
+                  <span> Place: </span>
 
-                  <address>Kerala, Trivandrum</address>
+                  <span>Kerala, Trivandrum</span>
                 </li>
               </ul>
             </div>

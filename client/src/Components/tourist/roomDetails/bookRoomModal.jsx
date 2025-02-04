@@ -2,14 +2,52 @@ import { useForm } from "react-hook-form";
 // import TouristAPIs from "../../../apis/tourist";
 import { hotelBookingProcess } from "../../../apis/tourist/paymentService";
 import { toast } from "react-hot-toast";
-
+import { useEffect, useState } from "react";
+import {useNavigate} from 'react-router-dom'
 const BookRoomModal = ({ item, onClose }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [numberOfDays, setNumberOfDays] = useState(1);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
 
+  useEffect(() => {
+    const acRoomPrice = item.acRoomPrice || 0;
+    const nonAcRoomPrice = item.nonAcRoomPrice || 0;
+    if (watch("roomType") === "AC") {
+      setTotalPrice(acRoomPrice * numberOfDays);
+    } else {
+      setTotalPrice(nonAcRoomPrice * numberOfDays);
+    }
+  }, [watch("roomType"), numberOfDays]);
+
+  useEffect(() => {
+    calculateNoOfDays()
+
+  }, [watch("checkInDate"), watch("checkOutDate")]);
+  const calculateNoOfDays = () => {
+    const inDate = watch("checkInDate");
+    const outDate = watch("checkOutDate");
+    if (inDate && outDate) {
+      const checkIn = new Date(inDate);
+      const checkOut = new Date(outDate);
+
+      if (checkOut < checkIn) {
+        toast.error("Checkout date should not be before checkin date");
+        return false;
+      }
+      const diffTime = Math.abs(checkOut - checkIn);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      setNumberOfDays(diffDays);
+      return true;
+    }else {
+      return false;
+    }
+  };
   const onSubmit = (data) => {
     const {
       cardHolderName,
@@ -19,6 +57,7 @@ const BookRoomModal = ({ item, onClose }) => {
       checkInDate,
       checkOutDate,
       roomType,
+
     } = data;
     if (
       !cardHolderName ||
@@ -27,7 +66,7 @@ const BookRoomModal = ({ item, onClose }) => {
       !cvv ||
       !checkInDate ||
       !checkOutDate ||
-      !roomType
+      !roomType 
     ) {
       console.log("Please fill all the fields");
       return;
@@ -38,6 +77,9 @@ const BookRoomModal = ({ item, onClose }) => {
 
     if (!roomId || !touristId || !hotelId) {
       console.log("Please login to book the package");
+      return;
+    }
+    if (!calculateNoOfDays()) {
       return;
     }
     const serializedData = {
@@ -51,6 +93,8 @@ const BookRoomModal = ({ item, onClose }) => {
       checkInDate,
       checkOutDate,
       roomType,
+      numberOfDays,
+      totalPrice
     };
 
     handlePayment(serializedData);
@@ -62,6 +106,7 @@ const BookRoomModal = ({ item, onClose }) => {
       if (res) {
         toast.success("Room booked successfully");
         onClose();
+        navigate('/tourist/booked-rooms') 
       }
     } catch (error) {
       console.log("Error on payment process", error);
@@ -122,6 +167,10 @@ const BookRoomModal = ({ item, onClose }) => {
                   </p>
                 )}
               </div>
+            </div>
+
+            <div>
+              <p>Number of days: {numberOfDays}</p>
             </div>
 
             <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
@@ -260,7 +309,7 @@ const BookRoomModal = ({ item, onClose }) => {
               type="submit"
               className="tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-text-white tw-bg-blue-600 tw-rounded-md hover:tw-bg-blue-700 tw-transition-colors"
             >
-              Book Now
+              Pay ₹ {totalPrice}
             </button>
           </div>
         </form>

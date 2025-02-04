@@ -29,7 +29,6 @@ const BookedRoomsContainer = () => {
       console.log("error on get packages", error);
     }
   };
-  console.log('room', rooms)
   return (
     <div id="pack-card-container">
       <h3 className="tw-text-center tw-mt-16">Booked Rooms</h3>
@@ -38,6 +37,7 @@ const BookedRoomsContainer = () => {
           return (
             <BookedRoomCard
               key={item._id}
+              item={item}
               room={item?.roomId}
               hotel={item?.hotelId}
             />

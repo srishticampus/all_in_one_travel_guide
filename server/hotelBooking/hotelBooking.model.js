@@ -17,6 +17,14 @@ const hotelBookingSchema = mongoose.Schema(
       ref: "Room",
       required: [true, "Room id is required"],
     },
+    numberOfDays: {
+      type: Number,
+      required: [true, "Number of days is required."],
+    },
+    totalPrice: {
+      type: Number,
+      required: [true, "Total price is required."],
+    },
     roomType: {
       type: String,
       enum: ["AC", "NON-AC"],

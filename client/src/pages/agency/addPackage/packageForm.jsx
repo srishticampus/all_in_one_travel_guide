@@ -116,6 +116,10 @@ const PackageForm = () => {
             placeholder="Enter package name"
             {...register("packageName", {
               required: "Package name is required.",
+              pattern: {
+                value: /^[a-zA-Z\s]+$/,
+                message: "Package name should only contain alphabets.",
+              },
             })}
           />
           <p className="tw-text-red-500 tw-text-xs tw-italic">
@@ -214,6 +218,10 @@ const PackageForm = () => {
             placeholder="Enter destinations"
             {...register("destination", {
               required: "Destination is required.",
+              pattern: {
+                value: /^[a-zA-Z\s]+$/,
+                message: "Destinations should only contain alphabets.",
+              },
             })}
           />
 
@@ -310,7 +318,7 @@ const PackageForm = () => {
             className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
             id="totalAvailableSeats"
             type="number"
-            placeholder="Enter package duration"
+            placeholder="Total Available seats"
             {...register("totalAvailableSeats", {
               required: "Total available seats is required.",
               min: {

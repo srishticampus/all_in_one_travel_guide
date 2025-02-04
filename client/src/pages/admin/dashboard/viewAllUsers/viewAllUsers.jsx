@@ -114,9 +114,6 @@ const ViewAllUsers = () => {
                 Gender
               </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
-                Country
-              </th>
-              <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
                 View
               </th>
               <th className="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">
@@ -141,9 +138,6 @@ const ViewAllUsers = () => {
                 </td>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   {user.gender}
-                </td>
-                <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
-                  {user.country}
                 </td>
                 <td className="tw-px-6 tw-py-4 tw-whitespace-nowrap">
                   <button

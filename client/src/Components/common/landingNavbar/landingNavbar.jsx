@@ -33,11 +33,7 @@ const LandingNavbar = () => {
                 </a>
               </li>
 
-              <li>
-                <a href="#" className="navbar-link" data-nav-link>
-                  about us
-                </a>
-              </li>
+
 
               <li>
                 <a href="#destination" className="navbar-link" data-nav-link>
@@ -62,11 +58,19 @@ const LandingNavbar = () => {
                   contact us
                 </a>
               </li>
+              <li>
+                <a href="#about" className="navbar-link" data-nav-link>
+                  about us
+                </a>
+              </li>
             </ul>
           </nav>
 
           <Link to="/tourist/signup">
             <button className="btn btn-primary">Sign Up </button>
+          </Link>
+          <Link to="/login" className="tw-bg-black">
+            <button className="btn ">Login </button>
           </Link>
         </div>
       </div>
