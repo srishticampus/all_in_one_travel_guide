@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+<!-- import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Components/common/login/login";
 import LandingAboutPage from "./pages/About/About";
 import TouristSignup from "./Components/tourist/signup/TouristSignup";
@@ -102,6 +102,10 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Route>
 
+          {/* taxi routes  */}
+          <Route element={<TaxiProtectedRoutes />}>
+            <Route path="/taxi/dashboard" element={<TaxiDashboard />} />
+          </Route>
 
           <Route path="/*" element={<NotFound />} />
         </Routes>
@@ -110,4 +114,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; -->
