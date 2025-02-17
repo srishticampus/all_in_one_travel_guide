@@ -102,6 +102,10 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Route>
 
+          {/* taxi routes  */}
+          <Route element={<TaxiProtectedRoutes />}>
+            <Route path="/taxi/dashboard" element={<TaxiDashboard />} />
+          </Route>
 
           <Route path="/*" element={<NotFound />} />
         </Routes>
