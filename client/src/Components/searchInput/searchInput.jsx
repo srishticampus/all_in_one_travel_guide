@@ -1,7 +1,7 @@
 export function SearchBox({ searchingItems, placeholder = "Search.." }) {
   return (
     <div className="tw-flex tw-justify-center tw-items-center tw-min-h-3.5 tw-bg-gray-100">
-      <div className="tw-relative tw-w-96">
+      <div className="tw-relative tw-w-80">
         <input
           type="text"
           className="tw-w-full tw-pl-10 tw-pr-4 tw-py-2 tw-rounded-lg tw-border tw-border-gray-300 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring focus:tw-ring-blue-200"

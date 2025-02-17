@@ -89,7 +89,7 @@ function Login() {
           <div className="formWrapper col-6">
             <div className="form">
               {/* <h3 className="text-center">Log In</h3> */}
-              <h2>Log in to Travel Guide</h2>
+              <h2>Login</h2>
               <form
                 className="px-5 d-flex flex-column justify-content-between"
                 style={{
