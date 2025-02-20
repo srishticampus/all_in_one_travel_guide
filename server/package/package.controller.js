@@ -11,11 +11,21 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+  const allowedTypes = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "application/pdf",
+    "image/gif",
+    "image/svg+xml",
+    "image/webp",
+    "image/bmp",
+    "image/tiff",
+  ];
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Only JPEG, JPG and PNG files are allowed."));
+    cb(new Error("Only JPEG, JPG and pdf files are allowed."));
   }
 };
 const packagePhoto = multer({
@@ -24,11 +34,20 @@ const packagePhoto = multer({
   limits: {
     fileSize: 1024 * 1024 * 5,
   },
-}).single("packagePhoto");
+}).fields([
+  { name: "packagePhoto", maxCount: 1 },
+  { name: "packageInfo", maxCount: 1 },
+]);
 
 const addPackage = async (req, res, next) => {
   try {
-    const packagePhoto = req.file;
+    const packagePhoto = req.files.packagePhoto
+      ? req.files.packagePhoto[0].filename
+      : "";
+    const packageInfo = req.files.packageInfo
+      ? req.files.packageInfo[0].filename
+      : "";
+
     const {
       packageName,
       packageDescription,
@@ -50,7 +69,9 @@ const addPackage = async (req, res, next) => {
       !costPerHead ||
       !startingDate ||
       !totalAvailableSeats ||
-      !agencyId
+      !agencyId ||
+      !packagePhoto ||
+      !packageInfo
     ) {
       return res.status(400).json({
         message: "All fields are required",
@@ -68,7 +89,8 @@ const addPackage = async (req, res, next) => {
       days,
       nights,
       totalAvailableSeats: Number(totalAvailableSeats),
-      packagePhoto: packagePhoto.filename,
+      packagePhoto,
+      packageInfo,
       agencyId,
     });
     await newPackage.save();

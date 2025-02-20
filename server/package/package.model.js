@@ -52,6 +52,10 @@ const packageSchema = mongoose.Schema(
         type: String,
         required: [true, "Package photo is required."],
     },
+    packageInfo: {
+      type: String,
+      required: [true, "Package info is required."],
+    },
     agencyId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Agency",

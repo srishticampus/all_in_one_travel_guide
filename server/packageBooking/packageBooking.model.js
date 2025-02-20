@@ -43,6 +43,7 @@ const packageBookingSchema = mongoose.Schema(
       enum: ["pending", "paid", "refunded"],
       default: "pending",
     },
+    
   },
   {
     timestamps: true,

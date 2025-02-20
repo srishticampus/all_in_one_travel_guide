@@ -80,6 +80,15 @@ const MyPackageDetails = () => {
               <p className="tw-text-gray-600 tw-mb-6">
                 {packageData.packageDescription}
               </p>
+              <p className="tw-text-gray-600 tw-mb-6">
+                <a
+                  href={`${BASE_URL}${packageData.packageInfo}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Document
+                </a>
+              </p>
             </div>
           </div>
 

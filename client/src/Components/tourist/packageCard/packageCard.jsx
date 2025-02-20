@@ -10,7 +10,6 @@ const PackageCard = ({ item }) => {
   return (
     <>
       <div className="package-card tw-mt-10 tw-w-full">
-        
         <figure className="card-banner">
           <img
             className="tw-h-full tw-w-full"
@@ -25,6 +24,15 @@ const PackageCard = ({ item }) => {
 
           <p className="card-text tw-h-52 tw-overflow-y-auto">
             {item?.packageDescription}
+          </p>
+          <p className="tw-text-gray-600 tw-mb-6">
+            <a
+              href={`${BASE_URL}${item.packageInfo}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Document
+            </a>
           </p>
 
           <ul className="card-meta-list">

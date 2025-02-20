@@ -11,24 +11,41 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+  const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf", "image/gif", "image/svg+xml", "image/webp", "image/bmp", "image/tiff"];
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Only JPEG, JPG and PNG files are allowed."));
+    cb(new Error("Only JPEG, JPG and PDF files are allowed."));
   }
 };
 const roomImgUpload = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits: {
-    fileSize: 1024 * 1024 * 5,
+    fileSize: 1024 * 1024 * 10,
   },
-}).single("roomImg");
+}).fields([
+  { name: "roomImg", maxCount: 1 },
+  { name: "roomInfo", maxCount: 1 },
+]);
+
+
+
+
+
+
+
+
+
 
 const createRoom = async (req, res, next) => {
   try {
-    const roomImg = req.file;
+    
+    const roomImg = req.files.roomImg
+      ? req.files.roomImg[0].filename
+      : "";
+    const roomInfo = req.files.roomInfo ? req.files.roomInfo[0].filename : "";
+
     const {
       hotelId,
       totalRooms,
@@ -55,7 +72,8 @@ const createRoom = async (req, res, next) => {
       checkOutTime,
       acRoomPrice,
       nonAcRoomPrice,
-      roomImg: roomImg.filename,
+      roomImg,
+      roomInfo
     });
     await room.save();
     res.status(201).json({ message: "Room created successfully", data: room });

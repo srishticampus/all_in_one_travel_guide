@@ -34,6 +34,7 @@ const PackageForm = () => {
       nights,
       destination,
       packagePhoto,
+      packageInfo,
     } = data;
 
     if (
@@ -46,7 +47,8 @@ const PackageForm = () => {
       !days ||
       !nights ||
       !destination ||
-      packagePhoto.length === 0
+      packagePhoto.length === 0 || 
+      packageInfo.length === 0
     ) {
       console.log("All fields are required", data);
       return;
@@ -63,6 +65,7 @@ const PackageForm = () => {
       destination,
       agencyId,
       packagePhoto: packagePhoto[0],
+      packageInfo: packageInfo[0],
     };
     sendDataToServer(serializedData);
   };
@@ -350,6 +353,28 @@ const PackageForm = () => {
           />
           <p className="tw-text-red-500 tw-text-xs tw-italic">
             <ErrorMessage errors={errors} name="packagePhoto" />
+          </p>
+        </div>
+      </div>
+      <div className="tw-flex tw-flex-wrap tw--mx-3 tw-mb-6">
+        <div className="tw-w-full md:tw-w-1/2 tw-px-3 tw-mb-6 md:tw-mb-0">
+          <label
+            className="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2"
+            htmlFor="packageDuration"
+          >
+            Package document
+          </label>
+          <input
+            className="tw-appearance-none tw-block tw-w-full tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight focus:tw-outline-none focus:tw-bg-white"
+            id="packageInfo"
+            type="file"
+            accept="application/pdf"
+            {...register("packageInfo", {
+              required: "Package document is required.",
+            })}
+          />
+          <p className="tw-text-red-500 tw-text-xs tw-italic">
+            <ErrorMessage errors={errors} name="packageInfo" />
           </p>
         </div>
       </div>

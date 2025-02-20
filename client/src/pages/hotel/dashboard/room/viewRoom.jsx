@@ -11,6 +11,7 @@ import {
 } from "antd";
 import axiosInstance from "../../../../apis/axiosInstance";
 import BookedUsersTable from "./bookedUsers";
+import { BASE_URL } from "../../../../apis/baseURL";
 
 const ViewRoom = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -42,6 +43,7 @@ const ViewRoom = () => {
     setIsModalVisible(true);
   };
 
+  console.log('rom data', roomData)
   const handleCancel = () => {
     setIsModalVisible(false);
     form.resetFields();
@@ -89,7 +91,7 @@ const ViewRoom = () => {
         >
           <div className="tw-w-full tw-flex tw-justify-center">
             <img
-              src="https://picsum.photos/200/300"
+              src={`${BASE_URL}/${roomData.roomImg}`}
               className="tw-w-auto tw-h-full"
               alt=""
             />
@@ -129,6 +131,18 @@ const ViewRoom = () => {
             <div className="info-item">
               <h5>Check-out Time</h5>
               <p>{roomData.checkOutTime}</p>
+            </div>
+            <div className="info-item">
+              <h5>Room Document</h5>
+              <p>
+                <a
+                  href={`${BASE_URL}${roomData.roomInfo}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Document
+                </a>
+              </p>
             </div>
           </div>
         </Card>

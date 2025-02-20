@@ -126,6 +126,7 @@ const AddFood = () => {
             </label>
             <input
               type="file"
+              accept="image/*"
               {...register("foodImg", {
                 required: "Food image is required",
               })}

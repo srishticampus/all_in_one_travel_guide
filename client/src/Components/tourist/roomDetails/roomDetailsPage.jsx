@@ -25,12 +25,20 @@ const RoomDetailsPage = ({ room }) => {
             <p>AC Rooms: {room.acRooms}</p>
             <p>Non-AC Rooms: {room.nonAcRooms}</p>
             <p>Total Rooms: {room.totalRooms}</p>
+            
           </div>
 
           <div className="info-card">
-            <h3>Pricing</h3>
+            <h3>Pricing and document</h3>
             <p>AC Room: ₹{room.acRoomPrice}/night</p>
             <p>Non-AC Room: ₹{room.nonAcRoomPrice}/night</p>
+            <a
+              href={`${BASE_URL}${room.roomInfo}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Document
+            </a>
           </div>
 
           <div className="info-card">
@@ -45,6 +53,7 @@ const RoomDetailsPage = ({ room }) => {
             <p>Location: {room.hotelId?.hotelLocation}</p>
             <p>Contact: {room.hotelId?.phoneNumber}</p>
             <p>Email: {room.hotelId?.email}</p>
+            
           </div>
         </div>
 

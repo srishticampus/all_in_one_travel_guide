@@ -43,6 +43,9 @@ const roomSchema = mongoose.Schema(
     roomImg: {
       type: String,
     },
+    roomInfo: {
+      type: String,
+    }
   },
   {
     timestamps: true,

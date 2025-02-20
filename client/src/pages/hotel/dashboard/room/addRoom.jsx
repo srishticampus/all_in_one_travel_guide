@@ -65,6 +65,7 @@ const AddRoom = () => {
       checkInTime,
       checkOutTime,
       roomImg,
+      roomInfo
     } = data;
 
     if (acRooms === 0 && nonAcRooms === 0) {
@@ -85,12 +86,17 @@ const AddRoom = () => {
       toast.error("Room image is required.");
       return;
     }
+    if (roomInfo.length === 0) {
+      toast.error("Room document is required.");
+      return;
+    }
     const totalRooms = parseInt(acRooms) + parseInt(nonAcRooms);
     const serializedData = {
       ...data,
       hotelId,
       totalRooms,
       roomImg: roomImg[0],
+      roomInfo: roomInfo[0],
     };
     sendDataToServer(serializedData);
   };
@@ -232,6 +238,7 @@ const AddRoom = () => {
             </label>
             <input
               type="file"
+              accept="image/*"
               {...register("roomImg", {
                 required: "Room image is required.",
               })}
@@ -240,6 +247,25 @@ const AddRoom = () => {
             {errors.checkOutTime && (
               <p className="tw-text-red-500 tw-text-sm">
                 {errors.roomImg.message}
+              </p>
+            )}
+          </div>
+          {/* room info  */}
+          <div>
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700 tw-mb-1">
+              Room document
+            </label>
+            <input
+              type="file"
+              accept=".pdf"
+              {...register("roomInfo", {
+                required: "Room document is required.",
+              })}
+              className="tw-w-full tw-p-2 tw-border tw-rounded-md"
+            />
+            {errors.roomInfo && (
+              <p className="tw-text-red-500 tw-text-sm">
+                {errors.roomInfo.message}
               </p>
             )}
           </div>
