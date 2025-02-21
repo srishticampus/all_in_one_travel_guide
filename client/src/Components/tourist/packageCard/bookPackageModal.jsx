@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-// import TouristAPIs from "../../../apis/tourist";
+import { useNavigate } from "react-router-dom";
 import { packageBookingProcess } from "../../../apis/tourist";
 import {toast} from "react-hot-toast";
 
 const BookPackageModal = ({ item, onClose }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,7 +36,6 @@ const BookPackageModal = ({ item, onClose }) => {
     };
 
     handlePayment(serializedData);
-    // Handle payment logic here
   };
 
   const handlePayment = async (data) => {
@@ -44,6 +44,7 @@ const BookPackageModal = ({ item, onClose }) => {
       if (res) {
         toast.success("Package booked successfully");
         onClose()
+        navigate('/tourist/booked-packages')
       }
     } catch (error) {
       console.log("Error on payment process", error);

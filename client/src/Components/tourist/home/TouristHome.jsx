@@ -5,6 +5,7 @@ import Destination from "../destination/Destination";
 import TourCategory from "../category/TourCategory";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
+import { PackagePreview } from "../packageCard/packagePreview";
 export default function TouristHome() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function TouristHome() {
     <div>
       <TouristNavbar />
       <TouristHeader />
+      <PackagePreview />
       <Destination />
       <TourCategory />
       <Footer />

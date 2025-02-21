@@ -9,7 +9,7 @@ const PackageCard = ({ item }) => {
   };
   return (
     <>
-      <div className="package-card tw-mt-10 tw-w-full">
+      <div className="package-card tw-mt-10 tw-w-full tw-shadow-md">
         <figure className="card-banner">
           <img
             className="tw-h-full tw-w-full"

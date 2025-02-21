@@ -14,6 +14,7 @@ const ViewFoodItems = () => {
       if (response.status === 200) {
         const data = response.data?.data?.reverse() || [];
         setFoodItems(data);
+        setFilterFoods(data);
       }
     } catch (error) {
       console.error("Error fetching food items:", error);
