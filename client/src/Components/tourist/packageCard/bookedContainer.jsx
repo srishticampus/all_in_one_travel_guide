@@ -9,6 +9,10 @@ const BookedContainer = () => {
   const [packages, setPackages] = useState([]);
   const [filteredPacks, setFilterdPacks] = useState([]);
   const [searchedItem, setSearchedItem] = useState("");
+  const [trigerRerender, setTrigerRerender] = useState(false);
+  const trigger = () => {
+    setTrigerRerender(!trigerRerender);
+  };
   useEffect(() => {
     const activeTouristId =
       localStorage.getItem("travel_guide_tourist_id") || null;
@@ -17,15 +21,16 @@ const BookedContainer = () => {
     } else {
       navigate("/tourist/home");
     }
-  }, []);
+  }, [trigerRerender]);
 
-    useEffect(() => {
-      const filtered = packages.filter((pack) => {
-        return pack.packageName.toLowerCase().includes(searchedItem.toLowerCase());
-      });
-      setFilterdPacks(filtered);
-    }, [searchedItem]);
-  
+  useEffect(() => {
+    const filtered = packages.filter((pack) => {
+      return pack.packageName
+        .toLowerCase()
+        .includes(searchedItem.toLowerCase());
+    });
+    setFilterdPacks(filtered);
+  }, [searchedItem]);
 
   const getPackages = async (activeTouristId) => {
     try {
@@ -46,7 +51,14 @@ const BookedContainer = () => {
       <h3 className="tw-text-center tw-mt-16">Booked Packages</h3>
       <div className="tw-mx-auto tw-flex tw-w-11/12 tw-flex-wrap tw-p-5 tw-gap-5 tw-justify-between tw-bg-neutral-50">
         {filteredPacks.map((item) => {
-          return <BookedPackageCard key={item._id} item={item?.packageId} />;
+          return (
+            <BookedPackageCard
+              key={item._id}
+              item={item?.packageId}
+              booking={item}
+              trigger={trigger}
+            />
+          );
         })}
       </div>
     </div>

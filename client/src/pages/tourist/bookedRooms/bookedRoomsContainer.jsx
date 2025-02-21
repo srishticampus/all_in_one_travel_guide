@@ -6,6 +6,11 @@ import BookedRoomCard from "../../../Components/tourist/bookRooms/bookedRoomCard
 const BookedRoomsContainer = () => {
   const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
+  const [trigerRerender, setTrigerRerender] = useState(false);
+
+  const trigger = () => {
+    setTrigerRerender(!trigerRerender);
+  };
   useEffect(() => {
     const activeTouristId =
       localStorage.getItem("travel_guide_tourist_id") || null;
@@ -14,7 +19,7 @@ const BookedRoomsContainer = () => {
     } else {
       navigate("/tourist/home");
     }
-  }, []);
+  }, [trigerRerender]);
 
   const getRooms = async (activeTouristId) => {
     try {
@@ -40,6 +45,7 @@ const BookedRoomsContainer = () => {
               item={item}
               room={item?.roomId}
               hotel={item?.hotelId}
+              trigger={trigger}
             />
           );
         })}

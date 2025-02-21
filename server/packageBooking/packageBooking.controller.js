@@ -97,10 +97,34 @@ const getBookingsByAgencyId = async (req, res, next) => {
   }
 };
 
+const cancelPackageBookingById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const packageUpdated = await PackageBooking.findByIdAndUpdate(
+      id,
+      {
+        status: "cancelled",
+      },
+      {
+        new: true,
+      }
+    );
+    if (!packageUpdated) {
+      return res.status(404).json({ message: "Package not found" });
+    }
+    return res
+      .status(200)
+      .json({ message: "Package cancelled", data: packageUpdated });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllBookings,
   addPackageBooking,
   getBookingsByTouristId,
   getBookingsByAgencyId,
   getBookingsByPackageId,
+  cancelPackageBookingById,
 };

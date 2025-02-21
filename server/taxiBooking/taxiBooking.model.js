@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { taxiRequets } = require("./taxiBooking.controller");
 
 const taxiBookingScheama = mongoose.Schema(
   {

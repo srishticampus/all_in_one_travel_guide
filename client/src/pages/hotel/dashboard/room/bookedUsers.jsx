@@ -57,6 +57,10 @@ const BookedUsersTable = () => {
               <th className="tw-px-6 tw-py-4 tw-text-left tw-text-sm tw-font-semibold tw-text-gray-600">
                 Phone Number
               </th>
+              <th className="tw-px-6 tw-py-4 tw-text-left tw-text-sm tw-font-semibold tw-text-gray-600">
+                
+                Booking status
+              </th>
             </tr>
           </thead>
           <tbody className="tw-divide-y tw-divide-gray-100">
@@ -115,6 +119,11 @@ const BookedUsersTable = () => {
                     <span className="tw-text-gray-600">
                       {order.touristId?.phoneNumber}
                     </span>
+                  </div>
+                </td>
+                <td className="tw-px-6 tw-py-4">
+                  <div className="tw-flex tw-items-center tw-gap-2">
+                    <span className="tw-text-gray-600">{order.status}</span>
                   </div>
                 </td>
               </tr>

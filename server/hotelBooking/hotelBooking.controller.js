@@ -106,9 +106,25 @@ const getBookingsByHotelId = async (req, res, next) => {
   }
 };
 
+const cancelBookingById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const booking = await HotelBooking.findById(id).exec();
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found." });
+    }
+    booking.status = "cancelled";
+    await booking.save();
+    return res.status(200).json({ message: "Booking cancelled successfully." });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllBookings,
   addHotelBooking,
   getBookingsByTouristId,
   getBookingsByHotelId,
+  cancelBookingById
 };

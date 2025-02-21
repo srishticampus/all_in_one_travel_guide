@@ -230,6 +230,7 @@ const MyPackageDetails = () => {
                   <th className="tw-px-4 tw-py-2 tw-border-b">Email</th>
                   <th className="tw-px-4 tw-py-2 tw-border-b">Phone Number</th>
                   <th className="tw-px-4 tw-py-2 tw-border-b">Gender</th>
+                  <th className="tw-px-4 tw-py-2 tw-border-b">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -250,6 +251,9 @@ const MyPackageDetails = () => {
                     </td>
                     <td className="tw-px-4 tw-py-2 tw-border-b">
                       {item.touristId?.gender}
+                    </td>
+                    <td className="tw-px-4 tw-py-2 tw-border-b">
+                      {item.status}
                     </td>
                   </tr>
                 ))}
