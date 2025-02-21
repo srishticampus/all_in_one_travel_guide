@@ -201,6 +201,25 @@ const getBookingById = async (req, res, next) => {
   }
 };
 
+const taxiBookingById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const taxiRequest = await TaxiBookingModel.findById(id);
+
+    if (!taxiRequest) {
+      return res.status(404).json({ message: "request not found" });
+    }
+    taxiRequest.paymentStatus = "cancelled";
+    await taxiRequest.save();
+    return res.status(200).json({
+      message: "Taxi request approved successfully",
+      data: taxiRequest,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   calculateTaxiFare,
   taxiRequets,
