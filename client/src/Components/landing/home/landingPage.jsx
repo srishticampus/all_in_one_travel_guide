@@ -12,6 +12,7 @@ import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
 import LandingNavbar from "../../common/landingNavbar/landingNavbar";
 import { useNavigate } from "react-router-dom";
 import "./landingPage.scss";
+import { PackagePreview } from "../../tourist/packageCard/packagePreview";
 export default function LandingPage() {
   const navigate = useNavigate();
 
@@ -197,7 +198,7 @@ export default function LandingPage() {
 
               <h2 className="h2 my-section-title">Checkout Our Packeges</h2>
 
-              <ul className="package-list">
+              {/* <ul className="package-list">
                 <li style={{ backgroundColor: "red" }}>
                   <div className="package-card">
                     <figure className="card-banner">
@@ -449,8 +450,10 @@ export default function LandingPage() {
                     </div>
                   </div>
                 </li>
-              </ul>
-
+              </ul> */}
+              <div className="tw-flex tw-justify-center">
+                <PackagePreview />
+              </div>
               <button
                 className="btn btn-primary"
                 onClick={() => {
@@ -620,9 +623,7 @@ export default function LandingPage() {
               <ul>
                 <li className="contact-item">
                   <span> Phone: </span>
-                  <span>
-                    +01 (123) 4567 90
-                  </span>
+                  <span>+01 (123) 4567 90</span>
                 </li>
 
                 <li className="contact-item">

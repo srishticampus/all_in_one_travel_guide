@@ -22,7 +22,7 @@ const PackageCard = ({ item }) => {
         <div className="card-content">
           <h3 className="h3 card-title">{item?.packageName}</h3>
 
-          <p className="card-text tw-h-52 tw-overflow-y-auto">
+          <p className="card-text tw-h-44  tw-overflow-y-auto">
             {item?.packageDescription}
           </p>
           <p className="tw-text-gray-600 tw-mb-6">

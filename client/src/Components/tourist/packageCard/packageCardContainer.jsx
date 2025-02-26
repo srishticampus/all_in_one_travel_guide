@@ -58,7 +58,7 @@ const PackageCardContainer = () => {
   };
 
   return (
-    <div id="pack-card-container">
+    <div className="pack-card-container">
       <h3 className="tw-text-center tw-mt-3">Packages for you </h3>
       <div className="tw-flex tw-justify-between tw-w-10/12 tw-mx-auto">
         <SearchBox
