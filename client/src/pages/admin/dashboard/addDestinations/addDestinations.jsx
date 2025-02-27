@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Upload, MapPin, AlertCircle } from "lucide-react";
 import axiosInstance from "../../../../apis/axiosInstance";
@@ -6,6 +6,10 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setActivePage } from "../../../../redux/hotel/activePageSlice";
 const AddDestinations = () => {
+  const [selectedPackages, setSelectedPackages] = useState([]);
+  const [selectedRooms, setSelectedRooms] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const [packages, setPackages] = useState([]);
   const {
     register,
     handleSubmit,
@@ -25,10 +29,16 @@ const AddDestinations = () => {
     formData.append("description", description);
     formData.append("img1", img1[0]);
     formData.append("img2", img2[0]);
-
+    // Append selected packages
+    selectedPackages.forEach((pkgId) => formData.append("packages[]", pkgId));
+    selectedRooms.forEach((roomId) => formData.append("rooms[]", roomId));
     sendDataToServer(formData);
   };
 
+  useEffect(() => {
+    getPackages();
+    getRooms()
+  }, []);
   const changePage = (newPage) => {
     dispatch(setActivePage(newPage));
   };
@@ -48,6 +58,28 @@ const AddDestinations = () => {
     }
   };
 
+  const getPackages = async () => {
+    try {
+      const res = await axiosInstance.get("/package");
+      if (res.status === 200) {
+        const data = res.data?.data?.reverse() || [];
+        setPackages(data);
+      }
+    } catch (error) {
+      console.log("error on get packages", error);
+    }
+  };
+  const getRooms = async () => {
+    try {
+      const res = await axiosInstance.get("/rooms");
+      if (res.status === 200) {
+        const data = res.data?.data?.reverse() || [];
+        setRooms(data);
+      }
+    } catch (error) {
+      console.log("error on get rooms", error);
+    }
+  };
   return (
     <div className="tw-min-h-screen tw-bg-gray-50 tw-py-5 tw-px-4 sm:tw-px-6 lg:tw-px-8">
       <div className="tw-max-w-3xl tw-mx-auto">
@@ -70,12 +102,13 @@ const AddDestinations = () => {
               <input
                 type="text"
                 id="title"
-                {...register("title", { required: "Title is required",
+                {...register("title", {
+                  required: "Title is required",
                   pattern: {
                     value: /^[A-Za-z\s]+$/,
                     message: "Please enter a valid title",
-                  }
-                 })}
+                  },
+                })}
                 className="tw-mt-1 tw-block tw-w-full tw-rounded-md tw-border-gray-300 tw-shadow-sm focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-border tw-p-2"
               />
               {errors.title && (
@@ -107,6 +140,65 @@ const AddDestinations = () => {
                   {errors.description.message}
                 </p>
               )}
+            </div>
+
+            <div>
+              <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">
+                Select Available Packages for this destination
+              </label>
+              <div className="tw-mt-1 tw-space-y-2 tw-flex tw-flex-wrap">
+                {packages.map((pkg) => (
+                  <label
+                    key={pkg._id}
+                    className="tw-flex tw-items-center tw-space-x-2 tw-ms-5"
+                  >
+                    <input
+                      type="checkbox"
+                      value={pkg._id}
+                      onChange={(e) => {
+                        const pkgId = e.target.value;
+                        setSelectedPackages((prev) =>
+                          prev.includes(pkgId)
+                            ? prev.filter((id) => id !== pkgId)
+                            : [...prev, pkgId]
+                        );
+                      }}
+                      checked={selectedPackages.includes(pkg._id)}
+                      className="tw-w-4 tw-h-4 tw-text-blue-600 tw-border-gray-300 tw-rounded"
+                    />
+                    <span className="tw-text-gray-800">{pkg.packageName}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">
+                Select Available hotels for this destination
+              </label>
+              <div className="tw-mt-1 tw-space-y-2 tw-flex tw-flex-wrap">
+                {rooms.map((room) => (
+                  <label
+                    key={room._id}
+                    className="tw-flex tw-items-center tw-space-x-2 tw-ms-5"
+                  >
+                    <input
+                      type="checkbox"
+                      value={room._id}
+                      onChange={(e) => {
+                        const roomId = e.target.value;
+                        setSelectedRooms((prev) =>
+                          prev.includes(roomId)
+                            ? prev.filter((id) => id !== roomId)
+                            : [...prev, roomId]
+                        );
+                      }}
+                      checked={selectedRooms.includes(room._id)}
+                      className="tw-w-4 tw-h-4 tw-text-blue-600 tw-border-gray-300 tw-rounded"
+                    />
+                    <span className="tw-text-gray-800">{room.hotelId?.hotelName}</span>
+                  </label>
+                ))}
+              </div>
             </div>
 
             <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6">

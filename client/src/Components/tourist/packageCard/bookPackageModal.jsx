@@ -22,6 +22,7 @@ const BookPackageModal = ({ item, onClose }) => {
     const agencyId = item.agencyId?._id || null;
     
     if (!packageId || !touristId || !agencyId) {
+      console.log(packageId, touristId, agencyId)
       console.log("Please login to book the package");
       return;
     }

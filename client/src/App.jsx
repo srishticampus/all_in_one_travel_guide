@@ -42,6 +42,7 @@ import AgencyProfile from "./pages/agency/profile/profile";
 import ViewDestinations from "./pages/tourist/addDestinations/viewDestinations";
 import "./App.css";
 import "./index.css";
+import { ViewDestinationDetails } from "./pages/tourist/addDestinations/viewDestinationDetails";
 function App() {
   return (
     <BrowserRouter basename="travel_guide">
@@ -78,6 +79,7 @@ function App() {
             <Route path="/tourist/view-foods/:id" element={<ViewFoodDetails />} />
             <Route path="/tourist/view-hotel-details/:id" element={<ViewHotelDetails />} />
             <Route path="/tourist/top-destinations" element={<ViewDestinations />} />
+            <Route path="/tourist/top-destinations/:id" element={<ViewDestinationDetails />} />
           </Route>
 
           {/* Agency routes */}

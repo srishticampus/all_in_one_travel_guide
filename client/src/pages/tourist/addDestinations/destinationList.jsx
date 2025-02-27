@@ -12,7 +12,6 @@ const DestinationList = ({
   fixedDest = [],
 }) => {
   const [viewDestination, setViewDestination] = useState(null);
-
   const [deleteDestination, setDeleteDestination] = useState(null);
 
   const handleDelete = async (destination) => {

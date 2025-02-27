@@ -17,6 +17,18 @@ const topDestinationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    packages: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Package",
+      },
+    ],
+    rooms: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Room",
+      },
+    ]
   },
   { timestamps: true }
 );

@@ -32,12 +32,14 @@ const destinationImages = multer({
 const addTouristPlace = async (req, res, next) => {
   try {
     const { img1, img2 } = req.files;
-    const { title, description } = req.body;
+    const { title, description, packages, rooms } = req.body;
     const newTouristPlace = new TopDestinationModel({
       title,
       description,
       img1: img1[0].filename,
       img2: img2[0].filename,
+      packages,
+      rooms,
     });
     const savedTouristPlace = await newTouristPlace.save();
     return res.status(201).json({
@@ -51,10 +53,53 @@ const addTouristPlace = async (req, res, next) => {
 
 const getAllDestination = async (req, res, next) => {
   try {
-    const allDestination = await TopDestinationModel.find();
+    const allDestination = await TopDestinationModel.find()
+      .populate({
+        path: "packages",
+        strictPopulate: false,
+      })
+      .populate({
+        path: "rooms",
+        strictPopulate: false,
+      })
+      .exec();
     return res.status(200).json({
       message: "All Destination",
       data: allDestination,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getDestinationById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const destination = await TopDestinationModel.findById(id)
+      .populate({
+        path: "packages",
+        populate: {
+          path: "agencyId",
+          strictPopulate: false,
+        },
+        strictPopulate: false,
+      })
+      .populate({
+        path: "rooms",
+        populate: {
+          path: "hotelId",
+          strictPopulate: false,
+        },
+        strictPopulate: false,
+      }).exec();
+    if (!destination) {
+      return res.status(404).json({
+        message: "Destination not found",
+      });
+    }
+    return res.status(200).json({
+      message: "Destination found",
+      data: destination,
     });
   } catch (error) {
     next(error);
@@ -79,4 +124,5 @@ module.exports = {
   destinationImages,
   getAllDestination,
   deleteDestination,
+  getDestinationById,
 };

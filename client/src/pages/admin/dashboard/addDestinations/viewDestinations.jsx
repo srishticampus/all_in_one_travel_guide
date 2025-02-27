@@ -13,6 +13,7 @@ function ViewDestinations() {
   useEffect(() => {
     getDestination();
   }, []);
+  console.log('dest', destinations)
   const getDestination = async () => {
     try {
       const res = await axiosInstance.get("/top-destinations/get-all");

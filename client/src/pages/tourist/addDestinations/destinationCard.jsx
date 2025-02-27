@@ -2,8 +2,14 @@ import React from "react";
 import { Eye, Trash2 } from "lucide-react";
 import Button from "./ui/Button";
 import { BASE_URL } from "../../../apis/baseURL";
+import { useNavigate } from "react-router-dom";
 
 const DestinationCard = ({ destination, onView, onDelete }) => {
+  const navigate = useNavigate();
+
+  const navigateToDetails = () => {
+    navigate("/");
+  };
   const img1Url = `${BASE_URL}${destination.img1}`;
   const img2Url = `${BASE_URL}${destination.img2}`;
   return (
@@ -32,8 +38,12 @@ const DestinationCard = ({ destination, onView, onDelete }) => {
           {destination.description}
         </p>
 
-
-        <Button className="tw-mx-auto" onClick={() => onView(destination)}>
+        <Button
+          className="tw-mx-auto"
+          onClick={() => {
+            navigate("/tourist/top-destinations/" + destination._id);
+          }}
+        >
           <Eye className="tw-w-5 tw-h-5" />
           View More
         </Button>
