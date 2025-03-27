@@ -1,17 +1,27 @@
-const roomRoutes = require("express").Router();
+const express = require("express");
+const roomRoutes = express.Router();
 const {
   createRoom,
-  geAllRooms,
+  getAllRooms,
   getRoomById,
   getRoomsByHotelId,
   roomImgUpload,
   editRoomById,
 } = require("./rooms.controller");
 
+// Create Room
 roomRoutes.post("/", roomImgUpload, createRoom);
-roomRoutes.get("/", geAllRooms);
+
+// Get All Rooms
+roomRoutes.get("/", getAllRooms);
+
+// Get Room by ID
 roomRoutes.get("/:id", getRoomById);
+
+// Get Rooms by Hotel ID
 roomRoutes.get("/hotel/:hotelId", getRoomsByHotelId);
-roomRoutes.patch("/:id", editRoomById);
+
+// Edit Room by ID (including image update)
+roomRoutes.patch("/:id", roomImgUpload, editRoomById);
 
 module.exports = roomRoutes;

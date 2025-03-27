@@ -8,7 +8,9 @@ import {
   Select,
   InputNumber,
   message,
+  Upload,
 } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 import axiosInstance from "../../../../apis/axiosInstance";
 import BookedUsersTable from "./bookedUsers";
 import { BASE_URL } from "../../../../apis/baseURL";
@@ -18,7 +20,9 @@ const ViewRoom = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [roomData, setRoomData] = useState({});
+  const [imageFile, setImageFile] = useState(null);
   const [trigger, setTrigger] = useState(false);
+
   useEffect(() => {
     const id = localStorage.getItem("travel_guide_hotel_id");
     if (!id) {
@@ -38,24 +42,43 @@ const ViewRoom = () => {
       console.log("Error on fetching room data", error);
     }
   };
+
   const showModal = () => {
     form.setFieldsValue(roomData);
     setIsModalVisible(true);
   };
 
-  console.log('rom data', roomData)
   const handleCancel = () => {
     setIsModalVisible(false);
     form.resetFields();
+    setImageFile(null);
   };
 
   const handleUpdate = async (values) => {
     setLoading(true);
     try {
       const totalRooms = parseInt(values.acRooms) + parseInt(values.nonAcRooms);
-      // Add your API call here to update the room
-      console.log('value', values)
-      const res = await axiosInstance.patch(`/rooms/${roomData._id}`, {...values, totalRooms});
+      const formData = new FormData();
+      formData.append("acRooms", values.acRooms);
+      formData.append("nonAcRooms", values.nonAcRooms);
+      formData.append("acRoomPrice", values.acRoomPrice);
+      formData.append("nonAcRoomPrice", values.nonAcRoomPrice);
+      formData.append("checkInTime", values.checkInTime);
+      formData.append("checkOutTime", values.checkOutTime);
+      formData.append("totalRooms", totalRooms);
+      
+      if (imageFile) {
+        formData.append("roomImg", imageFile);
+      }
+
+      const res = await axiosInstance.patch(
+        `/rooms/${roomData._id}`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+
       if (res.status === 200) {
         message.success("Room updated successfully");
         setIsModalVisible(false);
@@ -67,16 +90,18 @@ const ViewRoom = () => {
       setLoading(false);
     }
   };
+
   if (!roomData || !roomData.totalRooms) {
     return (
       <div className="tw-h-screen tw-flex tw-justify-center">
-        <h3 className="tw-text-center ">
+        <h3 className="tw-text-center">
           {" "}
-          You haven't registerd your rooms yet!
+          You haven't registered your rooms yet!
         </h3>
       </div>
     );
   }
+
   return (
     <>
       <div className="view-room-container" style={{ padding: "24px" }}>
@@ -93,7 +118,7 @@ const ViewRoom = () => {
             <img
               src={`${BASE_URL}/${roomData.roomImg}`}
               className="tw-w-auto tw-h-full"
-              alt=""
+              alt="Room"
             />
           </div>
           <div
@@ -160,95 +185,69 @@ const ViewRoom = () => {
             onFinish={handleUpdate}
             initialValues={roomData}
           >
-            {/* AC Rooms */}
             <Form.Item
               name="acRooms"
               label="AC Rooms"
-              rules={[
-                { required: true, message: "AC rooms is required!" },
-                { type: "number", min: 0, message: "Cannot be negative!" },
-              ]}
+              rules={[{ required: true, message: "AC rooms is required!" }]}
             >
               <InputNumber style={{ width: "100%" }} />
             </Form.Item>
 
-            {/* Non-AC Rooms */}
             <Form.Item
               name="nonAcRooms"
               label="Non-AC Rooms"
-              rules={[
-                { required: true, message: "Non-AC rooms is required!" },
-                { type: "number", min: 0, message: "Cannot be negative!" },
-              ]}
+              rules={[{ required: true, message: "Non-AC rooms is required!" }]}
             >
               <InputNumber style={{ width: "100%" }} />
             </Form.Item>
 
-            {/* AC Room Price */}
             <Form.Item
               name="acRoomPrice"
               label="AC Room Price"
-              rules={[
-                { required: true, message: "AC room price is required!" },
-                {
-                  type: "number",
-                  min: 0,
-                  message: "Price cannot be negative!",
-                },
-              ]}
+              rules={[{ required: true, message: "AC room price is required!" }]}
             >
               <InputNumber prefix="₹" style={{ width: "100%" }} />
             </Form.Item>
 
-            {/* Non-AC Room Price */}
             <Form.Item
               name="nonAcRoomPrice"
               label="Non-AC Room Price"
-              rules={[
-                { required: true, message: "Non-AC room price is required!" },
-                {
-                  type: "number",
-                  min: 0,
-                  message: "Price cannot be negative!",
-                },
-              ]}
+              rules={[{ required: true, message: "Non-AC room price is required!" }]}
             >
               <InputNumber prefix="₹" style={{ width: "100%" }} />
             </Form.Item>
 
-            {/* Check-in Time */}
             <Form.Item
               name="checkInTime"
               label="Check-in Time"
-              rules={[
-                { required: true, message: "Check-in time is required!" },
-              ]}
+              rules={[{ required: true, message: "Check-in time is required!" }]}
             >
               <Input type="time" />
             </Form.Item>
 
-            {/* Check-out Time */}
             <Form.Item
               name="checkOutTime"
               label="Check-out Time"
-              rules={[
-                { required: true, message: "Check-out time is required!" },
-              ]}
+              rules={[{ required: true, message: "Check-out time is required!" }]}
             >
               <Input type="time" />
             </Form.Item>
 
-            {/* Status */}
-
+            <Form.Item label="Room Image">
+              <Upload
+                beforeUpload={(file) => {
+                  setImageFile(file);
+                  return false;
+                }}
+                showUploadList={true}
+                accept="image/*"
+              >
+                <Button icon={<UploadOutlined />}>Upload Image</Button>
+              </Upload>
+            </Form.Item>
 
             <Form.Item>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  gap: "8px",
-                }}
-              >
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "8px" }}>
                 <Button onClick={handleCancel}>Cancel</Button>
                 <Button type="primary" htmlType="submit" loading={loading}>
                   Update
