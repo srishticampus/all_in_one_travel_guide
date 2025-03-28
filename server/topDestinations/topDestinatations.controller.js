@@ -119,10 +119,66 @@ const deleteDestination = async (req, res, next) => {
     next(error);
   }
 };
+const updateDestination = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updateData = { ...req.body };
+    
+    // Remove undefined or null values from the update data
+    Object.keys(updateData).forEach(key => {
+      if (updateData[key] === undefined || updateData[key] === null) {
+        delete updateData[key];
+      }
+    });
+
+    // Handle image updates if files were uploaded
+    if (req.files) {
+      if (req.files.img1) {
+        updateData.img1 = req.files.img1[0].filename;
+      }
+      if (req.files.img2) {
+        updateData.img2 = req.files.img2[0].filename;
+      }
+    }
+
+    // Convert string arrays to ObjectIds if they exist
+    if (updateData.packages && Array.isArray(updateData.packages)) {
+      updateData.packages = updateData.packages.map(pkg => 
+        mongoose.Types.ObjectId(pkg)
+      );
+    }
+    
+    if (updateData.rooms && Array.isArray(updateData.rooms)) {
+      updateData.rooms = updateData.rooms.map(room => 
+        mongoose.Types.ObjectId(room)
+      );
+    }
+
+    const updatedDestination = await TopDestinationModel.findByIdAndUpdate(
+      id,
+      { $set: updateData }, // Using $set for partial update
+      { new: true, runValidators: true } // Return updated doc and run schema validations
+    ).populate('packages rooms');
+
+    if (!updatedDestination) {
+      return res.status(404).json({
+        message: "Destination not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Destination updated successfully",
+      data: updatedDestination,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   addTouristPlace,
   destinationImages,
   getAllDestination,
   deleteDestination,
   getDestinationById,
+  updateDestination,
 };

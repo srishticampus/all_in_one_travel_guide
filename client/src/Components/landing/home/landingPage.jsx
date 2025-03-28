@@ -10,15 +10,37 @@ import gallery3 from "../../../Asset/images/agency/gallery-3.jpg";
 import gallery4 from "../../../Asset/images/agency/gallery-4.jpg";
 import gallery5 from "../../../Asset/images/agency/gallery-5.jpg";
 import LandingNavbar from "../../common/landingNavbar/landingNavbar";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./landingPage.scss";
 import { PackagePreview } from "../../tourist/packageCard/packagePreview";
+import axiosInstance from "../../../apis/axiosInstance";
+import { BASE_URL } from "../../../apis/baseURL";
+
 export default function LandingPage() {
+  const [destinations, setDestinations] = useState([]);
+  const [fixedDest, setFixedDest] = useState([]);
   const navigate = useNavigate();
 
   const saveToLS = (key, value) => {
     localStorage.setItem(key, value);
     navigate("/login");
+  };
+  useEffect(() => {
+    getDestination();
+  }, []);
+  console.log("dest", destinations);
+  const getDestination = async () => {
+    try {
+      const res = await axiosInstance.get("/top-destinations/get-all");
+      if (res.status === 200) {
+        const data = res?.data?.data?.reverse() || [];
+        setDestinations(data);
+        setFixedDest(data);
+      }
+    } catch (error) {
+      console.log("error on get destination", error);
+    }
   };
   return (
     <div id="landing-page">
@@ -68,115 +90,159 @@ export default function LandingPage() {
                 awaits
               </p>
 
-              <ul className="popular-list">
-                <li>
-                  <div className="popular-card">
-                    <figure className="card-img">
-                      <img
-                        src={popular1}
-                        alt="San miguel, italy"
-                        loading="lazy"
-                      />
-                    </figure>
+              {destinations.length > 0 ? (
+                <ul className="popular-list">
+                  {destinations.slice(0, 3).map((destination) => {
+                    const imgUrl = destination.img1
+                      ? `${BASE_URL}${destination.img1}`
+                      : popular1;
+                    return (
+                      <li key={destination._id}>
+                        <div className="popular-card">
+                          <figure className="card-img">
+                            <img
+                              src={imgUrl}
+                              alt={destination.title}
+                              loading="lazy"
+                              className="tw-w-full tw-h-full tw-object-cover"
+                            />
+                          </figure>
 
-                    <div className="card-content">
-                      <div className="card-rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
+                          <div className="card-content">
+                            <div className="card-rating">
+                              {[...Array(5)].map((_, i) => (
+                                <ion-icon key={i} name="star"></ion-icon>
+                              ))}
+                            </div>
+
+                            <p className="card-subtitle">
+                              <a href="#">{destination.location}</a>
+                            </p>
+
+                            <h3 className="h3 card-title">
+                              <a href="#">{destination.title}</a>
+                            </h3>
+
+                            <p className="card-text tw-line-clamp-3">
+                              {destination.description}
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <ul className="popular-list">
+                  <li>
+                    <div className="popular-card">
+                      <figure className="card-img">
+                        <img
+                          src={popular1}
+                          alt="San miguel, italy"
+                          loading="lazy"
+                        />
+                      </figure>
+
+                      <div className="card-content">
+                        <div className="card-rating">
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                        </div>
+
+                        <p className="card-subtitle">
+                          <a href="#">Italy</a>
+                        </p>
+
+                        <h3 className="h3 card-title">
+                          <a href="#">San miguel</a>
+                        </h3>
+
+                        <p className="card-text">
+                          Explore the timeless beauty of San miguel. From Rome's
+                          ancient wonders to Venice's romantic canals, every
+                          moment is a masterpiece
+                        </p>
                       </div>
-
-                      <p className="card-subtitle">
-                        <a href="#">Italy</a>
-                      </p>
-
-                      <h3 className="h3 card-title">
-                        <a href="#">San miguel</a>
-                      </h3>
-
-                      <p className="card-text">
-                        Explore the timeless beauty of San miguel. From Rome's
-                        ancient wonders to Venice's romantic canals, every
-                        moment is a masterpiece
-                      </p>
                     </div>
-                  </div>
-                </li>
+                  </li>
 
-                <li>
-                  <div className="popular-card">
-                    <figure className="card-img">
-                      <img
-                        src={popular2}
-                        alt="Burj khalifa, dubai"
-                        loading="lazy"
-                      />
-                    </figure>
+                  <li>
+                    <div className="popular-card">
+                      <figure className="card-img">
+                        <img
+                          src={popular2}
+                          alt="Burj khalifa, dubai"
+                          loading="lazy"
+                        />
+                      </figure>
 
-                    <div className="card-content">
-                      <div className="card-rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
+                      <div className="card-content">
+                        <div className="card-rating">
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                        </div>
+
+                        <p className="card-subtitle">
+                          <a href="#">Dubai</a>
+                        </p>
+
+                        <h3 className="h3 card-title">
+                          <a href="#">Burj khalifa</a>
+                        </h3>
+
+                        <p className="card-text">
+                          Touch the sky at the iconic Burj Khalifa. Experience
+                          Dubai from the world's tallest tower and marvel at the
+                          breathtaking views
+                        </p>
                       </div>
-
-                      <p className="card-subtitle">
-                        <a href="#">Dubai</a>
-                      </p>
-
-                      <h3 className="h3 card-title">
-                        <a href="#">Burj khalifa</a>
-                      </h3>
-
-                      <p className="card-text">
-                        Touch the sky at the iconic Burj Khalifa. Experience
-                        Dubai from the world's tallest tower and marvel at the
-                        breathtaking views
-                      </p>
                     </div>
-                  </div>
-                </li>
+                  </li>
 
-                <li>
-                  <div className="popular-card">
-                    <figure className="card-img">
-                      <img
-                        src={popular3}
-                        alt="Kyoto temple, japan"
-                        loading="lazy"
-                      />
-                    </figure>
+                  <li>
+                    <div className="popular-card">
+                      <figure className="card-img">
+                        <img
+                          src={popular3}
+                          alt="Kyoto temple, japan"
+                          loading="lazy"
+                        />
+                      </figure>
 
-                    <div className="card-content">
-                      <div className="card-rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
+                      <div className="card-content">
+                        <div className="card-rating">
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                        </div>
+
+                        <p className="card-subtitle">
+                          <a href="#">Japan</a>
+                        </p>
+
+                        <h3 className="h3 card-title">
+                          <a href="#">Kyoto temple</a>
+                        </h3>
+
+                        <p className="card-text">
+                          Step into the tranquility of Kyoto's ancient temples.
+                          Discover the serene beauty and timeless traditions
+                          that define Japan's cultural heart
+                        </p>
                       </div>
-
-                      <p className="card-subtitle">
-                        <a href="#">Japan</a>
-                      </p>
-
-                      <h3 className="h3 card-title">
-                        <a href="#">Kyoto temple</a>
-                      </h3>
-
-                      <p className="card-text">
-                        Step into the tranquility of Kyoto's ancient temples.
-                        Discover the serene beauty and timeless traditions that
-                        define Japan's cultural heart
-                      </p>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                  </li>
+                </ul>
+              )}
 
               <button
                 className="btn btn-primary"

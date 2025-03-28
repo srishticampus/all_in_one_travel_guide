@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import DestinationCard from "./destinationCard";
 import ViewDestinationModal from "./viewDestinationModal";
 import DeleteConfirmModal from "./deleteConfirmModal";
+import EditDestinationModal from "./editDestinationModal";
 import axiosInstance from "../../../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 
 const DestinationList = ({
   destinations = [],
   getDestination,
+  setDestinations, 
+  setFixedDest,
   filterDest,
   fixedDest = [],
 }) => {
   const [viewDestination, setViewDestination] = useState(null);
   const [deleteDestination, setDeleteDestination] = useState(null);
+  const [editDestination, setEditDestination] = useState(null);
 
   const handleDelete = async (destination) => {
     if (destination && destination._id) {
@@ -22,7 +26,6 @@ const DestinationList = ({
         );
         if (res.status === 200) {
           toast.success("Destination deleted successfully");
-          
         }
       } catch (error) {
         console.log("error on delete destination", error);
@@ -31,6 +34,19 @@ const DestinationList = ({
       }
     }
     setDeleteDestination(null);
+  };
+
+  const handleUpdateSuccess = (updatedDestination) => {
+    setDestinations(
+      destinations.map((dest) =>
+        dest._id === updatedDestination._id ? updatedDestination : dest
+      )
+    );
+    setFixedDest(
+      fixedDest.map((dest) =>
+        dest._id === updatedDestination._id ? updatedDestination : dest
+      )
+    );
   };
 
   return (
@@ -66,6 +82,7 @@ const DestinationList = ({
               destination={destination}
               onView={setViewDestination}
               onDelete={setDeleteDestination}
+              onEdit={setEditDestination}
             />
           ))}
         </div>
@@ -90,6 +107,14 @@ const DestinationList = ({
             destination={deleteDestination}
             onConfirm={handleDelete}
             onCancel={() => setDeleteDestination(null)}
+          />
+        )}
+
+        {editDestination && (
+          <EditDestinationModal
+            destination={editDestination}
+            onClose={() => setEditDestination(null)}
+            onUpdate={handleUpdateSuccess}
           />
         )}
       </div>
