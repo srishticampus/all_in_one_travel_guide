@@ -36,13 +36,14 @@ const BookRooms = () => {
         <div className="tw-flex tw-items-center tw-justify-center">
           <input
             type="text"
-            placeholder="Search by hotel name"
+            placeholder="Search by hotel name or location"
             className="tw-p-2 tw-rounded-lg tw-border-2 tw-border-gray-300 tw-w-80"
             onChange={(e) => {
               const value = e.target.value.toLowerCase();
               if (value) {
                 const myFilteredRooms = rooms.filter((room) =>
-                  room.hotelId?.hotelName?.toLowerCase().includes(value)
+                  room.hotelId?.hotelName?.toLowerCase().includes(value) ||
+                  room.hotelId?.hotelLocation?.toLowerCase().includes(value)
                 );
                 setFilterRooms(myFilteredRooms);
               }else {

@@ -87,10 +87,50 @@ const getFoodItemById = async (req, res, next) => {
   }
 };
 
+const updateFoodItem = async (req, res, next) => {
+  try {
+    const { foodId } = req.params;
+    const updateData = { ...req.body };
+    
+    // Handle image update if file was uploaded
+    if (req.file) {
+      updateData.foodImg = req.file.filename;
+    }
+
+    // Validate price is a positive number if provided
+    if (updateData.price && updateData.price < 0) {
+      return res.status(400).json({ message: "Price must be a positive number" });
+    }
+
+    // Validate foodType if provided
+    if (updateData.foodType && !['veg', 'non-veg'].includes(updateData.foodType)) {
+      return res.status(400).json({ message: "Food type must be either 'veg' or 'non-veg'" });
+    }
+
+    const updatedFood = await FoodItemModel.findByIdAndUpdate(
+      foodId,
+      updateData,
+      { new: true, runValidators: true } // Return updated doc and run validations
+    );
+
+    if (!updatedFood) {
+      return res.status(404).json({ message: "Food item not found" });
+    }
+
+    res.status(200).json({
+      message: "Food item updated successfully",
+      data: updatedFood
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addFood,
   foodImgUpload,
   getAllFoodByHotelId,
   getAllFoodItems,
   getFoodItemById,
+  updateFoodItem,
 };
