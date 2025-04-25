@@ -16,7 +16,7 @@ function LandingNavbar() {
           <Link to="/" className="navbar-brand p-0">
             <h5 className="text-primary m-0 tw-flex tw-align-middle">
               <img src={appLogo} alt="logo" className="w-25" />
-              <span className="tw-flex tw-align-middle mt-2">Travel Guide</span>
+              <span className="tw-flex tw-justify-center tw-align-middle mt-2">Alchemy of Travel</span>
             </h5>
           </Link>
           <button

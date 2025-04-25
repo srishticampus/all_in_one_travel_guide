@@ -43,7 +43,7 @@ export default function TouristNavbar() {
           <Link to="/tourist/home" className="navbar-brand p-0">
             <h5 className="text-primary m-0 tw-flex tw-items-center tw-justify-center tw-gap-2">
               <img src={appLogo} alt="logo" className="w-25" />
-              Travel Guide
+              Alchemy of Travel
             </h5>
           </Link>
           <button

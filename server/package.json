@@ -2,7 +2,7 @@
   "name": "allinonetravelguide",
   "homepage": "http://hybrid.srishticampus.in/travel_guide/",
   "version": "1.0.0",
-  "description": "all in one travel guide",
+  "description": "Alchemy of Travel",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
