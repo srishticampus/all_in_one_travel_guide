@@ -12,7 +12,7 @@ const LandingNavbar = () => {
             className="nav-logo-link d-flex justify-content-between align-items-center"
           >
             <img className="nav-logo me-3" src={appLogo} alt="Tourly logo" />
-            <h5>Travel Guide</h5>
+            <h5>Alchemy of Travel </h5>
           </Link>
 
           <nav className="navbar" data-navbar>

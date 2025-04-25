@@ -705,7 +705,7 @@ export default function LandingPage() {
         <div className="footer-bottom">
           <div className="container">
             <p className="copyright">
-              &copy; 2024 <a href="">Tourist Guide</a>. All rights reserved
+              &copy; 2025 <a href="">Alchemy of Travel</a>. All rights reserved
             </p>
 
             <ul className="footer-bottom-list">
