@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import appLogo from "../../Asset/images/logo.jpg";
+import appLogo from "../../Asset/images/alchemy.png";
 import styles from "./authNavbar.module.scss";
 function LandingNavbar() {
   return (
