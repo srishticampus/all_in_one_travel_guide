@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import appLogo from "../../../Asset/images/logo.jpg";
+import appLogo from "../../../Asset/images/alchemy.png";
 import "./navbar.scss";
 const AgencyNavbar = () => {
   return (
