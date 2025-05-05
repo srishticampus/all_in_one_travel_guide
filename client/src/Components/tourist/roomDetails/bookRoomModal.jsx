@@ -1,19 +1,23 @@
 import { useForm } from "react-hook-form";
-// import TouristAPIs from "../../../apis/tourist";
 import { hotelBookingProcess } from "../../../apis/tourist/paymentService";
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 const BookRoomModal = ({ item, onClose }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [numberOfDays, setNumberOfDays] = useState(1);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    setError,
+    clearErrors
   } = useForm();
+
+  const expiryDate = watch("expiryDate");
 
   useEffect(() => {
     const acRoomPrice = item.acRoomPrice || 0;
@@ -26,9 +30,42 @@ const BookRoomModal = ({ item, onClose }) => {
   }, [watch("roomType"), numberOfDays]);
 
   useEffect(() => {
-    calculateNoOfDays()
-
+    calculateNoOfDays();
   }, [watch("checkInDate"), watch("checkOutDate")]);
+
+  useEffect(() => {
+    if (expiryDate && expiryDate.length === 5) {
+      validateExpiryDate(expiryDate);
+    }
+  }, [expiryDate]);
+
+  const validateExpiryDate = (date) => {
+    if (!date) return true;
+    
+    const [month, year] = date.split('/');
+    if (!month || !year) return false;
+    
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear() % 100; // Get last 2 digits
+    const currentMonth = currentDate.getMonth() + 1; // Months are 0-indexed
+    
+    // Convert to numbers
+    const expMonth = parseInt(month, 10);
+    const expYear = parseInt(year, 10);
+    
+    if (expYear < currentYear || 
+        (expYear === currentYear && expMonth < currentMonth)) {
+      setError("expiryDate", {
+        type: "manual",
+        message: "Card has expired"
+      });
+      return false;
+    }
+    
+    clearErrors("expiryDate");
+    return true;
+  };
+
   const calculateNoOfDays = () => {
     const inDate = watch("checkInDate");
     const outDate = watch("checkOutDate");
@@ -44,10 +81,20 @@ const BookRoomModal = ({ item, onClose }) => {
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       setNumberOfDays(diffDays);
       return true;
-    }else {
+    } else {
       return false;
     }
   };
+
+  // Format expiry date as user types (MM/YY)
+  const formatExpiryDate = (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+  };
+
   const onSubmit = (data) => {
     const {
       cardHolderName,
@@ -57,8 +104,8 @@ const BookRoomModal = ({ item, onClose }) => {
       checkInDate,
       checkOutDate,
       roomType,
-
     } = data;
+    
     if (
       !cardHolderName ||
       !cardNumber ||
@@ -71,6 +118,12 @@ const BookRoomModal = ({ item, onClose }) => {
       console.log("Please fill all the fields");
       return;
     }
+
+    // Validate expiry date before submission
+    if (!validateExpiryDate(expiryDate)) {
+      return;
+    }
+
     const roomId = item._id || null;
     const touristId = localStorage.getItem("travel_guide_tourist_id") || null;
     const hotelId = item.hotelId?._id || null;
@@ -79,9 +132,11 @@ const BookRoomModal = ({ item, onClose }) => {
       console.log("Please login to book the package");
       return;
     }
+    
     if (!calculateNoOfDays()) {
       return;
     }
+    
     const serializedData = {
       roomId,
       touristId,
@@ -106,7 +161,7 @@ const BookRoomModal = ({ item, onClose }) => {
       if (res) {
         toast.success("Room booked successfully");
         onClose();
-        navigate('/tourist/booked-rooms') 
+        navigate('/tourist/booked-rooms');
       }
     } catch (error) {
       console.log("Error on payment process", error);
@@ -116,7 +171,7 @@ const BookRoomModal = ({ item, onClose }) => {
 
   return (
     <div className="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-flex tw-items-center tw-justify-center">
-      <div className="tw-bg-white tw-rounded-lg tw-p-8 tw-w-full tw-max-w-md tw-mx-4  tw-max-h-96 tw-overflow-auto">
+      <div className="tw-bg-white tw-rounded-lg tw-p-8 tw-w-full tw-max-w-md tw-mx-4 tw-max-h-96 tw-overflow-auto">
         <h2 className="tw-text-2xl tw-font-bold tw-mb-6 tw-text-gray-800">
           Payment Details
         </h2>
@@ -259,7 +314,9 @@ const BookRoomModal = ({ item, onClose }) => {
                     value: /^(0[1-9]|1[0-2])\/([0-9]{2})$/,
                     message: "Enter valid date (MM/YY)",
                   },
+                  validate: validateExpiryDate
                 })}
+                onChange={formatExpiryDate}
                 className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
                   errors.expiryDate ? "tw-border-red-500" : "tw-border-gray-300"
                 } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
