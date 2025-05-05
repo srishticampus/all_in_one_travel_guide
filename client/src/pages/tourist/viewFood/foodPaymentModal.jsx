@@ -1,20 +1,75 @@
 import { useForm } from "react-hook-form";
-import { foodBookingProcess, taxiBookingProcess } from "../../../apis/tourist/paymentService";
+import { foodBookingProcess } from "../../../apis/tourist/paymentService";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-const FoodPaymentModal = ({ foodId,touristId, onClose }) => {
+import { useEffect } from "react";
+
+const FoodPaymentModal = ({ foodId, touristId, onClose }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setError,
+    clearErrors
   } = useForm();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const expiryDate = watch("expiryDate");
+
+  useEffect(() => {
+    if (expiryDate && expiryDate.length === 5) {
+      validateExpiryDate(expiryDate);
+    }
+  }, [expiryDate]);
+
+  const validateExpiryDate = (date) => {
+    if (!date) return true;
+    
+    const [month, year] = date.split('/');
+    if (!month || !year) return false;
+    
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear() % 100; // Get last 2 digits
+    const currentMonth = currentDate.getMonth() + 1; // Months are 0-indexed
+    
+    // Convert to numbers
+    const expMonth = parseInt(month, 10);
+    const expYear = parseInt(year, 10);
+    
+    if (expYear < currentYear || 
+        (expYear === currentYear && expMonth < currentMonth)) {
+      setError("expiryDate", {
+        type: "manual",
+        message: "Card has expired"
+      });
+      return false;
+    }
+    
+    clearErrors("expiryDate");
+    return true;
+  };
+
+  // Format expiry date as user types (MM/YY)
+  const formatExpiryDate = (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value;
+  };
+
   const onSubmit = (data) => {
     const { cardHolderName, cardNumber, expiryDate, cvv, noOfPersons, dateAndTime } = data;
     if (!cardHolderName || !cardNumber || !expiryDate || !cvv || !dateAndTime || !noOfPersons) {
       console.log("Please fill all the fields");
       return;
     }
+
+    // Validate expiry date before submission
+    if (!validateExpiryDate(expiryDate)) {
+      return;
+    }
+
     const serializedData = {
       foodId,
       touristId,
@@ -35,7 +90,7 @@ const FoodPaymentModal = ({ foodId,touristId, onClose }) => {
 
       if (res) {
         toast.success("Your order has confirmed.");
-        navigate(`/tourist/booked-foods`)
+        navigate(`/tourist/booked-foods`);
         onClose();
       }
     } catch (error) {
@@ -176,7 +231,9 @@ const FoodPaymentModal = ({ foodId,touristId, onClose }) => {
                     value: /^(0[1-9]|1[0-2])\/([0-9]{2})$/,
                     message: "Enter valid date (MM/YY)",
                   },
+                  validate: validateExpiryDate
                 })}
+                onChange={formatExpiryDate}
                 className={`tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-shadow-sm ${
                   errors.expiryDate ? "tw-border-red-500" : "tw-border-gray-300"
                 } tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-500`}
